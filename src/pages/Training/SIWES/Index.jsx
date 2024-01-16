@@ -19,6 +19,7 @@ export default function SIWES() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [hoveredElement, setHoveredElement] = useState("");
   const [hasHealthChallenge, setHasHealthChallenge] = useState(false);
+  const [durationOthers, setDurationOthers] = useState(false);
 
   //Form
   const {
@@ -418,7 +419,7 @@ export default function SIWES() {
                     Religion <span className="text-[#FF5252] ">*</span>
                   </label>
                   <select
-                    className="absolute z-[999] w-full bg-inherit outline-none pl-[6em] text-[#101010] tracking-wider"
+                    className="absolute z-[999] w-full bg-inherit outline-none pl-[6em] text-[#101010] tracking-wider text-center"
                     {...register("religion", {
                       required: "Religion is required",
                     })}
@@ -461,13 +462,12 @@ export default function SIWES() {
                   </label>
                   <select
                     defaultValue={"Select your gender"}
-                    className="absolute z-[999] w-full bg-inherit outline-none pl-[6em] text-[#101010] tracking-wider"
+                    className="absolute z-[999] w-full bg-inherit outline-none pl-[6em] text-center text-[#101010] tracking-wider"
                     {...register("gender", {
                       required: "Gender is required",
-                      
                     })}
                   >
-                  <option></option>
+                    <option></option>
                     <option
                       value="female"
                       className="bg-inherit"
@@ -594,22 +594,47 @@ export default function SIWES() {
                   >
                     Duration<span className="text-[#FF5252] ">*</span>
                   </label>
-                  <input
+                  <select
                     className="absolute bg-inherit outline-none w-full pl-[7em]  text-[#101010] tracking-wider"
                     type="text"
                     id="duration"
                     {...register("duration", {
-                      required: "Duration is required",
-                      minLength: {
-                        value: 1,
-                        message: "This should have at least 1 character",
-                      },
+                      required: "Please specify duration",
                     })}
-                  />
+                    onChange={(e) => {
+                      setDurationOthers(e.target.value === "others");
+                    }}
+                  >
+                    <option
+                      value={"1 month"}
+                      className=" mx-auto"
+                    >
+                      1 month
+                    </option>
+                    <option
+                      value={"3 months"}
+                      className="mx-auto"
+                    >
+                      3 months
+                    </option>
+                    <option value={"6 months"}>6 months</option>
+                    <option value={"12 months"}>12 months</option>
+                    <option value={"others"}>Others</option>
+                  </select>
                 </div>
+                {durationOthers && (
+                  <input
+                    type="text"
+                    placeholder="Specify duration"
+                    {...register("duration", {
+                      required: "Please specify duration",
+                    })}
+                    className="border border-slate-400 p-1 text-center pl-[3em] w-full bg-inherit outline-none text-[#000000] tracking-wider"
+                  />
+                )}
                 {errors.duration && (
                   <p className="text-red-500 pt-[2px] text-sm font-300 italic">
-                    {errors.duration.message}
+                    {errors.duration?.message}
                   </p>
                 )}
               </div>

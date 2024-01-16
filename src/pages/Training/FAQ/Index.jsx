@@ -25,6 +25,7 @@ export default function FAQ() {
     <section className="relative flex flex-col lg:flex-row gap-2">
       {/*FAQs image*/}
       <div className=" lg:-ml-32 lg:w-[65%] w-0 h-0">
+        {/*SVGs */}
         <div className="overflow-hidden">
           <div className="mt-5">
             <svg
@@ -60,15 +61,18 @@ export default function FAQ() {
           </div>
         </div>
         <div
-          className="lg:absolute lg:top-[5%] lg:left-5 lg:right-[50%] lg:rounded-[15px] lg:w-[488px] lg:h-[822px] w-0"
           style={{
             backgroundImage: `url(${peopleCoding})`,
+            WebkitBackgroundSize: "cover",
+            backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
           }}
+          className="lg:absolute lg:top-[5%] lg:left-5 lg:right-[50%] lg:rounded-[15px] lg:w-[488px] lg:h-[822px] w-0"
           loading="lazy"
-        ></div>
+        >
+          
+        </div>
       </div>
 
       {/*FAQs*/}

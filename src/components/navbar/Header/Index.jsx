@@ -115,7 +115,11 @@ export default function Header() {
               Training <MdArrowDropDown className="text-3xl" />
             </div>
             <div
-              className={`flex flex-col items-center justify-center gap-2 absolute top-[66%]  ${isHomepage ? "left-[67%]" : "left-[67%] bg-[#D9D9D9] bg-opacity-30 backdrop-filter backdrop-blur-sm w-[200px] text-center" }`}
+              className={`flex flex-col items-center justify-center gap-2 absolute top-[66%]  ${
+                isHomepage
+                  ? "left-[69%]"
+                  : "left-[67%] bg-[#D9D9D9] bg-opacity-30 backdrop-filter backdrop-blur-sm w-[200px] text-center"
+              }`}
             >
               <div className=" w-[200px]">
                 {isDropDownOpen &&
