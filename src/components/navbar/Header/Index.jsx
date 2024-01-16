@@ -14,14 +14,14 @@ export default function Header() {
       title: "IT / SIWES",
       to: "/training/siwes",
     },
-    {
-      title: "Workshop",
-      to: "/training/workshop",
-    },
-    {
-      title: "Academy",
-      to: "/training/academy",
-    },
+    // {
+    //   title: "Workshop",
+    //   to: "/training/workshop",
+    // },
+    // {
+    //   title: "Academy",
+    //   to: "/training/academy",
+    // },
   ];
 
   const openDropDown = () => {
