@@ -15,7 +15,7 @@ import trainingIcons from "../../assets/trainingPics/Icons.png";
 //infinite loop images
 import focusedLaptop from "../../assets/trainingPics/focused-on-laptop.jpeg";
 import image1 from "../../assets/trainingPics/devOps.jpeg";
-import image2 from "../../assets/trainingPics/mobile-dev.jpeg";
+import image2 from "../../assets/trainingPics/Mobile-dev.jpeg";
 import image3 from "../../assets/trainingPics/devOps.jpeg";
 import image4 from "../../assets/trainingPics/devOps.jpeg";
 import image5 from "../../assets/trainingPics/devOps.jpeg";
