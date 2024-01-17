@@ -3,6 +3,7 @@ import hardwareImage from "../../../assets/whatWeDo/Hardware_repair.png";
 import webDevImage from "../../../assets/whatWeDo/Web_development.png";
 import mobileDevImage from "../../../assets/whatWeDo/mobile_development.png";
 import WhatWeDoCard from "../WhatWeDoCard/Index";
+import { Link } from "react-router-dom";
 
 export default function WhatWeDo() {
   const WhatWeDoCardDetails = [
@@ -39,12 +40,12 @@ export default function WhatWeDo() {
           </h3>
 
           <div className="md:w-[70%] p-2">
-            <p className="w-[95%] md:w-[75%] text-[#101010] text-[18px]">
+            <p className="w-[95%] md:w-[75%] text-[#101010] text-[18px] mb-10 ">
               {whatWeDoText}
             </p>
-            <button className="bg-[#1877F9] hover:bg-[#1153AE] transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded-[0.5em] mt-5 w-[8em]">
+            <Link to={"/contact-us/services"} className="bg-[#1877F9] hover:bg-[#1153AE] transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded-[0.5em] w-[8em]">
               Learn More
-            </button>
+            </Link>
           </div>
         </div>
         <div>
