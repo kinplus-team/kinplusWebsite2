@@ -11,7 +11,7 @@ This document provides an overview of the git branching strategy used by the Kin
 
 ## Environment Overview
 
-At Kinplus Technologies, we use the **Development**, **Staging**, and **Production** (DSP) environment model which is essential in providing the needed checks and balances in developing reliable, robust software.
+At Kinplus Technologies, we use the **Development**, **Staging**, and **Production** (DSP) environment model which is essential in providing the needed checks and balances in developing reliable, robust softwares.
 
   1. `Development (dev) environment -` This is the environment where features and changes made by developers are first deployed and tested. This environment is rapidly updated and contains the most recent version of the application
 
