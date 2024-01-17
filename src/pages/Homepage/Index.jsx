@@ -1,4 +1,4 @@
-import React from "react";
+
 import HeroPage from "../../components/HeroPage/Index";
 import PartnersAndSponsors from "../../components/PartnersAndSponsors/Index";
 import WhyChooseUs from "../../components/WhyChooseUs/Index";
