@@ -5,7 +5,6 @@ import WhyChooseUs from "../../components/WhyChooseUs/Index";
 import TrainingComponent from "../../components/trainingPrograms/TrainingComponent/Index";
 import TrainingTestimonial from "../Training/TrainingTestimonial/Index";
 import FAQ from "../Training/FAQ/Index";
-import WhatWeDoCard from "../../components/whatWeDoComponent/WhatWeDoCard/Index";
 
 export default function Homepage() {
   return (
@@ -19,8 +18,6 @@ export default function Homepage() {
       {/*WhyChooseUs Component */}
       <WhyChooseUs />
 
-      {/*whatWeDo Component */}
-      <WhatWeDoCard />
 
       {/*Training Component */}
       <TrainingComponent />
