@@ -63,7 +63,7 @@ export default function Footer() {
               <p>
                 Phone:
                 <span className="tracking-[2px]">
-                  +2347069718643, +2348071572767
+                   {" "}+2347069718643, +2348071572767
                 </span>
               </p>
             </div>
@@ -74,7 +74,7 @@ export default function Footer() {
             {/*Address*/}
             <div className="self-start">
               <p className="text-[1.5rem] font-[400] leading-[200%]">
-                Top Floor, 68B Christore Building,
+                Second Floor, 68B Christore Building,
                 <br />
                 Opp Crunchies Restaurant, Similoluwa,
                 <br />

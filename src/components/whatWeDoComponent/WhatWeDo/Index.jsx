@@ -1,4 +1,4 @@
-import React from "react";
+
 import hardwareImage from "../../../assets/whatWeDo/Hardware_repair.png";
 import webDevImage from "../../../assets/whatWeDo/Web_development.png";
 import mobileDevImage from "../../../assets/whatWeDo/mobile_development.png";
