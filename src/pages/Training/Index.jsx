@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import SoftwareDevelopment from "./SoftwareDevelopment/Index";
 import UIUXDesign from "./UIUXDesign";
 import DataAnalysis from "./DataAnalysis/Index";
