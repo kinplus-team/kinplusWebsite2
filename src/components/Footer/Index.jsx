@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import footerBg2 from "../../assets/footer/footer-bg-2.png";
 import kinplusLogoBlue from "../../assets/kinplusBlue.png";

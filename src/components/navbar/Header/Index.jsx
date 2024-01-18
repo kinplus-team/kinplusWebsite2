@@ -118,7 +118,7 @@ export default function Header() {
               className={`flex flex-col items-center justify-center gap-2 absolute top-[66%]  ${
                 isHomepage
                   ? "left-[69%]"
-                  : "left-[67%] bg-[#D9D9D9] bg-opacity-30 backdrop-filter backdrop-blur-sm w-[200px] text-center"
+                  : "left-[66%] bg-[#D9D9D9] bg-opacity-30 backdrop-filter backdrop-blur-sm w-[200px] text-center"
               }`}
             >
               <div className=" w-[200px]">
