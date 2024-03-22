@@ -5,6 +5,8 @@ import TrainingComponent from "../../components/trainingPrograms/TrainingCompone
 import TrainingTestimonial from "../Training/TrainingTestimonial/Index";
 import FAQ from "../Training/FAQ/Index";
 import WhatWeDo from "../../components/whatWeDoComponent/WhatWeDo/Index";
+import NextCohort from "../../components/NextCohort/index";
+import InfiniteLoop from "../../components/infinteLoop/Index";
 
 export default function Homepage() {
   return (
@@ -21,11 +23,19 @@ export default function Homepage() {
       {/*whatWeDo Component */}
       <WhatWeDo />
 
+
+      {/* Next Cohort */}
+      <NextCohort/>
+    
       {/*Training Component */}
       <TrainingComponent />
 
       {/*Testimonial */}
       <TrainingTestimonial />
+
+      {/*Infinte loop */}
+      <InfiniteLoop />
+
 
       {/*FAQ */}
       <FAQ />
