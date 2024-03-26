@@ -28,6 +28,7 @@ import cutePeople from "../../assets/trainingPics/training-carousel/cute_faces.j
 import TrainingTestimonial from "./TrainingTestimonial/Index";
 import FAQ from "./FAQ/Index";
 import SIWES from "./SIWES/Index";
+import InfiniteLoop from "../../components/infinteLoop/Index.jsx";
 
 export default function Training() {
   const location = useLocation();
@@ -506,68 +507,7 @@ export default function Training() {
               </div>
 
               {/*Infinite Loop*/}
-              <div className="w-full absolute flex justify-between items-center -mt-[130px] top-72">
-                <div className="flex">
-                  <div className="flex flex-col items-center gap-8">
-                    <div className="h-[250px] w-[4.672px] bg-[#DFDFDF]">
-                      <div
-                        className="w-[4.672px] h-[57.872px] bg-[#1877F9]"
-                        style={{
-                          height: `${(hoveredIndex + 1) * 50}px`,
-                          backgroundColor:
-                            hoveredElement === hoveredIndex
-                              ? "#1877F9"
-                              : "#DFDFDF",
-                        }}
-                      ></div>
-                    </div>
-
-                    <p
-                      style={{ writingMode: "vertical-lr" }}
-                      className="rotate-180 text-[#9A9A9A] leading-[26px]"
-                    >
-                      <span className="text-[#1877F9] text-[18px] leading-[155.556%] font-[500]">
-                        {hoveredIndex !== null
-                          ? (hoveredIndex + 1).toString().padStart(2, "0")
-                          : "01"}
-                      </span>
-                      /05
-                    </p>
-                  </div>
-                  <div className="flex flex-col gap-[17px] -mt-3">
-                    {hoverContents.map((content, index) => (
-                      <div
-                        key={index}
-                        onMouseEnter={() => handleHover(index)}
-                        onMouseLeave={handleLeave}
-                        className={`cursor-pointer text-[20px] font-[700] ${
-                          hoveredIndex === index
-                            ? "bg-[#1877F9] hover-text-white"
-                            : ""
-                        }`}
-                      >
-                        <p
-                          key={content.title + index}
-                          className="p-[5px]"
-                        >
-                          {content.title}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="w-[736px] h-[450px] flex justify-end -mt-7">
-                  <img
-                    src={
-                      hoveredIndex !== null
-                        ? images[hoveredIndex]
-                        : focusedLaptop
-                    }
-                    alt="focused-on-laptop"
-                    style={{ width: "450px", height: "350px" }}
-                  />
-                </div>
-              </div>
+              <InfiniteLoop/>
             </div>
 
             <div>

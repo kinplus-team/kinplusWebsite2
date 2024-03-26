@@ -138,7 +138,7 @@ export default function Services() {
     <section>
       <div className='flex '>
         <h1 className=' w-[50%] text-[2.5rem] text-[#082B5B]  font-bold leading-[3.125rem]'>Have a project in mind? Let's get started here</h1>
-        <p className=' w-[40%] font-[1.125rem] font-normal leading-[1.5625rem] ml-40 text-[#000000DE] '>We solve complex business challenges with outstanding <br /> strategy, marketing and product development services.</p>
+        <p className=' w-[40%] font-[1.125rem]  leading-[1.5625rem] ml-40 text-[#000000DE] '>We solve complex business challenges with outstanding <br /> strategy, marketing and product development services.</p>
       </div>
       
       <div className='flex items-start justify-end space-x-20 ml-[5em] mt-32 '>
