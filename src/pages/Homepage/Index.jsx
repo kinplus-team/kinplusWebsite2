@@ -8,7 +8,7 @@ import WhatWeDo from "../../components/whatWeDoComponent/WhatWeDo/Index";
 
 export default function Homepage() {
   return (
-    <div className=" max-w-[100rem] mx-auto">
+    <>
       {/*Hero Component */}
       <HeroPage />
 
@@ -29,6 +29,6 @@ export default function Homepage() {
 
       {/*FAQ */}
       <FAQ />
-    </div>
+    </>
   );
 }
