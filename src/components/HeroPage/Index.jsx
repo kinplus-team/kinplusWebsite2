@@ -3,21 +3,7 @@ import girlOnLaptop from "../../assets/a-girl-on-a-laptop-min.jpeg";
 
 export default function HeroPage() {
   return (
-    <header className="relative h-[168vh] max-w-[100rem] ">
-      
-        {/*BG-Image */}
-        <div className="inset-0 overflow-hidden z-0 ">
-          <div
-            style={{
-              backgroundImage: `url(${girlOnLaptop})`,
-              WebkitBackgroundSize: "cover",
-            }}
-            className="absolute inset-0 bg-contain bg-right-bottom "
-            loading="lazy"
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-black to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-black to-transparent"></div>
-        </div>
+    
     <header className="relative h-[100vh] max-w-[100rem] ">
       {/*BG-Image */}
       <div className="inset-0 overflow-hidden z-0 ">
@@ -71,4 +57,4 @@ export default function HeroPage() {
       </div>
     </header>
   );
-}
+        }

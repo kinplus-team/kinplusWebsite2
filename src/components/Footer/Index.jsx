@@ -1,44 +1,42 @@
 
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, } from "react-router-dom";
 import footerBg2 from "../../assets/footer/footer-bg-2.png";
 import kinplusLogoBlue from "../../assets/kinplusBlue.png";
-import { useState } from "react";
-import { MdArrowDropDown } from "react-icons/md";
-import Dropdown from "../navbar/Dropdown/Index";
+import {  } from "react";
 
 export default function Footer() {
   //dynamically get the year
   const thisYear = new Date().getFullYear();
 
-  const location = useLocation();
+  // const location = useLocation();
 
-  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  // const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
-  const dropDownItems = [
-    {
-      title: "IT / SIWES",
-      to: "/training/siwes",
-    },
-    // {
-    //   title: "Workshop",
-    //   to: "/training/workshop",
-    // },
-    // {
-    //   title: "Academy",
-    //   to: "/training/academy",
-    // },
-  ];
+  // const dropDownItems = [
+  //   {
+  //     title: "IT / SIWES",
+  //     to: "/training/siwes",
+  //   },
+  //   // {
+  //   //   title: "Workshop",
+  //   //   to: "/training/workshop",
+  //   // },
+  //   // {
+  //   //   title: "Academy",
+  //   //   to: "/training/academy",
+  //   // },
+  // ];
 
   //Check if Route is Homepage
-  const isHomepage = location.pathname === "/";
+  // const isHomepage = location.pathname === "/";
 
-  const openDropDown = () => {
-    setIsDropDownOpen(!isDropDownOpen);
-  };
+  // const openDropDown = () => {
+  //   setIsDropDownOpen(!isDropDownOpen);
+  // };
 
-   const closeDropDown = () => {
-     setIsDropDownOpen(false);
-   };
+  //  const closeDropDown = () => {
+  //    setIsDropDownOpen(false);
+  //  };
 
   return (
     <section className="mx-auto p-0 overflow-hidden">

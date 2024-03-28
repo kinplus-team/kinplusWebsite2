@@ -1,4 +1,4 @@
-import React from "react";
+
 import { FaQuoteRight } from "react-icons/fa6";
 import handsonlaptop from "../../assets/our_services/image 10.png";
 import icon from "../../assets/our_services/Mask Group.png";
@@ -181,7 +181,7 @@ export default function Services() {
           <h1 className=" w-[50%] text-[2.5rem] text-[#082B5B]  font-bold leading-[3.125rem]">
             Have a project in mind? Let's get started here
           </h1>
-          <p className=" w-[40%] font-[1.125rem] font-normal leading-[1.5625rem] ml-40 text-[#000000DE] ">
+          <p className=" w-[40%] font-normal leading-[1.5625rem] ml-40 text-[#000000DE] ">
             We solve complex business challenges with outstanding <br />{" "}
             strategy, marketing and product development services.
           </p>
@@ -349,7 +349,7 @@ export default function Services() {
         </div>
 
         <div className="flex mt-10  justify-between">
-          <div className="  flex flex-col items-center justify-center  relative justify-between">
+          <div className="  flex flex-col items-center   relative justify-between">
             <img
               src={image4}
               alt=""
