@@ -1,36 +1,35 @@
-
-import mobileDev from "../../../assets/trainingPics/Mobile-dev.jpeg";
-import webDev from "../../../assets/trainingPics/web-dev.jpeg";
-import softwareDev from "../../../assets/trainingPics/software-dev.jpeg";
-import productManagement from "../../../assets/trainingPics/product-management.jpeg";
-import productDesign from "../../../assets/trainingPics/product-design.jpeg";
-import graphicsDesign from "../../../assets/trainingPics/graphics-design.jpeg";
-import artificialIntelligent from "../../../assets/trainingPics/Artificial-intelli.jpeg";
-import dataAnalysis from "../../../assets/trainingPics/data-analysis.jpeg";
-import devOps from "../../../assets/trainingPics/devOps.jpeg";
-import videoEditing from "../../../assets/trainingPics/video-editing.jpeg";
+// import mobileDev from "../../../assets/training/Mobile-dev.jpeg";
+// import webDev from "../../../assets/training/web-dev.jpeg";
+// import softwareDev from "../../../assets/training/software-dev.jpeg";
+// import productManagement from "../../../assets/training/product-management.jpeg";
+// import productDesign from "../../../assets/training/product-design.jpeg";
+// import graphicsDesign from "../../../assets/training/graphics-design.jpeg";
+// import artificialIntelligent from "../../../assets/training/Artificial-intelli.jpeg";
+// import dataAnalysis from "../../../assets/training/data-analysis.jpeg";
+// import devOps from "../../../assets/training/devOps.jpeg";
+// import videoEditing from "../../../assets/training/video-editing.jpeg";
 
 export default function TrainingPhotoGrid() {
   const trainingPhotoGrids = [
     {
       image: `${mobileDev}`,
       text: "Mobile Development",
-      alt: "Mobile_dev"
+      alt: "Mobile_dev",
     },
     {
       image: `${webDev}`,
       text: "Web Development",
-      alt: "web_dev"
+      alt: "web_dev",
     },
     {
       image: `${softwareDev}`,
       text: "Software Development",
-      alt: "software_dev"
+      alt: "software_dev",
     },
     {
       image: `${productManagement}`,
       text: "Product Management",
-      alt: "Product_manager"
+      alt: "Product_manager",
     },
     {
       image: `${productDesign}`,
@@ -50,17 +49,17 @@ export default function TrainingPhotoGrid() {
     {
       image: `${dataAnalysis}`,
       text: "Data Analysis",
-      alt: "Data_Analysis"
+      alt: "Data_Analysis",
     },
     {
       image: `${devOps}`,
       text: "Dev Ops",
-      alt: "DevOps"
+      alt: "DevOps",
     },
     {
       image: `${videoEditing}`,
       text: "Video Editing",
-      alt: "Video_Editing"
+      alt: "Video_Editing",
     },
   ];
 
@@ -73,7 +72,12 @@ export default function TrainingPhotoGrid() {
           loading="lazy"
         >
           <div className="h-[210px]">
-            <img src={trainingPhotoGrid.image} alt={trainingPhotoGrid.alt} className="h-[210px] w-full" loading="lazy"/>
+            <img
+              src={trainingPhotoGrid.image}
+              alt={trainingPhotoGrid.alt}
+              className="h-[210px] w-full"
+              loading="lazy"
+            />
           </div>
           <div className="absolute inset-0 opacity-75 bg-[#101010] text-[#F1F1F1] text-[32px]  font-bold flex justify-center">
             <h4 className="absolute bottom-0 p-1 capitalize font-[700] text-[12px] md:text-[1rem]">
