@@ -16,7 +16,7 @@ export default function NextCohort() {
             loading="lazy"
             className="relative rounded-[30px]"
           >
-            <div className="absolute inset-0 opacity-85 bg-[#1877F9BF]  text-white flex flex-col justify-center items-center gap-5 rounded-[30px]">
+            <div className="absolute inset-0 opacity-85 bg-[#1877F9BF] text-white flex flex-col justify-center items-center gap-5 rounded-[30px]">
               <h4 className="capitalize text-[32px] font-[700] leading-[109.375%]">
                 next cohort starts in
               </h4>
