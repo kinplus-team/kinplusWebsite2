@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AboutUs from "./pages/AboutUs/Index";
 import Training from "./pages/Training/Index";
-import Header from "./components/navbar/Header/Index";
+import Header from "./components/navbar/Index";
 import Footer from "./components/Footer/Index";
 import Services from "./pages/Services/Index";
 
@@ -16,33 +16,11 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route
-            exact
-            path="/"
-            element={<Homepage />}
-          />
-
-          <Route
-            path="/about-us"
-            element={<AboutUs />}
-          />
-
-          {/*Our Services*/}
-          <Route
-            path="/our-services"
-            element={<Services />}
-          />
-          {/*takes all routes with /contact-us/route-name */}
-          <Route
-            path="/contact-us/*"
-            element={<ContactUs />}
-          />
-
-          {/*takes all routes with /training/route-name */}
-          <Route
-            path="/training/*"
-            element={<Training />}
-          />
+          <Route exact path="/" element={<Homepage />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/our-services" element={<Services />} />
+          <Route path="/contact-us/*" element={<ContactUs />} />
+          <Route path="/training/*" element={<Training />} />
         </Routes>
         <Footer />
       </Router>
