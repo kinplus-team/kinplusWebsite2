@@ -78,8 +78,8 @@ export default function Header() {
               to={"/about-us"}
               className={({ isActive }) =>
                 isActive
-                  ? "text-white bg-[#1877F9] py-2 px-3 rounded-md"
-                  : "hover:text-white py-2 px-3 hover:rounded-md hover:bg-[#1877F9] "
+                  ? "text-white border-b border-blue-500  scale-110"
+                  : "hover:text-white   hover:border-b hover:border-blue-500 hover:scale-[1.8] "
               }
             >
               About Us
@@ -118,7 +118,7 @@ export default function Header() {
               className={`flex flex-col items-center justify-center gap-2 absolute top-[66%]  ${
                 isHomepage
                   ? "left-[69%]"
-                  : "left-[67%] bg-[#D9D9D9] bg-opacity-30 backdrop-filter backdrop-blur-sm w-[200px] text-center"
+                  : "left-[66%] bg-[#D9D9D9] bg-opacity-30 backdrop-filter backdrop-blur-sm w-[200px] text-center"
               }`}
             >
               <div className=" w-[200px]">

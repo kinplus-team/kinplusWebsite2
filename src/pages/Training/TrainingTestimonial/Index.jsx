@@ -27,9 +27,9 @@ export default function TrainingTestimonial() {
         <h4 className="text-[35px] sm:text-[40px] text-[#082B5B] font-[700] leading-[125%] capitalized">
           See what others are <br /> saying about us
         </h4>
-        {testimonialTexts.map((testimonialText) => (
+        {testimonialTexts.map((testimonialText, index) => (
           <p
-            key={testimonialText.id}
+            key={testimonialText + index}
             className="text-[24px] font-[400] leading-[187.5%] text-[#101010] "
           >
             {testimonialText.text}
@@ -73,9 +73,9 @@ export default function TrainingTestimonial() {
       <div className="self-start flex flex-row-reverse md:flex-col items-center gap-20 md:w-[25%]">
         <FaQuoteRight className="mt-[-100px] md:mt-0 text-[80px] md:text-[150px]" />
 
-        {testifierDetails.map((testifierDetail) => (
+        {testifierDetails.map((testifierDetail, index) => (
           <div
-            key={testifierDetail.id}
+            key={testifierDetail + index}
             className="flex flex-col items-center gap-[4px]"
           >
             <div className="w-[90px] h-[90px] mb-2">

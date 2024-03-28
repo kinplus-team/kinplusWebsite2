@@ -1,11 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+
+import { Link, NavLink, } from "react-router-dom";
 import footerBg2 from "../../assets/footer/footer-bg-2.png";
 import kinplusLogoBlue from "../../assets/kinplusBlue.png";
+import {  } from "react";
 
 export default function Footer() {
   //dynamically get the year
   const thisYear = new Date().getFullYear();
+
+  // const location = useLocation();
+
+  // const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
+  // const dropDownItems = [
+  //   {
+  //     title: "IT / SIWES",
+  //     to: "/training/siwes",
+  //   },
+  //   // {
+  //   //   title: "Workshop",
+  //   //   to: "/training/workshop",
+  //   // },
+  //   // {
+  //   //   title: "Academy",
+  //   //   to: "/training/academy",
+  //   // },
+  // ];
+
+  //Check if Route is Homepage
+  // const isHomepage = location.pathname === "/";
+
+  // const openDropDown = () => {
+  //   setIsDropDownOpen(!isDropDownOpen);
+  // };
+
+  //  const closeDropDown = () => {
+  //    setIsDropDownOpen(false);
+  //  };
 
   return (
     <section className="mx-auto p-0 overflow-hidden">
@@ -13,13 +44,13 @@ export default function Footer() {
       <div className="bg-[#1C1D20] mt-[98px]">
         <div className="z-[999] text-[#ffffff] flex flex-col gap-[20px] lg:gap-[59px] justify-center pl-[2em] lg:pl-[12.25em] pr-[1em] md:pr-[4em] lg:pr-24 py-24">
           <div className="flex flex-col md:flex-row gap-[2em] lg:gap-[100px] w-full mb-[1.1em]">
-            <p className="p-1 text-[2.5rem] md:text-[2.8rem] lg:text-[3rem] xl:text-[4.375rem] font-[700] leading-[114.286%] md:w-[70%]">
+            <p className="p-1 text-[2.5rem] md:text-[2.8rem] lg:text-[3rem] xl:text-[4rem] font-[700] leading-[114.286%] md:w-[70%]">
               Ready to <span className="text-[#1877F9]">work</span> on your next
               project?
             </p>
 
             <Link
-              className="self-center md:self-end bg-[#ffffff] hover:bg-[#1153AE] transition duration-200 ease-in-out text-[#1877F9] hover:text-[#ffffff] font-bold py-2 px-4 rounded-[0.5em]  w-[10em] text-center "
+              className="self-center md:self-end bg-[#ffffff] hover:bg-[#1153AE] transition duration-200 ease-in-out text-[#1877F9] hover:text-[#ffffff] font-bold py-4 px-4 rounded-[0.5em]  w-[10em] text-center text-lg "
               to={"/contact-us/training"}
             >
               Talk to us
@@ -42,9 +73,9 @@ export default function Footer() {
         }}
       >
         {/*Address, Contact, Social icons and Logo*/}
-        <div className="z-[999] flex flex-col lg:flex-row text-[#f1f1f1]  ml-[1.5em] lg:ml-[3.125em] py-28 gap-32 p-2 w-full ">
+        <div className="z-[999] flex flex-col lg:flex-row text-[#f1f1f1]  ml-[1.5em] lg:ml-[3.125em] py-28 gap-20 p-2 w-full ">
           {/*Contact and logo*/}
-          <div className="w-[45%]">
+          <div>
             <Link
               className=""
               to={"/"}
@@ -53,9 +84,10 @@ export default function Footer() {
                 src={kinplusLogoBlue}
                 alt="kinplus-logo"
                 className="w-[150px] h-[42.02px]"
+              
               />
             </Link>
-            <div className="mt-[50px] md:mt-[130px] font-[400] text-[1.5rem] leading-[250%]">
+            <div className="mt-[50px] md:mt-[40px] font-[400] text-[1.125rem] leading-[250%]">
               <p>
                 Email:
                 <span className="tracking-[2px]">help@kinplusgroup.com</span>
@@ -69,11 +101,100 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Quick Links */}
+      <div className="flex flex-col space-y-3 text-[1.125rem]">
+        <p className="text-blue-700 font-semibold">Quick Links</p>
+        <nav
+        className="flex  text-white"
+      >
+        <div className=" flex flex-col  space-y-4 py-2 ">
+          {/*about us*/}
+          <div>
+            <Link
+              to={"/"}
+            >
+              Home
+            </Link>
+          </div>
+          <div>
+            <Link
+              to={"/about-us"}
+            >
+              About Us
+            </Link>
+          </div>
+
+
+
+          {/*Our Services*/}
+          <div>
+            <Link
+              to={"/our-services"}
+             >
+              Services
+            </Link>
+          </div>
+
+          {/*Training*/}
+          <Link
+            to={"/training"}
+          >
+          Training 
+          </Link>
+
+          {/*Blog*/}
+          <NavLink
+              to={"/blog"}
+
+            >
+              Blog
+            </NavLink>
+
+
+        </div>
+      </nav>
+      </div>
+
+         {/* Resources */}
+         <div className="flex flex-col space-y-3 text-[1.125rem]">
+        <p className="text-blue-700 font-semibold">Quick Links</p>
+        <nav
+        className="flex  text-white"
+      >
+        <div className=" flex flex-col  space-y-4 py-2 ">
+          {/*about us*/}
+          <div>
+            <Link
+              to={"/"}
+            >
+              Workshop
+            </Link>
+          </div>
+          <div>
+            <Link
+              to={"/"}
+            >
+             Event
+            </Link>
+          </div>
+
+          <div>
+            <Link
+              to={"/careers"}
+             >
+              careers
+            </Link>
+          </div>
+
+      </div>
+      </nav>
+      </div>
+   
           {/*Address and Social Icons*/}
           <div className="">
             {/*Address*/}
             <div className="self-start">
-              <p className="text-[1.5rem] font-[400] leading-[200%]">
+              <p className="text-[1.125rem] font-[400] leading-[200%]">
                 Second Floor, 68B Christore Building,
                 <br />
                 Opp Crunchies Restaurant, Similoluwa,
@@ -83,7 +204,7 @@ export default function Footer() {
             </div>
 
             {/*Social Icons*/}
-            <div className="mt-[90px] flex gap-[4.125em]  ">
+            <div className="mt-[20px] flex gap-[2em]  ">
               {/*Facebook svg icon/link*/}
               <a
                 href="#"
