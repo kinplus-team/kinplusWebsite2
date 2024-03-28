@@ -1,7 +1,7 @@
 import { useState } from "react";
 import kinplusLogo from "../../assets/kinplusBlue.png";
 import { IoIosMenu } from "react-icons/io";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import PageLayout from "../layout/PageLayout";
 
