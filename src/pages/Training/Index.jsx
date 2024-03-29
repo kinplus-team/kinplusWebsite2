@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import SoftwareDevelopment from "./SoftwareDevelopment/Index";
-import UIUXDesign from "./UIUXDesign";
-import DataAnalysis from "./DataAnalysis/Index";
-import GraphicsDesign from "./GraphicsDesign/Index";
-import DataScience from "./DataScience/Index";
-import ProjectManagement from "./ProjectManagement/Index.jsx";
-import HardwareRepair from "./HardwareRepair/Index";
-import { Link, Route, Routes, useLocation } from "react-router-dom";
-import smileyFaces from "../../assets/training/smiling-faces.jpeg";
+// import { useEffect, useState } from "react";
+// import SoftwareDevelopment from "./SoftwareDevelopment/Index";
+// import UIUXDesign from "./UIUXDesign";
+// import DataAnalysis from "./DataAnalysis/Index";
+// import GraphicsDesign from "./GraphicsDesign/Index";
+// import DataScience from "./DataScience/Index";
+// import ProjectManagement from "./ProjectManagement/Index.jsx";
+// import HardwareRepair from "./HardwareRepair/Index";
+// import { Link, Route, Routes, useLocation } from "react-router-dom";
+// import smileyFaces from "../../assets/training/smiling-faces.jpeg";
 // import trainingPic from "../../assets/trainingComponentAssests/photo-of-woman-wearing-eyeglasses-3184405.png";
 
 //infinite loop images
@@ -17,35 +17,35 @@ import smileyFaces from "../../assets/training/smiling-faces.jpeg";
 // import image4 from "../../assets/trainingPics/devOps.jpeg";
 // import image5 from "../../assets/trainingPics/devOps.jpeg";
 
-//past trainees image
-import happyFace from "../../assets/trainingPics/training-carousel/smiling_faces.jpeg";
-import focusedLady from "../../assets/trainingPics/training-carousel/a_focused_lady.jpeg";
-import twoPeopleFocused from "../../assets/trainingPics/training-carousel/A_girl_and_a_boy_focused.jpeg";
-import cutePeople from "../../assets/trainingPics/training-carousel/cute_faces.jpeg";
-import TrainingTestimonial from "./TrainingTestimonial/Index";
-import FAQ from "./FAQ/Index";
-import SIWES from "./SIWES/Index";
+// //past trainees image
+// import happyFace from "../../assets/trainingPics/training-carousel/smiling_faces.jpeg";
+// import focusedLady from "../../assets/trainingPics/training-carousel/a_focused_lady.jpeg";
+// import twoPeopleFocused from "../../assets/trainingPics/training-carousel/A_girl_and_a_boy_focused.jpeg";
+// import cutePeople from "../../assets/trainingPics/training-carousel/cute_faces.jpeg";
+// import TrainingTestimonial from "./TrainingTestimonial/Index";
+// import FAQ from "./FAQ/Index";
+// import SIWES from "./SIWES/Index";
 import PageLayout from "../../components/layout/PageLayout.jsx";
 import Hero from "./Hero.jsx";
 import Statistics from "../Training/Statistics.jsx";
 import Dedication from "../Training/Dedication.jsx";
 import OurCourses from "./OurCourses.jsx";
 export default function Training() {
-  const location = useLocation();
+  // const location = useLocation();
 
-  const isTrainingPath = location.pathname === "/training";
+  // const isTrainingPath = location.pathname === "/training";
 
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [hoveredElement, setHoveredElement] = useState("");
+  // const [hoveredIndex, setHoveredIndex] = useState(null);
+  // const [hoveredElement, setHoveredElement] = useState("");
 
-  const handleHover = (index) => {
-    setHoveredIndex(index);
-    setHoveredElement(index);
-  };
+  // const handleHover = (index) => {
+  //   setHoveredIndex(index);
+  //   setHoveredElement(index);
+  // };
 
-  const handleLeave = () => {
-    setHoveredIndex(null);
-  };
+  // const handleLeave = () => {
+  //   setHoveredIndex(null);
+  // };
 
   // const images = [image1, image2, image3, image4, image5];
 
