@@ -31,6 +31,36 @@ export default function Footer() {
     { icon: x, link: "https://twitter.com/kinplustech" },
   ];
 
+  // const location = useLocation();
+
+  // const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
+  // const dropDownItems = [
+  //   {
+  //     title: "IT / SIWES",
+  //     to: "/training/siwes",
+  //   },
+  //   // {
+  //   //   title: "Workshop",
+  //   //   to: "/training/workshop",
+  //   // },
+  //   // {
+  //   //   title: "Academy",
+  //   //   to: "/training/academy",
+  //   // },
+  // ];
+
+  //Check if Route is Homepage
+  // const isHomepage = location.pathname === "/";
+
+  // const openDropDown = () => {
+  //   setIsDropDownOpen(!isDropDownOpen);
+  // };
+
+  //  const closeDropDown = () => {
+  //    setIsDropDownOpen(false);
+  //  };
+
   return (
     <div>
       {/* top section */}

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { FaQuoteRight } from "react-icons/fa6";
 import handsonlaptop from "../../assets/our_services/image 10.png";
 import icon from "../../assets/our_services/Mask Group.png";
@@ -268,7 +268,7 @@ export default function Services() {
         </div>
 
         <div className="flex mt-10  justify-between">
-          <div className="  flex flex-col items-center justify-center  relative justify-between">
+          <div className="  flex flex-col items-center   relative justify-between">
             <img
               src={image4}
               alt=""
