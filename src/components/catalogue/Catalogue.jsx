@@ -1,11 +1,15 @@
-import DesktopViewCatalogue from "./DesktopViewCatalogue.jsx";
-import MobileViewCatalogue from "./MobileViewCatalogue.jsx";
+import DesktopViewCatalogue from "./DesktopView.jsx";
+import MobileViewCatalogue from "./MobileView.jsx";
 
-export default function Catalogue({ title, catalouges }) {
+export default function Catalogue({ title, catalouges, sidebarImage }) {
   return (
     <div>
       <div className="hidden lg:block">
-        <DesktopViewCatalogue title={title} catalogues={catalouges} />
+        <DesktopViewCatalogue
+          title={title}
+          catalogues={catalouges}
+          sidebarImage={sidebarImage}
+        />
       </div>
 
       <div className="lg:hidden block">

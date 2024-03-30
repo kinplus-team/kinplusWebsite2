@@ -1,13 +1,13 @@
-// import mobileDev from "../../../assets/training/Mobile-dev.jpeg";
-// import webDev from "../../../assets/training/web-dev.jpeg";
-// import softwareDev from "../../../assets/training/software-dev.jpeg";
-// import productManagement from "../../../assets/training/product-management.jpeg";
-// import productDesign from "../../../assets/training/product-design.jpeg";
-// import graphicsDesign from "../../../assets/training/graphics-design.jpeg";
-// import artificialIntelligent from "../../../assets/training/Artificial-intelli.jpeg";
-// import dataAnalysis from "../../../assets/training/data-analysis.jpeg";
-// import devOps from "../../../assets/training/devOps.jpeg";
-// import videoEditing from "../../../assets/training/video-editing.jpeg";
+import mobileDev from "../../../assets/training/Mobile-dev.jpeg";
+import webDev from "../../../assets/training/web-dev.jpeg";
+import softwareDev from "../../../assets/training/software-dev.jpeg";
+import productManagement from "../../../assets/training/product-management.jpeg";
+import productDesign from "../../../assets/training/product-design.jpeg";
+import graphicsDesign from "../../../assets/training/graphics-design.jpeg";
+import artificialIntelligent from "../../../assets/training/Artificial-intelli.jpeg";
+import dataAnalysis from "../../../assets/training/data-analysis.jpeg";
+import devOps from "../../../assets/training/devOps.jpeg";
+import videoEditing from "../../../assets/training/video-editing.jpeg";
 
 export default function TrainingPhotoGrid() {
   const trainingPhotoGrids = [
