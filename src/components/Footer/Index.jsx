@@ -75,11 +75,13 @@ export default function Footer() {
           </p>
         </div>
 
-        <Button
-          type="customizedWhite"
-          text="Talk to us"
-          className="place-self-center"
-        />
+        <div className="w-[10em] place-self-center">
+          <Button
+            type="customizedWhite"
+            text="Talk to us"
+            className="rounded-md"
+          />
+        </div>
       </div>
 
       {/* bottom section */}

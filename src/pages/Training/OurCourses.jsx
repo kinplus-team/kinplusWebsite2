@@ -1,4 +1,4 @@
-import PageLayout from "../../components/layout/PageLayout.jsx";
+import PageLayout from "../../components/Layout/PageLayout.jsx";
 import Catalogue from "../../components/catalogue/Catalogue.jsx";
 import vsCode from "../../assets/svg/visual-studio-code.svg";
 import excel from "../../assets/svg/excel.svg";

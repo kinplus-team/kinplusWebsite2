@@ -3,7 +3,7 @@ import kinplusLogo from "../../assets/kinplusBlue.png";
 import { IoIosMenu } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import PageLayout from "../layout/PageLayout";
+import PageLayout from "../Layout/PageLayout";
 
 export default function Header() {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaQuoteRight } from "react-icons/fa6";
 import bigHairWoman from "../../assets/trainingPics/trainingTestimonial/woman-with-big-hair.jpeg";
-import PageLayout from "../../components/layout/PageLayout";
+import PageLayout from "../../components/Layout/PageLayout";
 import arrow from "../../assets/svg/arrow.svg";
 
 export default function Testimonial() {

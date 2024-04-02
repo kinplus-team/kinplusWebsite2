@@ -17,7 +17,7 @@ export default function Training() {
       <OurCourses />
       <NextCohort />
       <WhyLearnFromUs />
-      {/* <Gallery /> */}
+      <Gallery />
       <Testimonial />
       <FAQ />
     </div>

@@ -5,7 +5,7 @@ import microsoft from "../../assets/svg/trusted-by/microsoft.svg";
 import NITDA from "../../assets/svg/trusted-by/NITDA.svg";
 import trainingHall from "../../assets/training/training-hall.png";
 import trainingHallMobileView from "../../assets/training/training-hall-mobile.png";
-import PageLayout from "../../components/layout/PageLayout";
+import PageLayout from "../../components/Layout/PageLayout";
 import backgroundIcon from "../../assets/svg/background-icon.svg";
 
 export default function Index() {
