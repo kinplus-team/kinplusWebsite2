@@ -5,6 +5,10 @@ section {
   margin-left: auto;
 }
 
+.no-scroll::-webkit-scrollbar {
+  @apply hidden;
+}
+
 @media screen and (min-width: 768px) {
   section {
     padding: 3em;

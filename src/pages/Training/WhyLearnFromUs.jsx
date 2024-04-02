@@ -1,4 +1,4 @@
-import PageLayout from "../../components/layout/PageLayout.jsx";
+import PageLayout from "../../components/Layout/PageLayout.jsx";
 import Catalogue from "../../components/catalogue/Catalogue.jsx";
 import cuttinEdgeTraining from "../../assets/svg/why-learn-from-us/cutting-edge-training.svg";
 import handsOnExperience from "../../assets/svg/why-learn-from-us/hands-on-experience.svg";
@@ -20,7 +20,7 @@ export default function WhyLearnFromUs() {
 
   return (
     <PageLayout>
-      <div className="lg:py-36 pt-8 pb-14 relative">
+      <div className="lg:pt-36 lg:pb-28 pt-8 pb-2 relative">
         <h4 className="flex items-center text-[#1877F9] lg:text-[18px] font-[500] lg:tracking-[3px] uppercase lg:leading-[111.111%] leading-[24px] mt-11 mb-4 lg:mt-0 ">
           why learn from us
           <div className="ml-3 h-[1.5px] w-[74.75px] bg-[#222831]"></div>
@@ -37,7 +37,7 @@ export default function WhyLearnFromUs() {
         <div>
           <img
             src={sparkle}
-            className="w-52 h-52 absolute top-24 right-36 z-0 hidden lg:block"
+            className="w-40 h-40 absolute top-24 right-36 z-0 hidden lg:block"
           />
         </div>
         <Catalogue catalouges={reasons} sidebarImage={sideBarImage} />

@@ -1,4 +1,4 @@
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../Layout/PageLayout";
 import rightArrow from "../../../assets/svg/right-arrow.svg";
 import { Link } from "react-router-dom";
 
