@@ -1,6 +1,5 @@
-import React from "react";
-import nextCohort from "../../assets/next_cohort/Group 1000000702.png"
-import smilingFaces from "../../assets/trainingPics/smiling-faces.jpeg";
+
+import smilingFaces from "../../assets/training/smiling-faces.jpeg";
 
 export default function NextCohort() {
     return(

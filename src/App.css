@@ -1,10 +1,12 @@
 section {
   padding: 1em;
   max-width: 100rem;
-  background-color:  #F1F3F9;
-  ;
   margin-right: auto;
   margin-left: auto;
+}
+
+.no-scroll::-webkit-scrollbar {
+  @apply hidden;
 }
 
 @media screen and (min-width: 768px) {

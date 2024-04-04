@@ -1,15 +1,15 @@
 import HeroPage from "../../components/HeroPage/Index";
 import PartnersAndSponsors from "../../components/PartnersAndSponsors/Index";
 import TrainingComponent from "../../components/trainingPrograms/TrainingComponent/Index";
-import TrainingTestimonial from "../Training/TrainingTestimonial/Index";
-import FAQ from "../Training/FAQ/Index";
+// import TrainingTestimonial from "../Training/TrainingTestimonial/Index";
+import FAQ from "../Training/FAQ";
 import WhatWeDo from "../../components/whatWeDoComponent/WhatWeDo/Index";
 import NextCohort from "../../components/NextCohort/index";
-import InfiniteLoop from "../../components/infinteLoop/Index";
+import InfiniteLoop from "../../components/InfinteLoop/Index";
 
 export default function Homepage() {
   return (
-    <div className=" max-w-[100rem] mx-auto">
+    <>
       {/*Hero Component */}
       <HeroPage />
 
@@ -30,7 +30,7 @@ export default function Homepage() {
       <TrainingComponent />
 
       {/*Testimonial */}
-      <TrainingTestimonial />
+      {/* <TrainingTestimonial /> */}
 
       {/*Infinte loop */}
       <InfiniteLoop />
@@ -38,6 +38,6 @@ export default function Homepage() {
 
       {/*FAQ */}
       <FAQ />
-    </div>
+    </>
   );
 }
