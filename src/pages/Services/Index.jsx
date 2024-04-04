@@ -16,6 +16,10 @@ import image4 from "../../assets/our_services/image 5a.png"
 import image5 from "../../assets/our_services/Rectangle 11b.png"
 import { BsDashLg } from "react-icons/bs";
 import TrainingTestimonial from "../Training/TrainingTestimonial/Index";
+import image6 from "../../assets/our_services/Rectangle 51 (1).png"
+import image7 from "../../assets/our_services/Rectangle 11 (2).png"
+import image8 from "../../assets/our_services/hardware.png"
+import image9 from "../../assets/our_services/hardware fade.png"
 
 
 
@@ -28,13 +32,13 @@ export default function Services() {
         <div>
              {/**Our Services**/}
           <div className="flex justify-between ">
-            <div className="w-[40%]">
+            <div className="w-[50%]">
               <h4 className="flex items-center  text-[#1877F9] text-[1.125rem] font-[500] tracking-[3px] uppercase leading-[111.111%] mb-[33px] ">
                 Our Services
                 <div className="ml-6 h-[2px] w-[74.75px] bg-[#222831]"></div>
               </h4>
-              <p className="text-[#082B5B] text-[2.8rem] font-[700] leading-[123.077%]tracking-[-2px] ">
-              We Create beautiful products that capture hearts
+              <p className="text-[#082B5B] text-[2.8rem] font-[700] leading-[120.077%]tracking-[-2px] ">
+              Empowering Creativity, Building Excellent <br /> products.
               </p>
               <div className="flex ml-[300px] -mt-[25px]">
                 <svg
@@ -81,7 +85,7 @@ export default function Services() {
             </div>
             <div className="w-[45%] flex flex-col  gap-14">
               <p className="text-[#101010] text-[18px] leading-[138.889%] font-[400]">
-              From idea to traction-generating product, we're by your side every step of the way, smoothing out bumps as they come with the intention of gaining retention and increasing Customer Lifetime Value.
+              We believe that creativity is the key to building excellence. Our products are designed with love and attention to detail, to create an emotional connection with users. We strive to create products that are not only functional, but also beautiful and meaningful.
               </p>
             
             </div>
@@ -103,7 +107,7 @@ export default function Services() {
     <div className='flex justify-between items-center'>
         <h1 className='  text-[#082B5B] text-[2.5rem] font-bold'>What we do</h1>
         <div className=' w-[43%] text-[1.125rem] '>
-            <p> We'll handle all the boring and technical stuff (or work with your team if you have one) so you can focus on taking your solution to the market and pitching to potential investors.</p>
+            <p> We'll expertly manage the technical aspects, allowing you to focus on bringing your solutions to the market and engaging potential investors. Collaborate with our team for seamless execution.</p>
         </div>
         <div className=''>
             <img src={icon} alt="" className=' h-[5.6rem] ' />
@@ -120,8 +124,7 @@ export default function Services() {
         <div className='bg-[#082B5B] w-[25.73763rem] h-[29.1875rem] rounded-[0.3125rem] text-[#F1F1F1] relative'>
         <img src={icon2} alt="" className=' w-[6.6rem] h-[5.6rem]  ml-auto  mt-7 mr-7' loading='lazy'/>
         <p className='text-[2rem] text-center mt-9'  >Mobile Development</p>
-        <p className=' text-center text-[1.125rem] mt-5 '>Comfortable space, Full speed wifi, <br /> Free coffe & Snack 
-       <br /> and many more</p>
+        <p className=' text-center text-[1.125rem] mt-5 '>At Kinplus, we excel in mobile <br />development, leveraging innovation <br /> to create impactful and user-centric <br /> solutions.</p>
        <p className='text-[#F1F1F1] bg-[#1877F9] w-[12em] h-[4em] px-[2em] py-[0.5em] rounded-[0.3125rem] flex items-center justify-center  absolute bottom-0 left-0 '>Talk to us
        <span> <img src= {icon3} alt="" className=' h-6 w-6 ml-5' /></span>
        </p>
@@ -138,7 +141,7 @@ export default function Services() {
     <section>
       <div className='flex '>
         <h1 className=' w-[50%] text-[2.5rem] text-[#082B5B]  font-bold leading-[3.125rem]'>Have a project in mind? Let's get started here</h1>
-        <p className=' w-[40%] font-[1.125rem]  leading-[1.5625rem] ml-40 text-[#000000DE] '>We solve complex business challenges with outstanding <br /> strategy, marketing and product development services.</p>
+        <p className=' w-[40%] font-[1.125rem]  leading-[1.5625rem] ml-40 text-[#000000DE] '>At Kinplus, we tackle intricate business challenges through exceptional strategy, marketing, and product development services, </p>
       </div>
       
       <div className='flex items-start justify-end space-x-20 ml-[5em] mt-32 '>
@@ -150,9 +153,7 @@ export default function Services() {
 
           <div className='w-[45%]'>
             <h1 className='text-[#082B5B] font-bold text-[2.75rem] leading-[3.375rem] mb-10'>Web Development</h1>
-            <p className='text-[1.125rem] font-normal leading-6 mb-10'>At Kinplus, we are dedicated to helping you reach <br /> the top of your industry. Our software development <br /> services integrate the vision, resources and <br /> experience needed to meet your technology goals</p>
-
-            <p className='text-[1.125rem] font-normal leading-6 mb-10'>At Kinplus, we are dedicated to helping you reach <br /> the top of your industry. Our software development <br /> services integrate the vision, resources and <br /> experience needed to meet your technology goals</p>
+            <p className='text-[1.125rem] font-normal leading-6 mb-10'>At Kinplus, we take a user-centric approach to web development, creating solutions that elevate your digital presence and drive tangible results. Our solutions are designed to improve user engagement, increase conversions, and enhance brand awareness. We use the latest technologies and best practices to deliver a seamless, intuitive user experience. With our expertise, you can rest assured that your web development project will be in safe hands, from start to finish.</p>
            
              <button  className="bg-[#1877F9] hover:bg-[#1153AE] transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded-[0.5em] mt-5 w-[7em]"
             >
@@ -185,19 +186,17 @@ export default function Services() {
 
             </div>
             <div className='absolute top-[5%] mt-[120px] z-[100]'>
-              <img src={image3} alt="" />
+              <img src={image6} alt="" />
             </div>
             <div className='absolute z-[999] mt-[90px] top-0 left-[5%]'>
-              <img src={image2} alt="" />
+              <img src={image7} alt="" />
             </div>
           </div>
 
 
           <div className='w-[45%] '>
             <h1 className='text-[#082B5B] font-bold text-[2.75rem] leading-[3.375rem] mb-10'>Mobile Development</h1>
-            <p className='text-[1.125rem] font-normal leading-6 mb-10'>At Kinplus, we are dedicated to helping you reach <br /> the top of your industry. Our software development <br /> services integrate the vision, resources and <br /> experience needed to meet your technology goals</p>
-
-            <p className='text-[1.125rem] font-normal leading-6 mb-10'>At Kinplus, we are dedicated to helping you reach <br /> the top of your industry. Our software development <br /> services integrate the vision, resources and <br /> experience needed to meet your technology goals</p>
+            <p className='text-[1.125rem] font-normal leading-6 mb-10'>Kinplus is a mobile development specialist, using the latest technologies and best practices to create innovative and user-friendly mobile solutions. Our team is dedicated to delivering mobile applications that are robust, functional, and seamless. We take a user-focused approach to ensure that your mobile application reflects your brand and drives the results you desire. With Kinplus, you can be confident that your mobile development project is in safe hands.</p>
            
              <button  className="bg-[#1877F9] hover:bg-[#1153AE] transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded-[0.5em] mt-5 w-[7em]"
             >
@@ -222,9 +221,7 @@ export default function Services() {
 
           <div className='w-[55%]'>
             <h1 className='text-[#082B5B] font-bold text-[2.75rem] leading-[3.375rem] mb-10'>Hardware Sale & Repairs</h1>
-            <p className='text-[1.125rem] font-normal leading-6 mb-10'>At Kinplus, we are dedicated to helping you reach <br /> the top of your industry. Our software development <br /> services integrate the vision, resources and <br /> experience needed to meet your technology goals</p>
-
-            <p className='text-[1.125rem] font-normal leading-6 mb-10'>At Kinplus, we are dedicated to helping you reach <br /> the top of your industry. Our software development <br /> services integrate the vision, resources and <br /> experience needed to meet your technology goals</p>
+            <p className='text-[1.125rem] font-normal leading-6 mb-10'>At Kinplus, we offer top-quality hardware for sale, as well as expert repair services. We stock a wide range of the latest hardware from leading brands, ensuring that you have access to the best technology on the market. And if your hardware is in need of repair, our team of skilled technicians is here to help. We can diagnose and fix any issues, big or small, so you can get back to using your hardware as soon as possible. Rest assured that your hardware needs are in good hands with Kinplus</p>
            
              <button  className="bg-[#1877F9] hover:bg-[#1153AE] transition duration-200 ease-in-out text-white font-bold py-2 px-4 rounded-[0.5em] mt-5 w-[7em]"
             >
@@ -238,10 +235,10 @@ export default function Services() {
 
             </div>
             <div className='absolute top-[5%] mt-[30px] z-[100]'>
-              <img src={image3} alt="" />
+              <img src={image9} alt="" />
             </div>
             <div className='absolute z-[999] mt-[10px] top-0 left-[5%]'>
-              <img src={image2} alt="" />
+              <img src={image8} alt="" />
             </div>
           </div>
       </div>
