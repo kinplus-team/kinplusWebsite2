@@ -7,8 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 import AboutUs from "./pages/AboutUs/Index";
 import Training from "./pages/Training/Index";
 import Header from "./components/navbar/Index";
-import Footer from "./components/Footer/Index";
+import Footer from "./components/footer/Index";
 import Services from "./pages/Services/Index";
+import ProgramDetails from "./pages/ProgramDetails/Index";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/our-services" element={<Services />} />
           <Route path="/contact-us/*" element={<ContactUs />} />
-          <Route path="/training/*" element={<Training />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/training/:title" element={<ProgramDetails />} />
         </Routes>
         <Footer />
       </Router>
