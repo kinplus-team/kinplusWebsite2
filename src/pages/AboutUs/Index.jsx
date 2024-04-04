@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import dorcasImg from "../../assets/AboutUs/dorcas.jpeg";
-import aGuyLaptop from "../../assets/AboutUs/A_guy_working_with_a_laptop-min.jpeg";
-import victorFemi from "../../assets/AboutUs/Victor_and_Femi.jpeg";
-import Img003 from "../../assets/AboutUs/IMG-003.jpeg";
+import guyLookingAtLaptop from "../../assets/AboutUs/NewImages/guy-looking-at-laptop.jpeg";
+import peopleLookingAtLaptop from "../../assets/AboutUs/NewImages/three-people-looking-at-laptop.jpeg";
+import girlLookingAtLaptop from "../../assets/AboutUs/NewImages/girl-looking-at-laptop.jpeg";
+import lookingAtLaptop from "../../assets/AboutUs/NewImages/looking-at-laptop.jpeg";
 import svgIcon from "../../assets/AboutUs/Icons.svg";
 import bgImage2 from "../../assets/AboutUs/bg-image2.png";
 import aboutUsIcons1 from "../../assets/AboutUs/aboutUsIcons1.png";
 import aboutUsIcons2 from "../../assets/AboutUs/aboutUsIcons2.png";
-import aboutUsGrid from "../../assets/AboutUs/aboutUsGrid.png";
-import peopleSimiling from "../../assets/AboutUs/people-that-are-smiling.jpeg";
-import ladiesWorking from "../../assets/AboutUs/ladies-working.jpeg";
-import ladiesWorking2 from "../../assets/AboutUs/ladies-working2.jpeg";
+import aboutUsGrid from "../../assets/AboutUs/NewImages/new-about-us-grid.png";
+import raptLaptop from "../../assets/AboutUs/NewImages/raptly-staring-at-laptop.jpeg";
+import twoGirlsLaptop from "../../assets/AboutUs/NewImages/two-girls-staring-at-laptop.jpeg";
+import busyLaptop from "../../assets/AboutUs/NewImages/busy-on-the-laptop.jpeg";
 import lovelly from "../../assets/AboutUs/lovely.jpeg";
 import lovelly2 from "../../assets/AboutUs/lovelly.jpeg";
 import idea from "../../assets/AboutUs/idea.jpeg";
@@ -29,11 +29,11 @@ export default function AboutUs() {
     <section className="mx-auto overflow-hidden">
       {/**About Kinplus**/}
       <div className="flex gap-[80px]">
-        <div className=" flex flex-col gap-[16px] w-[60%]">
+        <div className=" flex flex-col gap-[16px] w-[43%]">
           <div className=" z-[999] flex items-center justify-start gap-2 ">
             <div
               style={{
-                backgroundImage: `url(${dorcasImg})`,
+                backgroundImage: `url(${guyLookingAtLaptop})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
@@ -46,7 +46,7 @@ export default function AboutUs() {
             ></div>
             <div
               style={{
-                backgroundImage: `url(${victorFemi})`,
+                backgroundImage: `url(${girlLookingAtLaptop})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
@@ -58,7 +58,7 @@ export default function AboutUs() {
             ></div>
             <div
               style={{
-                backgroundImage: `url(${Img003})`,
+                backgroundImage: `url(${lookingAtLaptop})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
@@ -68,53 +68,31 @@ export default function AboutUs() {
               }}
             ></div>
           </div>
-          <div className="absolute h-[600px]  ">
-            <div className="absolute top-[-60px] left-[250px] h-[176px] w-[176px]">
-              <img
-                src={svgIcon}
-                className="h-[176px] w-[176px]"
-              />
-            </div>
+          <div className="absolute h-[600px]">
             <div className="absolute  h-[176px] w-[176px]">
-              <img
-                src={svgIcon}
-                className="h-[176px] w-[176px]"
-              />
+              <img src={svgIcon} className="h-[176px] w-[176px]" />
             </div>
             <div className="absolute h-[176px] w-[176px] top-[100px] left-[-30px]">
-              <img
-                src={svgIcon}
-                className="h-[176px] w-[176px]"
-              />
+              <img src={svgIcon} className="h-[176px] w-[176px]" />
             </div>
             <div className="absolute h-[176px] w-[176px] top-[260px] left-[-30px]">
-              <img
-                src={svgIcon}
-                className="h-[176px] w-[176px]"
-              />
+              <img src={svgIcon} className="h-[176px] w-[176px]" />
             </div>
             <div className="absolute left-[184px] bottom-[25.5%] h-[176px] w-[176px]">
-              <img
-                src={svgIcon}
-                className="h-[176px] w-[176px]"
-              />
-            </div>
-            <div className="absolute left-[344px] bottom-[20%] h-[176px] w-[176px]">
-              <img
-                src={svgIcon}
-                className="h-[176px] w-[176px]"
-              />
+              <img src={svgIcon} className="h-[176px] w-[176px]" />
             </div>
           </div>
         </div>
 
-        <div className="self-center w-[73%]">
-          <p className="text-[#1877F9] text-[1.5rem] font-[400] leading-[125%] py-2">
-            Who We Are
-          </p>
-          <h3 className="text-[#082B5B] text-[4.0625rem] font-[700] leading-[115.385%] capitalize mb-[1.3125em]">
-            About Kinplus
-          </h3>
+        <div className="self-center ">
+          <div>
+            <p className="text-[#1877F9] text-[1.5rem] font-[400] leading-[125%] py-2 capitalize">
+              Who We Are
+            </p>
+            <h3 className="text-[#082B5B] text-[4.0625rem] font-[700] leading-[115.385%] capitalize mb-[1.3125rem]">
+              About Kinplus
+            </h3>
+          </div>
           <p className="text-[1.125rem] leading-[138.889%] font-[400]">
             We are a team of energetic and innovative developers and designers,
             who are passionate about implementing customer needs with an
@@ -124,51 +102,37 @@ export default function AboutUs() {
       </div>
 
       {/**What is Kinplus**/}
-      <div className="flex mt-10 mx-[-3em] p-0 h-[695px]">
-        <div
-          style={{
-            backgroundImage: `url(${bgImage2})`,
-            width: "60%",
-            position: "relative",
-          }}
-          loading="lazy"
-        >
-          <div className="absolute ml-[55px] my-[119px] mr-[106px]">
-            <h3 className="text-[54px] font-[700] leading-[118.519%] cpitalize text-[#ffffff] p-1 mb-[20px]">
-              What is Kinplus
+      <div className="flex mt-10 mx-[-3em] p-0 ">
+        <div className="relative w-1/2 bg-blue-700">
+          <div className="absolute ml-[55px] my-[50px] ">
+            <h3 className="text-[54px] font-[700] leading-[118.519%] capitalize text-[#ffffff] p-1 mb-[20px]">
+              What is Kinplus?
             </h3>
-            <p className="text-[#fff] text-[1.125rem] font-[400] leading-[138.889%] p-1">
-              Kinplus Technologies is a software development company focused on
-              building scalable applications and software for businesses,
-              corporate organisations, and individuals.
+            <p className="text-[#fff] text-[1.15rem] font-[400] leading-[138.889%] p-1 ">
+              Kinplus Technologies is a software development company with a
+              focus on delivering scalable applications and software to
+              businesses, organizations, and individuals. We're driven by a
+              passion for innovation and customer satisfaction, and we deliver
+              our products on time and within budget.
               <br />
               <br />
-              We are a team of energetic and innovative developers and
-              designers, who are passionate about implementing customer needs
-              with an approach focused on satisfaction and timely delivery.
-              <br />
-              <br />
-              We provide services on Software Development, Mobile Applications,
-              Shell/Console Applications, and youth empowerment through training
-              and internship programs for individuals and groups who are willing
-              to learn the nitty-gritty of Programming and Software Application
-              Development.
+              We offer a wide range of services including software development,
+              mobile applications, and shell/console applications. We're also
+              dedicated to empowering young people through our training and
+              internship programs. If you're looking for a team of innovative
+              tech professionals who are dedicated to delivering results, look
+              no further than Kinplus Technologies.
             </p>
           </div>
         </div>
-        <div
-          style={{
-            backgroundImage: `url(${aGuyLaptop})`,
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            width: "40%",
-          }}
-        ></div>
+        <div className="relative w-1/2 h-full">
+          <div className="h-full"><img src={peopleLookingAtLaptop} alt="" /></div>
+          <div className="absolute bg-blue-700 bg-opacity-10  w-full"></div>
+        </div>
       </div>
 
-      {/**Our Vision**/}
-      <div className="mt-[9.1563em] h-[613px] flex ">
+      {/**Our Vision And Mission**/}
+      <div className="mt-[9.1563em] h-[613px] flex">
         <div className="relative w-[60%] ml-[-150px]  ">
           <div className="flex ">
             <div
@@ -206,27 +170,30 @@ export default function AboutUs() {
               }}
             ></div>
           </div>
-          <div className="absolute top-0 w-[38.48em] ml-[110px]">
-            <img
-              src={aboutUsGrid}
-              alt=""
-            />
+          <div className="absolute top-0 w-[30em] ml-[110px]">
+            <img src={aboutUsGrid} alt="" />
           </div>
         </div>
-        <div className="w-[50%]">
-          <h3 className="text-[#082B5B] text-[4rem] font-[500] tracking-[-2.88px] leading-[110%] mt-[71px] mb-[31px] ">
+
+        <div className="w-[50%] ml-10">
+          <h3 className="text-[#082B5B] text-[3.75rem] font-[500] tracking-[-2.88px] leading-[110%] mt-[71px] mb-[31px] ">
             Our Vision
           </h3>
-          <p className="text-[#23242A] text-[1.125rem] leading-[138.889%]">
-            We are a team of motivated individuals that are committed to
-            building world-class and top-notch solutions with Christ Jesus at
-            the center of it all.
+          <p className="text-[#23242A] text-[0.9rem] font-[400] leading-[138.889%]">
+            To promote youth empowerment and create employment via on the job training with a team of experts while developing products and providing services that will help the society and the world at large.
             <br />
             <br />
-            For creatives, developers, engineers, code enthusiasts (techies in
-            general), individuals and businesses seeking to build purposeful
-            products, Kinplus will empower you with all of the necessary skills,
-            mentoring, toolkits and solutions to help you succeed.
+            We believe that technology should connect and empower people. We're committed to driving innovation and creating solutions that will shape a better future. We're at the forefront of the digital revolution, and we're always looking for new ways to make a positive impact on the world. We believe that together, we can build a better tomorrow for everyone
+          </p>
+
+          <h3 className="text-[#082B5B] text-[3.75rem] font-[500] tracking-[-2.88px] leading-[110%] mt-[71px] mb-[31px] ">
+            Our Mission
+          </h3>
+          <p className="text-[#23242A] text-[0.9rem] font-[400] leading-[138.889%] w-[33rem]">
+          To enhance societal development and sustainability by empowering youths with skills and expertise that will make them employable, business minded, skilful and industrious.
+            <br />
+            <br />
+            We believe that technology should connect and empower people. We're committed to driving innovation and creating solutions that will shape a better future. We're at the forefront of the digital revolution, and we're always looking for new ways to make a positive impact on the world. We believe that together, we can build a better tomorrow for everyone
           </p>
         </div>
       </div>
@@ -248,10 +215,10 @@ export default function AboutUs() {
           <div
             className="col-span-2 mr-[1.3em] h-[288px] rounded-[20px]"
             style={{
-              backgroundImage: `url(${peopleSimiling})`,
+              backgroundImage: `url(${raptLaptop})`,
               backgroundPosition: "center",
               backgroundSize: "cover",
-              width: "515px",
+              width: "500px",
             }}
             loading="lazy"
           ></div>
@@ -259,15 +226,16 @@ export default function AboutUs() {
             <div
               className="rounded-[20px]  w-full"
               style={{
-                backgroundImage: `url(${ladiesWorking})`,
+                backgroundImage: `url(${twoGirlsLaptop})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
+                width: "250px"
               }}
             ></div>
             <div
               className="rounded-[20px]  w-full"
               style={{
-                backgroundImage: `url(${ladiesWorking2})`,
+                backgroundImage: `url(${busyLaptop})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
               }}
