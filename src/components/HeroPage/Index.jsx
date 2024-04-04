@@ -19,7 +19,7 @@ export default function HeroPage() {
       </div>
 
         {/*Hero Text*/}
-        <div className="absolute top-[13.75rem] ml-10 text-left text-white z-20 flex flex-col gap-5 sm:gap-[3rem]">
+        {/* <div className="absolute top-[13.75rem] ml-10 text-left text-white z-20 flex flex-col gap-5 sm:gap-[3rem]">
           <h1 className="text-4xl sm:text-[4.063rem] font-bold leading-[4.668rem] sm:tracking-wide">
             Empowering Innovators <br /> Through Product Development <br /> and
             Training{" "}
@@ -35,10 +35,10 @@ export default function HeroPage() {
           >
             Start a Project
           </Link>
-        </div>
+        </div> */}
       
       {/*Hero Text*/}
-      <div className="absolute top-44 ml-10 text-left text-white z-20 flex flex-col gap-5 sm:gap-20">
+      <div className="absolute top-32 ml-10 text-left text-white z-20 flex flex-col gap-5 sm:gap-20">
         <h1 className="text-4xl sm:text-5xl font-bold leading-[3rem] sm:tracking-wide">
           Empowering Innovators <br /> Through Product Development <br /> and
           Training{" "}
