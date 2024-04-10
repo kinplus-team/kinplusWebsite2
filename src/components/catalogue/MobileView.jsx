@@ -9,7 +9,7 @@ export default function MobileViewCatalogue({ title, catalogues }) {
         {title}
       </h3>
 
-      <div className="grid grid-rows-6 gap-3">
+      <div className={`grid grid-rows-${catalogues.length} gap-3`}>
         {catalogues.map((catalogue, i) => (
           <div key={i}>
             <Button text={catalogue.title} icon={catalogue.icon} type="icon" />

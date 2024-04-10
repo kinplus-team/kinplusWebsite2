@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import PricingCard from "../../components/cards/Pricing/Pricing.jsx";
+import { useParams } from "react-router-dom";
 import PageLayout from "../../components/Layout/PageLayout.jsx";
-import Hero from "./Hero.jsx";
-import Pricing from "./Pricing.jsx";
+import Hero from "./components/Hero.jsx";
+import Pricing from "./components/Pricing.jsx";
 import programsDetails from "../../repository/program-details.js";
 
 export default function ProgramDetails() {
