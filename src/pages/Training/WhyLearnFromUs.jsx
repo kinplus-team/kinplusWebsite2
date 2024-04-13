@@ -21,8 +21,8 @@ export default function WhyLearnFromUs() {
   return (
     <PageLayout>
       <div className="lg:pt-36 lg:pb-28 pt-8 pb-2 relative">
-        <h4 className="flex items-center text-[#1877F9] lg:text-[18px] font-[500] lg:tracking-[3px] uppercase lg:leading-[111.111%] leading-[24px] mt-11 mb-4 lg:mt-0 ">
-          why learn from us
+        <h4 className="flex items-center text-[#1877F9] lg:text-[20px] font-[500] lg:leading-[30px] leading-[24px] mt-11 lg:mt-0 ">
+          What you stand to gain
           <div className="ml-3 h-[1.5px] w-[74.75px] bg-[#222831]"></div>
         </h4>
         <p className="relative lg:block z-10 text-[#082B5B] lg:text-[40px] text-[35px] font-[700] lg:leading-[50px] leading-10 capitalized lg:max-w-2xl mb-4">
@@ -31,7 +31,7 @@ export default function WhyLearnFromUs() {
         <div>
           <img
             src={backgroundIcon}
-            className="lg:w-[159px] w-[120px] lg:h-[128px] absolute lg:top-[250px] top-[180px] left-52 lg:left-80 z-0"
+            className="lg:w-[170px] w-[170px] lg:h-[128px] absolute lg:top-[250px] top-[180px] left-52 lg:left-80 z-0"
           />
         </div>
         <div>
