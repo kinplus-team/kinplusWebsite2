@@ -38,6 +38,7 @@ export default function DesktopViewCatalogue({
                 <Button
                   text={catalogue.title}
                   type={`${i == 2 ? "customizedBlue" : "transparent"}`}
+                  isLong={true}
                 />
               </div>
             ))}

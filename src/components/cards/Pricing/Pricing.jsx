@@ -66,11 +66,7 @@ export default function Pricing({
             </div>
 
             <div className="w-44 mx-auto">
-              <Button
-                type="customizedBlue"
-                text="Apply Now"
-                className="rounded-xl text-center w"
-              />
+              <Button type="customizedBlue" text="Apply Now" />
             </div>
           </div>
         </div>
@@ -106,10 +102,11 @@ export default function Pricing({
               </p>
             </div>
           </div>
+
           {/* description and price */}
           <div>
             <p className="text-[#D9DBE9] font-[400] text-[18px] leading-[138.889%]">
-              {duration}
+              {description}
             </p>
 
             <p className="text-[54px] text-[#FFF] font-bold">&#8358;{price}</p>
@@ -130,11 +127,7 @@ export default function Pricing({
             </div>
 
             <div className="w-44 mx-auto">
-              <Button
-                type="customizedWhite"
-                text="Apply Now"
-                className="rounded-xl text-center w"
-              />
+              <Button type="customizedWhite" text="Apply Now" />
             </div>
           </div>
         </div>

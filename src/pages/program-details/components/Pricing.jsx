@@ -1,5 +1,5 @@
 import React from "react";
-import PricingCard from "../../components/cards/Pricing/Pricing.jsx";
+import PricingCard from "../../../components/cards/Pricing/Pricing.jsx";
 
 export default function Pricing({ pricingCardDetails }) {
   return (
