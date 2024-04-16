@@ -24,19 +24,33 @@ export default function FAQComponent({ FAQs }) {
               setShowAns(!showAns);
               setIndex(i);
             }}
-            className="bg-white w-[95%] p-6 grid grid-cols-[1fr_auto] rounded-[10px] shadow-md mx-auto"
+            className=" w-[95%] mx-auto"
           >
-            <p className="lg:text-xl text-base">{FAQ.question}</p>
-            {/* {showAns && index === i && (
-              <p className="text-neutral-500 pt-3 font-normal text-sm md:text-lg">
-                {FAQ.} 
-              </p>
-            )}   */}
+            <div className="bg-white p-6 rounded-[10px] shadow-md grid grid-cols-[1fr_auto]">
+              <p className="lg:text-xl text-base">{FAQ.question}</p>
 
-            {showAns && index === i ? (
-              <IoIosArrowDown className="w-6 h-6 text-[#1877F9] lg:place-self-end place-self-center" />
-            ) : (
-              <IoIosArrowUp className="w-6 h-6 text-[#1877F9] lg:place-self-end place-self-center" />
+              {showAns && index === i ? (
+                <IoIosArrowDown className="w-6 h-6 text-[#1877F9] lg:place-self-end place-self-center" />
+              ) : (
+                <IoIosArrowUp className="w-6 h-6 text-[#1877F9] lg:place-self-end place-self-center" />
+              )}
+            </div>
+
+            {showAns && index === i && (
+              <div>
+                <p className="text-neutral-500 pt-3 font-normal text-sm md:text-lg px-7">
+                  {FAQ.ans.summary}
+                </p>
+                {FAQ.ans.options &&
+                  FAQ.ans.options.map((option, i) => (
+                    <p
+                      key={i}
+                      className="text-neutral-500 pt-3 font-normal text-sm md:text-lg px-7"
+                    >
+                      {option}
+                    </p>
+                  ))}
+              </div>
             )}
           </div>
         ))}
