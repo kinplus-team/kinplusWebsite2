@@ -5,17 +5,44 @@ import handsOnExperience from "../../assets/svg/why-learn-from-us/hands-on-exper
 import industryHeight from "../../assets/svg/why-learn-from-us/industry-heights.svg";
 import professionalGrowth from "../../assets/svg/why-learn-from-us/professional-growth.svg";
 import tailoredCurriculum from "../../assets/svg/why-learn-from-us/tailored-curriculum.svg";
-import sideBarImage from "../../assets/why-learn-from-us/why-learn-from-us.png";
+// import sideBarImage from "../../assets/why-learn-from-us/why-learn-from-us.png";
 import backgroundIcon from "../../assets/svg/background-icon.svg";
 import sparkle from "../../assets/why-learn-from-us/sparkle.png";
 
+// images on the catalogue card
+import whyLearnFromUs1 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-1.jpg";
+import whyLearnFromUs2 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-2.jpg";
+import whyLearnFromUs3 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-3.jpg";
+import whyLearnFromUs4 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-4.jpg";
+import whyLearnFromUs5 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-1.jpg";
+
 export default function WhyLearnFromUs() {
   const reasons = [
-    { title: "Cutting-edge training ", icon: cuttinEdgeTraining },
-    { title: "Tailored Curriculum", icon: tailoredCurriculum },
-    { title: "Hands-on Experience", icon: handsOnExperience },
-    { title: "Industry Insights", icon: industryHeight },
-    { title: "Professional Growth", icon: professionalGrowth },
+    {
+      title: "Cutting-edge training ",
+      icon: cuttinEdgeTraining,
+      image: whyLearnFromUs1,
+    },
+    {
+      title: "Tailored Curriculum",
+      icon: tailoredCurriculum,
+      image: whyLearnFromUs2,
+    },
+    {
+      title: "Hands-on Experience",
+      icon: handsOnExperience,
+      image: whyLearnFromUs3,
+    },
+    {
+      title: "Industry Insights",
+      icon: industryHeight,
+      image: whyLearnFromUs4,
+    },
+    {
+      title: "Professional Growth",
+      icon: professionalGrowth,
+      image: whyLearnFromUs5,
+    },
   ];
 
   return (
@@ -40,7 +67,7 @@ export default function WhyLearnFromUs() {
             className="w-40 h-40 absolute top-24 right-36 z-0 hidden lg:block"
           />
         </div>
-        <Catalogue catalouges={reasons} sidebarImage={sideBarImage} />
+        <Catalogue catalouges={reasons} />
       </div>
     </PageLayout>
   );
