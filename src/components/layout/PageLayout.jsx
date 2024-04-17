@@ -1,3 +1,4 @@
+
 import { useLocation } from "react-router-dom";
 
 export default function PageLayout({ children }) {
@@ -14,6 +15,7 @@ export default function PageLayout({ children }) {
         : "bg-[#f1f3f9] "
     }`}>
       <div className=" lg:px-[54px] px-4 max-w-[100rem] mx-auto">
+
         {children}
       </div>
     </div>

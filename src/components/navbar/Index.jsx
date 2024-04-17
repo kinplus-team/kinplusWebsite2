@@ -1,11 +1,15 @@
 import { useState } from "react";
-import kinplusLogo from "../../assets/kinplusBlue.png";
+import kinplusLogoBlue from "../../assets/kinplusBlue.png";
+import kinplusLogoWhite from "../../assets/kinplusWhite.png";
 import { IoIosMenu } from "react-icons/io";
 import { NavLink, useLocation } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import PageLayout from "../Layout/PageLayout";
 
 export default function Header() {
+  const location = useLocation();
+  const { pathname } = location;
+
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
   const NavbarLinks = [
@@ -38,14 +42,20 @@ export default function Header() {
   const isHomepage = location.pathname === "/";
 
   return (
-    <PageLayout>
+    <PageLayout className="relative">
       <nav
+
         className={` grid grid-cols-[150px,1fr] items-center justify-between lg:py-10 `}
+
       >
         {/* logo */}
         <NavLink to={"/"}>
           <img
-            src={kinplusLogo}
+            src={
+              pathname == "/careers" || pathname == "/workshop"
+                ? kinplusLogoWhite
+                : kinplusLogoBlue
+            }
             alt="Kinplus_Logo_with_blue_color"
             loading="lazy"
           />
@@ -57,11 +67,13 @@ export default function Header() {
             <NavLink
               to={links.to}
               key={i}
-              className={`flex gap-1 items-center text-[#101010] text-[20px] ${
-                isHomepage
-                  ? "!text-[#D9D9D9] "
-                  : " text-[#101010]"
-              }`}
+
+              className={`flex gap-1 items-center ${
+                pathname == "/careers" || pathname == "/workshop"
+                  ? "text-white"
+                  : "text-[#101010]"
+              } text-[20px]`}
+
             >
               {links.title}
               <div
@@ -99,7 +111,11 @@ export default function Header() {
         </div>
 
         {/* mobile menu */}
-        <IoIosMenu className="lg:hidden w-7 lg:w-10 h-20  justify-self-end" />
+        <IoIosMenu
+          className={`lg:hidden w-7 lg:w-10 h-20  justify-self-end ${
+            pathname == "/careers" && "text-white"
+          }`}
+        />
       </nav>
     </PageLayout>
   );

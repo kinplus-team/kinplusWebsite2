@@ -1,10 +1,10 @@
 import React from "react";
-import cuteFaces from "../../assets/choose_us.png";
-import Button from "../../components/Button.jsx";
+import cuteFaces from "../../../assets/choose_us.png";
+import Button from "../../../components/Button.jsx";
 
 export default function Hero({ title, description }) {
   return (
-    <div className="grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-36 py-8 lg:py-0">
+    <div className="grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-36 py-8 lg:py-32">
       <img
         src={cuteFaces}
         alt="cute_faces"
@@ -19,11 +19,7 @@ export default function Hero({ title, description }) {
         <p className="p-2 text-[#101010] lg:text-[18px]">{description}</p>
 
         <div className="lg:w-44 w-36">
-          <Button
-            type="customizedBlue"
-            text="Talk to us"
-            className="rounded-xl text-center"
-          />
+          <Button type="customizedBlue" text="Talk to us" />
         </div>
       </div>
     </div>
