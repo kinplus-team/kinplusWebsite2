@@ -1,7 +1,7 @@
 import { useState } from "react";
 import kinplusLogo from "../../assets/kinplusBlue.png";
 import { IoIosMenu } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import PageLayout from "../Layout/PageLayout";
 
@@ -31,10 +31,16 @@ export default function Header() {
     },
   ];
 
+  const location = useLocation();
+
+  
+  //Check if Route is Homepage
+  const isHomepage = location.pathname === "/";
+
   return (
     <PageLayout>
       <nav
-        className={` grid grid-cols-[150px,1fr] items-center justify-between lg:py-10`}
+        className={` grid grid-cols-[150px,1fr] items-center justify-between lg:py-10 `}
       >
         {/* logo */}
         <NavLink to={"/"}>
@@ -51,7 +57,11 @@ export default function Header() {
             <NavLink
               to={links.to}
               key={i}
-              className={"flex gap-1 items-center text-[#101010] text-[20px]"}
+              className={`flex gap-1 items-center text-[#101010] text-[20px] ${
+                isHomepage
+                  ? "!text-[#D9D9D9] "
+                  : " text-[#101010]"
+              }`}
             >
               {links.title}
               <div
