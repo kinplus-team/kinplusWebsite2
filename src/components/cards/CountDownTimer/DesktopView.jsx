@@ -21,7 +21,7 @@ export default function NextCohort({ image, time }) {
 
           <div className="flex justify-center gap-3">
             {["Days", "Hrs", "Min", "Sec"].map((item, i) => (
-              <div>
+              <div key={i}>
                 <div className="flex gap-2 items-center">
                   <p className="text-[96px] font-[700] leading-[110%]">
                     {time.split(":")[i]}

@@ -9,6 +9,10 @@ section {
   @apply hidden;
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   section {
     padding: 3em;

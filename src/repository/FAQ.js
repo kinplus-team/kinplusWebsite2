@@ -11,8 +11,7 @@ const FAQs = [
     question: "Can I enroll in two training tracks for my IT/SIWES?",
     ans: {
       summary:
-        "We offer IT/SIWES training on only a limited number of courses. These include:",
-      options: ["a. Website Development", "b. Cyber-security"],
+        "No. Students can only enroll in just one training track for their industrial training. This is to achieve an intensive training experience and skill acquisition. ",
     },
   },
   {
