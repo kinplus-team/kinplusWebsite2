@@ -17,15 +17,13 @@ export default function Homepage() {
       <PartnersAndSponsors />
 
       {/*WhyChooseUs Component */}
-      
 
       {/*whatWeDo Component */}
       <WhatWeDo />
 
-
       {/* Next Cohort */}
-      <NextCohort/>
-    
+      <NextCohort />
+
       {/*Training Component */}
       <TrainingComponent />
 
@@ -34,7 +32,6 @@ export default function Homepage() {
 
       {/*Infinte loop */}
       <InfiniteLoop />
-
 
       {/*FAQ */}
       <FAQHomepage />

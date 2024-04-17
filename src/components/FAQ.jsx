@@ -19,14 +19,12 @@ export default function FAQComponent({ FAQs }) {
       <div className="grid gap-5">
         {FAQs.map((FAQ, index) => (
           <div
-
-            key={i}
+            key={index}
             onClick={() => {
               setShowAns(!showAns);
               setIndex(i);
             }}
             className=" w-[95%] mx-auto"
-
           >
             <div className="bg-white p-6 rounded-[10px] shadow-md grid grid-cols-[1fr_auto]">
               <p className="lg:text-xl text-base">{FAQ.question}</p>
