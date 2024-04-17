@@ -13,9 +13,9 @@ export default function FAQComponent({ FAQs }) {
         </p>
       </div>
       <div className="grid gap-5">
-        {FAQs.map((FAQ, i) => (
+        {FAQs.map((FAQ, index) => (
           <div
-            key={i}
+            key={FAQ + index}
             className="bg-white w-[95%] p-6 grid grid-cols-[1fr_auto] rounded-[10px] shadow-md mx-auto"
           >
             <p className="lg:text-xl text-base">{FAQ.question}</p>
