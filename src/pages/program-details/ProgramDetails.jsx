@@ -6,12 +6,12 @@ import Pricing from "./components/Pricing.jsx";
 import programsDetails from "../../repository/program-details.js";
 
 export default function ProgramDetails() {
-  const { title } = useParams();
+  const { training } = useParams();
   const [programDetails, setProgramDetails] = useState({});
 
   // Turn the slug link to a title
   useEffect(() => {
-    const splitTitleURL = title
+    const splitTitleURL = training
       .split("-")
       .map(
         (programTitle) =>

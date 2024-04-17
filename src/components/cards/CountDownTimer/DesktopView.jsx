@@ -18,7 +18,25 @@ export default function NextCohort({ image, time }) {
           <h4 className="capitalize text-[32px] font-[700] leading-[109.375%]">
             next cohort starts in
           </h4>
-          <p className="text-[96px] font-[700] leading-[110%]">{time}</p>
+
+          <div className="flex justify-center gap-3">
+            {["Days", "Hrs", "Min", "Sec"].map((item, i) => (
+              <div>
+                <div className="flex gap-2 items-center">
+                  <p className="text-[96px] font-[700] leading-[110%]">
+                    {time.split(":")[i]}
+                  </p>
+                  {i < 3 && (
+                    <p className="text-[96px] font-[700] leading-[110%]">:</p>
+                  )}
+                </div>
+                <p className="text-xl font-bold leading-5 text-center w-[80%]">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+
           <Link
             to={"/contact-us/training"}
             className="flex justify-center items-center gap-2 text-[20px] font-[700] leading-[112%]"
