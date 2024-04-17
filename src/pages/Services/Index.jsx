@@ -21,7 +21,7 @@ export default function Services() {
   return (
     <div>
       {/* What We Do */}
-      {/* <section>
+      <section>*
         <div className="flex justify-between items-center">
           <h1 className="  text-[#082B5B] text-[2.5rem] font-bold">
             What we do
@@ -92,10 +92,10 @@ export default function Services() {
             </p>
           </div>
         </div>
-      </section> */}
+      </section> 
 
       {/* Have a project in mind? */}
-      {/* <section>
+       <section>
         <div className="flex ">
           <h1 className=" w-[50%] text-[2.5rem] text-[#082B5B]  font-bold leading-[3.125rem]">
             Have a project in mind? Let's get started here
@@ -150,10 +150,10 @@ export default function Services() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Mobile Development */}
-      {/* <section>
+      <section>
         <div className="flex space-y-20 mr-[5em] mt-32 ">
           <div className="w-[45%] relative ">
             <div className="absolute flex mt-[-150px] mb-90px]  ml-[-50px] overflow-hidden ">
@@ -313,11 +313,10 @@ export default function Services() {
           <BsDashLg />
           <BsDashLg />
         </div>
-      </section> */}
-      {/* <section> */}
+      </section>
+      <section>
       {/*Testimonial */}
-      {/* <TrainingTestimonial />
-      </section> */}
+      </section> 
     </div>
   );
 }

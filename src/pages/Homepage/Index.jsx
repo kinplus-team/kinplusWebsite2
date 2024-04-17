@@ -2,7 +2,7 @@ import HeroPage from "../../components/HeroPage/Index";
 import PartnersAndSponsors from "../../components/PartnersAndSponsors/Index";
 import TrainingComponent from "../../components/trainingPrograms/TrainingComponent/Index";
 // import TrainingTestimonial from "../Training/TrainingTestimonial/Index";
-import FAQ from "../Training/FAQ";
+import FAQHomepage from "../Training/FAQHomepage";
 import WhatWeDo from "../../components/whatWeDoComponent/WhatWeDo/Index";
 import NextCohort from "../../components/NextCohort/index";
 import InfiniteLoop from "../../components/InfinteLoop/Index";
@@ -37,7 +37,7 @@ export default function Homepage() {
 
 
       {/*FAQ */}
-      <FAQ />
+      <FAQHomepage />
     </>
   );
 }
