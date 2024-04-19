@@ -35,9 +35,6 @@ export default function Header() {
     },
   ];
 
-  const location = useLocation();
-
-  
   //Check if Route is Homepage
   const isHomepage = location.pathname === "/";
 
@@ -69,7 +66,7 @@ export default function Header() {
               key={i}
 
               className={`flex gap-1 items-center ${
-                pathname == "/careers" || pathname == "/workshop"
+                pathname == "/careers" || pathname == "/workshop" || pathname == "/" 
                   ? "text-white"
                   : "text-[#101010]"
               } text-[20px]`}
