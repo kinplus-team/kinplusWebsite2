@@ -36,7 +36,7 @@ export default function Services() {
           <div className="w-1/2"> <h1 className="text-5xl text-[#082B5B] font-medium leading-[63px]">Empowering Creativity, Building Excellent products.</h1></div>
           <div className="w-1/2"> <p className="text-lg">We believe that creativity is the key to building excellence. Our products are designed with love and attention to detail, to create an emotional connection with users. We strive to create products that are not only functional, npbut also beautiful and meaningful.</p></div>
         </div>
-        <div className="relative flex h-[598.05px] items-center justify-end  ">
+        <div className="relative flex h-[598.05px] items-center justify-end">
           <div className="absolute bg-[#1877F9] h-[420px] w-[420px] left-0">
           <FaQuoteRight className="rotate-180 text-7xl text-white mt-4 ml-4"/>
           <div className="w-[14rem] ml-20"><p className="text-white text-base leading-10 ">Whether we’re building new products from ground up, or transforming existing infrastructure, we know what it takes to make a digital product succeed at scale.</p></div>
