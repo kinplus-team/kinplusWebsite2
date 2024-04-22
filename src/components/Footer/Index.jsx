@@ -39,9 +39,10 @@ export default function Footer() {
   //  };
 
   return (
+    
     <section className="mx-auto p-0 overflow-hidden">
       {/*First component*/}
-      <div className="bg-[#1C1D20] mt-[98px]">
+      <div className="bg-[#1C1D20] ">
         <div className="z-[999] text-[#ffffff] flex flex-col gap-[20px] lg:gap-[59px] justify-center pl-[2em] lg:pl-[12.25em] pr-[1em] md:pr-[4em] lg:pr-24 py-24">
           <div className="flex flex-col md:flex-row gap-[2em] lg:gap-[100px] w-full mb-[1.1em]">
             <p className="p-1 text-[2.5rem] md:text-[2.8rem] lg:text-[3rem] xl:text-[4rem] font-[700] leading-[114.286%] md:w-[70%]">

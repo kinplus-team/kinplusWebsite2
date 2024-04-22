@@ -1,14 +1,1 @@
-section {
-  padding: 1em;
-  max-width: 100rem;
-  margin-right: auto;
-  margin-left: auto;
-}
 
-/*big screen*/
-@media screen and (min-width: 768px) {
-  section {
-    padding: 3em;
-    padding-right: 2em;
-  }
-}
