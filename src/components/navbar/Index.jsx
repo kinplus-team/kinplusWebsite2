@@ -41,9 +41,7 @@ export default function Header() {
   return (
     <PageLayout className="relative">
       <nav
-
         className={` grid grid-cols-[150px,1fr] items-center justify-between lg:py-10 `}
-
       >
         {/* logo */}
         <NavLink to={"/"}>
@@ -64,13 +62,11 @@ export default function Header() {
             <NavLink
               to={links.to}
               key={i}
-
               className={`flex gap-1 items-center ${
                 pathname == "/careers" || pathname == "/workshop" || pathname == "/" 
                   ? "text-white"
                   : "text-[#101010]"
               } text-[20px]`}
-
             >
               {links.title}
               <div

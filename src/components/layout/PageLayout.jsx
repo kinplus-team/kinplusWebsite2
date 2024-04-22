@@ -1,14 +1,13 @@
-
 import { useLocation } from "react-router-dom";
 
 export default function PageLayout({ children }) {
   const location = useLocation();
 
-  
   //Check if Route is Homepage
   const isHomepage = location.pathname === "/";
 
   return (
+
     <div className={`${
       isHomepage
         ? "bg-[#101010] "

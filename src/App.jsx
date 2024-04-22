@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AboutUs from "./pages/about-us/Index";
 import Training from "./pages/Training/Index";
 import Header from "./components/navbar/Index";
-import Footer from "./components/Footer/Index";
+import Footer from "./components/footer/Index.jsx";
 import Services from "./pages/Services/Index";
 import ProgramDetails from "./pages/program-details/ProgramDetails";
 import Internship from "./pages/Internship/Internship";
