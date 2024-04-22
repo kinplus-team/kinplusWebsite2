@@ -1,5 +1,5 @@
-import DesktopViewCatalogue from "./DesktopViewCatalogue.jsx";
-import MobileViewCatalogue from "./MobileViewCatalogue.jsx";
+import DesktopViewCatalogue from "./DesktopView.jsx";
+import MobileViewCatalogue from "./MobileView.jsx";
 
 export default function Catalogue({ title, catalouges }) {
   return (
