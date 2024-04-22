@@ -41,7 +41,7 @@ export default function Services() {
           <FaQuoteRight className="rotate-180 text-7xl text-white mt-4 ml-4"/>
           <div className="w-[14rem] ml-20"><p className="text-white text-base leading-10 ">Whether we’re building new products from ground up, or transforming existing infrastructure, we know what it takes to make a digital product succeed at scale.</p></div>
           </div>
-          <div className=" h-[550px] w-[870px] "> <img src={image10} alt="" /></div>
+          <div className="h-[550px] w-[870px]"> <img src={image10} alt="" /></div>
         </div>
         
       </section>
