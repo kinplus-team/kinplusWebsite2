@@ -3,6 +3,7 @@ section {
   max-width: 100rem;
   margin-right: auto;
   margin-left: auto;
+
 }
 
 .no-scroll::-webkit-scrollbar {

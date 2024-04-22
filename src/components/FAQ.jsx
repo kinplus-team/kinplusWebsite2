@@ -20,7 +20,7 @@ export default function FAQComponent({ FAQs }) {
         {FAQs.map((FAQ, index) => (
           <div
 
-            key={i}
+            key={index}
             onClick={() => {
               setShowAns(!showAns);
               setIndex(i);
