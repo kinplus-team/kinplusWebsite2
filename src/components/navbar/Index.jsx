@@ -63,7 +63,7 @@ export default function Header() {
               to={links.to}
               key={i}
               className={`flex gap-1 items-center ${
-                pathname == "/careers" || pathname == "/workshop"
+                pathname == "/careers" || pathname == "/workshop" || pathname == "/" 
                   ? "text-white"
                   : "text-[#101010]"
               } text-[20px]`}
