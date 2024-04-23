@@ -17,6 +17,7 @@ import lovelly2 from "../../assets/AboutUs/lovelly.jpeg";
 import idea from "../../assets/AboutUs/idea.jpeg";
 import ideaa from "../../assets/AboutUs/ideaa.jpeg";
 import ideaaa from "../../assets/AboutUs/ideaaa.jpeg";
+import PageLayout from "../../components/Layout/PageLayout";
 
 export default function AboutUs() {
   const whatWeDOText =
@@ -26,7 +27,7 @@ export default function AboutUs() {
     "At Kinplus, you'll partner with top-tier brands and up-and-coming ventures pioneering innovation through technology. Immerse yourself in a culture that celebrates creativity, encourages ownership, and fosters personal growth. Above all, enjoy the journey while making a meaningful impact.";
 
   return (
-    <section className="mx-auto overflow-hidden">
+    <PageLayout>
       {/**About Kinplus**/}
       <div className="flex gap-[80px]">
         <div className=" flex flex-col gap-[16px] w-[60%]">
@@ -389,6 +390,6 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-    </section>
+      </PageLayout>
   );
 }
