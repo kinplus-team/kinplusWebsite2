@@ -6,7 +6,7 @@ import RecentBlog1 from "../../assets/Blog/Image.png"
 import Arrow from "../../assets/Blog/arrow-up-right.png"
 import image3 from "../../assets/Blog/Image (1).png"
 import image4 from "../../assets/Blog/white-concrete-building-1838640.png"
-import BlogPost from "../../components/cards/Blog/BlogPost";
+import BlogPostCard from "../../components/cards/Blog/BlogPostCard";
 import { Link } from "react-router-dom";
 export default function Blog(){
     return(
@@ -150,12 +150,12 @@ Recent Blog Post */}
 <section >
 <h1 className="text-[2.6rem] text-[#082B5B] font-bold  leading-[64px] mb-4 ">All blog posts</h1>
 <div className="grid grid-cols-3 gap-8">
-<BlogPost />
-<BlogPost />
-<BlogPost />
-<BlogPost />
-<BlogPost />
-<BlogPost />
+<BlogPostCard />
+<BlogPostCard />
+<BlogPostCard />
+<BlogPostCard />
+<BlogPostCard />
+<BlogPostCard />
 </div>
 </section>
      </PageLayout>  
