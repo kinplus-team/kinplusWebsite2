@@ -4,7 +4,7 @@ import kinplusLogoWhite from "../../assets/kinplusWhite.png";
 import { IoIosMenu } from "react-icons/io";
 import { NavLink, useLocation } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import PageLayout from "../layout/PageLayout";
+import PageLayout from "../Layout/PageLayout";
 
 export default function Header() {
   const location = useLocation();
