@@ -3,9 +3,8 @@ import MobileView from "../../../components/cards/CountDownTimer/MobileView.jsx"
 import formatNumber from "../../../utilities/formatNumber.js";
 import { useCountdownTimer } from "../../../hooks/useCountDownTimer";
 
-export default function CountDownTimer({ image, time }) {
-  const targetDate = new Date("10/12/2024 23:59:59");
-  const { days, hours, minutes, seconds } = useCountdownTimer(targetDate);
+export default function CountDownTimer({ image }) {
+  const { days, hours, minutes, seconds } = useCountdownTimer();
 
   return (
     <div>

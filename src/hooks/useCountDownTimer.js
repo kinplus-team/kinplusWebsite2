@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import countdownTimer from "../services/countdownTimerServices";
 
-export const useCountdownTimer = (targetDate) => {
+export const useCountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -8,9 +9,15 @@ export const useCountdownTimer = (targetDate) => {
     seconds: 0,
   });
 
+  let targetDate;
   useEffect(() => {
+    countdownTimer().then((response) => {
+      targetDate = new Date(response);
+    });
+
     const interval = setInterval(() => {
       const now = new Date();
+
       const difference = targetDate.getTime() - now.getTime();
 
       const d = Math.floor(difference / (1000 * 60 * 60 * 24));
