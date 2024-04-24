@@ -15,9 +15,11 @@ import busyLaptop from "../../assets/AboutUs/NewImages/busy-on-the-laptop.jpeg";
 import traineeListen from "../../assets/AboutUs/NewImages/trainees-listening.jpeg";
 import traineeListen2 from "../../assets/AboutUs/NewImages/three-people-looking-at-laptop.jpeg";
 import idea from "../../assets/AboutUs/idea.jpeg";
+
 import workPc from "../../assets/AboutUs/NewImages/working-on-pc-1.jpeg";
 import workPc2 from "../../assets/AboutUs/NewImages/working-on-pc-2.jpeg";
 import PageLayout from "../../components/layout/PageLayout";
+
 
 export default function AboutUs() {
   const whatWeDOText =
@@ -28,6 +30,7 @@ export default function AboutUs() {
 
   return (
     <PageLayout>
+
       <section className="mx-auto overflow-hidden">
         {/**About Kinplus**/}
         <div className="flex flex-col-reverse md:flex-row gap-[80px]">
@@ -69,6 +72,7 @@ export default function AboutUs() {
                   width: "189.33px",
                 }}
               ></div>
+
             </div>
             {/*SVG Icons 
           <div className="absolute h-[600px]">
@@ -387,7 +391,9 @@ export default function AboutUs() {
                 ></div>
           </div>
         </div>
+
       </section>
     </PageLayout>
+
   );
 }

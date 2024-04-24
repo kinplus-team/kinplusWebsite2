@@ -16,6 +16,7 @@ import CareerDetails from "./pages/careers-details/CareersDetails.jsx";
 import Workshop from "./pages/workshop/Workshop.jsx";
 import WorkshopDetails from "./pages/workshop-details/WorkshopDetails.jsx";
 import Blog from "./pages/blog/index.jsx";
+import BlogPost from "./pages/blog/BlogPost/Index.jsx";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path="/our-services" element={<Services />} />
           <Route path="/contact-us/*" element={<ContactUs />} />
           <Route path="/training" element={<Training />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog" element={<BlogPost />} />
           <Route path="/training/:training" element={<ProgramDetails />} />
           <Route path="/internship" element={<Internship />} />
           <Route path="/careers" element={<Career />} />
