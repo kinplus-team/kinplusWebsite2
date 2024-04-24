@@ -18,7 +18,7 @@ import idea from "../../assets/AboutUs/idea.jpeg";
 
 import workPc from "../../assets/AboutUs/NewImages/working-on-pc-1.jpeg";
 import workPc2 from "../../assets/AboutUs/NewImages/working-on-pc-2.jpeg";
-import PageLayout from "../../components/layout/PageLayout";
+import PageLayout from "../../components/Layout/PageLayout";
 
 
 export default function AboutUs() {
