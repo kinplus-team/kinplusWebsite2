@@ -3,7 +3,7 @@ import RecentBlog1 from "../../../assets/Blog/Image.png"
 
 import Arrow from "../../../assets/Blog/arrow-up-right (1).png"
 import { Link } from 'react-router-dom'
-export default function BlogPost() {
+export default function BlogPostCard() {
   return (
     <div className="shadow hover:shadow-md">
         <Link to={"#"} className="space-y-3">
