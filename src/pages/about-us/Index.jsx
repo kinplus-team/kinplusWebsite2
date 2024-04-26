@@ -15,6 +15,7 @@ import busyLaptop from "../../assets/AboutUs/NewImages/busy-on-the-laptop.jpeg";
 import traineeListen from "../../assets/AboutUs/NewImages/trainees-listening.jpeg";
 import traineeListen2 from "../../assets/AboutUs/NewImages/three-people-looking-at-laptop.jpeg";
 import idea from "../../assets/AboutUs/idea.jpeg";
+
 import workPc from "../../assets/AboutUs/NewImages/working-on-pc-1.jpeg";
 import workPc2 from "../../assets/AboutUs/NewImages/working-on-pc-2.jpeg";
 import PageLayout from "../../components/Layout/PageLayout";
