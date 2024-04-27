@@ -6,15 +6,11 @@ export default function NextCohort() {
   const countDownTimerProps = {
     desktopImg: smileyFaces,
     mobileImg: graphicsDesign,
-    countDownTimer: "00:00:00:00",
   };
 
   return (
     <div>
-      <CountDownTimer
-        image={countDownTimerProps}
-        time={countDownTimerProps.countDownTimer}
-      />
+      <CountDownTimer image={countDownTimerProps} />
     </div>
   );
 }

@@ -20,7 +20,6 @@ import workPc from "../../assets/AboutUs/NewImages/working-on-pc-1.jpeg";
 import workPc2 from "../../assets/AboutUs/NewImages/working-on-pc-2.jpeg";
 import PageLayout from "../../components/Layout/PageLayout";
 
-
 export default function AboutUs() {
   const whatWeDOText =
     "We're here to support you through the entire process of product development, from ideation to launch and beyond. We'll help you navigate any challenges that come up along the way, and we're always focused on improving customer retention and increasing Customer Lifetime Value. We're not just a service provider, we're a partner in your success.";
@@ -30,7 +29,6 @@ export default function AboutUs() {
 
   return (
     <PageLayout>
-
       <section className="mx-auto overflow-hidden">
         {/**About Kinplus**/}
         <div className="flex flex-col-reverse md:flex-row gap-[80px]">
@@ -72,7 +70,6 @@ export default function AboutUs() {
                   width: "189.33px",
                 }}
               ></div>
-
             </div>
             {/*SVG Icons 
           <div className="absolute h-[600px]">
@@ -323,8 +320,10 @@ export default function AboutUs() {
             {/**Next text**/}
             <div className="mr-[-50px] w-full flex flex-col gap-2">
               <div className="relative h-[534px]  ">
-                <div className="absolute flex items-center text-center flex-col space-y-[32px]  w-full h-full text-[#ffffff] bg-[#1877F9]
-                 p-8 sm:p-[50px] md:p-[80px]">
+                <div
+                  className="absolute flex items-center text-center flex-col space-y-[32px]  w-full h-full text-[#ffffff] bg-[#1877F9]
+                 p-8 sm:p-[50px] md:p-[80px]"
+                >
                   <p className="text-[1.8rem] sm:text-[2.8rem] md:text-[3.5rem] font-[700] leading-[110%]  p-1">
                     Ready for your next project?
                   </p>
@@ -369,31 +368,29 @@ export default function AboutUs() {
               }}
             ></div>
             <div
-                  className="flex-grow "
-                  style={{
-                    backgroundImage: `url(${workPc})`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    width: "528px",
-                  }}
-                ></div>
+              className="flex-grow "
+              style={{
+                backgroundImage: `url(${workPc})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                width: "528px",
+              }}
+            ></div>
 
-                <div
-                  className=""
-                  style={{
-                    backgroundImage: `url(${workPc2})`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    width: "177px",
-                  }}
-                ></div>
+            <div
+              className=""
+              style={{
+                backgroundImage: `url(${workPc2})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                width: "177px",
+              }}
+            ></div>
           </div>
         </div>
-
       </section>
     </PageLayout>
-
   );
 }

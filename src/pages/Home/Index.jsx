@@ -1,4 +1,4 @@
-import HeroPage from "../../components/HeroPage/Index";
+import Hero from "./Hero";
 import PartnersAndSponsors from "../../components/PartnersAndSponsors/Index";
 import TrainingComponent from "../../components/trainingPrograms/TrainingComponent/Index";
 // import TrainingTestimonial from "../Training/TrainingTestimonial/Index";
@@ -11,30 +11,30 @@ export default function Homepage() {
   return (
     <>
       {/*Hero Component */}
-      <HeroPage />
+      <Hero />
 
       {/*PartnersAndSponsors Component */}
-      <PartnersAndSponsors />
+      {/* <PartnersAndSponsors /> */}
 
       {/*WhyChooseUs Component */}
 
       {/*whatWeDo Component */}
-      <WhatWeDo />
+      {/* <WhatWeDo /> */}
 
       {/* Next Cohort */}
-      <NextCohort />
+      {/* <NextCohort /> */}
 
       {/*Training Component */}
-      <TrainingComponent />
+      {/* <TrainingComponent /> */}
 
       {/*Testimonial */}
       {/* <TrainingTestimonial /> */}
 
       {/*Infinte loop */}
-      <InfiniteLoop />
+      {/* <InfiniteLoop /> */}
 
       {/*FAQ */}
-      <FAQHomepage />
+      {/* <FAQHomepage /> */}
     </>
   );
 }
