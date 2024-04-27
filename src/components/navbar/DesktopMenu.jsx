@@ -1,48 +1,20 @@
 import { useState } from "react";
 import kinplusLogoBlue from "../../assets/kinplusBlue.png";
 import kinplusLogoWhite from "../../assets/kinplusWhite.png";
-import { IoIosMenu } from "react-icons/io";
 import { NavLink, useLocation } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import PageLayout from "../Layout/PageLayout";
+import staticData from "../../repository/navbar";
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const location = useLocation();
   const { pathname } = location;
-
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-
-  const NavbarLinks = [
-    { title: "About Us", to: "/about-us" },
-    { title: "Our Services", to: "/our-services" },
-    { title: "Trainings", to: "/training" },
-    { title: "Blogs", to: "/blog" },
-    { title: "Contact Us", to: "/contact" },
-  ];
-
-  const trainingList = [
-    {
-      title: "IT / SIWES",
-      to: "/training/siwes",
-    },
-    {
-      title: "Workshop",
-      to: "/training/workshop",
-    },
-    {
-      title: "Academy",
-      to: "/training/academy",
-    },
-  ];
-
-  //Check if Route is Homepage
-  const isHomepage = location.pathname === "/";
 
   return (
     <PageLayout className="relative">
-      <nav
-        className={` grid grid-cols-[150px,1fr] items-center justify-between lg:py-10 `}
-      >
+      <nav className="absolute z-30 top-0 lg:w-[95%] w-[92%] grid grid-cols-[150px_1fr] items-center justify-between lg:py-10">
         {/* logo */}
         <NavLink to={"/"}>
           <img
@@ -57,13 +29,15 @@ export default function Header() {
         </NavLink>
 
         {/* nav links */}
-        <div className="hidden lg:grid grid-cols-[auto_auto_100px_auto_auto] gap-10 justify-self-end justify-end">
-          {NavbarLinks.map((links, i) => (
+        <div className="hidden lg:grid grid-cols-[auto_auto_100px_auto_auto] gap-10 justify-self-end">
+          {staticData.NavbarLinks.map((links, i) => (
             <NavLink
               to={links.to}
               key={i}
               className={`flex gap-1 items-center ${
-                pathname == "/careers" || pathname == "/workshop" || pathname == "/" 
+                pathname == "/careers" ||
+                pathname == "/workshop" ||
+                pathname == "/"
                   ? "text-white"
                   : "text-[#101010]"
               } text-[20px]`}
@@ -71,7 +45,8 @@ export default function Header() {
               {links.title}
               <div
                 className={`${links.title !== "Trainings" && "hidden"}`}
-                onClick={() => setIsDropDownOpen(!isDropDownOpen)}
+                onMouseEnter={() => setIsDropDownOpen(true)}
+                onMouseLeave={() => setIsDropDownOpen(false)}
               >
                 {isDropDownOpen ? (
                   <IoIosArrowUp size={13} />
@@ -84,12 +59,12 @@ export default function Header() {
 
           {/* Dropdown */}
           <div
-            className={`bg-white absolute top-20 right-64 w-40 z-10 rounded-md font-light 
+            className={`bg-white absolute top-20 right-60 w-32 z-10 rounded-md font-light 
               text-neutral-600 px-5 shadow-[0_0_5px_0_rgba(255,255,255,0.5)] overflow-hidden transition-all duration-300 ${
                 isDropDownOpen ? "h-[145.6px]" : "h-0"
               }`}
           >
-            {trainingList.map((list, i) => (
+            {staticData.trainingList.map((list, i) => (
               <NavLink key={i} to={list.to}>
                 <div
                   className={`
@@ -104,11 +79,12 @@ export default function Header() {
         </div>
 
         {/* mobile menu */}
-        <IoIosMenu
-          className={`lg:hidden w-7 lg:w-10 h-20  justify-self-end ${
-            pathname == "/careers" && "text-white"
-          }`}
-        />
+        <div className="justify-self-end items-center md:gap-0 md:hidden">
+          <MobileMenu
+            isDropDownOpen={isDropDownOpen}
+            setIsDropDownOpen={setIsDropDownOpen}
+          />
+        </div>
       </nav>
     </PageLayout>
   );

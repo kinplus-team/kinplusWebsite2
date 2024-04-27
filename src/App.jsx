@@ -1,12 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage/Index";
+import Homepage from "./pages/Home/Index.jsx";
 import ContactUs from "./pages/ContactUS/Index";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AboutUs from "./pages/about-us/Index";
 import Training from "./pages/Training/Index";
-import Header from "./components/navbar/Index";
+import Header from "./components/navbar/DesktopMenu.jsx";
 import Footer from "./components/footer/Index.jsx";
 import Services from "./pages/Services/Index";
 import ProgramDetails from "./pages/program-details/ProgramDetails";
