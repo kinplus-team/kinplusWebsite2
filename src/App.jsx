@@ -25,7 +25,7 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/about-us" element={<AboutUs />} />
+          {/* <Route path="/about-us" element={<AboutUs />} />
           <Route path="/our-services" element={<Services />} />
           <Route path="/contact-us/*" element={<ContactUs />} />
           <Route path="/training" element={<Training />} />
@@ -36,7 +36,7 @@ function App() {
           <Route path="/careers" element={<Career />} />
           <Route path="/careers/:career" element={<CareerDetails />} />
           <Route path="/workshop" element={<Workshop />} />
-          <Route path="/workshop/:details" element={<WorkshopDetails />} />
+          <Route path="/workshop/:details" element={<WorkshopDetails />} /> */}
         </Routes>
         <Footer />
       </Router>

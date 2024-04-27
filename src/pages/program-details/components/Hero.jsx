@@ -1,5 +1,5 @@
 import React from "react";
-import cuteFaces from "../../../assets/choose_us.png";
+import cuteFaces from "../../../assets/pages/home/whychooseus/choose_us.png";
 import Button from "../../../components/Button.jsx";
 
 export default function Hero({ title, description }) {

@@ -1,10 +1,10 @@
 import React from "react";
-import PageLayout from "../Layout/PageLayout";
-import Partners from "../../repository/home/partner";
+import PageLayout from "../../../components/Layout/PageLayout";
+import Partners from "../../../repository/home/partner";
 
 export default function PartnersAndSponsors() {
   return (
-    <PageLayout className="lg:py-20 py-10 grid gap-3">
+    <PageLayout className="lg:pt-20 lg:pb-3 py-10 grid gap-3">
       <h2 className="lg:text-5xl text-2xl font-bold lg:leading-[64px] leading-[30px] text-center text-[#0F172A]">
         Partners and Sponsors
       </h2>
