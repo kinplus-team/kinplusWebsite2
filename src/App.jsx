@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Home/Index.jsx";
+import Home from "./pages/Home/Index.jsx";
 import ContactUs from "./pages/ContactUS/Index";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,7 +24,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route exact path="/" element={<Homepage />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/our-services" element={<Services />} />
           <Route path="/contact-us/*" element={<ContactUs />} />

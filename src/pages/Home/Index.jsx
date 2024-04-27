@@ -10,11 +10,8 @@ import InfiniteLoop from "../../components/InfinteLoop/Index";
 export default function Homepage() {
   return (
     <>
-      {/*Hero Component */}
       <Hero />
-
-      {/*PartnersAndSponsors Component */}
-      {/* <PartnersAndSponsors /> */}
+      <PartnersAndSponsors />
 
       {/*WhyChooseUs Component */}
 

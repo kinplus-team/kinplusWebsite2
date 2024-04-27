@@ -18,7 +18,7 @@ import linkedInIcon from "../../assets/components/navbar/svg/linkedIn.svg";
 import twitterIcon from "../../assets/components/navbar/svg/twitter.svg";
 
 // Static Data
-import staticData from "../../repository/navbar";
+import staticData from "../../repository/home/navbar";
 
 const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen }) => {
   const [isMobileNav, setIsMobileNav] = useState(false);
