@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import girlOnLaptop from "../../assets/pages/home/hero/a-girl-on-a-laptop-min.jpeg";
-import Button from "../../components/Button";
-import PageLayout from "../../components/Layout/PageLayout";
+import girlOnLaptop from "../../../assets/pages/home/hero/a-girl-on-a-laptop-min.jpeg";
+import Button from "../../../components/Button";
+import PageLayout from "../../../components/Layout/PageLayout";
 
 export default function HeroPage() {
   return (
@@ -28,7 +28,7 @@ export default function HeroPage() {
             </p>
 
             {/* link */}
-            <Link to="/contact-us/services" className="w-60">
+            <Link to="/contact-us/services" className="w-52">
               <Button text="Start a Project" type="customizedBlue" />
             </Link>
           </div>
