@@ -32,45 +32,38 @@ export default function MyForm() {
 
   return (
     <PageLayout>
-    <section className="mx-auto"> 
-      {isContactUsPath && (
-        <>
-          <div className="flex flex-col md:flex-row items-center justify-center md:space-x-6 space-y-4 md:space-y-10 mb-5 md:mb-20">
-            <h3 className="text-[1.4rem] sm:text-[2.3rem] md:text-[2.8rem] mt-11 lg:text-[3.25rem] capitalize font-bold text-[#082B5B] md:leading-[4.147rem] p-2">
-              Interested about our Services and Training Opportunities?
-            </h3>
-            <p className="text-[14px] sm:text-[18px] md:text-[20px] lg:text-[22px] font-[400] leading-[156.25%] text-[#101010] md:self-start w-full md:w-[120%] lg:w-[90%] md:p-0  lg:p-6 p-2">
-              {contactUsHeadingPara}
-            </p>
-          </div>
-          <div className=" flex flex-col space-y-4 sm:space-y-6 md:space-y-0 md:flex-row md:space-x-6 ">
-            {contactUsCardDetails.map((contactUsCardDetail, index) => (
-              <ContactUsCard
-                key={contactUsCardDetail.title + index}
-                label={contactUsCardDetail.label}
-                title={contactUsCardDetail.title}
-                text={contactUsCardDetail.text}
-                link={contactUsCardDetail.link}
-                to={contactUsCardDetail.to}
-              />
-            ))}
-          </div>
-        </>
-      )}
+      <section className="mx-auto">
+        {isContactUsPath && (
+          <>
+            <div className="flex flex-col md:flex-row items-center justify-center md:space-x-6 space-y-4 md:space-y-10 mb-5 md:mb-20">
+              <h3 className="text-[1.4rem] sm:text-[2.3rem] md:text-[2.8rem] mt-11 lg:text-[3.25rem] capitalize font-bold text-[#082B5B] md:leading-[4.147rem] p-2">
+                Interested about our Services and Training Opportunities?
+              </h3>
+              <p className="text-[14px] sm:text-[18px] md:text-[20px] lg:text-[22px] font-[400] leading-[156.25%] text-[#101010] md:self-start w-full md:w-[120%] lg:w-[90%] md:p-0  lg:p-6 p-2">
+                {contactUsHeadingPara}
+              </p>
+            </div>
+            <div className=" flex flex-col space-y-4 sm:space-y-6 md:space-y-0 md:flex-row md:space-x-6 ">
+              {contactUsCardDetails.map((contactUsCardDetail, index) => (
+                <ContactUsCard
+                  key={contactUsCardDetail.title + index}
+                  label={contactUsCardDetail.label}
+                  title={contactUsCardDetail.title}
+                  text={contactUsCardDetail.text}
+                  link={contactUsCardDetail.link}
+                  to={contactUsCardDetail.to}
+                />
+              ))}
+            </div>
+          </>
+        )}
 
-      {/* Routes for Contact Us, Services, and Training */}
-      <Routes>
-        <Route
-          path="/services"
-          element={<ContactUsServices />}
-        />
-        <Route
-          path="/training"
-          element={<ContactUsTraining />}
-        />
-      </Routes>
-    </section>
+        {/* Routes for Contact Us, Services, and Training */}
+        <Routes>
+          <Route path="/services" element={<ContactUsServices />} />
+          <Route path="/training" element={<ContactUsTraining />} />
+        </Routes>
+      </section>
     </PageLayout>
   );
 }
-
