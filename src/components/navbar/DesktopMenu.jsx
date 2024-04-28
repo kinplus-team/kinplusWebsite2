@@ -4,7 +4,7 @@ import kinplusLogoWhite from "../../assets/kinplusWhite.png";
 import { NavLink, useLocation } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import PageLayout from "../Layout/PageLayout";
-import staticData from "../../repository/navbar";
+import staticData from "../../repository/home/navbar";
 import MobileMenu from "./MobileMenu";
 
 export default function Header() {
