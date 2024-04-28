@@ -32,7 +32,7 @@ export default function Header() {
         <div className="hidden lg:grid grid-cols-[auto_auto_100px_auto_auto] gap-10 justify-self-end">
           {staticData.NavbarLinks.map((links, i) => (
             <NavLink
-              to={links.to}
+              to={links.to != "/training" ? links.to : ""}
               key={i}
               className={`flex gap-1 items-center ${
                 pathname == "/careers" ||
@@ -45,8 +45,7 @@ export default function Header() {
               {links.title}
               <div
                 className={`${links.title !== "Trainings" && "hidden"}`}
-                onMouseEnter={() => setIsDropDownOpen(true)}
-                onMouseLeave={() => setIsDropDownOpen(false)}
+                onClick={() => setIsDropDownOpen(!isDropDownOpen)}
               >
                 {isDropDownOpen ? (
                   <IoIosArrowUp size={13} />

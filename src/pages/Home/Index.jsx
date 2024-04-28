@@ -4,8 +4,8 @@ import WhyChooseUs from "./component/WhyChooseUs";
 import TrainingComponent from "../../components/trainingPrograms/TrainingComponent/Index";
 // import TrainingTestimonial from "../Training/TrainingTestimonial/Index";
 import FAQHomepage from "../Training/FAQHomepage";
-import WhatWeDo from "../../components/whatWeDoComponent/WhatWeDo/Index";
-import NextCohort from "../../components/NextCohort/index";
+import WhatWeDo from "./component/WhatWeDo";
+import NextCohort from "./component/NextCohort";
 import InfiniteLoop from "../../components/InfinteLoop/Index";
 
 export default function Homepage() {
@@ -14,11 +14,8 @@ export default function Homepage() {
       <Hero />
       <PartnersAndSponsors />
       <WhyChooseUs />
-
-      {/* <WhatWeDo /> */}
-
-      {/* Next Cohort */}
-      {/* <NextCohort /> */}
+      <WhatWeDo />
+      <NextCohort />
 
       {/*Training Component */}
       {/* <TrainingComponent /> */}
