@@ -10,6 +10,7 @@ export const useCountdownTimer = () => {
   });
 
   let targetDate;
+
   useEffect(() => {
     countdownTimer().then((response) => {
       targetDate = new Date(response);
