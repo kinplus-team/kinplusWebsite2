@@ -26,9 +26,9 @@ export default function Testimonials({
         {testimonials.map((testimonial, i) => (
           <div
             key={i}
-            className="grid lg:grid-cols-[1fr_auto] pb-16 pt-4 gap-12 relative snap-end"
+            className="grid lg:grid-cols-[1fr_auto] py-4 gap-16 relative snap-end"
           >
-            <p className="lg:text-[20px] text-lg font-[400] lg:leading-[35px] text-[#101010] ">
+            <p className="lg:text-[20px] text-lg font-[400] lg:leading-[35px] text-[#101010] max-w-3xl">
               {testimonial.text}
             </p>
 

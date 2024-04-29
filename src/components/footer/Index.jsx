@@ -34,7 +34,7 @@ export default function Footer() {
   return (
     <div>
       {/* top section */}
-      <div className="bg-[#1C1D20] text-white grid lg:grid-cols-[auto_1fr] gap-5 py-20 lg:px-[150px] px-7 mx-auto">
+      <div className="bg-[#1C1D20] text-white grid lg:grid-cols-[auto_1fr] gap-5 py-10 lg:px-[150px] px-7 mx-auto">
         <div className="grid lg:gap-10 gap-6">
           <h3 className="lg:text-7xl text-4xl font-bold lg:leading-[80px] lg:text-left text-center lg:max-w-4xl">
             Join our <span className="text-[#1877F9]">leading</span> learning
@@ -60,7 +60,7 @@ export default function Footer() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="pt-20 pb-10 lg:px-[110px] px-7">
+        <div className="py-10 lg:px-[110px] px-7">
           <div className="grid lg:grid-cols-3 text-white lg:gap-5 gap-8 lg:pb-16">
             {/* contact  */}
             <div className="">

@@ -2,21 +2,25 @@ import { request, gql } from "graphql-request";
 
 const graphqlAPI = process.env.GRAPHCMS_ENDPOINT;
 
-const cohortCountDowntimer = async () => {
+const courses = async () => {
   const query = gql`
-    query cohortCountDownTimer {
-      nextCohortTime(where: { id: "clvkz4jfs00z507mkr6rcplj3" }) {
-        nextCohortBegins
+    query MyQuery {
+      courses {
+        title
+        slug
+        description
+        mediumPaymentPackage
+        proPaymentPackage
       }
     }
   `;
 
   try {
     const response = await request(graphqlAPI, query);
-    return response.nextCohortTime.nextCohortBegins;
+    return response.courses;
   } catch (error) {
     console.error("Error fetching timer:", error);
   }
 };
 
-export default cohortCountDowntimer;
+export default courses;

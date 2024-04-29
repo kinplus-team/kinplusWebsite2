@@ -18,8 +18,8 @@ export default function Button({ icon, text, type, className, isLong }) {
         <button
           className={`bg-white w-full ${
             isLong
-              ? "lg:px-6 lg:py-5 px-3 text-left  py-4 rounded-md "
-              : " rounded-xl text-center lg:px-4 lg:py-4 px-10 py-10"
+              ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left "
+              : " rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"
           } text-[#1877F9] text-xl font-medium leading-[24px] border border-white shadow-md ${className}`}
         >
           {text}

@@ -10,13 +10,12 @@ export default function PartnersAndSponsors() {
       </h2>
       <div className="flex flex-wrap lg:gap-28 gap-3 items-center place-content-center">
         {Partners.map((partner, i) => (
-          <div>
-            <img
-              className="lg:w-[100px] w-[80px] h-auto mx-auto"
-              src={partner}
-              alt="Nitda_Logo"
-            />
-          </div>
+          <img
+            key={i}
+            className="lg:w-[100px] w-[80px] h-auto mx-auto"
+            src={partner}
+            alt="Nitda_Logo"
+          />
         ))}
       </div>
     </PageLayout>

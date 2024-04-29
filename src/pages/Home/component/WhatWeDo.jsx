@@ -33,7 +33,7 @@ export default function WhatWeDo() {
         What We Do
       </h6>
 
-      <div className="grid gap-16">
+      <div className="grid lg:gap-16 gap-5">
         {/* title */}
         <div className="grid lg:grid-cols-[auto_1fr] gap-4 lg:gap-36 lg:py-7 py-6">
           <h3 className="lg:text-[32px] text-2xl max-w-xl text-[#082B5B] font-bold capitalize lg:leading-[38px] leading-[30px]">
