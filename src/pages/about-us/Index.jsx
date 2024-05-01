@@ -21,56 +21,14 @@ import workPc2 from "../../assets/AboutUs/NewImages/working-on-pc-2.jpeg";
 import PageLayout from "../../components/Layout/PageLayout";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import OurMissionAndVision from "./components/OurMissionAndVision";
 
 export default function AboutUs() {
   return (
     <div>
       <Hero />
       <About />
-
-      {/**Our Vision And Mission**/}
-      {/* <div className="lg:mt-[9.1563em] lg:h-[613px] flex flex-col-reverse lg:flex-row">
-        <div className="relative mt-10 lg:!mt-26 w-[60%] lg:ml-[-150px]  "> */}
-      {/*<div className="flex ">
-              <div
-                style={{
-                  backgroundImage: `url(${aboutUsIcons1})`,
-                  width: "16.01em",
-                  height: "613px",
-                  marginTop: "60px",
-                }}
-                loading="lazy"
-              ></div>
-
-              <div
-                className=""
-                style={{
-                  backgroundImage: `url(${aboutUsIcons2})`,
-                  width: "16.01em",
-                  height: "613px",
-                  marginTop: "-50px",
-                  marginLeft: "20px",
-                  rotate: "210deg",
-                }}
-              ></div>
-              <div
-                className=""
-                style={{
-                  backgroundImage: `url(${aboutUsIcons2})`,
-                  backgroundPosition: "revert-layer",
-                  backgroundSize: "cover",
-                  width: "16.01em",
-                  height: "613px",
-                  marginTop: "80px",
-                  marginLeft: "-150px",
-                  rotate: "220deg",
-                }}
-              ></div>
-            </div>*/}
-      {/* <div className="absolute top-0  w-[20em] mx-auto md:w-[32em] right-full left-1 lg:left-[9rem]">
-            <img src={aboutUsGrid} alt="" />
-          </div>
-        </div> */}
+      <OurMissionAndVision />
 
       {/* <div className="lg:w-[50%] lg:mr-11">
           <h3 className="text-[#082B5B] text-[2rem] md:text-[4rem] font-[700] tracking-[-0.88px] md:tracking-[-2.88px] leading-[110%] mt-[71px] mb-[31px] ">

@@ -21,7 +21,10 @@ export default function Hero() {
               marginTop: "80px",
             }}
             loading="lazy"
-          ></div>
+            className="relative"
+          >
+            <div className="absolute top-0 h-full w-full bg-black opacity-40 rounded-2xl"></div>
+          </div>
           <div
             style={{
               backgroundImage: `url(${girlLookingAtLaptop})`,
@@ -33,7 +36,11 @@ export default function Hero() {
               width: "100%",
               alignSelf: "start",
             }}
-          ></div>
+            loading="lazy"
+            className="relative"
+          >
+            <div className="absolute top-0 h-full w-full bg-black opacity-40 rounded-2xl"></div>
+          </div>
           <div
             style={{
               backgroundImage: `url(${lookingAtLaptop})`,
@@ -45,7 +52,11 @@ export default function Hero() {
               width: "100%",
               marginTop: "80px",
             }}
-          ></div>
+            loading="lazy"
+            className="relative"
+          >
+            <div className="absolute top-0 h-full w-full bg-black opacity-40 rounded-2xl"></div>
+          </div>
         </div>
 
         <div className="self-center grid lg:gap-2 gap-3">
