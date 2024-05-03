@@ -11,10 +11,9 @@ export default function HeroPage() {
           backgroundImage: `url(${girlOnLaptop})`,
         }}
         className="relative bg-cover lg:bg-right-bottom bg-center grid content-center bg-fixed"
-        loading="lazy"
       >
         {/*Hero Text*/}
-        <PageLayout>
+        <PageLayout isBgColorWhite={true}>
           <div className="relative z-10 grid content-center gap-8 h-screen mx-auto max-w-[1500px]">
             <h1 className="text-[#F1F1F1] max-w-4xl lg:text-6xl text-4xl font-bold leading-[40px] lg:leading-[65px] capitalize">
               Empowering Innovators Through Product Development and Training{" "}
@@ -33,9 +32,8 @@ export default function HeroPage() {
             </Link>
           </div>
         </PageLayout>
-
-        <div className="absolute top-0 h-full w-full bg-black opacity-80"></div>
       </div>
+      <div className="absolute top-0 h-full w-full bg-black opacity-70"></div>
     </header>
   );
 }
