@@ -8,7 +8,7 @@ export default function WhatWeDo() {
   return (
     <PageLayout className="lg:py-20 py-10">
       <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-10">
-        <div className="grid grid-rows-[auto_auto_1fr] gap-3">
+        <div className="grid grid-rows-[auto_auto_1fr] gap-3 place-self-center">
           <h6 className="text-[#1877F9] lg:leading-[35px] leading-[28px] capitalize lg:text-2xl text-xl">
             What We Do
           </h6>
@@ -28,7 +28,7 @@ export default function WhatWeDo() {
         </div>
 
         <div className="grid  gap-4">
-          <div className="relative lg:w-[515px] w-[350px]">
+          <div className="relative lg:w-[80%] w-[350px]">
             <div
               style={{
                 backgroundImage: `url(${raptLaptop})`,
@@ -45,7 +45,7 @@ export default function WhatWeDo() {
               {" "}
             </div>
 
-            <div className="absolute top-0 h-full w-full z-30 bg-black opacity-40 rounded-[20px]"></div>
+            <div className="absolute top-0 h-full w-full z-30 bg-black opacity-30 rounded-[20px]"></div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -66,7 +66,7 @@ export default function WhatWeDo() {
                 {" "}
               </div>
 
-              <div className="absolute top-0 h-full w-full bg-black opacity-40 rounded-[20px]"></div>
+              <div className="absolute top-0 h-full w-full bg-black opacity-30 rounded-[20px]"></div>
             </div>
 
             <div className="relative">
@@ -86,7 +86,7 @@ export default function WhatWeDo() {
                 {" "}
               </div>
 
-              <div className="absolute top-0 h-full w-full bg-black opacity-40 rounded-[20px]"></div>
+              <div className="absolute top-0 h-full w-full bg-black opacity-30 rounded-[20px]"></div>
             </div>
           </div>
         </div>
