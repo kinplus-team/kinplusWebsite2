@@ -89,14 +89,14 @@ export default function AboutUs() {
 
           <div className="self-center">
             <div>
-              <p className="text-[#1877F9] text-[0.938rem] sm:text-[1.125rem] md:text-[1.5rem] mt-8 md:mt-0 font-[400] leading-[125%] py-2 capitalize">
+              <p className="text-[#1877F9] text-[0.938rem] sm:text-[1.25rem] lg:text-[1.5rem] mt-8 md:mt-0 font-[400] leading-[125%] py-2 capitalize">
                 Who We Are
               </p>
-              <h3 className="text-[#082B5B] text-[1.876rem] md:text-[4.0625rem] font-[700] leading-[115.385%] capitalize mt-3 md:mt-0 mb-[1.3125rem]">
+              <h3 className="text-[#082B5B] text-[1.876rem] sm:text-[2.188rem] md:text-[2.633rem] lg:text-[4.0625rem] font-[700] leading-[115.385%] capitalize mt-3 md:mt-0 mb-[1.3125rem]">
                 About Kinplus
               </h3>
             </div>
-            <p className=" text-[0.875rem] md:text-[1.438rem] leading-[138.889%] font-[400]">
+            <p className=" text-[0.875rem] sm:text-[1.125rem] md:text-[1.25rem] lg:text-[1.438rem] leading-[138.889%] font-[400]">
               We are a team of energetic and innovative developers and
               designers, who are passionate about implementing customer needs
               with an approach focused on satisfaction and timely delivery.
@@ -108,10 +108,10 @@ export default function AboutUs() {
         <div className="lg:flex mt-10 mx-[-3em] p-0 lg:h-[695px] ">
           <div className=" w-full bg-blue-700">
             <div className=" ml-[55px] md:mt-12 md:ml-[95px] h-[444px] lg:h-full py-[50px] ">
-              <h3 className="text-[1.5rem] lg:text-[54px] font-[700] leading-[118.519%] capitalize text-[#ffffff] p-1 mb-[20px]">
+              <h3 className="text-[1.5rem] sm:text-[2.5rem] md:text-[2.7rem] lg:text-[54px] font-[700] leading-[118.519%] capitalize text-[#ffffff] p-1 mb-[20px]">
                 What is Kinplus?
               </h3>
-              <p className="text-[#fff] text-xs md:text-[0.9rem] lg:text-[1.15rem] font-[400] leading-[138.889%] p-1 w-[80%] ">
+              <p className="text-[#fff] text-xs sm:text-[0.875rem] md:text-[1rem] lg:text-[1.15rem] font-[400] leading-[138.889%] p-1 w-[80%] ">
                 Kinplus Technologies is a software development company with a
                 focus on delivering scalable applications and software to
                 businesses, organizations, and individuals. We're driven by a
@@ -154,7 +154,7 @@ export default function AboutUs() {
                 }}
                 loading="lazy"
               ></div>
-
+              
               <div
                 className=""
                 style={{
@@ -180,16 +180,16 @@ export default function AboutUs() {
                 }}
               ></div>
             </div>*/}
-            <div className="absolute top-0  w-[20em] mx-auto md:w-[32em] right-full left-1 lg:left-[9rem]">
+            <div className="absolute top-0  w-[20em] sm:w-[32em] md:w-[35em] lg:w-[32em] mx-auto right-full left-1 sm:left-[4.5rem] lg:left-[9rem]">
               <img src={aboutUsGrid} alt="" />
             </div>
           </div>
 
           <div className="lg:w-[50%] lg:mr-11">
-            <h3 className="text-[#082B5B] text-[2rem] md:text-[4rem] font-[700] tracking-[-0.88px] md:tracking-[-2.88px] leading-[110%] mt-[71px] mb-[31px] ">
+            <h3 className="text-[#082B5B] text-[2rem] sm:text-[2.188rem]  md:text-[2.633rem] lg:text-[4rem] font-[700] tracking-[-0.88px] md:tracking-[-2.88px] leading-[110%] mt-[71px] mb-[31px] ">
               Our Vision
             </h3>
-            <p className="text-[#23242A] text-[0.963rem] md:text-[1.125rem] font-[400] leading-[138.889%]">
+            <p className="text-[#23242A] text-[0.963rem] sm:text-[1.026rem] md:text-[1.125rem] font-[400] leading-[138.889%]">
               To promote youth empowerment and create employment via on the job
               training with a team of experts while developing products and
               providing services that will help the society and the world at
@@ -204,10 +204,10 @@ export default function AboutUs() {
               build a better tomorrow for everyone
             </p>
 
-            <h3 className="text-[#082B5B] text-[2rem] md:text-[4rem] font-[700] tracking-[-0.88px] md:tracking-[-2.88px] leading-[110%] mt-[71px] mb-[31px] ">
+            <h3 className="text-[#082B5B] text-[2rem] sm:text-[2.188rem] md:text-[2.633rem] lg:text-[4rem] font-[700] tracking-[-0.88px] md:tracking-[-2.88px] leading-[110%] mt-[71px] mb-[31px] ">
               Our Mission
             </h3>
-            <p className="text-[#23242A] text-[0.963rem] md:text-[1.125rem] md:pb-0 font-[400] leading-[138.889%] md:w-[42rem]">
+            <p className="text-[#23242A] text-[0.963rem] sm:text-[1.026rem] md:text-[1.125rem] md:pb-0 font-[400] leading-[138.889%] md:w-[42rem]">
               To enhance societal development and sustainability by empowering
               youths with skills and expertise that will make them employable,
               business minded, skilful and industrious.
@@ -224,15 +224,15 @@ export default function AboutUs() {
         </div>
 
         {/**What we do**/}
-        <div className="mt-[18.75em] flex flex-col md:flex-row gap-[76px]">
-          <div className="w-[100%] md:w-[60%]">
-            <p className="text-[0.938rem] md:text-[1.5rem] font-[400] leading-[125%] mt-[6.2188em] mb-3 md:mb-0 text-[#1877F9] p-1">
+        <div className="mt-[18.75em] sm:mt-[30rem] lg:mt-[18.75em] flex flex-col lg:flex-row gap-[76px]">
+          <div className="w-[100%] lg:w-[60%]">
+            <p className="text-[0.938rem] sm:text-[1.25rem] md:text-[1.25rem] lg:text-[1.5rem] font-[400] leading-[125%] mt-[6.2188em] mb-3 md:mb-0 text-[#1877F9] p-1">
               What We Do
             </p>
-            <h3 className="text-[1.876rem] md:text-[2.75rem] text-[#082B5B] font-[700] capitalize leading-[122.727%] mb-4 md:mb-0 p-1">
+            <h3 className="text-[1.876rem] sm:text-[2.188rem] md:text-[2.633rem] lg:text-[2.75rem] text-[#082B5B] font-[700] capitalize leading-[122.727%] mb-4 md:mb-0 p-1">
               We create beautiful products that capture hearts
             </h3>
-            <p className="text-[0.963rem] md:text-[1.125rem] text-[#101010] font-[400] leading-[138.889%] p-1">
+            <p className="text-[0.963rem] sm:text-[1.125rem] md:mt-4 text-[#101010] font-[400] leading-[138.889%] p-1">
               {whatWeDOText}
             </p>
           </div>
@@ -247,9 +247,9 @@ export default function AboutUs() {
               }}
               loading="lazy"
             ></div>
-            <div className="col-span-2 grid gap-[10px] grid-cols-2 ">
+            <div className="col-span-2 grid sm:gap-[13rem] md:gap-[13em] lg:gap-[3em] grid-cols-2 ">
               <div
-                className="rounded-[20px]  w-full"
+                className="rounded-[20px] w-full"
                 style={{
                   backgroundImage: `url(${twoGirlsLaptop})`,
                   backgroundPosition: "center",
@@ -258,7 +258,7 @@ export default function AboutUs() {
                 }}
               ></div>
               <div
-                className="rounded-[20px]  w-full"
+                className="rounded-[20px] hidden sm:block w-full"
                 style={{
                   backgroundImage: `url(${busyLaptop})`,
                   backgroundPosition: "center",
@@ -271,16 +271,16 @@ export default function AboutUs() {
         </div>
 
         {/**Careers**/}
-        <div className="flex flex-col md:flex-row md:items-center space-y-8  md:space-x-[91px] mt-[50px] md:mt-[271px]">
-          <div className="w-[100%] md:w-[60%]">
-            <h4 className="text-[#1877F9] text-[0.938rem] md:text-[1.5rem] leading-[31.25%] font-[400] mb-4 md:mb-0 p-1">
+        <div className="flex flex-col md:flex-row md:items-center space-y-8 md:space-x-[61px] lg:space-x-[91px] mt-[50px] md:mt-[25px] lg:mt-[271px]">
+          <div className="w-[100%] md:w-[60%] md:pt-[4em] lg:pt-0">
+            <h4 className="text-[#1877F9] text-[0.938rem] sm:text-[1.25rem] lg:text-[1.5rem] leading-[31.25%] font-[400] mb-4 md:mb-0 p-1">
               Careers
             </h4>
-            <p className="text-[#082B5B] text-[1.876rem] md:text-[2.75rem] font-[700] capitalize leading-[122.727%] p-0 mt-1 md:mb-10">
+            <p className="text-[#082B5B] text-[1.876rem] sm:text-[2.188rem] md:text-[2.3rem] lg:text-[2.75rem] font-[700] capitalize leading-[122.727%] p-0 mt-1 md:mb-10">
               Join our Ever-Growing team at Kinplus
             </p>
             <Link
-              className="hidden md:block bg-[#1877F9] hover:bg-[#1153AE] transition duration-200 ease-in-out capitalize text-white font-bold py-[1.25em] px-[1.563em] md:px-[2.625em] rounded-[0.938em]  w-[12em] text-center"
+              className="hidden md:block bg-[#1877F9] hover:bg-[#1153AE] transition duration-200 ease-in-out capitalize text-white font-bold py-[1.25em] px-[1.563em] lg:px-[2.625em] rounded-[0.938em] md:w-[8em] lg:w-[12em] w-[12em] text-center"
               to={"/contact-us/training"}
             >
               Join Us
@@ -288,7 +288,7 @@ export default function AboutUs() {
           </div>
 
           <div className="w-[100%] md:w-[73%]">
-            <p className="text-[0.963rem] md:text-[1.125rem] text-black font-normal leading-[156.25%]">
+            <p className="text-[0.963rem] sm:text-[1.125rem] md:text-[1.25rem] text-black font-normal leading-[156.25%]">
               {careersText}
             </p>
           </div>
@@ -319,16 +319,14 @@ export default function AboutUs() {
             {/**Next text**/}
             <div className="mr-[-50px] w-full flex flex-col gap-2">
               <div className="relative h-[534px]  ">
-                <div className="absolute flex items-center text-center flex-col space-y-[32px]  w-full h-full text-[#ffffff] bg-[#1877F9]
+                <div className="absolute flex items-center md:items-start text-center md:text-start flex-col space-y-[32px]  w-full h-full text-[#ffffff] bg-[#1877F9]
                  p-8 sm:p-[50px] md:p-[80px]">
-                  <p className="text-[1.8rem] sm:text-[2.8rem] md:text-[3.5rem] font-[700] leading-[110%]  p-1">
+                  <p className="text-[1.8rem] sm:text-[2.8rem] md:text-[3.438rem] font-[700] leading-[110%]  p-1">
                     Ready for your next project?
                   </p>
                   <p className="text-[1.125rem] leading-[160%] font-[400]  p-1 ">
                     We design, build, and scale platforms for forward-thinking
-                    <br />
                     experiences, allowing companies to focus on measurable
-                    <br />
                     outcomes.
                   </p>
                   <Link

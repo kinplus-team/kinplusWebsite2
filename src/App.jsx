@@ -1,4 +1,4 @@
-import "./App.css";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage/Index";
 import ContactUs from "./pages/ContactUS/Index";
@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/" element={<Homepage />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/our-services" element={<Services />} />
-          <Route path="/contact-us/*" element={<ContactUs />} />
+          <Route path="/contact/*" element={<ContactUs />} />
           <Route path="/training" element={<Training />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/training/:training" element={<ProgramDetails />} />

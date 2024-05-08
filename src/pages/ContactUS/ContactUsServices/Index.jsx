@@ -7,7 +7,7 @@ export default function ContactUsServices() {
   const navigate = useNavigate();
   
   const contactUsExplanation =
-    " At Kinplus, our commitment extends beyond service – we're dedicated to shaping tailored solutions that seamlessly integrate innovation, ensuring your experience is not just exceptional but transformative";
+    " Looking to partner with us? We'd love to hear from you. Contact us using the details below to explore how we can work together. We're committed to providing the best possible service, so don't hesitate to get in touch.";
 
   
   const {
@@ -84,28 +84,28 @@ export default function ContactUsServices() {
 
 
   return (
-    <section className="flex justify-between flex-col md:flex-row gap-20">
+    <section className="flex justify-between flex-col md:flex-row mb-8">
       {/*Explanation*/}
       <div className="md:w-[60%] w-full p-2">
-        <h3 className="text-[3.25rem] font-[700] text-blue-950 capitalize">
+        <h3 className="text-[2.188rem] md:text-[2.813rem] lg:text-[3.25rem] leading-[2.5rem] md:leading-[4rem] w-[20%] font-[700] text-blue-950 mb-6 md:mb-8 capitalize">
           Get Started
         </h3>
-        <ul className="text-[#101010] text-[1rem] md:text-[1.3rem] list-inside list-disc marker:text-[#101010]">
-          <li className="leading-[3.4rem]">
-            Get started quickly (1 - 3 weeks)
+        <ul className="text-[#101010] text-[1rem] md:text-[1.125rem] lg:text-[1.3rem] list-inside list-disc marker:text-[#101010]">
+          <li className="leading-[1.5rem] md:leading-[3.125rem] lg:leading-[3.4rem]">
+            Innovative Solutions
           </li>
-          <li className="leading-[3.4rem]">
-            Large pool of vetted and proven developers
+          <li className="leading-[1.5rem] md:leading-[3.125rem] lg:leading-[3.4rem]">
+            Expert Training
           </li>
-          <li className="leading-[3.4rem]">
-            All popular software languages and frameworks
+          <li className="leading-[1.5rem] md:leading-[3.125rem] lg:leading-[3.4rem]">
+            Strategic Partnerships
           </li>
-          <li className="leading-[3.4rem]">
-            Flexible working hours to meet your timezone
+          <li className="leading-[1.5rem] md:leading-[3.125rem] lg:leading-[3.4rem]">
+            Exceptional Services
           </li>
         </ul>
         <hr className="h-[4px] bg-white my-12 mr-5" />
-        <p className="text-[#101010] text-[1rem] md:text-[1.3rem] leading-[3.4rem]">
+        <p className="text-[#101010] text-[1rem] md:text-[1.125rem] lg:text-[1.3rem] leading-[1.5rem] md:leading-[3.4rem] mb-8 md:mb-0">
           {contactUsExplanation}
         </p>
       </div>
@@ -116,9 +116,11 @@ export default function ContactUsServices() {
           onSubmit={handleSubmit(onSubmit)}
           className="mx-auto mt-8 w-[90%]"
         >
-          <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
-            Tell us about your project
+          <h3 className="text-[2.188rem] md:text-[1.875rem] lg:text-[2.75rem] leading-[2.5rem] md:leading-[3.375rem] w-[110%] capitalize font-[700] md:w-[10.625em]">
+            Ready to connect? Get in touch.
           </h3>
+          
+          {/* Full Name */}
           <div className="flex flex-col gap-8 w-[90%] mt-10">
             <div className="flex flex-col gap-[8px]">
               <label htmlFor="fullName">Full Name</label>
@@ -146,12 +148,13 @@ export default function ContactUsServices() {
               )}
             </div>
 
+              {/* E-mail */}
             <div className="flex flex-col gap-[8px]">
               <label htmlFor="email">E-mail</label>
               <input
                 type="email"
                 id="email"
-                placeholder="Enter Your E-mail address"
+                placeholder="Enter Your E-mail"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -168,6 +171,7 @@ export default function ContactUsServices() {
               )}
             </div>
 
+              {/* Phone Number */}
             <div className="flex flex-col gap-[8px]">
               <label htmlFor="phoneNumber">Phone Number</label>
               <input
@@ -189,6 +193,8 @@ export default function ContactUsServices() {
                 </p>
               )}
             </div>
+
+            {/* Company Name */}
             <div className="flex flex-col gap-[8px]">
               <label htmlFor="companyName">Company Name</label>
               <input
@@ -207,6 +213,8 @@ export default function ContactUsServices() {
                 </p>
               )}
             </div>
+
+            {/* Message */}
             <div className="flex flex-col gap-[8px]">
               <label htmlFor="message">Message</label>
               <textarea
@@ -226,6 +234,8 @@ export default function ContactUsServices() {
               )}
             </div>
           </div>
+
+          {/* Submit button */}
           <div className="text-center mt-[10px] py-9 ">
             <button
               type="submit"
