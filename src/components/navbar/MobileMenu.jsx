@@ -29,12 +29,14 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen }) => {
     <>
       <IoIosMenu
         className={`lg:hidden w-7 lg:w-10 h-20  justify-self-end ${
-          pathname == "/careers" || (pathname == "/" && "text-white")
+          (pathname == "/careers" && "text-white") ||
+          (pathname == "/" && "text-white") ||
+          (pathname == "/trainings/workshop" && "text-white")
         }`}
         onClick={() => setIsMobileNav(true)}
       />
       <div
-        className={`fixed z-10 top-0 h-screen w-full bg-white transition-[1s] ${
+        className={`fixed z-50 top-0 h-screen w-full bg-white transition-[1s] ${
           isMobileNav ? "left-0" : "left-[-100vw]"
         }`}
       >

@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <div>
       <div className="bg-[#082B5B] ">
-        <div className=" grid grid-cols-[auto_1fr] gap-4 pt-48 pb-5 lg:px-[60px] px-4 max-w-[100rem] mx-auto">
+        <div className=" grid lg:grid-cols-[auto_1fr] relative gap-4 lg:pt-48 pt-28 pb-5 lg:px-[60px] px-4 max-w-[100rem] mx-auto">
           <div className="grid gap-4 max-w-3xl">
             <h2 className="text-[#fff] lg:text-[65px] text-[35px] font-bold lg:leading-[70px] leading-10 capitalize ">
               Be a part of our sponsored and partnered training Workshops
@@ -22,15 +22,22 @@ export default function Hero() {
                 className="rounded-md"
               />
             </div>
-          </div>
 
-          <div className="w-[554px] h-[464px] place-self-start">
-            <img src={heroImg} />
+            <div className="lg:px-[54px] px-4 lg:hidden block">
+              <div className="text-lg font-bold underline text-[#fff]">
+                <p>Sponsor or Partner with us</p>
+              </div>
+            </div>
+          </div>
+          <div className="relative h-32 lg:h-auto lg:w-auto">
+            <div className="lg:w-[554px] lg:h-[464px] mx-auto absolute lg:block top-[20px] px-5 z-20 lg:place-self-start">
+              <img src={heroImg} />
+            </div>
           </div>
         </div>
       </div>
       <div className="bg-[#f1f3f9] relative ">
-        <div className="lg:px-[54px] px-4 max-w-[100rem] mx-auto">
+        <div className="lg:px-[54px] px-4 max-w-[100rem] mx-auto lg:block hidden">
           <div className="text-lg font-bold underline text-[#fff] absolute top-0  z-10">
             <p>Sponsor or Partner with us</p>
           </div>

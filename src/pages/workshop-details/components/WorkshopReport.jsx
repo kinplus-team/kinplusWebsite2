@@ -30,7 +30,7 @@ export default function WorkshopReport() {
 
   return (
     <PageLayout>
-      <div className="lg:pt-20 lg:pb-20 pt-16 pb-16 relative">
+      <div className="lg:pt-20 lg:pb-20 py-5 relative">
         <h4 className="flex items-center text-[#1877F9] lg:text-[20px] font-[500] lg:leading-[30px] leading-[24px] mt-11 mb-5 lg:mt-0 ">
           Our leading Edge
           <div className="ml-3 h-[1.5px] w-[74.75px] bg-[#222831]"></div>

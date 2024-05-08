@@ -32,11 +32,11 @@ export default function Header() {
         <div className="hidden lg:grid grid-cols-[auto_auto_100px_auto_auto] gap-10 justify-self-end">
           {staticData.NavbarLinks.map((links, i) => (
             <NavLink
-              to={links.to != "/training" ? links.to : ""}
+              to={links.to != "/training" && links.to}
               key={i}
               className={`flex gap-1 items-center ${
                 pathname == "/careers" ||
-                pathname == "/workshop" ||
+                pathname == "/trainings/workshop" ||
                 pathname == "/"
                   ? "text-white"
                   : "text-[#101010]"

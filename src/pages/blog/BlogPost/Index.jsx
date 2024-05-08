@@ -13,29 +13,36 @@ function getBlogPost(slug) {
 export default function BlogPost() {
   getBlogPost("grid-system-for-better-design-user-interface");
   return (
-    <PageLayout>
-      <div className="flex justify-between ">
-        <aside className="w-[30%] space-y-5">
-          <BlogPostCard />
-          <BlogPostCard />
-          <BlogPostCard />
-          <BlogPostCard />
-          <BlogPostCard />
-          <BlogPostCard />
-          <BlogPostCard />
+    <PageLayout className="lg:pt-36 lg:pb-28 pt-28 pb-16">
+      <div className="grid grid-cols-[350px_1fr] gap-10 justify-between ">
+        <aside className="">
+          <div className="grid gap-5">
+            <h1 className="text-4xl text-[#082B5B] font-bold leading-[42px] capitalize">
+              Recent blog posts
+            </h1>
+
+            <div className="grid gap-6">
+              <BlogPostCard />
+              <BlogPostCard />
+              <BlogPostCard />
+              <BlogPostCard />
+              <BlogPostCard />
+              <BlogPostCard />
+              <BlogPostCard />
+            </div>
+          </div>
         </aside>
-        <main className="w-[60%]">
-          <div>
-            <p className="text-[#1877F9] font-bold text-base px-2 mb-4">
+        <main className="max-w-5xl place-self-end">
+          <div className="grid gap-3">
+            <p className="text-[#1877F9] font-bold text-base px-2">
               Sunday , 1 Jan 2023
             </p>
-            <p className="text-[#101010] font-bold text-3xl px-2  mb-6">
+            <p className="text-[#101010] font-bold text-3xl px-2 max-w-2xl">
               The Impact of Technology on the Workplace: How Technology is
               Changing
             </p>
             <img className="rounded-3xl  mb-6" src={Blog1} alt="" />
-
-            <p className="text-xl leading-6 px-2 pb-2">
+            <div className="text-xl text-[#3B3C4A]">
               Traveling is an enriching experience that opens up new horizons,
               exposes us to different cultures, and creates memories that last a
               lifetime. However, traveling can also be stressful and
@@ -49,10 +56,9 @@ export default function BlogPost() {
               interacting with locals. Learning a few phrases in the local
               language can also go a long way in making connections and showing
               respect. <br /> <br />
-              <span className="font-bold text-2xl">
+              <h1 className="font-bold text-2xl text-[#181A2A]">
                 Research Your Destination
-              </span>{" "}
-              <br /> <br />
+              </h1>
               Before embarking on your journey, take the time to research your
               destination. This includes understanding the local culture,
               customs, and laws, as well as identifying top attractions,
@@ -161,7 +167,7 @@ export default function BlogPost() {
               ipsum faucibus vitae aliquet nec ullamcorper sit amet. Aenean
               euismod elementum nisi quis eleifend quam adipiscing vitae.
               Viverra adipiscing at in tellus. <br /> <br />
-            </p>
+            </div>
           </div>
         </main>
       </div>

@@ -4,7 +4,7 @@ import Button from "../../../components/Button.jsx";
 
 export default function Hero({ title, description }) {
   return (
-    <div className="grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-36 py-8 lg:py-32">
+    <div className="grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-36 py-8 lg:py-32 pt-28">
       <img
         src={cuteFaces}
         alt="cute_faces"

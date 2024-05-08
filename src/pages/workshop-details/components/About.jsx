@@ -3,19 +3,21 @@ import PageLayout from "../../../components/Layout/PageLayout";
 export default function About() {
   return (
     <div className="lg:px-[54px] px-4 max-w-[100rem] mx-auto bg-[#082B5B]">
-      <div className="grid grid-cols-2 gap-4 pt-20 pb-10">
+      <div className="grid lg:grid-cols-2 gap-4 lg:pt-20 pt-14 pb-10">
         <div className="max-w-xl grid gap-4">
           <div className="flex items-center gap-3 lg:text-[20px] font-[500] leading-[150%]">
-            <p className="text-[#1877F9]">About the workshop</p>
+            <p className="text-[#1877F9] text-base font-medium">
+              About the workshop
+            </p>
             <div className="mt-1 w-[73px] h-[2px] bg-white leading-normal "></div>
           </div>
 
-          <h4 className="text-white text-4xl font-bold leading-[50px]">
+          <h4 className="text-white lg:text-4xl text-3xl font-bold lg:leading-[50px]">
             Building Mobile Apps with Flutter: Developing Mobile Application
             software with the Flutter framework.
           </h4>
 
-          <div className="text-[#8896AB] grid gap-3 text-lg font-medium leading-7">
+          <div className="text-[#8896AB] grid gap-3 lg:text-lg text-base font-medium leading-7">
             <p>
               The Mobile App development training was provided freely to all
               participants. It was sponsored by NITDA and facilitated by Kinplus

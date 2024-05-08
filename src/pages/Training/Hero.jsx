@@ -13,7 +13,7 @@ export default function Index() {
 
   return (
     <PageLayout>
-      <div className="grid lg:grid-cols-[55%_45%] lg:pb-[45px] lg:pt-[150px]">
+      <div className="grid lg:grid-cols-[55%_45%] lg:pb-[45px] lg:pt-[150px] pt-[50px]">
         {/* left side bar */}
         <div className="grid sm:grid-flow-row gap-4 lg:gap-0 relative">
           <h4 className="flex items-center text-[#1877F9] lg:text-[18px] font-[500] lg:tracking-[3px] uppercase lg:leading-[111.111%] leading-[24px] mt-12 lg:mt-0">
