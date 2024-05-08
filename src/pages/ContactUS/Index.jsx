@@ -43,7 +43,7 @@ export default function MyForm() {
               {contactUsHeadingPara}
             </p>
           </div>
-          <div className=" flex flex-col space-y-4 sm:space-y-6 md:space-y-0 md:flex-row md:space-x-6 ">
+          <div className=" flex flex-col space-y-4 sm:space-y-6 md:space-y-0 pb-12 md:flex-row md:space-x-6 ">
             {contactUsCardDetails.map((contactUsCardDetail, index) => (
               <ContactUsCard
                 key={contactUsCardDetail.title + index}
