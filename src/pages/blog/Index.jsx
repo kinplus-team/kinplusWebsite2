@@ -3,6 +3,7 @@ import Hero from "./component/Hero";
 import RecentBlogPost from "./component/RecentBlogPost";
 import FeaturedPost from "./component/FeaturedPost";
 import AllBlogPost from "./component/AllBlogPost";
+import EmptySpace from "./component/EmptySpace";
 
 export default function Blog() {
   return (
@@ -11,6 +12,7 @@ export default function Blog() {
       <RecentBlogPost />
       <FeaturedPost />
       <AllBlogPost />
+      <EmptySpace />
     </div>
   );
 }

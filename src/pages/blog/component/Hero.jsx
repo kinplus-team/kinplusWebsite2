@@ -2,9 +2,24 @@ import image1 from "../../../assets/Blog/Group 3.png";
 import image2 from "../../../assets/Blog/photo-of-woman-wearing-eyeglasses-3184405.png";
 import PageLayout from "../../../components/Layout/PageLayout";
 import Button from "../../../components/Button";
+import { getMostEngagedPost } from "../../../services/blogServices";
+import EmptySpace from "./EmptySpace";
+import { useEffect, useState } from "react";
+
+export async function getEngagedPost(setMostEngagedPost) {
+  getMostEngagedPost().then((response) => {
+    setMostEngagedPost(response);
+  });
+}
 
 export default function Hero() {
-  return (
+  const [mostEngagedPost, setMostEngagedPost] = useState([]);
+
+  useEffect(() => {
+    getEngagedPost(setMostEngagedPost);
+  }, []);
+
+  return mostEngagedPost.length > 0 ? (
     <div className="bg-[#f1f3f9]">
       <PageLayout className="absolute lg:pt-36 lg:pb-28 pt-28 pb-16 z-10 w-full">
         <div className="grid grid-cols-2 gap-8 mx-auto max-w-7xl">
@@ -46,5 +61,7 @@ export default function Hero() {
         ></div>
       </div>
     </div>
+  ) : (
+    <div></div>
   );
 }
