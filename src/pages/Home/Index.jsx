@@ -21,14 +21,6 @@ export default function Homepage() {
       <OurCourses />
       <Testimonial />
       <FAQ />
-      {/*Testimonial */}
-      {/* <TrainingTestimonial /> */}
-
-      {/*Infinte loop */}
-      {/* <InfiniteLoop /> */}
-
-      {/*FAQ */}
-      {/* <FAQHomepage /> */}
     </>
   );
 }

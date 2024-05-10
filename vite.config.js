@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
   return {
     define: {
       "process.env.GRAPHCMS_ENDPOINT": JSON.stringify(env.GRAPHCMS_ENDPOINT),
+      "process.env.GRAPHCMS_TOKEN": JSON.stringify(env.GRAPHCMS_TOKEN),
     },
     plugins: [react()],
   };

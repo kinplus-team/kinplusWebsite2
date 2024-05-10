@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function WhyChooseUs() {
   return (
-    <PageLayout className="lg:pt-16 pt-12">
+    <PageLayout className="lg:pt-16 pt-8">
       <h6 className=" text-[#1877F9] text-2xl capitalize leading-[35px]">
         Why Choose Us
       </h6>

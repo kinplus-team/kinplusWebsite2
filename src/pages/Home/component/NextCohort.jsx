@@ -9,7 +9,7 @@ export default function NextCohort() {
   };
 
   return (
-    <div className="lg:py-40 py-10">
+    <div className="lg:py-40 py-10 bg-[#f1f3f9]">
       <CountDownTimer image={countDownTimerProps} />
     </div>
   );

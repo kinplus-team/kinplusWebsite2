@@ -58,7 +58,7 @@ export default function WhatWeDo() {
           {WhatWeDoCardDetails.map((WhatWeDoCardDetail, index) => (
             <div
               key={index}
-              className="grid lg:grid-rows-[80px_auto_150px] grid-rows-[90px_auto_1fr] justify-center items-center gap-3 bg-white rounded-[0.6em] px-8 py-6 shadow-md border-2"
+              className="grid lg:grid-rows-[80px_auto_150px] overflow-hidden grid-rows-[90px_auto_1fr] justify-center items-center gap-3 bg-white rounded-[0.6em] px-8 py-6 shadow-md border-2"
             >
               <img
                 src={WhatWeDoCardDetail.image}
