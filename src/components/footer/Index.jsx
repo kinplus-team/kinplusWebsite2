@@ -45,9 +45,9 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="w-[10em] place-self-center">
+        <Link to={"/contact-us"} className="w-[10em] place-self-center">
           <Button type="customizedWhite" text="Talk to us" />
-        </div>
+        </Link>
       </div>
 
       {/* bottom section */}

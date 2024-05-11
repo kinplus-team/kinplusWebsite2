@@ -6,7 +6,7 @@ export default function FAQComponent({ FAQs }) {
   const [index, setIndex] = useState(-1);
 
   return (
-    <div className="py-10 grid gap-7">
+    <div className="py-24 grid gap-7">
       <div className="mx-auto max-w-2xl text-center">
         <h4 className="lg:text-[65px] text-[50px] text-[#082B5B] font-[700] leading-[125%] capitalized">
           FAQs
@@ -21,7 +21,7 @@ export default function FAQComponent({ FAQs }) {
           <div
             key={i}
             onClick={() => {
-              setShowAns(!showAns);
+              index == i && setShowAns(!showAns);
               setIndex(i);
             }}
             className="w-full mx-auto"

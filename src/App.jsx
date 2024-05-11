@@ -32,7 +32,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/trainings" element={<Training />} />
           <Route
-            path="/trainings/training/courses/:training"
+            path="/trainings/courses/:training"
             element={<ProgramDetails />}
           />
           <Route path="/trainings/internship" element={<Internship />} />
