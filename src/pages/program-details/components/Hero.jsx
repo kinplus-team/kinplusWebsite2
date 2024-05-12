@@ -1,6 +1,7 @@
 import React from "react";
 import cuteFaces from "../../../assets/pages/home/whychooseus/choose_us.png";
 import Button from "../../../components/Button.jsx";
+import { Link } from "react-router-dom";
 
 export default function Hero({ title, description }) {
   return (
@@ -19,7 +20,9 @@ export default function Hero({ title, description }) {
         <p className="p-2 text-[#101010] lg:text-[18px]">{description}</p>
 
         <div className="lg:w-44 w-36">
-          <Button type="customizedBlue" text="Talk to us" />
+          <Link to="/contact-us/training">
+            <Button type="customizedBlue" text="Talk to us" />
+          </Link>
         </div>
       </div>
     </div>

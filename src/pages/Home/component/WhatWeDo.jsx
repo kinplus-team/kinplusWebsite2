@@ -48,7 +48,7 @@ export default function WhatWeDo() {
               touch our hearts.
             </p>
 
-            <Link to="/our-services" className="w-52">
+            <Link to="/contact-us/services" className="w-52">
               <Button type="customizedBlue" text="Learn More" />
             </Link>
           </div>

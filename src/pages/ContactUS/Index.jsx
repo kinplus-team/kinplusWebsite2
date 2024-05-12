@@ -8,11 +8,6 @@ import PageLayout from "../../components/Layout/PageLayout";
 export default function MyForm() {
   const location = useLocation();
 
-  const isContactUsPath = location.pathname === "/contact";
-
-  const contactUsHeadingPara =
-    "At Kinplus, we are committed to providing exceptional solutions and services. Whether you have a question, need assistance, or want to explore collaboration opportunities, we're here to help. Reach out to us using the contact information below, and our dedicated team will be delighted to assist you.";
-
   const contactUsCardDetails = [
     {
       label: "Our Service",
@@ -31,37 +26,38 @@ export default function MyForm() {
   ];
 
   return (
-    <PageLayout>
-      <section className="mx-auto">
-        <>
-          <div className="flex flex-col md:flex-row items-center justify-center md:space-x-6 space-y-4 md:space-y-10 mb-5 md:mb-20">
-            <h3 className="text-[1.4rem] sm:text-[2.3rem] md:text-[2.8rem] mt-11 lg:text-[3.25rem] capitalize font-bold text-[#082B5B] md:leading-[4.147rem] p-2">
-              Interested about our Services and Training Opportunities?
-            </h3>
-            <p className="text-[14px] sm:text-[18px] md:text-[20px] lg:text-[22px] font-[400] leading-[156.25%] text-[#101010] md:self-start w-full md:w-[120%] lg:w-[90%] md:p-0  lg:p-6 p-2">
-              {contactUsHeadingPara}
-            </p>
-          </div>
-          <div className=" flex flex-col space-y-4 sm:space-y-6 md:space-y-0 md:flex-row md:space-x-6 ">
-            {contactUsCardDetails.map((contactUsCardDetail, index) => (
-              <ContactUsCard
-                key={contactUsCardDetail.title + index}
-                label={contactUsCardDetail.label}
-                title={contactUsCardDetail.title}
-                text={contactUsCardDetail.text}
-                link={contactUsCardDetail.link}
-                to={contactUsCardDetail.to}
-              />
-            ))}
-          </div>
-        </>
+    <PageLayout className="py-32">
+      <div className="grid grid-cols-[40%_1fr] gap-10 items-center pt-10 pb-28">
+        <h3 className="text-5xl capitalize font-bold text-[#082B5B] max-w-5xl">
+          Interested about our Services and Training Opportunities?
+        </h3>
 
-        {/* Routes for Contact Us, Services, and Training */}
-        <Routes>
-          <Route path="/services" element={<ContactUsServices />} />
-          <Route path="/training" element={<ContactUsTraining />} />
-        </Routes>
-      </section>
+        <p className="text-lg font-[400] text-[#101010]">
+          At Kinplus, we are committed to providing exceptional solutions and
+          services. Whether you have a question, need assistance, or want to
+          explore collaboration opportunities, we're here to help. Reach out to
+          us using the contact information below, and our dedicated team will be
+          delighted to assist you.
+        </p>
+      </div>
+      <div className="grid grid-cols-2 gap-10">
+        {contactUsCardDetails.map((contactUsCardDetail, index) => (
+          <ContactUsCard
+            key={contactUsCardDetail.title + index}
+            label={contactUsCardDetail.label}
+            title={contactUsCardDetail.title}
+            text={contactUsCardDetail.text}
+            link={contactUsCardDetail.link}
+            to={contactUsCardDetail.to}
+          />
+        ))}
+      </div>
+
+      {/* Routes for Contact Us, Services, and Training */}
+      <Routes>
+        <Route path="/services" element={<ContactUsServices />} />
+        <Route path="/training" element={<ContactUsTraining />} />
+      </Routes>
     </PageLayout>
   );
 }
