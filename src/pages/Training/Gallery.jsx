@@ -14,7 +14,23 @@ export default function Gallery() {
   const [gallery, setGallery] = useState([]);
 
   const scrollContainerRef = useRef(null);
+  const targetImageRef = useRef(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  const [scaledImage, setScaledImage] = useState(false);
+
+  const handleScroll = () => {
+    const scrollLeft = scrollContainerRef.current.scrollLeft;
+    const triggerPosition = 15; // Adjust this value as needed
+
+    if (scrollLeft <= triggerPosition) {
+      console.log(scrollLeft);
+      if (targetImageRef.current) {
+        targetImageRef.current.style.height = "500px";
+        targetImageRef.current.style.width = "500px";
+      }
+    }
+  };
 
   useEffect(() => {
     // handleScrollEffect();
@@ -58,12 +74,14 @@ export default function Gallery() {
         <div
           className="flex justify-between items-baseline overflow-hidden gap-5 relative overflow-x-auto scroll-ms-9 no-scroll snap-mandatory snap-x scroll-smooth"
           ref={scrollContainerRef}
+          onScroll={() => handleScroll()}
         >
           {gallery?.map((image, index) => (
             <img
               key={index}
+              ref={targetImageRef}
               src={image.traineePhoto.url}
-              className="w-[500px] h-[500px]"
+              className={`w-[500px] h-[500px]`}
             />
           ))}
         </div>

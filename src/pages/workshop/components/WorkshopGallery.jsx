@@ -1,5 +1,6 @@
 import PageLayout from "../../../components/Layout/PageLayout.jsx";
 import Button from "../../../components/Button.jsx";
+import { Link } from "react-router-dom";
 import explore from "../../../assets/workshop/explore.png";
 
 export default function WorkshopGallery() {
@@ -40,9 +41,11 @@ export default function WorkshopGallery() {
               states nationwide. Check out the details of the event.
             </p>
 
-            <div className="w-56 my-5">
-              <Button text="Explore workshop" type="customizedBlue" />
-            </div>
+            <Link to="/trainings/workshop/kinplus-nitda">
+              <div className="w-56 my-5">
+                <Button text="Explore workshop" type="customizedBlue" />
+              </div>
+            </Link>
           </div>
         </div>
 

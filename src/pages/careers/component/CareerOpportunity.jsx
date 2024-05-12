@@ -73,8 +73,8 @@ export default function CareerOpportunity() {
 
             {/* background images */}
             <img
-              src={backgroundIcon1}
-              className="w-[366px] h-[208px] absolute top-4 left-[-55px] 2xl:left-[30px] z-0 rotate-180 hidden lg:block"
+              src={backgroundPattern}
+              className="w-[200px] h-[200px] absolute top-0 left-[-40px] 2xl:left-[30px] z-0 rotate-180 hidden lg:block"
             />
 
             <img

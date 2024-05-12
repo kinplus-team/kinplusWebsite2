@@ -15,9 +15,9 @@ export async function recentPost(setRecentArticles) {
 export default function RecentBlogPost() {
   const [recentArticles, setRecentArticles] = useState([]);
 
-  useEffect(() => {
-    recentPost(setRecentArticles);
-  }, []);
+  // useEffect(() => {
+  //   recentPost(setRecentArticles);
+  // }, []);
 
   return recentArticles.length > 0 ? (
     <PageLayout className="py-14">

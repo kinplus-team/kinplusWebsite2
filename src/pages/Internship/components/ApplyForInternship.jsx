@@ -48,6 +48,7 @@ export default function ApplyForInternship() {
       )
         .then((response) => {
           toast.success("Thank you for reaching out to us");
+          setIsLoading(false);
         })
         .catch((error) => {
           toast.error(error.response.errors[0].message);

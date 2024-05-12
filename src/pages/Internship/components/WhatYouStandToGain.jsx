@@ -11,16 +11,30 @@ import sparkle from "../../../assets/why-learn-from-us/sparkle.png";
 
 export default function WhatYouStandToGain() {
   const reasons = [
-    { title: "Work on real-world projects ", icon: realProjects },
-    { title: "Collaborate with our team of experts", icon: collaborate },
-    { title: "Explore your interests and passions", icon: exploreInterest },
+    {
+      title: "Work on real-world projects ",
+      icon: realProjects,
+      image: sideBarImage,
+    },
+    {
+      title: "Collaborate with our team of experts",
+      icon: collaborate,
+      image: sideBarImage,
+    },
+    {
+      title: "Explore your interests and passions",
+      icon: exploreInterest,
+      image: sideBarImage,
+    },
     {
       title: "Gain valuable skills for your future career",
       icon: gainValuableSkills,
+      image: sideBarImage,
     },
     {
       title: "Learn from our knowledgeable mentors",
       icon: learnFromKnowledgeableMentors,
+      image: sideBarImage,
     },
   ];
 

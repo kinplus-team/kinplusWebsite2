@@ -15,9 +15,9 @@ export async function getEngagedPost(setMostEngagedPost) {
 export default function Hero() {
   const [mostEngagedPost, setMostEngagedPost] = useState([]);
 
-  useEffect(() => {
-    getEngagedPost(setMostEngagedPost);
-  }, []);
+  // useEffect(() => {
+  //   getEngagedPost(setMostEngagedPost);
+  // }, []);
 
   return mostEngagedPost.length > 0 ? (
     <div className="bg-[#f1f3f9]">

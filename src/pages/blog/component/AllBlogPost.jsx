@@ -14,9 +14,9 @@ async function allArticles(setAllArticle) {
 export default function AllBlogPost() {
   const [allArticle, setAllArticle] = useState([]);
 
-  useEffect(() => {
-    allArticles(setAllArticle);
-  }, []);
+  // useEffect(() => {
+  //   allArticles(setAllArticle);
+  // }, []);
 
   return (
     allArticle.length > 0 && (

@@ -20,10 +20,10 @@ export default function FeaturedPost() {
   const [featuredArticle, setFeaturedArticle] = useState([]);
   const [allArticle, setAllArticle] = useState([]);
 
-  useEffect(() => {
-    allArticles(setAllArticle);
-    featuredArticles(setFeaturedArticle);
-  }, []);
+  // useEffect(() => {
+  //   allArticles(setAllArticle);
+  //   featuredArticles(setFeaturedArticle);
+  // }, []);
 
   return (
     <PageLayout className="grid grid-cols-[1fr_40%] gap-10">
