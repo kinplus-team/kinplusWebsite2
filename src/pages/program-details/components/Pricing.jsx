@@ -4,7 +4,7 @@ import PricingCard from "../../../components/cards/Pricing/Pricing.jsx";
 export default function Pricing({ pricingCardDetails }) {
   return (
     <div>
-      <div className="grid lg:grid-cols-[600px_1fr] lg:gap-28 gap-5 lg:py-20">
+      <div className="grid lg:grid-cols-[600px_1fr] lg:gap-28 gap-5 lg:pb-20">
         <div>
           <h6 className=" text-[#1877F9] text-[1rem] md:text-[1rem] lg:text-[1.5rem] py-3 md:p-1">
             Pricing

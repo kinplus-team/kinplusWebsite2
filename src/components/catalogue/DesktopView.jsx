@@ -46,7 +46,9 @@ export default function DesktopViewCatalogue({ title, catalogues }) {
           <div>
             {catalogues.map((catalogue, i) => (
               <Link
-                to={catalogue.link ? `/training/${catalogue.link}` : ""}
+                to={
+                  catalogue.link ? `/trainings/courses/${catalogue.link}` : ""
+                }
                 key={i}
                 onMouseEnter={() => setIndex(i)}
               >

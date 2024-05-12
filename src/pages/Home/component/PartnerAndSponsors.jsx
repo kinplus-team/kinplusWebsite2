@@ -8,12 +8,12 @@ export default function PartnersAndSponsors() {
       <h2 className="lg:text-5xl text-2xl font-bold lg:leading-[64px] leading-[30px] text-center text-[#0F172A]">
         Partners and Sponsors
       </h2>
-      <div className="flex flex-wrap lg:gap-28 gap-3 items-center place-content-center">
+      <div className="flex flex-wrap lg:gap-16 gap-8 items-center max-w-5xl mx-auto justify-center">
         {Partners.map((partner, i) => (
           <img
             key={i}
-            className="lg:w-[100px] w-[80px] h-auto mx-auto"
             src={partner}
+            className="lg:w-28 w-16 h-auto"
             alt="Nitda_Logo"
           />
         ))}

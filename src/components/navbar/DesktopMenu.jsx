@@ -29,7 +29,7 @@ export default function Header() {
         </NavLink>
 
         {/* nav links */}
-        <div className="hidden lg:grid grid-cols-[auto_auto_100px_auto_auto] gap-10 justify-self-end">
+        <div className="hidden lg:grid grid-cols-[auto_auto_100px_auto_auto_auto] gap-10 justify-self-end">
           {staticData.NavbarLinks.map((links, i) => (
             <NavLink
               to={links.to != "/training" && links.to}

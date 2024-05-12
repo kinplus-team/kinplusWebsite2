@@ -62,15 +62,15 @@ const Input = ({
       return (
         <div className="p-1 py-3 lg:grid gap-2 rounded-sm text-lg text-white font-semibold relative">
           <label
-            onClick={() => {
+            onClick={(e) => {
               setIsChecked(!isChecked);
             }}
             className="flex items-center gap-2 rounded-sm cursor-pointer"
           >
             {isChecked ? (
-              <img src={coloredTick} alt="Tick Icon" className="w-6 h-6" />
+              <img src={coloredTick} alt={radioText} className="w-6 h-6" />
             ) : (
-              <img src={tranparentTick} alt="Tick Icon" className="w-6 h-6" />
+              <img src={tranparentTick} alt={radioText} className="w-6 h-6" />
             )}
 
             <p className="text-sm">{radioText}</p>
@@ -86,7 +86,7 @@ const Input = ({
             placeholder={placeholder}
             className="text-lg font-medium placeholder:text-[#9c9c9c] outline-none w-full"
             required
-            onChange={() => setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value)}
           />
           {/* <div onClick={() => setIsPass(!isPass)}>
             {!isPass ? <Eye /> : <EyeSlash />}
@@ -101,7 +101,7 @@ const Input = ({
           <textarea
             placeholder={placeholder}
             className="text-lg p-4 block resize-none w-full min-h-[200px] bg-transparent rounded-md border border-white"
-            onChange={() => setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value)}
           ></textarea>
         </div>
       );
@@ -120,7 +120,7 @@ const Input = ({
             placeholder={placeholder}
             name={name}
             required
-            onChange={() => setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value)}
           />
         </label>
       );

@@ -1,86 +1,62 @@
 import { useEffect, useRef, useState } from "react";
 // import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import arrow from "../../assets/svg/arrow.svg";
-import gallery1 from "../../assets/gallery/gallery_1.png";
-import gallery2 from "../../assets/gallery/gallery_2.png";
-import gallery3 from "../../assets/gallery/gallery_3.png";
-import gallery4 from "../../assets/gallery/gallery_4.png";
+// import gallery1 from "../../assets/gallery/gallery_1.png";
+// import gallery2 from "../../assets/gallery/gallery_2.png";
+// import gallery3 from "../../assets/gallery/gallery_3.png";
+// import gallery4 from "../../assets/gallery/gallery_4.png";
+
+import getTrainingGallery from "../../services/galleryServices.js";
+import PageLayout from "../../components/Layout/PageLayout.jsx";
 
 export default function Gallery() {
   const [scaleFactors, setScaleFactor] = useState(Array(10).fill(1));
-  const imageScroll = useRef(null);
+  const [gallery, setGallery] = useState([]);
 
-  const handleScroll = (direction) => {
-    imageScroll.current &&
-      direction === "right" &&
-      (imageScroll.current.scrollLeft += 1000);
-    imageScroll.current &&
-      direction === "left" &&
-      (imageScroll.current.scrollLeft -= 1000);
-  };
+  const scrollContainerRef = useRef(null);
+  const targetImageRef = useRef(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  useEffect(() => {
-    handleScrollEffect();
-  }, []);
+  const [scaledImage, setScaledImage] = useState(false);
 
-  const handleScrollEffect = () => {
-    if (imageScroll.current) {
-      // Get the width of the scrollable container element
-      const containerWidth = imageScroll.current.offsetWidth;
+  const handleScroll = () => {
+    const scrollLeft = scrollContainerRef.current.scrollLeft;
+    const triggerPosition = 15; // Adjust this value as needed
 
-      // Get the total width of the scrollable content inside the container
-      const scrollWidth = imageScroll.current.scrollWidth;
-
-      // Get the amount of horizontal scrolling that has occurred within the container from the left
-      const scrollLeft = imageScroll.current.scrollLeft;
-
-      // Calculate the maximum scrollable distance horizontally within the container
-      const maxScroll = scrollWidth - containerWidth;
-
-      // Calculate the percentage of the current scroll position relative to the maximum scrollable distance
-      const percentage = scrollLeft / maxScroll;
-
-      // Define the minimum and maximum scaling factors for the images
-      const minScale = 1.1;
-      const maxScale = 3;
-
-      // Create a new array with 10 elements, each initialized to 0
-      const newScaleFactors = Array(10)
-        .fill(0)
-        // Map over each element in the array
-        .map((_, i) => {
-          // Calculate the scaling factor based on the current scroll position percentage
-          const scaleFactor = minScale + percentage * (maxScale - minScale);
-
-          // Check if the index 'i' corresponds to the nearest integer value of 'scaleFactor'
-          // If yes, set the scaling factor to 'maxScale', otherwise set it to 'minScale'
-          return i == Math.floor(scaleFactor) ? maxScale : minScale;
-        });
-
-      // Set the state variable 'scaleFactors' with the newly calculated scaling factors
-      setScaleFactor(newScaleFactors);
+    if (scrollLeft <= triggerPosition) {
+      console.log(scrollLeft);
+      if (targetImageRef.current) {
+        targetImageRef.current.style.height = "500px";
+        targetImageRef.current.style.width = "500px";
+      }
     }
   };
 
-  // console.log(scaleFactors);
+  useEffect(() => {
+    // handleScrollEffect();
+    getTrainingGallery().then((response) => {
+      setGallery(response);
+    });
+  }, []);
 
   return (
     <div className="bg-[#f1f3f9]">
-      <div className="lg:pt-8 lg:pb-32 pb-10 grid lg:gap-10 gap-2 relative lg:px-[0px] px-4 max-w-[100rem] mx-auto">
+      <div className="lg:pt-20 pt-10 lg:pb-32 pb-10 grid lg:gap-10 gap-2 relative lg:px-[0px] px-4 max-w-[100rem] mx-auto">
         {/* Navigators */}
-        <div className="grid gap-2 place-self-end absolute top-0 right-52">
+        <div className="grid gap-2 place-self-end right-52">
           <div className="flex items-center gap-3 lg:text-[20px] text-[#1877F9] font-[500] leading-[150%]">
             <p>Kinplus gallery</p>
             <div className="mt-1 w-[73px] h-[2px] bg-[#222831] leading-normal "></div>
           </div>
-
-          <p className="text-[#082B5B] lg:text-[40px] text-[35px] font-[700] max-w-md">
+          <p className="text-[#082B5B] lg:text-[40px] text-[35px] font-[700] lg:max-w-md">
             Check out our past trainees
           </p>
+          <img
+            src={arrow}
+            className=" w-[197px] mx-auto lg:mx-0 hidden lg:block"
+          />
 
           <div className="relative lg:block hidden">
-            <img src={arrow} className=" w-[197px] mx-auto lg:mx-0" />
-
             <div className="grid grid-cols-[50px_100px] gap-10">
               <div
                 onClick={() => handleScroll("left")}
@@ -97,29 +73,15 @@ export default function Gallery() {
         {/* images */}
         <div
           className="flex justify-between items-baseline overflow-hidden gap-5 relative overflow-x-auto scroll-ms-9 no-scroll snap-mandatory snap-x scroll-smooth"
-          ref={imageScroll}
-          onScroll={() => handleScrollEffect()}
+          ref={scrollContainerRef}
+          onScroll={() => handleScroll()}
         >
-          {[
-            gallery1,
-            gallery2,
-            gallery3,
-            gallery4,
-            gallery4,
-            gallery4,
-            gallery2,
-            gallery1,
-            gallery4,
-            gallery4,
-          ].map((image, i) => (
+          {gallery?.map((image, index) => (
             <img
-              key={i}
-              src={image}
-              style={{
-                width: 250 * scaleFactors[i],
-                height: 250 * scaleFactors[i],
-              }}
-              className={`place-self-end`}
+              key={index}
+              ref={targetImageRef}
+              src={image.traineePhoto.url}
+              className={`w-[500px] h-[500px]`}
             />
           ))}
         </div>

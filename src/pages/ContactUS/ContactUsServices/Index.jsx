@@ -2,116 +2,69 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { contactUsForServices } from "../../../services/contactFormServices";
+import Button from "../../../components/Button";
+import { useState } from "react";
 
 export default function ContactUsServices() {
-  const navigate = useNavigate();
-  
+  const [isLoading, setIsLoading] = useState(false);
+
   const contactUsExplanation =
     " At Kinplus, our commitment extends beyond service – we're dedicated to shaping tailored solutions that seamlessly integrate innovation, ensuring your experience is not just exceptional but transformative";
 
-  
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
   } = useForm({ mode: "all" });
-  
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  // const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const onSubmit = async (data) => {
-    await sleep(1000);
-    try {
-      // Log the form data
-      console.log(data);
-
-      // Send a POST request to your API endpoint
-      const response = await fetch("https://kinplusgroup.com/api/v2/services", {
-        method: "POST",
-        
-        body: JSON.stringify(data),
+    setIsLoading(true);
+    await contactUsForServices(
+      data.fullName,
+      data.email,
+      data.phoneNumber,
+      data.companyName,
+      data.message
+    )
+      .then(() => {
+        toast.success("Form submitted successfully");
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Something went wrong!");
+        setIsLoading(false);
       });
-
-      // Check if the request was successful (status code 200)
-       if (response.ok) {
-        toast.success("Form submitted successfully", {
-          position: toast.POSITION.TOP_CENTER,
-          style: {
-            background: "#082B5B",
-            color: "#fff",
-            fontSize: "16px",
-            padding: "15px 10px",
-          },
-        });
-
-      
-        // Reset form values
-        setValue("fullName", "");
-        setValue("email", "");
-        setValue("phoneNumber", "");
-        setValue("companyName", "");
-        setValue("message", "");
-
-        // Navigate to contact-us page
-        navigate("/contact-us");
-      } else {
-        // Handle errors if the request was not successful
-        toast.error("Something went wrong!", {
-          position: toast.POSITION.TOP_CENTER,
-          style: {
-            width: "230px",
-            background: "#ffffff",
-            color: "#ff0000",
-            fontSize: "20px",
-            padding: "15px 10px",
-          },
-        });
-      }
-    } catch (error) {
-      // Handle unexpected errors
-      console.error("An error occurred:", error);
-      toast.error("Something went wrong!", {
-        position: toast.POSITION.TOP_CENTER,
-        style: {
-          background: "#ffffff",
-          color: "#ff0000",
-          fontSize: "20px",
-          padding: "15px 10px",
-        },
-      });
-    }
   };
 
-
   return (
-    <section className="flex justify-between flex-col md:flex-row gap-20">
+    <section className="grid lg:grid-cols-2 gap-10 lg:py-40 pt-32 pb-16">
       {/*Explanation*/}
-      <div className="md:w-[60%] w-full p-2">
-        <h3 className="text-[3.25rem] font-[700] text-blue-950 capitalize">
+      <div className="grid lg:grid-rows-[100px_auto_auto_1fr] grid-rows-[100px_150px_50px_1fr] gap-6 w-full p-2">
+        <h3 className="text-5xl font-bold text-[#082B5B] capitalize max-w-10">
           Get Started
         </h3>
-        <ul className="text-[#101010] text-[1rem] md:text-[1.3rem] list-inside list-disc marker:text-[#101010]">
-          <li className="leading-[3.4rem]">
-            Get started quickly (1 - 3 weeks)
-          </li>
-          <li className="leading-[3.4rem]">
-            Large pool of vetted and proven developers
-          </li>
-          <li className="leading-[3.4rem]">
-            All popular software languages and frameworks
-          </li>
-          <li className="leading-[3.4rem]">
-            Flexible working hours to meet your timezone
-          </li>
+        <ul className="text-[#101010] lg:text-[1.3rem] text-base grid gap-3 list-inside list-disc marker:text-[#101010]">
+          <li>Get started quickly (1 - 3 weeks)</li>
+          <li>Large pool of vetted and proven developers</li>
+          <li>All popular software languages and frameworks</li>
+          <li>Flexible working hours to meet your timezone</li>
         </ul>
         <hr className="h-[4px] bg-white my-12 mr-5" />
-        <p className="text-[#101010] text-[1rem] md:text-[1.3rem] leading-[3.4rem]">
-          {contactUsExplanation}
+        <p className="text-[#101010] lg:text-xl leading-8">
+          Looking to partner with us? We'd love to hear from you. Contact us
+          using the details below to explore how we can work together. We're
+          committed to providing the best possible service, so don't hesitate to
+          get in touch.
         </p>
       </div>
 
       {/*Services Form*/}
-      <div className="md:w-[55%] w-full bg-blue-950 rounded-[0.9375rem]  text-white mx-auto md:ml-0  pl-1">
+      <div className="w-full bg-blue-950 rounded-[0.9375rem]  text-white mx-auto md:ml-0  pl-1">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="mx-auto mt-8 w-[90%]"
@@ -119,7 +72,7 @@ export default function ContactUsServices() {
           <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
             Tell us about your project
           </h3>
-          <div className="flex flex-col gap-8 w-[90%] mt-10">
+          <div className="flex flex-col gap-8 mt-10">
             <div className="flex flex-col gap-[8px]">
               <label htmlFor="fullName">Full Name</label>
               <input
@@ -227,12 +180,13 @@ export default function ContactUsServices() {
             </div>
           </div>
           <div className="text-center mt-[10px] py-9 ">
-            <button
-              type="submit"
-              className="text-blue-500 bg-white font-bold py-2 px-4 rounded-md transition duration-200 ease-in-out focus:outline-none hover:bg-blue-600 hover:text-white"
-            >
-              Submit
-            </button>
+            <div className="text-center mt-[10px] py-9 w-40 mx-auto ">
+              <Button
+                text="Submit"
+                type="customizedWhite"
+                isLoading={isLoading}
+              />
+            </div>
           </div>
         </form>
       </div>
