@@ -19,7 +19,7 @@ export default function WhyChooseUs() {
         />
 
         <div className="grid gap-6 place-self-center">
-          <h3 className="lg:text-[32px] text-2xl max-w-xl text-[#082B5B] font-bold capitalize lg:leading-[38px] leading-[30px]">
+          <h3 className="lg:text-[32px] text-2xl text-[#082B5B] font-bold capitalize lg:leading-[38px] leading-[30px]">
             We excel at solving complex business challenges through strategic
             marketing and product development, driving success for our clients.
           </h3>

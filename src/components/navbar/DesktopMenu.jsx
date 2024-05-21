@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import kinplusLogoBlue from "../../assets/kinplusBlue.png";
 import kinplusLogoWhite from "../../assets/kinplusWhite.png";
 import { NavLink, useLocation } from "react-router-dom";
@@ -11,6 +11,12 @@ export default function Header() {
   const location = useLocation();
   const { pathname } = location;
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      setIsDropDownOpen(false);
+    };
+  }, [pathname]);
 
   return (
     <PageLayout className="relative">
@@ -33,6 +39,9 @@ export default function Header() {
           {staticData.NavbarLinks.map((links, i) => (
             <NavLink
               to={links.to != "/training" && links.to}
+              onClick={() =>
+                links.to == "/training" && setIsDropDownOpen(!isDropDownOpen)
+              }
               key={i}
               className={`flex gap-1 items-center ${
                 pathname == "/careers" ||
@@ -43,10 +52,7 @@ export default function Header() {
               } text-[20px]`}
             >
               {links.title}
-              <div
-                className={`${links.title !== "Trainings" && "hidden"}`}
-                onClick={() => setIsDropDownOpen(!isDropDownOpen)}
-              >
+              <div className={`${links.title !== "Trainings" && "hidden"}`}>
                 {isDropDownOpen ? (
                   <IoIosArrowUp size={13} />
                 ) : (
@@ -58,7 +64,7 @@ export default function Header() {
 
           {/* Dropdown */}
           <div
-            className={`bg-white absolute top-20 right-60 w-32 z-10 rounded-md font-light 
+            className={`bg-white absolute top-20 right-[350px] w-32 z-10 rounded-md font-light 
               text-neutral-600 px-5 shadow-[0_0_5px_0_rgba(255,255,255,0.5)] overflow-hidden transition-all duration-300 ${
                 isDropDownOpen ? "h-[145.6px]" : "h-0"
               }`}

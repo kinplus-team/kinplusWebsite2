@@ -27,7 +27,7 @@ export default function HeroPage() {
             </p>
 
             {/* link */}
-            <Link to="/contact-us" className="w-52">
+            <Link to="/contact-us/services" className="w-52">
               <Button text="Start a Project" type="customizedBlue" />
             </Link>
           </div>

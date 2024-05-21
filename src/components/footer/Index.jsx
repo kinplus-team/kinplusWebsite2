@@ -6,6 +6,7 @@ import facebook from "../../assets/svg/social-media-icons/facebook.svg";
 import instagram from "../../assets/svg/social-media-icons/instagram.svg";
 import linkedIn from "../../assets/svg/social-media-icons/linkedin.svg";
 import x from "../../assets/svg/social-media-icons/x.svg";
+import youtube from "../../assets/svg/social-media-icons/youtube.svg";
 
 export default function Footer() {
   const contactDetails = [
@@ -13,8 +14,18 @@ export default function Footer() {
     { type: "Phone", value: "+2347069718643, +2348071572767" },
   ];
 
-  const quickLinks = ["Home", "About us", "Service", "Training", "Blog"];
-  const resources = ["Workshop", "Events", "Careers"];
+  const quickLinks = [
+    { title: "Home", link: "/home" },
+    { title: "About us", link: "/about-us" },
+    { title: "Service", link: "/our-services" },
+    { title: "Training", link: "/trainings" },
+    { title: "blog", link: "/blog" },
+  ];
+  const resources = [
+    { title: "Workshop", link: "/trainings/workshop" },
+    { title: "Events", link: "/events" },
+    { title: "Careers", link: "/careers" },
+  ];
   const socialMediaIcons = [
     {
       icon: facebook,
@@ -29,6 +40,7 @@ export default function Footer() {
       link: "https://www.instagram.com/kinplustechnologies/",
     },
     { icon: x, link: "https://twitter.com/kinplustech" },
+    { icon: youtube, link: "https://www.youtube.com/@kinplustech" },
   ];
 
   return (
@@ -89,9 +101,11 @@ export default function Footer() {
                   Quick links
                 </p>
                 {quickLinks.map((quickLink, i) => (
-                  <p key={i} className="text-[#E9D7FE] lg:text-lg my-[5px]">
-                    {quickLink}
-                  </p>
+                  <Link to={quickLink.link}>
+                    <p key={i} className="text-[#E9D7FE] lg:text-lg my-[5px]">
+                      {quickLink.title}
+                    </p>
+                  </Link>
                 ))}
               </div>
 
@@ -101,9 +115,11 @@ export default function Footer() {
                   Resources
                 </p>
                 {resources.map((resource, i) => (
-                  <p key={i} className="text-[#E9D7FE] lg:text-lg my-[5px]">
-                    {resource}
-                  </p>
+                  <Link to={resource.link}>
+                    <p key={i} className="text-[#E9D7FE] lg:text-lg my-[5px]">
+                      {resource.title}
+                    </p>
+                  </Link>
                 ))}
               </div>
             </div>
