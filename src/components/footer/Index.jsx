@@ -21,11 +21,13 @@ export default function Footer() {
     { title: "Training", link: "/trainings" },
     { title: "blog", link: "/blog" },
   ];
+
   const resources = [
     { title: "Workshop", link: "/trainings/workshop" },
     { title: "Events", link: "/events" },
     { title: "Careers", link: "/careers" },
   ];
+
   const socialMediaIcons = [
     {
       icon: facebook,
@@ -101,8 +103,8 @@ export default function Footer() {
                   Quick links
                 </p>
                 {quickLinks.map((quickLink, i) => (
-                  <Link to={quickLink.link}>
-                    <p key={i} className="text-[#E9D7FE] lg:text-lg my-[5px]">
+                  <Link key={i} to={quickLink.link}>
+                    <p className="text-[#E9D7FE] lg:text-lg my-[5px]">
                       {quickLink.title}
                     </p>
                   </Link>
@@ -115,8 +117,8 @@ export default function Footer() {
                   Resources
                 </p>
                 {resources.map((resource, i) => (
-                  <Link to={resource.link}>
-                    <p key={i} className="text-[#E9D7FE] lg:text-lg my-[5px]">
+                  <Link key={i} to={resource.link}>
+                    <p className="text-[#E9D7FE] lg:text-lg my-[5px]">
                       {resource.title}
                     </p>
                   </Link>

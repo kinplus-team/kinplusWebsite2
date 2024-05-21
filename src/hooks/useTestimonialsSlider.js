@@ -8,12 +8,12 @@ export const useTestimonialsSlider = () => {
     let slide = activeSlide;
 
     if (direction === "left") {
-      slide === 1 ? (slide = 3) : (slide -= 1);
+      slide === 1 ? (slide = testimonials.length) : (slide -= 1);
       setActiveSlide(slide);
     }
 
     if (direction === "right") {
-      slide === 3 ? (slide = 1) : (slide += 1);
+      slide === testimonials.length ? (slide = 1) : (slide += 1);
       setActiveSlide(slide);
     }
 

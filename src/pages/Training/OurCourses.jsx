@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import PageLayout from "../../components/Layout/PageLayout.jsx";
 import Catalogue from "../../components/catalogue/Catalogue.jsx";
+
 // svgs
 import icon1 from "../../assets/components/courses/course-list/SVG/visual-studio-code.svg";
 import icon2 from "../../assets/components/courses/course-list/SVG/excel.svg";
@@ -21,6 +22,7 @@ import courses from "../../services/courseServices.js";
 
 async function getCourses() {
   const courseIconArray = [icon1, icon2, icon3, icon4, icon5, icon6];
+
   const trainingImageArray = [
     trainingImage1,
     trainingImage2,
@@ -46,6 +48,7 @@ async function getCourses() {
 
 export default function OurCourses() {
   const [listedCourses, setListedCourses] = useState(null);
+
   useEffect(() => {
     getCourses().then((response) => {
       setListedCourses(response);

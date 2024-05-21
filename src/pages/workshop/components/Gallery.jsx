@@ -104,14 +104,8 @@ export default function Gallery() {
           gallery1,
           gallery4,
           gallery4,
-        ].map((image, i) => (
-          <img
-            key={i}
-            src={image}
-            className={`place-self-end lg:w-[${
-              350 * scaleFactors[i]
-            }px] lg:h-[${350 * scaleFactors[i]}px] w-[350px] h-[350px]`}
-          />
+        ].map((image, index) => (
+          <img key={index} src={image} className={`w-[500px] h-[500px]`} />
         ))}
       </div>
 

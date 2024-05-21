@@ -1,7 +1,6 @@
 import React from "react";
 import peopleLookingAtLaptop from "../../../assets/AboutUs/NewImages/three-people-looking-at-laptop.jpeg";
 import peopleLookingAtLaptopMobile from "../../../assets/looking_at_laptop.png";
-import PageLayout from "../../../components/Layout/PageLayout";
 
 export default function About() {
   return (

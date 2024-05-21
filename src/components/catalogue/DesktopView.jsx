@@ -64,7 +64,6 @@ export default function DesktopViewCatalogue({ title, catalogues }) {
       </div>
 
       {/* right side content */}
-      {/* catalogue image */}
       <div
         className="place-self-end w-full h-[550px]"
         style={{

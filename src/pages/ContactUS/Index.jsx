@@ -27,8 +27,8 @@ export default function MyForm() {
 
   return (
     <PageLayout className="py-32">
-      <div className="grid grid-cols-[40%_1fr] gap-10 items-center pt-10 pb-28">
-        <h3 className="text-5xl capitalize font-bold text-[#082B5B] max-w-5xl">
+      <div className="grid lg:grid-cols-[40%_1fr] gap-10 items-center pt-10 pb-28">
+        <h3 className="lg:text-5xl capitalize font-bold text-[#082B5B] max-w-5xl">
           Interested about our Services and Training Opportunities?
         </h3>
 
@@ -40,7 +40,7 @@ export default function MyForm() {
           delighted to assist you.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid lg:grid-cols-2 gap-10">
         {contactUsCardDetails.map((contactUsCardDetail, index) => (
           <ContactUsCard
             key={contactUsCardDetail.title + index}
@@ -52,12 +52,6 @@ export default function MyForm() {
           />
         ))}
       </div>
-
-      {/* Routes for Contact Us, Services, and Training */}
-      <Routes>
-        <Route path="/services" element={<ContactUsServices />} />
-        <Route path="/training" element={<ContactUsTraining />} />
-      </Routes>
     </PageLayout>
   );
 }

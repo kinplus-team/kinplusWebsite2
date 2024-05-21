@@ -7,6 +7,7 @@ export default function HeroPage() {
   return (
     <header>
       <div
+        id="target-section"
         style={{
           backgroundImage: `url(${girlOnLaptop})`,
         }}
