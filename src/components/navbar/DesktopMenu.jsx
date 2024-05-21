@@ -32,15 +32,19 @@ export default function Header() {
         <div className="hidden lg:grid grid-cols-[auto_auto_100px_auto_auto_auto] gap-10 justify-self-end">
           {staticData.NavbarLinks.map((links, i) => (
             <NavLink
-              to={links.to != "/training" && links.to}
+              to={links.to !== "/training" && links.to}
               key={i}
-              className={`flex gap-1 items-center ${
+              className={({isActive}) => (`${links.title !== "Trainings" && "navLinkHover"} flex gap-1 items-center 
+              ${
+                isActive && links.to !=="/trainings" 
+                && "border-b-[3px] border-blue-600"} 
+              ${
                 pathname == "/careers" ||
                 pathname == "/trainings/workshop" ||
                 pathname == "/"
                   ? "text-white"
                   : "text-[#101010]"
-              } text-[20px]`}
+              } text-[20px] `)}
             >
               {links.title}
               <div
@@ -67,7 +71,7 @@ export default function Header() {
               <NavLink key={i} to={list.to}>
                 <div
                   className={`
-                    py-3 grid grid-flow-col gap-3 items-center justify-start hover:text-black
+                    py-3 grid grid-flow-col gap-3 items-center justify-start hover:text-black hover:font-semibold
                     ${i > 0 && "border-t border-neutral-200"} `}
                 >
                   <p className="cursor-pointer">{list.title}</p>

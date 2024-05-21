@@ -5,7 +5,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 export default function Dedication() {
   return (
     <PageLayout>
-      <div className="grid gap-16">
+      <div className="grid gap-16 lg:pt-40 pt-10">
         {/* title */}
         <div className="grid lg:grid-cols-[auto_1fr] gap-4 lg:gap-36 lg:pb-7 pb-6">
           <h3 className="lg:text-[32px] text-2xl max-w-xl text-[#082B5B] font-bold capitalize lg:leading-[43px] leading-[30px]">

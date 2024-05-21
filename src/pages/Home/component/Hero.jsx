@@ -10,7 +10,7 @@ export default function HeroPage() {
         style={{
           backgroundImage: `url(${girlOnLaptop})`,
         }}
-        className="relative bg-cover lg:bg-right-bottom bg-center grid content-center bg-fixed"
+        className="max-w-[93rem] relative bg-cover lg:bg-right-bottom bg-center grid content-center bg-fixed"
       >
         {/*Hero Text*/}
         <PageLayout isBgColorWhite={true}>

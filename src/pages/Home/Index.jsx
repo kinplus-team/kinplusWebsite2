@@ -16,9 +16,9 @@ export default function Homepage() {
       <PartnersAndSponsors />
       <WhyChooseUs />
       <WhatWeDo />
-      <NextCohort />
       <Dedication />
       <OurCourses />
+      <NextCohort />
       <Testimonial />
       <FAQ />
     </>

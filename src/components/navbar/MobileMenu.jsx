@@ -46,10 +46,11 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen }) => {
             <NavLink to={"/"}>
               <img
                 src={
-                  pathname == "/careers" || pathname == "/workshop"
-                    ? kinplusLogoWhite
-                    : kinplusLogoBlue
+                  pathname !== "/careers" || pathname !== "/workshop" || !isMobileNav
+                    ? kinplusLogoBlue
+                    : kinplusLogoWhite
                 }
+                onClick={() => setIsMobileNav(false)}
                 className="w-32"
                 alt="Kinplus_Logo"
                 loading="lazy"
@@ -73,7 +74,10 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen }) => {
               <NavLink
                 key={i}
                 to={navLinks.to}
-                className="text-3xl font-medium leading-[36px] flex gap-3 items-center"
+                onClick={() => setIsMobileNav(false)}
+                className={({isActive}) => (`${navLinks.title !== "Trainings" && "navLinkHover"} ${
+                  isActive && navLinks.to !=="/trainings" 
+                  && "border-b-[3px] border-blue-600 w-fit"} navLinkHover text-3xl font-medium leading-[36px] flex gap-3 items-center`)}
               >
                 {navLinks.title}
                 <div

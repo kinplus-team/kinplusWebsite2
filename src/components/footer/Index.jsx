@@ -13,8 +13,43 @@ export default function Footer() {
     { type: "Phone", value: "+2347069718643, +2348071572767" },
   ];
 
-  const quickLinks = ["Home", "About us", "Service", "Training", "Blog"];
-  const resources = ["Workshop", "Events", "Careers"];
+  const quickLinks = [
+    {
+      name: "Home",
+      url: "/"
+    },
+    {
+      name: "About us",
+      url: "/about-us"
+    },
+    {
+      name: "Service",
+      url: "/our-services"
+    },
+    {
+      name: "Training",
+      url: "/trainings"
+    },
+    {
+      name: "Blog",
+      url: "/blog"
+    }
+  ];
+
+  const resources = [
+    {
+      name: "Workshop",
+      url: "/trainings/workshop"
+    },
+    {
+      name: "Events",
+      url: ""
+    },
+    {
+      name: "Careers",
+      url: "/careers"
+    }
+  ];
   const socialMediaIcons = [
     {
       icon: facebook,
@@ -89,9 +124,11 @@ export default function Footer() {
                   Quick links
                 </p>
                 {quickLinks.map((quickLink, i) => (
-                  <p key={i} className="text-[#E9D7FE] lg:text-lg my-[5px]">
-                    {quickLink}
-                  </p>
+                  <div key={i}>
+                    <Link to={quickLink.url} className="navLinkHover text-[#F1F1F1]  inline-flex  lg:text-lg my-[5px]">
+                      {quickLink.name}
+                    </Link>
+                  </div>
                 ))}
               </div>
 
@@ -101,9 +138,11 @@ export default function Footer() {
                   Resources
                 </p>
                 {resources.map((resource, i) => (
-                  <p key={i} className="text-[#E9D7FE] lg:text-lg my-[5px]">
-                    {resource}
-                  </p>
+                  <div key={i}>
+                    <Link to={resource.url} className="navLinkHover inline-flex text-[#E9D7FE] lg:text-lg my-[5px]">
+                      {resource.name}
+                    </Link>
+                  </div>
                 ))}
               </div>
             </div>

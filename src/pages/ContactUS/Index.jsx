@@ -27,7 +27,7 @@ export default function MyForm() {
 
   return (
     <PageLayout className="py-32">
-      <div className="grid grid-cols-[40%_1fr] gap-10 items-center pt-10 pb-28">
+      <div className="flex flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0 items-center pt-10 pb-28">
         <h3 className="text-5xl capitalize font-bold text-[#082B5B] max-w-5xl">
           Interested about our Services and Training Opportunities?
         </h3>
@@ -40,7 +40,7 @@ export default function MyForm() {
           delighted to assist you.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-10">
+      <div className="flex flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0">
         {contactUsCardDetails.map((contactUsCardDetail, index) => (
           <ContactUsCard
             key={contactUsCardDetail.title + index}

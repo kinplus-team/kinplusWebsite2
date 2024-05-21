@@ -37,7 +37,7 @@ export default function WhatWeDo() {
         {/* title */}
         <div className="grid lg:grid-cols-[auto_1fr] gap-4 lg:gap-36 lg:py-7 py-6">
           <h3 className="lg:text-[32px] text-2xl max-w-xl text-[#082B5B] font-bold capitalize lg:leading-[38px] leading-[30px]">
-            We Create Beautiful Products That Captures Heart
+            We create beautiful product that captures the heart
           </h3>
 
           <div className="grid gap-6 place-self-center">
