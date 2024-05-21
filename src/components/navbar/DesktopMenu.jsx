@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <nav
       className={`transition-all duration-300 text-black ${
-        navbarColor ? "bg-white" : "bg-transparent"
+        navbarColor ? "bg-[#f1f3f9]" : "bg-transparent"
       } lg:px-[30px] px-4  fixed z-30 top-0 w-full grid grid-cols-[150px_1fr] items-center justify-between lg:py-10`}
     >
       {/* logo */}
