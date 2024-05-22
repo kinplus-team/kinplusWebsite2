@@ -5,6 +5,7 @@ import compensationAndBenefits from "../../../assets/svg/career/compensation-and
 import timer from "../../../assets/svg/career/timer.svg";
 import backgroundIcon1 from "../../../assets/svg/career/background-icon-1.svg";
 import backgroundPattern from "../../../assets/svg/career/background-pattern.svg";
+import pattern from "../../../assets/Pattern.svg";
 
 export default function WorkshopReport() {
   const careerOpportunities = [
@@ -73,7 +74,7 @@ export default function WorkshopReport() {
 
             {/* background images */}
             <img
-              src={backgroundPattern}
+              src={pattern}
               className="w-[200px] h-[200px] absolute top-4 left-[-40px] 2xl:left-[30px] z-0 rotate-180 hidden lg:block"
             />
 

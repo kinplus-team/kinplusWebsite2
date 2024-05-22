@@ -28,7 +28,7 @@ export default function WhatWeDo() {
   ];
 
   return (
-    <PageLayout>
+    <PageLayout className="lg:pt-[148px] py-10">
       <h6 className="text-[#1877F9] leading-[35px] capitalize text-2xl">
         What We Do
       </h6>

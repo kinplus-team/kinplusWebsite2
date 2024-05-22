@@ -7,7 +7,10 @@ import PageLayout from "../../../components/Layout/PageLayout";
 export default function Hero() {
   return (
     <PageLayout className="lg:py-36 pt-36 pb-16">
-      <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-10">
+      <div
+        id="target-section"
+        className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-10"
+      >
         <div className="grid grid-cols-3 gap-2 order-last lg:order-first">
           <div
             style={{

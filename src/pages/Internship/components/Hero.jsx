@@ -8,7 +8,10 @@ import maskedGrid from "../../../assets/svg/masked-grid.svg";
 export default function Hero() {
   return (
     <PageLayout>
-      <div className="grid lg:grid-cols-[55%_45%] lg:pb-10 lg:pt-40">
+      <div
+        id="target-section"
+        className="grid lg:grid-cols-[55%_45%] lg:pb-10 lg:pt-40"
+      >
         {/* left side bar */}
         <div className="grid sm:grid-flow-row gap-4 lg:gap-0 relative">
           <h4 className="flex items-center text-[#1877F9] lg:text-[18px] font-[500] lg:tracking-[3px] uppercase lg:leading-[111.111%] leading-[24px] mt-12 lg:mt-0">

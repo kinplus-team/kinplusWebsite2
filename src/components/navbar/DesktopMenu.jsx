@@ -5,6 +5,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import PageLayout from "../Layout/PageLayout";
 import staticData from "../../repository/home/navbar";
+
 import changeBackground from "./navbar.utils.js";
 import MobileMenu from "./MobileMenu";
 
@@ -29,7 +30,7 @@ export default function Header() {
   return (
     <nav
       className={`transition-all duration-300 text-black ${
-        navbarColor ? "bg-[#f1f3f9]" : "bg-transparent"
+        navbarColor && "bg-[#f1f3f9] w-full"
       } lg:px-[30px] px-4  fixed z-30 top-0 w-full grid grid-cols-[150px_1fr] items-center justify-between lg:py-10`}
     >
       {/* logo */}
@@ -49,9 +50,9 @@ export default function Header() {
       <div className="hidden lg:grid grid-cols-[auto_auto_100px_auto_auto_auto] gap-10 justify-self-end">
         {staticData.NavbarLinks.map((links, i) => (
           <NavLink
-            to={links.to != "/training" && links.to}
+            to={links.to != "/trainings" && links.to}
             onClick={() =>
-              links.to == "/training" && setIsDropDownOpen(!isDropDownOpen)
+              links.to == "/trainings" && setIsDropDownOpen(!isDropDownOpen)
             }
             key={i}
             className={`flex gap-1 items-center ${

@@ -9,7 +9,7 @@ export default function OurMissionAndVision() {
         <div className="relative">
           <img
             src={aboutUsGrid}
-            className="w-auto mx-auto h-[550px] order-last lg:order-first absolute"
+            className="w-auto mx-auto h-[550px] order-last lg:order-first lg:absolute"
           />
         </div>
 

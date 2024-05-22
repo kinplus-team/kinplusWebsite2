@@ -5,6 +5,7 @@ import compensationAndBenefits from "../../../assets/svg/career/compensation-and
 import timer from "../../../assets/svg/career/timer.svg";
 import backgroundIcon1 from "../../../assets/svg/career/background-icon-1.svg";
 import backgroundPattern from "../../../assets/svg/career/background-pattern.svg";
+import pattern from "../../../assets/Pattern.svg";
 
 export default function CareerOpportunity() {
   const careerOpportunities = [
@@ -73,8 +74,8 @@ export default function CareerOpportunity() {
 
             {/* background images */}
             <img
-              src={backgroundPattern}
-              className="w-[200px] h-[200px] absolute top-0 left-[-40px] 2xl:left-[30px] z-0 rotate-180 hidden lg:block"
+              src={pattern}
+              className="w-[200px] h-[200px] absolute top-0 left-[-10px] 2xl:left-[30px] z-0 rotate-180 hidden lg:block"
             />
 
             <img

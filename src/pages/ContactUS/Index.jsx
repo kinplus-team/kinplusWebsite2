@@ -27,12 +27,15 @@ export default function MyForm() {
 
   return (
     <PageLayout className="py-32">
-      <div className="grid lg:grid-cols-[40%_1fr] gap-10 items-center pt-10 pb-28">
-        <h3 className="lg:text-5xl capitalize font-bold text-[#082B5B] max-w-5xl">
+      <div className="grid lg:grid-cols-[50%_1fr] gap-10 items-center pt-10 pb-28">
+        <h3
+          id="target-section"
+          className="lg:text-5xl capitalize font-bold text-[#082B5B] max-w-2xl"
+        >
           Interested about our Services and Training Opportunities?
         </h3>
 
-        <p className="text-lg font-[400] text-[#101010]">
+        <p className="text-lg font-[400] text-[#101010] max-w-2xl">
           At Kinplus, we are committed to providing exceptional solutions and
           services. Whether you have a question, need assistance, or want to
           explore collaboration opportunities, we're here to help. Reach out to

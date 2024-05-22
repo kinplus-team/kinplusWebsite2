@@ -88,9 +88,23 @@ export default function Footer() {
 
               <div>
                 {contactDetails.map((contactDetail, i) => (
-                  <p key={i} className={`lg:text-lg`}>
-                    {contactDetail.type}: {contactDetail.value}
-                  </p>
+                  <div key={i} className={`lg:text-lg`}>
+                    {i == 0 ? (
+                      <div>
+                        {contactDetail.type}:{" "}
+                        <Link
+                          className="underline"
+                          to={`mailto:${contactDetail.value}`}
+                        >
+                          {contactDetail.value}
+                        </Link>
+                      </div>
+                    ) : (
+                      <div>
+                        {contactDetail.type}:{contactDetail.value}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
@@ -104,7 +118,7 @@ export default function Footer() {
                 </p>
                 {quickLinks.map((quickLink, i) => (
                   <Link key={i} to={quickLink.link}>
-                    <p className="text-[#E9D7FE] lg:text-lg my-[5px]">
+                    <p className="text-[#F1F1F1F1] lg:text-lg my-[5px]">
                       {quickLink.title}
                     </p>
                   </Link>
@@ -118,7 +132,7 @@ export default function Footer() {
                 </p>
                 {resources.map((resource, i) => (
                   <Link key={i} to={resource.link}>
-                    <p className="text-[#E9D7FE] lg:text-lg my-[5px]">
+                    <p className="text-[#F1F1F1F1] lg:text-lg my-[5px]">
                       {resource.title}
                     </p>
                   </Link>
@@ -148,7 +162,7 @@ export default function Footer() {
           </div>
 
           <div className="h-[0.5px] w-full bg-white lg:mt-8 mt-4 mb-6"></div>
-          <p className="text-center text-[#D6BBFB] lg:text-lg lg:text-center">
+          <p className="text-center text-[#F1F1F1F1] lg:text-lg lg:text-center">
             Copyright © 2024 Kinplus Technologies. All rights reserved.
           </p>
         </div>

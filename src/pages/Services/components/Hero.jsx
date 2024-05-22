@@ -6,7 +6,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 export default function Hero() {
   return (
     <PageLayout className="lg:pt-36 lg:pb-28 pt-28 pb-16">
-      <div className="flex items-center gap-3">
+      <div id="target-section" className="flex items-center gap-3">
         <h3 className="text-[#1877F9] font-medium leading-8 text-xl">
           Our Services
         </h3>
@@ -31,8 +31,8 @@ export default function Hero() {
         <div className="hidden lg:block"></div>
 
         {/* Text quote on image */}
-        <div className="absolute lg:top-[20%] top-[10%] lg:left-0 left-10  bg-[#1877F9] lg:h-[429px] lg:w-[455px] w-[290px] h-[197px]">
-          <FaQuoteRight className="rotate-180 lg:text-9xl text-5xl text-white" />
+        <div className="absolute lg:top-[20%] top-[10%] lg:left-0 left-10  bg-[#1877F9] lg:h-[429px] lg:w-[455px] w-[290px] h-[197px] pl-10">
+          <FaQuoteRight className="rotate-180 lg:text-9xl text-5xl text-white m-0 p-0" />
           <div className="grid mx-auto lg:max-w-sm max-w-60">
             <p className="text-white lg:text-xl text-sm lg:leading-10 leading-5 lg:font-medium ">
               Whether we’re building new products from ground up, or

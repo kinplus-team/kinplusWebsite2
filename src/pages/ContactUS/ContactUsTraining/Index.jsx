@@ -121,7 +121,7 @@ export default function ContactUsTraining() {
               )}
             </div>
             <div className="flex flex-col gap-[8px]">
-              <label htmlFor="companyName">Company Name</label>
+              <label htmlFor="companyName">Religion</label>
               <input
                 type="text"
                 id="companyName"

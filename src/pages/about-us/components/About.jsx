@@ -5,7 +5,7 @@ import peopleLookingAtLaptopMobile from "../../../assets/looking_at_laptop.png";
 export default function About() {
   return (
     <div className="grid lg:grid-cols-2 bg-[#094FAF]">
-      <div className="grid gap-4 content-center lg:px-10 px-5 py-5">
+      <div className="grid gap-4 content-center lg:px-10 px-5 pt-28 pb-10">
         <h3 className="lg:text-5xl text-4xl font-bold lg:leading-[64px] leading-[40px] capitalize text-white">
           What is Kinplus?
         </h3>
@@ -36,7 +36,7 @@ export default function About() {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-        className="relative h-[550px] hidden lg:block "
+        className="relative h-full hidden lg:block "
       >
         <div className="absolute top-0 h-full w-full bg-black opacity-40"></div>
       </div>
