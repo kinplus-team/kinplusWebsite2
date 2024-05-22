@@ -9,13 +9,13 @@ export default function ApplyForInternship() {
   const [gender, setGender] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const genderInput = [{ title: "Male" }, { title: "Female" }];
-  const checkBoxInput = [{ title: "Yes" }, { title: "No" }];
 
   const [fullName, setFullName] = useState(null);
   const [email, setEmail] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [religion, setReligion] = useState(null);
   const [dateOfBirth, setDateOfBirth] = useState(null);
+
   // const [gender, setGender] = useState(null);
   const [address, setAddress] = useState(null);
   const [nameOfInstitution, setNameOfInstitution] = useState(null);
