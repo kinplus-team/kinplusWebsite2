@@ -5,6 +5,6 @@ import GDG from "../../assets/pages/home/partners_and_sponsors/GDG.png";
 import Microsoft from "../../assets/pages/home/partners_and_sponsors/Microsoft.png";
 import Nitda from "../../assets/pages/home/partners_and_sponsors/Nitda.png";
 
-const Partners = [Nitda, GovernmentOfEkitiLogo, DSN, GDG, Microsoft, Akintunde];
+const Partners = [Nitda, GovernmentOfEkitiLogo, DSN, GDG, Microsoft];
 
 export default Partners;

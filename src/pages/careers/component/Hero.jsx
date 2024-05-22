@@ -5,7 +5,7 @@ import curvedBackground from "../../../assets/svg/career/curved-background.svg";
 
 export default function Hero() {
   return (
-    <div>
+    <div id="target-section">
       <div className="bg-[#082B5B] h-[700px] grid gap-4 lg:place-content-center py-36 lg:py-0 ">
         <div className="grid lg:gap-4 max-w-4xl mx-auto">
           <h2 className="text-[#f1f1f1] lg:text-[65px] text-[35px] text-center font-bold lg:leading-[75px] leading-10 capitalize ">

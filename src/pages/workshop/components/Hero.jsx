@@ -5,7 +5,7 @@ import heroImg from "../../../assets/workshop/hero.png";
 export default function Hero() {
   return (
     <div>
-      <div className="bg-[#082B5B] ">
+      <div id="target-section" className="bg-[#082B5B] ">
         <div className=" grid lg:grid-cols-[auto_1fr] relative gap-4 lg:pt-48 pt-28 pb-5 lg:px-[60px] px-4 max-w-[100rem] mx-auto">
           <div className="grid gap-4 max-w-3xl">
             <h2 className="text-[#fff] lg:text-[65px] text-[35px] font-bold lg:leading-[70px] leading-10 capitalize ">

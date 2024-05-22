@@ -6,6 +6,7 @@ import facebook from "../../assets/svg/social-media-icons/facebook.svg";
 import instagram from "../../assets/svg/social-media-icons/instagram.svg";
 import linkedIn from "../../assets/svg/social-media-icons/linkedin.svg";
 import x from "../../assets/svg/social-media-icons/x.svg";
+import youtube from "../../assets/svg/social-media-icons/youtube.svg";
 
 export default function Footer() {
   const contactDetails = [
@@ -16,39 +17,39 @@ export default function Footer() {
   const quickLinks = [
     {
       name: "Home",
-      url: "/"
+      url: "/",
     },
     {
       name: "About us",
-      url: "/about-us"
+      url: "/about-us",
     },
     {
       name: "Service",
-      url: "/our-services"
+      url: "/our-services",
     },
     {
       name: "Training",
-      url: "/trainings"
+      url: "/trainings",
     },
     {
       name: "Blog",
-      url: "/blog"
-    }
+      url: "/blog",
+    },
   ];
 
   const resources = [
     {
       name: "Workshop",
-      url: "/trainings/workshop"
+      url: "/trainings/workshop",
     },
     {
       name: "Events",
-      url: ""
+      url: "",
     },
     {
       name: "Careers",
-      url: "/careers"
-    }
+      url: "/careers",
+    },
   ];
   const socialMediaIcons = [
     {
@@ -64,6 +65,7 @@ export default function Footer() {
       link: "https://www.instagram.com/kinplustechnologies/",
     },
     { icon: x, link: "https://twitter.com/kinplustech" },
+    { icon: youtube, link: "https://www.youtube.com/@kinplustech" },
   ];
 
   return (
@@ -109,9 +111,23 @@ export default function Footer() {
 
               <div>
                 {contactDetails.map((contactDetail, i) => (
-                  <p key={i} className={`lg:text-lg`}>
-                    {contactDetail.type}: {contactDetail.value}
-                  </p>
+                  <div key={i} className={`lg:text-lg`}>
+                    {i == 0 ? (
+                      <div>
+                        {contactDetail.type}:{" "}
+                        <Link
+                          className="underline"
+                          to={`mailto:${contactDetail.value}`}
+                        >
+                          {contactDetail.value}
+                        </Link>
+                      </div>
+                    ) : (
+                      <div>
+                        {contactDetail.type}:{contactDetail.value}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
@@ -125,7 +141,10 @@ export default function Footer() {
                 </p>
                 {quickLinks.map((quickLink, i) => (
                   <div key={i}>
-                    <Link to={quickLink.url} className="navLinkHover text-[#F1F1F1]  inline-flex  lg:text-lg my-[5px]">
+                    <Link
+                      to={quickLink.url}
+                      className="navLinkHover text-[#F1F1F1]  inline-flex  lg:text-lg my-[5px]"
+                    >
                       {quickLink.name}
                     </Link>
                   </div>
@@ -139,7 +158,10 @@ export default function Footer() {
                 </p>
                 {resources.map((resource, i) => (
                   <div key={i}>
-                    <Link to={resource.url} className="navLinkHover inline-flex text-[#E9D7FE] lg:text-lg my-[5px]">
+                    <Link
+                      to={resource.url}
+                      className="navLinkHover inline-flex text-[#E9D7FE] lg:text-lg my-[5px]"
+                    >
                       {resource.name}
                     </Link>
                   </div>
@@ -169,7 +191,7 @@ export default function Footer() {
           </div>
 
           <div className="h-[0.5px] w-full bg-white lg:mt-8 mt-4 mb-6"></div>
-          <p className="text-center text-[#D6BBFB] lg:text-lg lg:text-center">
+          <p className="text-center text-[#F1F1F1F1] lg:text-lg lg:text-center">
             Copyright © 2024 Kinplus Technologies. All rights reserved.
           </p>
         </div>

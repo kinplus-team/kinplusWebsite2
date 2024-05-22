@@ -2,13 +2,12 @@ import { GraphQLClient, request, gql } from "graphql-request";
 
 const graphqlAPI = process.env.GRAPHCMS_ENDPOINT;
 
-// export a default function for API route to work
-export const contactUsForServices = async (
+export const submitResume = async (
   fullName,
   email,
   phoneNumber,
-  companyName,
-  message
+  jobRole,
+  resume
 ) => {
   const graphQLClient = new GraphQLClient(graphqlAPI, {
     headers: {
@@ -17,20 +16,20 @@ export const contactUsForServices = async (
   });
 
   const query = gql`
-    mutation CreatePartnersContact(
+    mutation CreateJobApplication(
       $fullName: String!
       $email: String!
       $phoneNumber: String!
-      $companyName: String!
-      $message: String!
+      $jobRole: String!
+      $resume: AssetCreateOneInlineInput!
     ) {
-      createPartnersContact(
+      createJobApplication(
         data: {
           fullName: $fullName
           email: $email
           phoneNumber: $phoneNumber
-          companyName: $companyName
-          message: $message
+          jobRole: $jobRole
+          resume: $resume
         }
       ) {
         id
@@ -42,8 +41,8 @@ export const contactUsForServices = async (
     fullName,
     email,
     phoneNumber,
-    companyName,
-    message,
+    jobRole,
+    resume,
   });
 
   return response;

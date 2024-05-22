@@ -1,3 +1,10 @@
+import {
+  HiOutlineArrowLongRight,
+  HiOutlineArrowLongLeft,
+} from "react-icons/hi2";
+
+import ArrowButton from "../assets/svg/buttonArrow.svg";
+
 export default function Button({
   icon,
   text,
@@ -39,6 +46,11 @@ export default function Button({
                 ></path>
               </svg>
               Loading...
+            </div>
+          ) : isLong ? (
+            <div className="flex gap-5 items-center">
+              {text}
+              <img src={ArrowButton} className="w-[61px]" />
             </div>
           ) : (
             text

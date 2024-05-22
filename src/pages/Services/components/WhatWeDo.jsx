@@ -5,6 +5,7 @@ import CTA from "../../../assets/our_services/CTA.png";
 import icon2 from "../../../assets/our_services/Mask Group (1).png";
 import icon3 from "../../../assets/our_services/Group 539.png";
 import image2 from "../../../assets/our_services/Rectangle 11.png";
+import { Link } from "react-router-dom";
 
 export default function WhatWeDo() {
   return (
@@ -39,11 +40,14 @@ export default function WhatWeDo() {
         <div className="rounded-md grid gap-3">
           <div className="relative">
             <img src={victorImg} alt="" />
-            <img
-              src={CTA}
-              alt=""
-              className="w-[5.29463rem] h-[4.5] absolute bottom-0 left-0"
-            />
+
+            <Link to="/contact-us/services">
+              <img
+                src={CTA}
+                alt=""
+                className="w-[5.29463rem] h-[4.5] absolute bottom-0 left-0"
+              />
+            </Link>
           </div>
 
           <p className=" text-[#101010] text-xl font-bold text-center">
@@ -52,7 +56,7 @@ export default function WhatWeDo() {
         </div>
 
         {/* second column */}
-        <div className="bg-[#082B5B] h-[450px] lg:h-auto rounded-[0.3125rem] text-[#F1F1F1] relative">
+        {/* <div className="bg-[#082B5B] h-[450px] lg:h-auto rounded-[0.3125rem] text-[#F1F1F1] relative">
           <img
             src={icon2}
             alt=""
@@ -73,17 +77,38 @@ export default function WhatWeDo() {
               <img src={icon3} alt="" className=" h-7 w-7 " />
             </span>
           </div>
+        </div> */}
+
+        {/* last column */}
+        <div className="grid gap-3">
+          <div className="relative">
+            <img src={image2} alt="" />
+
+            <Link to="/contact-us/services">
+              <img
+                src={CTA}
+                alt=""
+                className="w-[5.29463rem] h-[4.5] absolute bottom-0 left-0"
+              />
+            </Link>
+          </div>
+
+          <p className="text-[#101010] text-[1.25rem] font-bold text-center">
+            Mobile development{" "}
+          </p>
         </div>
 
         {/* last column */}
         <div className="grid gap-3">
           <div className="relative">
             <img src={image2} alt="" />
-            <img
-              src={CTA}
-              alt=""
-              className="w-[5.29463rem] h-[4.5] absolute bottom-0 left-0"
-            />
+            <Link to="/contact-us/services">
+              <img
+                src={CTA}
+                alt=""
+                className="w-[5.29463rem] h-[4.5] absolute bottom-0 left-0"
+              />
+            </Link>
           </div>
 
           <p className="text-[#101010] text-[1.25rem] font-bold text-center">

@@ -11,19 +11,21 @@ export default function OtherOpenings() {
       department: "Creative & Design",
       employmentType: "Full-time",
       location: "Ado-Ekiti, Nigeria",
+      slug: "senior-product-desginer",
     },
     {
       title: "Product manager",
       department: "product",
       employmentType: "Full-time",
       location: "Ado-Ekiti, Nigeria",
+      slug: "product-manager",
     },
     {
       title: "Software developer",
-
       department: "Engineering",
       employmentType: "Full-time",
       location: "Ado-Ekiti, Nigeria",
+      slug: "software-developer",
     },
   ];
   return (
@@ -42,49 +44,51 @@ export default function OtherOpenings() {
 
         <div className="grid gap-10 py-16">
           {availableRoles.map((availableRole, i) => (
-            <div
-              className="grid gap-8 grid-cols-[auto_1fr] border border-[#ECECEC] py-5 px-6"
-              key={i}
-            >
-              <img src={kinplusLogo} className="w-14 h-14" />
-              <div className="grid gap-8">
-                <h4 className="#0D0C22 text-xl font-bold leading-6 capitalize">
-                  {availableRole.title}
-                </h4>
+            <Link to={`/careers/${availableRole.slug}`}>
+              <div
+                className="grid gap-8 grid-cols-[auto_1fr] border border-[#ECECEC] py-5 px-6"
+                key={i}
+              >
+                <img src={kinplusLogo} className="w-14 h-14" />
+                <div className="grid gap-8">
+                  <h4 className="#0D0C22 text-xl font-bold leading-6 capitalize">
+                    {availableRole.title}
+                  </h4>
 
-                <div className="grid grid-cols-3">
-                  {/* department */}
-                  <div className="grid gap-2">
-                    <h5 className="text-[#0D0C22] font-bold leading-5">
-                      Department
-                    </h5>
-                    <p className="text-[#3D3D4E] leading-6">
-                      {availableRole.department}
-                    </p>
-                  </div>
+                  <div className="grid grid-cols-3">
+                    {/* department */}
+                    <div className="grid gap-2">
+                      <h5 className="text-[#0D0C22] font-bold leading-5">
+                        Department
+                      </h5>
+                      <p className="text-[#3D3D4E] leading-6">
+                        {availableRole.department}
+                      </p>
+                    </div>
 
-                  {/* employment type */}
-                  <div className="grid gap-2">
-                    <h5 className="text-[#0D0C22] font-bold leading-5">
-                      Employment Type
-                    </h5>
-                    <p className="text-[#3D3D4E] leading-6">
-                      {availableRole.employmentType}
-                    </p>
-                  </div>
+                    {/* employment type */}
+                    <div className="grid gap-2">
+                      <h5 className="text-[#0D0C22] font-bold leading-5">
+                        Employment Type
+                      </h5>
+                      <p className="text-[#3D3D4E] leading-6">
+                        {availableRole.employmentType}
+                      </p>
+                    </div>
 
-                  {/* location */}
-                  <div className="grid gap-2">
-                    <h5 className="text-[#0D0C22] font-bold leading-5">
-                      Employment Type
-                    </h5>
-                    <p className="text-[#3D3D4E] leading-6">
-                      {availableRole.location}
-                    </p>
+                    {/* location */}
+                    <div className="grid gap-2">
+                      <h5 className="text-[#0D0C22] font-bold leading-5">
+                        Employment Type
+                      </h5>
+                      <p className="text-[#3D3D4E] leading-6">
+                        {availableRole.location}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

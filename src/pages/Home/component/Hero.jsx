@@ -7,10 +7,11 @@ export default function HeroPage() {
   return (
     <header>
       <div
+        id="target-section"
         style={{
           backgroundImage: `url(${girlOnLaptop})`,
         }}
-        className="max-w-[93rem] relative bg-cover lg:bg-right-bottom bg-center grid content-center bg-fixed"
+        className="max-w-[100rem] relative bg-cover lg:bg-right-bottom bg-center grid content-center bg-fixed"
       >
         {/*Hero Text*/}
         <PageLayout isBgColorWhite={true}>
@@ -27,7 +28,7 @@ export default function HeroPage() {
             </p>
 
             {/* link */}
-            <Link to="/contact-us" className="w-52">
+            <Link to="/contact-us/services" className="w-52">
               <Button text="Start a Project" type="customizedBlue" />
             </Link>
           </div>

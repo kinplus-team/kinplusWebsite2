@@ -116,7 +116,7 @@ const Input = ({
           <input
             type={type}
             id={name}
-            className="text-lg font-[400] bg-transparent placeholder:text-[#9c9c9c] placeholder:text-[16px] outline-none w-full py-4 lg:px-6 px-3 border border-white rounded-md "
+            className="text-lg font-[400] bg-transparent placeholder:text-[#ffff] placeholder:font-light placeholder:text-[16px] outline-none w-full py-4 lg:px-6 px-3 border border-white rounded-md "
             placeholder={placeholder}
             name={name}
             required

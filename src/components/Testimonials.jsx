@@ -21,7 +21,8 @@ export default function Testimonials({
 
       <div
         ref={scrollCon}
-        className="grid grid-cols-[repeat(3,_100%)] overflow-auto snap-mandatory snap-x scroll-smooth scrollbar-hide"
+        className={`grid grid-cols-[repeat(3,_100%)] overflow-auto snap-mandatory snap-x 
+          scrollbar-hide`}
       >
         {testimonials.map((testimonial, i) => (
           <div

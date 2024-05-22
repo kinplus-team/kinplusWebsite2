@@ -6,10 +6,12 @@ export default function OurMissionAndVision() {
   return (
     <PageLayout className="lg:py-20 py-10">
       <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-10">
-        <img
-          src={aboutUsGrid}
-          className="w-full h-full order-last lg:order-first"
-        />
+        <div className="relative">
+          <img
+            src={aboutUsGrid}
+            className="w-auto mx-auto h-[550px] order-last lg:order-first lg:absolute"
+          />
+        </div>
 
         <div className="grid lg:gap-24 gap-9 lg:px-10">
           {/* vision */}

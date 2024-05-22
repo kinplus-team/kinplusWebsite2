@@ -27,12 +27,15 @@ export default function MyForm() {
 
   return (
     <PageLayout className="py-32">
-      <div className="flex flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0 items-center pt-10 pb-28">
-        <h3 className="text-5xl capitalize font-bold leading-[66.35px] w-1/2 text-[#082B5B] ">
+      <div className="grid lg:grid-cols-[50%_1fr] gap-10 items-center pt-10 pb-28">
+        <h3
+          id="target-section"
+          className="lg:text-5xl capitalize font-bold text-[#082B5B] max-w-2xl"
+        >
           Interested about our Services and Training Opportunities?
         </h3>
 
-        <p className="text-lg font-[400] leading-[25px] w-1/2 text-[#101010]">
+        <p className="text-lg font-[400] text-[#101010] max-w-2xl">
           At Kinplus, we are committed to providing exceptional solutions and
           services. Whether you have a question, need assistance, or want to
           explore collaboration opportunities, we're here to help. Reach out to
@@ -40,7 +43,7 @@ export default function MyForm() {
           delighted to assist you.
         </p>
       </div>
-      <div className="flex flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0">
+      <div className="grid lg:grid-cols-2 gap-10">
         {contactUsCardDetails.map((contactUsCardDetail, index) => (
           <ContactUsCard
             key={contactUsCardDetail.title + index}
@@ -52,18 +55,6 @@ export default function MyForm() {
           />
         ))}
       </div>
-
-      {/* Routes for Contact Us, Services, and Training */}
-      <Routes>
-        <Route
-          path="/services"
-          element={<ContactUsServices />}
-        />
-        <Route
-          path="/training"
-          element={<ContactUsTraining />}
-        />
-      </Routes>
     </PageLayout>
   );
 }

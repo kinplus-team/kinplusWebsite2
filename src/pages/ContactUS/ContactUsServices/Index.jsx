@@ -2,7 +2,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { contactUsForServices } from "../../../services/contactFormServices";
+import { contactUsForServices } from "../../../services/contactForm";
 import Button from "../../../components/Button";
 import { useState } from "react";
 
@@ -35,14 +35,16 @@ export default function ContactUsServices() {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
         toast.error("Something went wrong!");
         setIsLoading(false);
       });
   };
 
   return (
-    <section className="grid lg:grid-cols-2 gap-10 lg:py-40 pt-32 pb-16">
+    <section
+      id="target-section"
+      className="grid lg:grid-cols-2 gap-10 lg:py-40 pt-32 pb-16"
+    >
       {/*Explanation*/}
       <div className="grid lg:grid-rows-[100px_auto_auto_1fr] grid-rows-[100px_150px_50px_1fr] gap-6 w-full p-2">
         <h3 className="text-5xl font-bold text-[#082B5B] capitalize max-w-10">
