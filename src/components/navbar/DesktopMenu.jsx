@@ -34,41 +34,57 @@ export default function Header() {
             <NavLink
               to={links.to !== "/training" && links.to}
               key={i}
-              className={({isActive}) => (`${links.title !== "Trainings" && "navLinkHover"} flex gap-1 items-center 
+              className={({ isActive }) => `${
+                links.title !== "Trainings" && "navLinkHover"
+              } ${
+                links.title === "Trainings" && "relative"
+              } flex gap-1 items-center 
               ${
-                isActive && links.to !=="/trainings" 
-                && "border-b-[3px] border-blue-600"} 
+                isActive &&
+                links.to !== "/trainings" &&
+                "border-b-[3px] border-blue-600"
+              } 
               ${
                 pathname == "/careers" ||
                 pathname == "/trainings/workshop" ||
                 pathname == "/"
                   ? "text-white"
                   : "text-[#101010]"
-              } text-[20px] `)}
+              } text-[20px] `}
             >
               {links.title}
               <div
-                className={`${links.title !== "Trainings" && "hidden"}`}
-                onClick={() => setIsDropDownOpen(!isDropDownOpen)}
+                className={`${
+                  links.title !== "Trainings" && "hidden"
+                } w-full ml-1 h-full absolute flex items-center`}
+                onMouseEnter={() => setIsDropDownOpen(true)}
+                onMouseLeave={() => setIsDropDownOpen(false)}
               >
-                {isDropDownOpen ? (
-                  <IoIosArrowUp size={13} />
-                ) : (
-                  <IoIosArrowDown size={13} />
-                )}
+                <div className="ml-auto">
+                  {isDropDownOpen ? (
+                    <IoIosArrowUp size={13} />
+                  ) : (
+                    <IoIosArrowDown size={13} />
+                  )}
+                </div>
               </div>
             </NavLink>
           ))}
 
           {/* Dropdown */}
           <div
-            className={`bg-white absolute top-20 right-60 w-32 z-10 rounded-md font-light 
+            className={`bg-white absolute top-20 right-[21rem] w-32 z-10 rounded-md font-light 
               text-neutral-600 px-5 shadow-[0_0_5px_0_rgba(255,255,255,0.5)] overflow-hidden transition-all duration-300 ${
                 isDropDownOpen ? "h-[145.6px]" : "h-0"
               }`}
+            onMouseEnter={() => setIsDropDownOpen(true)}
+            onMouseLeave={() => setIsDropDownOpen(false)}
           >
             {staticData.trainingList.map((list, i) => (
-              <NavLink key={i} to={list.to}>
+              <NavLink
+                key={i}
+                to={list.to}
+              >
                 <div
                   className={`
                     py-3 grid grid-flow-col gap-3 items-center justify-start hover:text-black hover:font-semibold
