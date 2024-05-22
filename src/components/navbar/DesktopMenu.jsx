@@ -56,6 +56,8 @@ export default function Header() {
             }
             key={i}
             className={`flex gap-1 items-center ${
+              links.to != "/trainings" && "navLinkHover"
+            } ${
               pathname == "/careers" ||
               pathname == "/trainings/workshop" ||
               pathname == "/"
@@ -102,6 +104,7 @@ export default function Header() {
         <MobileMenu
           isDropDownOpen={isDropDownOpen}
           setIsDropDownOpen={setIsDropDownOpen}
+          navbarColor={navbarColor}
         />
       </div>
     </nav>

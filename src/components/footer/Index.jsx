@@ -15,19 +15,42 @@ export default function Footer() {
   ];
 
   const quickLinks = [
-    { title: "Home", link: "/home" },
-    { title: "About us", link: "/about-us" },
-    { title: "Service", link: "/our-services" },
-    { title: "Training", link: "/trainings" },
-    { title: "blog", link: "/blog" },
+    {
+      name: "Home",
+      url: "/",
+    },
+    {
+      name: "About us",
+      url: "/about-us",
+    },
+    {
+      name: "Service",
+      url: "/our-services",
+    },
+    {
+      name: "Training",
+      url: "/trainings",
+    },
+    {
+      name: "Blog",
+      url: "/blog",
+    },
   ];
 
   const resources = [
-    { title: "Workshop", link: "/trainings/workshop" },
-    { title: "Events", link: "/events" },
-    { title: "Careers", link: "/careers" },
+    {
+      name: "Workshop",
+      url: "/trainings/workshop",
+    },
+    {
+      name: "Events",
+      url: "",
+    },
+    {
+      name: "Careers",
+      url: "/careers",
+    },
   ];
-
   const socialMediaIcons = [
     {
       icon: facebook,
@@ -117,11 +140,14 @@ export default function Footer() {
                   Quick links
                 </p>
                 {quickLinks.map((quickLink, i) => (
-                  <Link key={i} to={quickLink.link}>
-                    <p className="text-[#F1F1F1F1] lg:text-lg my-[5px]">
-                      {quickLink.title}
-                    </p>
-                  </Link>
+                  <div key={i}>
+                    <Link
+                      to={quickLink.url}
+                      className="navLinkHover text-[#F1F1F1]  inline-flex  lg:text-lg my-[5px]"
+                    >
+                      {quickLink.name}
+                    </Link>
+                  </div>
                 ))}
               </div>
 
@@ -131,11 +157,14 @@ export default function Footer() {
                   Resources
                 </p>
                 {resources.map((resource, i) => (
-                  <Link key={i} to={resource.link}>
-                    <p className="text-[#F1F1F1F1] lg:text-lg my-[5px]">
-                      {resource.title}
-                    </p>
-                  </Link>
+                  <div key={i}>
+                    <Link
+                      to={resource.url}
+                      className="navLinkHover inline-flex text-[#E9D7FE] lg:text-lg my-[5px]"
+                    >
+                      {resource.name}
+                    </Link>
+                  </div>
                 ))}
               </div>
             </div>

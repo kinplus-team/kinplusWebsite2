@@ -22,11 +22,13 @@ import Workshop from "./pages/workshop/Workshop.jsx";
 import WorkshopDetails from "./pages/workshop-details/WorkshopDetails.jsx";
 import Blog from "./pages/blog/Index.jsx";
 import BlogPost from "./pages/blog/BlogPost/Index.jsx";
+import ScrollToTop from "./components/scrollToTop/Index.jsx";
 
 function App() {
   return (
     <>
       <Router>
+    <ScrollToTop/>
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -36,7 +38,7 @@ function App() {
           <Route path="/blog/:article" element={<BlogPost />} />
 
           {/* contact us routes */}
-          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/contact-us/*" element={<ContactUs />} />
           <Route path="/contact-us/services" element={<ContactUsServices />} />
           <Route path="/contact-us/training" element={<ContactUsTraining />} />
 

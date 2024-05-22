@@ -5,6 +5,15 @@ export default function FAQComponent({ FAQs }) {
   const [showAns, setShowAns] = useState(false);
   const [index, setIndex] = useState(-1);
 
+  const toggleFAQ = (i) => {
+    if (index === i) {
+      setShowAns(!showAns);
+    } else {
+      setIndex(i);
+      setShowAns(true);
+    }
+  };
+
   return (
     <div className="py-24 grid gap-7">
       <div className="mx-auto max-w-2xl text-center">
@@ -18,15 +27,11 @@ export default function FAQComponent({ FAQs }) {
       </div>
       <div className="grid gap-5">
         {FAQs.map((FAQ, i) => (
-          <div
-            key={i}
-            onClick={() => {
-              index == i && setShowAns(!showAns);
-              setIndex(i);
-            }}
-            className="w-full mx-auto"
-          >
-            <div className="bg-white p-6 rounded-[10px] border shadow-md grid grid-cols-[1fr_auto]">
+          <div key={i} onClick={() => toggleFAQ(i)} className="w-full mx-auto cursor-pointer">
+            <div
+              
+              className="bg-white p-6 rounded-[10px] border shadow-md grid grid-cols-[1fr_auto]"
+            >
               <p className="lg:text-xl text-base">{FAQ.question}</p>
 
               {showAns && index === i ? (

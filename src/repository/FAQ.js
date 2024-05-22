@@ -97,8 +97,8 @@ const FAQsOnHomePage = [
       "Do I need to have experience on my preferred training track before I can observe my IT/SIWES at Kinplus Technologies?",
     ans: {
       options: [
-        "a.No. While experience on your preferred training track will be an advantage to your learning, you do not need to have any experience to undertake your training in our company. Our IT/SIWES training considers newbies.",
-        "b.Students applying to train on cyber-security are required to undertake lessons on Website Development for a period, to gain the necessary knowledge relevant to their track.",
+        "a. No. While experience on your preferred training track will be an advantage to your learning, you do not need to have any experience to undertake your training in our company. Our IT/SIWES training considers newbies.",
+        "b. Students applying to train on cyber-security are required to undertake lessons on Website Development for a period, to gain the necessary knowledge relevant to their track.",
       ],
     },
   },
@@ -109,11 +109,11 @@ const FAQsOnHomePage = [
       summary:
         "Kinplus Technologies offers training for Academy students on the following tracks:",
       options: [
-        "a.Software Development",
-        "b.Product Design (UI/UX)",
-        "c.Data Analysis",
-        "d.Cyber-security",
-        "e.Graphics Design",
+        "Software Development",
+        "Product Design (UI/UX)",
+        "Data Analysis",
+        "Cyber-security",
+        "Graphics Design",
       ],
     },
   },
