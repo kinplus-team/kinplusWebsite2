@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -6,7 +6,6 @@ import Button from "../../../components/Button";
 import PageLayout from "../../../components/Layout/PageLayout";
 import Input from "../../../components/Inputs";
 import { contactUsForTraining } from "../../../services/contactForm";
-import { useState } from "react";
 
 export default function ContactUsTraining() {
   const navigate = useNavigate();
@@ -14,25 +13,32 @@ export default function ContactUsTraining() {
   const [gender, setGender] = useState("");
   const [track, setTrack] = useState("");
   const [trackPackage, setTrackPackage] = useState("");
+  const [availability, setAvailability] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
-  const genderInput = [{ title: "Male" }, { title: "Female" }];
 
   const [fullName, setFullName] = useState(null);
   const [email, setEmail] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [religion, setReligion] = useState(null);
   const [dateOfBirth, setDateOfBirth] = useState(null);
-  // const [gender, setGender] = useState(null);
   const [address, setAddress] = useState(null);
-  const [availability, setAvailability] = useState(null);
 
+  //tracks
   const trackOptions = [
     { title: "Web development" },
-    { title: "Cyber security" },
+    { title: "Cybersecurity" },
+    { title: "Product Design" },
+    { title: "Graphics Design" },
+    { title: "Data Analysis" },
   ];
 
+  //package option
   const packageOptions = [{ title: "Medium" }, { title: "Pro" }];
+
+  //gender
+  const genderInput = [{ title: "Male" }, { title: "Female" }];
+
   const {
     register,
     handleSubmit,
@@ -40,6 +46,7 @@ export default function ContactUsTraining() {
     setValue,
   } = useForm();
 
+  //Submit
   const onSubmit = async () => {
     setIsLoading(true);
 
@@ -88,8 +95,11 @@ export default function ContactUsTraining() {
           get in touch.
         </p>
       </div>
-      <div className="w-full bg-blue-950 rounded-[0.9375rem]  text-white mx-auto p-10">
-        <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8 ">
+      <div className="w-full bg-blue-950 rounded-[0.9375rem] text-white mx-auto p-10">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="mx-auto mt-8"
+        >
           <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
             Register With Us For Training
           </h3>
@@ -97,7 +107,7 @@ export default function ContactUsTraining() {
             <Input
               type="text"
               name="Full name"
-              placeholder="Enter you Full Name"
+              placeholder="Enter your Full Name"
               setInput={setFullName}
             />
 
@@ -148,7 +158,7 @@ export default function ContactUsTraining() {
             <Input
               type="select"
               name="Track"
-              placeholder="Select Learning Track "
+              placeholder="Select Learning Track"
               selected={track}
               setSelected={setTrack}
               options={trackOptions}
@@ -163,7 +173,7 @@ export default function ContactUsTraining() {
               options={packageOptions}
             />
 
-            {/* health chanllenges */}
+            {/* health challenges */}
             <div className="py-3">
               <p className="text-xl text-white">
                 How will you be available for the meeting?
@@ -171,23 +181,27 @@ export default function ContactUsTraining() {
               <div onClick={() => setAvailability("Online/virtual")}>
                 <Input
                   type="checkbox"
-                  name="Online/virtual"
-                  placeholder="How will you be available for the meeting"
-                  radioText="Yes"
+                  name="availability"
+                  placeholder="How will you be available for the meeting?"
+                  radioText="Online/virtual"
+                  isChecked={availability === "Online/virtual"}
+                  onCheck={() => setAvailability("Online/virtual")}
                 />
               </div>
 
               <div onClick={() => setAvailability("Onsite/physical")}>
                 <Input
                   type="checkbox"
-                  name="Online/physical"
+                  name="availability"
                   placeholder="How will you be available for the meeting?"
-                  radioText="No"
+                  radioText="Onsite/physical"
+                  isChecked={availability === "Onsite/physical"}
+                  onCheck={() => setAvailability("Onsite/physical")}
                 />
               </div>
             </div>
           </div>
-          <div className="text-center mt-[10px] py-9 w-40 mx-auto ">
+          <div className="text-center mt-[10px] py-9 w-40 mx-auto">
             <Button
               text="Submit"
               isLoading={isLoading}
