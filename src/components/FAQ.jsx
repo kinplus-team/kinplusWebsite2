@@ -1,5 +1,8 @@
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+
+import { FaPlus, FaMinus } from "react-icons/fa6";
 import { useState } from "react";
+import Text from "./Text";
 
 export default function FAQComponent({ FAQs }) {
   const [showAns, setShowAns] = useState(false);
@@ -15,46 +18,46 @@ export default function FAQComponent({ FAQs }) {
   };
 
   return (
-    <div className="py-24 grid gap-7">
+    <div className="pb-[130px] grid gap-7">
       <div className="mx-auto max-w-2xl text-center">
-        <h4 className="lg:text-[65px] text-[50px] text-[#082B5B] font-[700] leading-[125%] capitalized">
+        <Text type="heading" className="text-[#082B5B]">
           FAQs
-        </h4>
-        <p className="text-lg">
+        </Text>
+
+        <Text type="subparagraph" className="text-[#556987]">
           Find answers to oue commonly most asked questions relating to our
           product development and training opportunities here.
-        </p>
+        </Text>
       </div>
-      <div className="grid gap-5">
+      <div className="grid gap-5 pt-[30px]">
         {FAQs.map((FAQ, i) => (
-          <div key={i} onClick={() => toggleFAQ(i)} className="w-full mx-auto cursor-pointer">
-            <div
-              
-              className="bg-white p-6 rounded-[10px] border shadow-md grid grid-cols-[1fr_auto]"
-            >
-              <p className="lg:text-xl text-base">{FAQ.question}</p>
+          <div
+            key={i}
+            onClick={() => toggleFAQ(i)}
+            className="w-full mx-auto cursor-pointer"
+          >
+            <div className="rounded-[10px] grid py-[14px] grid-cols-[1fr_auto]">
+              <Text type="paragraph" className="text-[#556987]">
+                {FAQ.question}
+              </Text>
 
               {showAns && index === i ? (
-                <IoIosArrowDown className="w-6 h-6 text-[#1877F9] lg:place-self-end place-self-center cursor-pointer" />
+                <FaMinus className="w-6 h-6 lg:place-self-end place-self-center cursor-pointer" />
               ) : (
-                <IoIosArrowUp className="w-6 h-6 text-[#1877F9] lg:place-self-end place-self-center cursor-pointer" />
+                <FaPlus className="w-6 h-6 lg:place-self-end place-self-center cursor-pointer" />
               )}
             </div>
 
             {showAns && index === i && (
               <div>
-                <p className="text-neutral-500 pt-3 font-normal text-sm md:text-lg px-7">
+                <Text type="subparagraph" className="px-5 text-[#556987]">
                   {FAQ.ans.summary}
-                </p>
-                {FAQ.ans.options &&
-                  FAQ.ans.options.map((option, i) => (
-                    <p
-                      key={i}
-                      className="text-neutral-500 pt-3 font-normal text-sm md:text-lg px-7"
-                    >
-                      {option}
-                    </p>
-                  ))}
+
+                  {FAQ.ans.options &&
+                    FAQ.ans.options.map((option, i) => (
+                      <Text type="subparagraph">{option}</Text>
+                    ))}
+                </Text>
               </div>
             )}
           </div>
