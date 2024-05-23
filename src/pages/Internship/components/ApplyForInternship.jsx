@@ -122,7 +122,7 @@ export default function ApplyForInternship() {
             />
 
             {/* Date of birth and gender */}
-            <div className="grid gap-3 grid-cols-2 items-center">
+            <div className="grid gap-3 sm:grid-cols-2 items-center">
               <Input
                 type="date"
                 name="Date of Birth"
@@ -167,7 +167,7 @@ export default function ApplyForInternship() {
               setInput={setDuration}
             />
 
-            <div className="grid gap-3 grid-cols-2 items-center">
+            <div className="grid gap-3 sm:grid-cols-2 items-center">
               <Input
                 type="date"
                 name="Start Date"
@@ -193,20 +193,19 @@ export default function ApplyForInternship() {
                   name="Do you have any health challenge?"
                   placeholder="Dou you have any health challenge?"
                   radioText="Yes"
+                  isChecked={anyHealthChallenges === "Yes"}
+                  onCheck={() => setAnyHealthChallenges("Yes")}
                 />
               </div>
 
-              <div
-                onClick={() => {
-                  setAnyHealthChallenges("No"),
-                    setDescriptionOfHealthChallenges(" ");
-                }}
-              >
+              <div onClick={() => setAnyHealthChallenges("No")}>
                 <Input
                   type="checkbox"
                   name="Do you have any health challenge?"
                   placeholder="Dou you have any health challenge?"
                   radioText="No"
+                  isChecked={anyHealthChallenges === "No"}
+                  onCheck={() => setAnyHealthChallenges("No")}
                 />
               </div>
             </div>

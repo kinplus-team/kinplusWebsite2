@@ -21,17 +21,17 @@ export default function Header() {
   });
 
   // close dropdown after click on a link
-  useEffect(() => {
-    return () => {
-      setIsDropDownOpen(false);
-    };
-  }, [pathname]);
+  // useEffect(() => {
+  //   return () => {
+  //     setIsDropDownOpen(false);
+  //   };
+  // }, [pathname]);
 
   return (
     <nav
       className={`transition-all duration-300 text-black ${
         navbarColor && "bg-[#f1f3f9] w-full"
-      } lg:px-[30px] px-4  fixed z-30 top-0 w-full grid grid-cols-[150px_1fr] items-center justify-between lg:py-10`}
+      } lg:px-[30px] px-4  fixed z-[99] top-0 w-full grid grid-cols-[150px_1fr] items-center justify-between lg:py-10`}
     >
       {/* logo */}
       <NavLink to={"/"}>
@@ -51,8 +51,11 @@ export default function Header() {
         {staticData.NavbarLinks.map((links, i) => (
           <NavLink
             to={links.to != "/trainings" && links.to}
-            onClick={() =>
-              links.to == "/trainings" && setIsDropDownOpen(!isDropDownOpen)
+            onMouseEnter={() =>
+              links.to === "/trainings" && setIsDropDownOpen(true)
+            }
+            onMouseLeave={() =>
+              links.to === "/trainings" && setIsDropDownOpen(false)
             }
             key={i}
             className={`flex gap-1 items-center ${
@@ -80,19 +83,26 @@ export default function Header() {
 
         {/* Dropdown */}
         <div
-          className={`bg-white absolute top-20 right-[350px] w-32 z-10 rounded-md font-light 
+          className={`bg-white absolute top-20 right-[23rem] w-32 z-10 rounded-md font-light 
               text-neutral-600 px-5 shadow-[0_0_5px_0_rgba(255,255,255,0.5)] overflow-hidden transition-all duration-300 ${
                 isDropDownOpen ? "h-[145.6px]" : "h-0"
               }`}
+          onMouseEnter={() => setIsDropDownOpen(true)}
+          onMouseLeave={() => setIsDropDownOpen(false)}
         >
           {staticData.trainingList.map((list, i) => (
-            <NavLink key={i} to={list.to}>
+            <NavLink
+              key={i}
+              to={list.to}
+            >
               <div
                 className={`
                     py-3 grid grid-flow-col gap-3 items-center justify-start hover:text-black
                     ${i > 0 && "border-t border-neutral-200"} `}
               >
-                <p className="cursor-pointer">{list.title}</p>
+                <p className="cursor-pointer hover:font-semibold">
+                  {list.title}
+                </p>
               </div>
             </NavLink>
           ))}

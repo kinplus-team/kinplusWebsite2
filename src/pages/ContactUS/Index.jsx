@@ -1,12 +1,8 @@
 import React from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
 import ContactUsCard from "../../components/contactUs/ContactUsCard/Index";
-import ContactUsServices from "./ContactUsServices/Index";
-import ContactUsTraining from "./ContactUsTraining/Index";
 import PageLayout from "../../components/Layout/PageLayout";
 
 export default function MyForm() {
-  const location = useLocation();
 
   const contactUsCardDetails = [
     {

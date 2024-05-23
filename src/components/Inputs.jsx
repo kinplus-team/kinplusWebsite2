@@ -1,9 +1,9 @@
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import { useState } from "react";
 import coloredTick from "../assets/svg/input/colored-tick.svg";
-import tranparentTick from "../assets/svg/input/transparent-tick.svg";
+import transparentTick from "../assets/svg/input/transparent-tick.svg";
 
-const Input = ({
+export default function Input({
   type,
   placeholder,
   options,
@@ -13,19 +13,20 @@ const Input = ({
   setInput,
   label,
   radioText,
-}) => {
+  isChecked,
+  onCheck,
+}) {
   const [isPass, setIsPass] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
   const [isSelect, setIsSelect] = useState(false);
 
   switch (type) {
     case "select":
       return (
-        <div className="grid py-4 gap-2 rounded-sm text-lg text-[#fff]">
+        <div className="relative py-4 gap-2 rounded-sm text-lg text-[#fff]">
           {name}
           <label
             onClick={() => setIsSelect(!isSelect)}
-            className="p-4 rounded-md grid grid-cols-[1fr_auto] border border-white gap-4 items-center cursor-pointer"
+            className="p-4 rounded-md grid grid-cols-[1fr_auto] mt-2 border border-white items-center cursor-pointer"
           >
             <div className="text-lg whitespace-nowrap overflow-hidden text-ellipsis">
               {selected === "" ? (
@@ -39,7 +40,7 @@ const Input = ({
             </div>
           </label>
           {isSelect && (
-            <div className="mt-2 cursor-pointer">
+            <div className="absolute top-full mt-2 left-0 right-0 bg-blue-950 z-10 ">
               {options &&
                 options.map((option, i) => (
                   <div
@@ -48,7 +49,7 @@ const Input = ({
                       setSelected(option);
                       setIsSelect(!isSelect);
                     }}
-                    className="lg:px-6 px-3 text-primary-400"
+                    className="lg:px-6 px-3 text-white cursor-pointer hover:text-opacity-80"
                   >
                     {option.title}
                   </div>
@@ -63,16 +64,23 @@ const Input = ({
         <div className="p-1 py-3 lg:grid gap-2 rounded-sm text-lg text-white font-semibold relative">
           <label
             onClick={(e) => {
-              setIsChecked(!isChecked);
+              onCheck();
             }}
             className="flex items-center gap-2 rounded-sm cursor-pointer"
           >
             {isChecked ? (
-              <img src={coloredTick} alt={radioText} className="w-6 h-6" />
+              <img
+                src={coloredTick}
+                alt={radioText}
+                className="w-6 h-6"
+              />
             ) : (
-              <img src={tranparentTick} alt={radioText} className="w-6 h-6" />
+              <img
+                src={transparentTick}
+                alt={radioText}
+                className="w-6 h-6"
+              />
             )}
-
             <p className="text-sm">{radioText}</p>
           </label>
         </div>
@@ -88,9 +96,6 @@ const Input = ({
             required
             onChange={(e) => setInput(e.target.value)}
           />
-          {/* <div onClick={() => setIsPass(!isPass)}>
-            {!isPass ? <Eye /> : <EyeSlash />}
-          </div> */}
         </label>
       );
 
@@ -116,7 +121,7 @@ const Input = ({
           <input
             type={type}
             id={name}
-            className="text-lg font-[400] bg-transparent placeholder:text-[#ffff] placeholder:font-light placeholder:text-[16px] outline-none w-full py-4 lg:px-6 px-3 border border-white rounded-md "
+            className="text-lg font-[400] bg-transparent placeholder:text-[#ffff] placeholder:font-light placeholder:text-[16px] outline-none w-full py-4 lg:px-6 px-3 border border-white rounded-md"
             placeholder={placeholder}
             name={name}
             required
@@ -125,6 +130,4 @@ const Input = ({
         </label>
       );
   }
-};
-
-export default Input;
+}
