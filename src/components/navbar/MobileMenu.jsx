@@ -25,7 +25,7 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
   const location = useLocation();
   const { pathname } = location;
 
-  console.log(navbarColor);
+  // console.log(navbarColor);
   return (
     <>
       <IoIosMenu

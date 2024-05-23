@@ -186,7 +186,7 @@ export default function ContactUsTraining() {
               options={packageOptions}
             />
 
-            {/* health challenges */}
+            {/* availability */}
             <div className="py-3">
               <p className="text-xl text-white">
                 How will you be available for the meeting?
