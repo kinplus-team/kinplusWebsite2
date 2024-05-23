@@ -104,6 +104,8 @@ export default function ContactUsTraining() {
             Register With Us For Training
           </h3>
           <div className="grid sm:grid-flow-row gap-2">
+
+            {/* Full name */}
             <Input
               type="text"
               name="Full name"
@@ -111,18 +113,23 @@ export default function ContactUsTraining() {
               setInput={setFullName}
             />
 
+            {/* email address */}
             <Input
               type="email"
               name="E-Mail"
               placeholder="Enter your E-Mail"
               setInput={setEmail}
             />
+
+            {/* Phone number */}
             <Input
               type="text"
               name="Phone Number"
               placeholder="Enter your Phone Number"
               setInput={setPhoneNumber}
             />
+
+            {/* Religion */}
             <Input
               type="text"
               name="Religion"
@@ -131,13 +138,16 @@ export default function ContactUsTraining() {
             />
 
             {/* Date of birth and gender */}
-            <div className="grid gap-3 grid-cols-2 items-center">
+            <div className="grid gap-3 sm:grid-cols-2 items-center">
+              {/* date of birth */}
               <Input
                 type="date"
                 name="Date of Birth"
                 placeholder="Date of Birth"
                 setInput={setDateOfBirth}
               />
+
+              {/* Gender */}
               <Input
                 type="select"
                 name="Gender"
@@ -148,6 +158,7 @@ export default function ContactUsTraining() {
               />
             </div>
 
+            {/* Address */}
             <Input
               type="text"
               name="Address"
@@ -155,6 +166,7 @@ export default function ContactUsTraining() {
               setInput={setAddress}
             />
 
+            {/* Tracks */}
             <Input
               type="select"
               name="Track"
@@ -164,6 +176,7 @@ export default function ContactUsTraining() {
               options={trackOptions}
             />
 
+            {/* payment packages */}
             <Input
               type="select"
               name="Package"

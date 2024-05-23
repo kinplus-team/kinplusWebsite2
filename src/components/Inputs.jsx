@@ -15,18 +15,18 @@ export default function Input({
   radioText,
   isChecked,
   onCheck,
-}){
+}) {
   const [isPass, setIsPass] = useState(false);
   const [isSelect, setIsSelect] = useState(false);
 
   switch (type) {
     case "select":
       return (
-        <div className="grid py-4 gap-2 rounded-sm text-lg text-[#fff]">
+        <div className="relative py-4 gap-2 rounded-sm text-lg text-[#fff]">
           {name}
           <label
             onClick={() => setIsSelect(!isSelect)}
-            className="p-4 rounded-md grid grid-cols-[1fr_auto] border border-white items-center cursor-pointer"
+            className="p-4 rounded-md grid grid-cols-[1fr_auto] mt-2 border border-white items-center cursor-pointer"
           >
             <div className="text-lg whitespace-nowrap overflow-hidden text-ellipsis">
               {selected === "" ? (
@@ -40,7 +40,7 @@ export default function Input({
             </div>
           </label>
           {isSelect && (
-            <div className="mt-2">
+            <div className="absolute top-full mt-2 left-0 right-0 bg-blue-950 z-10 ">
               {options &&
                 options.map((option, i) => (
                   <div
@@ -130,4 +130,4 @@ export default function Input({
         </label>
       );
   }
-};
+}
