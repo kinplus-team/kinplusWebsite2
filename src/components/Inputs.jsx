@@ -25,7 +25,7 @@ const Input = ({
           {name}
           <label
             onClick={() => setIsSelect(!isSelect)}
-            className="p-4 rounded-md grid grid-cols-[1fr_auto] border border-white gap-4 items-center cursor-pointer"
+            className="p-4 rounded-md grid grid-cols-[1fr_auto] border border-white items-center cursor-pointer"
           >
             <div className="text-lg whitespace-nowrap overflow-hidden text-ellipsis">
               {selected === "" ? (
@@ -39,7 +39,7 @@ const Input = ({
             </div>
           </label>
           {isSelect && (
-            <div className="mt-2 cursor-pointer">
+            <div className="mt-2 ">
               {options &&
                 options.map((option, i) => (
                   <div
@@ -48,7 +48,7 @@ const Input = ({
                       setSelected(option);
                       setIsSelect(!isSelect);
                     }}
-                    className="lg:px-6 px-3 text-primary-400"
+                    className="lg:px-6 px-3 text-white cursor-pointer hover:text-opacity-80"
                   >
                     {option.title}
                   </div>
