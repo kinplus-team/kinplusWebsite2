@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import girlOnLaptop from "../../../assets/pages/home/hero/a-girl-on-a-laptop-min.jpeg";
 import Button from "../../../components/Button";
 import PageLayout from "../../../components/Layout/PageLayout";
+import Text from "../../../components/Text";
 
 export default function HeroPage() {
   return (
@@ -11,21 +12,27 @@ export default function HeroPage() {
         style={{
           backgroundImage: `url(${girlOnLaptop})`,
         }}
-        className="max-w-[100rem] relative bg-cover lg:bg-right-bottom bg-center grid content-center bg-fixed"
+        className="max-w-[100rem] h-screen relative bg-cover lg:bg-right-bottom bg-center bg-fixed"
       >
         {/*Hero Text*/}
-        <PageLayout isBgColorWhite={true}>
-          <div className="relative z-10 grid content-center gap-8 h-screen mx-auto max-w-[1500px]">
-            <h1 className="text-[#F1F1F1] max-w-4xl lg:text-6xl text-4xl font-bold leading-[40px] lg:leading-[65px] capitalize">
-              Empowering Innovators Through Product Development and Training{" "}
-            </h1>
+        <PageLayout heroSpacing isBgColorWhite={true}>
+          <div className="relative z-10 flex flex-col gap-8 h-screen mx-auto max-w-[1500px]">
+            <Text
+              type="heading"
+              className="lg:max-w-[979px] max-w-[390px] text-[#F1F1F1] capitalize"
+            >
+              Empowering Innovators Through Product Development and Training
+            </Text>
 
-            <p className="text-[#F1F1F1] lg:text-2xl lg:leading[40px] leading-[24px] max-w-4xl">
+            <Text
+              type="paragraph"
+              className="lg:max-w-[974px] max-w-[390px] text-[#F1F1F1] capitalize"
+            >
               We're your product development partners. We turn your ideas into
               reality. We're experts, we pay attention to details, and we're
               excited to create groundbreaking solutions. We work closely with
               you to make sure everything is perfect.
-            </p>
+            </Text>
 
             {/* link */}
             <Link to="/contact-us/services" className="w-52">
@@ -34,7 +41,7 @@ export default function HeroPage() {
           </div>
         </PageLayout>
       </div>
-      <div className="absolute top-0 h-full w-full bg-black opacity-70"></div>
+      <div className="absolute top-0 h-full w-full bg-black opacity-70 bg-fixed"></div>
     </header>
   );
 }

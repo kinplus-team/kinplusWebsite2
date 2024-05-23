@@ -11,7 +11,7 @@ import youtube from "../../assets/svg/social-media-icons/youtube.svg";
 export default function Footer() {
   const contactDetails = [
     { type: "Email", value: "help@kinplusgroup.com" },
-    { type: "Phone", value: "+2347069718643, +2348071572767" },
+    { type: "Phone", value: "+234 706 971 8643" },
   ];
 
   const quickLinks = [
@@ -71,18 +71,21 @@ export default function Footer() {
   return (
     <div>
       {/* top section */}
-      <div className="bg-[#1C1D20] text-white grid lg:grid-cols-[auto_1fr] gap-5 py-10 lg:px-[150px] px-7 mx-auto">
+      <div className="bg-[#1C1D20] text-white grid lg:grid-cols-[auto_1fr] gap-5 py-20 lg:px-[150px] px-7 mx-auto">
         <div className="grid lg:gap-10 gap-6">
           <h3 className="lg:text-7xl text-4xl font-bold lg:leading-[80px] lg:text-left text-center lg:max-w-4xl">
-            Join our <span className="text-[#1877F9]">leading</span> learning
-            programs today
+            Ready to <span className="text-[#1877F9]">work</span> on your next
+            project.
           </h3>
           <p className="lg:text-[24px] text-xl leading-[32px] lg:text-left text-center lg:max-w-2xl max-w-80 mx-auto lg:mx-0 ">
             Start learning by registering or reaching out to us
           </p>
         </div>
 
-        <Link to={"/contact-us"} className="w-[10em] place-self-center">
+        <Link
+          to={"/contact-us/services"}
+          className="w-[10em] place-self-center"
+        >
           <Button type="customizedWhite" text="Talk to us" />
         </Link>
       </div>
@@ -113,7 +116,7 @@ export default function Footer() {
                 {contactDetails.map((contactDetail, i) => (
                   <div key={i} className={`lg:text-lg`}>
                     {i == 0 ? (
-                      <div>
+                      <div className="flex gap-1">
                         {contactDetail.type}:{" "}
                         <Link
                           className="underline"
@@ -123,8 +126,14 @@ export default function Footer() {
                         </Link>
                       </div>
                     ) : (
-                      <div>
-                        {contactDetail.type}:{contactDetail.value}
+                      <div className="flex gap-1">
+                        {contactDetail.type}:
+                        <Link
+                          className="underline"
+                          to="https://wa.me/+2347069718643"
+                        >
+                          {contactDetail.value}
+                        </Link>
                       </div>
                     )}
                   </div>
@@ -160,7 +169,7 @@ export default function Footer() {
                   <div key={i}>
                     <Link
                       to={resource.url}
-                      className="navLinkHover inline-flex text-[#E9D7FE] lg:text-lg my-[5px]"
+                      className="navLinkHover inline-flex text-[#f1f1f1] lg:text-lg my-[5px]"
                     >
                       {resource.name}
                     </Link>

@@ -19,7 +19,7 @@ export default function Button({
         <button
           className={`bg-[#1877F9] w-full ${
             isLong
-              ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left "
+              ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left hover:text-[#fff]"
               : " rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"
           }  text-white text-xl font-medium leading-[24px] border border-[#1877F9] shadow-md ${className}`}
         >
@@ -102,7 +102,7 @@ export default function Button({
         <button
           className={`w-full ${
             isLong ? "px-6 py-5" : "px-3 py-3"
-          }   text-[#101010] rounded-md lg:text-xl leading-[24px] text-left ${className}`}
+          }   underline rounded-md lg:text-xl leading-[24px] text-left text-[#556987]  ${className}`}
         >
           {text}
         </button>
@@ -111,7 +111,7 @@ export default function Button({
     case "icon":
       return (
         <button
-          className={`bg-[#F8FAFC] flex items-center gap-5 w-full px-6 py-5 rounded-md text-[#64748B] leading-6 text-left border border-[#F8FAFC] ${className}`}
+          className={`bg-[#F8FAFC] flex items-center gap-5 w-full px-6 py-5 rounded-md text-[#556987] leading-6 text-left border border-[#F8FAFC] ${className}`}
         >
           <img src={icon} className="w-6 h-6" />
           {text}

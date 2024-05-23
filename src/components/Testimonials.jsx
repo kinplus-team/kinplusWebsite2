@@ -4,6 +4,8 @@ import {
   HiOutlineArrowLongLeft,
 } from "react-icons/hi2";
 
+import Text from "./Text";
+
 export default function Testimonials({
   testimonials,
   scrollCon,
@@ -12,9 +14,9 @@ export default function Testimonials({
   return (
     <div>
       <div className="grid lg:grid-cols-2 grid-cols-[1fr_auto] pb-5">
-        <h4 className="lg:text-[40px] text-[28px] sm:text-[40px] text-[#082B5B] font-[700] leading-[125%] capitalized">
-          See what others are <br /> saying about us
-        </h4>
+        <Text type="subheading" className="capitalize max-w-lg text-[#082B5B]">
+          See what others are saying about us
+        </Text>
 
         <FaQuoteRight className="place-self-end lg:text-[130px] text-[79px]" />
       </div>
@@ -29,9 +31,12 @@ export default function Testimonials({
             key={i}
             className="grid lg:grid-cols-[1fr_auto] py-4 gap-16 relative snap-end"
           >
-            <p className="lg:text-[20px] text-lg font-[400] lg:leading-[35px] text-[#101010] max-w-3xl">
+            <Text
+              type="paragraph"
+              className="text-[#556987] max-w-[795px] leading-[30px]"
+            >
               {testimonial.text}
-            </p>
+            </Text>
 
             <div className="lg:place-self-end place-self-center">
               <div className="grid place-items-center">
@@ -40,8 +45,9 @@ export default function Testimonials({
                   className="w-[90px] h-[90px] rounded-full"
                 />
 
-                <p>{testimonial.name}</p>
-                <p>{testimonial.program}</p>
+                <Text type="paragraph">{testimonial.name}</Text>
+
+                <Text type="subparagraph">{testimonial.program}</Text>
               </div>
             </div>
           </div>

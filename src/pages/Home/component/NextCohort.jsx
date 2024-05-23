@@ -1,6 +1,7 @@
 import smileyFaces from "../../../assets/components/nextcohort/smiling-faces.jpeg";
 import graphicsDesign from "../../../assets/components/nextcohort/graphics-design.jpeg";
 import CountDownTimer from "../../../components/cards/CountDownTimer/CountDownTimer.jsx";
+import PageLayout from "../../../components/Layout/PageLayout.jsx";
 
 export default function NextCohort() {
   const countDownTimerProps = {
@@ -9,8 +10,8 @@ export default function NextCohort() {
   };
 
   return (
-    <div className="lg:py-40 py-10 bg-[#f1f3f9]">
+    <PageLayout>
       <CountDownTimer image={countDownTimerProps} />
-    </div>
+    </PageLayout>
   );
 }

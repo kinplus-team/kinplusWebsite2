@@ -4,6 +4,7 @@ import CodeImage from "../../../assets/pages/home/whatWeDo/Animation - 170989137
 import mobileDev from "../../../assets/pages/home/whatWeDo/Animation - 1709891615959.gif";
 import hardwareImage from "../../../assets/pages/home/whatWeDo/Animation - 1709891626344.gif";
 import PageLayout from "../../../components/Layout/PageLayout";
+import Text from "../../../components/Text";
 
 export default function WhatWeDo() {
   const WhatWeDoCardDetails = [
@@ -28,25 +29,28 @@ export default function WhatWeDo() {
   ];
 
   return (
-    <PageLayout className="lg:pt-[148px] py-10">
-      <h6 className="text-[#1877F9] leading-[35px] capitalize text-2xl">
+    <PageLayout>
+      <Text type="title" className="text-[#1877F9] capitalize">
         What We Do
-      </h6>
+      </Text>
 
       <div className="grid lg:gap-16 gap-5">
         {/* title */}
-        <div className="grid lg:grid-cols-[auto_1fr] gap-4 lg:gap-36 lg:py-7 py-6">
-          <h3 className="lg:text-[32px] text-2xl max-w-xl text-[#082B5B] font-bold capitalize lg:leading-[38px] leading-[30px]">
+        <div className="grid lg:grid-cols-[auto_1fr] gap-4 lg:gap-36 lg:py-8 py-6">
+          <Text
+            type="subheading"
+            className="capitalize text-[#082B5B] max-w-xl"
+          >
             We create beautiful product that captures the heart
-          </h3>
+          </Text>
 
           <div className="grid gap-6 place-self-center">
-            <p className="text-[#0F172A] lg:text-[18px] leading-[25px]">
+            <Text type="subparagraph" className="text-[#556987]">
               We craft products that speak to people's emotions. Our designs are
               both functional and beautiful, and they connect with people on a
               deep level. We believe that the best products are the ones that
               touch our hearts.
-            </p>
+            </Text>
 
             <Link to="/our-services" className="w-52">
               <Button type="customizedBlue" text="Learn More" />
@@ -58,19 +62,23 @@ export default function WhatWeDo() {
           {WhatWeDoCardDetails.map((WhatWeDoCardDetail, index) => (
             <div
               key={index}
-              className="grid lg:grid-rows-[80px_auto_150px] overflow-hidden grid-rows-[90px_auto_1fr] justify-center items-center gap-3 bg-white rounded-[0.6em] px-8 py-6 shadow-md border-2"
+              className="grid lg:grid-rows-[80px_auto_160px] overflow-hidden grid-rows-[90px_auto_1fr] justify-center items-center gap-5 bg-white rounded-[0.6em] px-8 py-6 shadow-md border-2"
             >
               <img
                 src={WhatWeDoCardDetail.image}
                 alt={WhatWeDoCardDetail.imageAltText}
                 className="h-[100px] w-[100px] place-self-center"
               />
-              <h3 className="font-medium  text-[#101010] text-3xl capitalize leading-[50px]">
+              <h3 className="font-medium text-[#2A3342] lg:text-[32px] text-[28px] capitalize leading-normal">
                 {WhatWeDoCardDetail.title}
               </h3>
-              <p className="text-lg leading-6 text-center place-self-start">
+
+              <Text
+                type="subparagraph"
+                className="text-[#556987] place-self-center"
+              >
                 {WhatWeDoCardDetail.text}
-              </p>
+              </Text>
             </div>
           ))}
         </div>

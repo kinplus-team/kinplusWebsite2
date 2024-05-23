@@ -6,9 +6,7 @@ import courses from "../../../repository/course.js";
 export default function OurCourses() {
   return (
     <PageLayout>
-      <div className="lg:py-12 pt-8 pb-16">
-        <Catalogue title="Our Courses" catalouges={courses} />
-      </div>
+      <Catalogue title="Our Courses" catalouges={courses} />
     </PageLayout>
   );
 }
