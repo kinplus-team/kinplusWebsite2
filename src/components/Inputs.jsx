@@ -40,7 +40,7 @@ export default function Input({
             </div>
           </label>
           {isSelect && (
-            <div className="absolute top-full mt-2 left-0 right-0 bg-blue-950 z-10 ">
+            <div className="absolute top-full mt-2 left-0 right-0 bg-[#082B5B] z-10 ">
               {options &&
                 options.map((option, i) => (
                   <div

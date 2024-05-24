@@ -40,34 +40,34 @@ const haveAProjectInMind = [
 
 const approachesToProductDevelopment = [
   {
-    title: "Design",
+    title: "Idea Generation",
     description:
-      "Design is the creative process of conceptualizing and crafting user interfaces and experiences that are both visually appealing and easy to use. It involves understanding user needs, wireframing, prototyping, and crafting the overall look and feel of a product.",
+      "This is how we start. We generate ideas, identify market voids, and examine consumer needs. We also conduct surveys and analyze the trends.",
   },
   {
-    title: "Development",
+    title: "Research",
     description:
-      "Design is the creative process of conceptualizing and crafting user interfaces and experiences that are both visually appealing and easy to use. It involves understanding user needs, wireframing, prototyping, and crafting the overall look and feel of a product.",
+      "We conduct diligent market research. We gain a deep understanding of the audience. The design and functionality of our products are informed by rich data.",
   },
   {
-    title: "Engineering",
+    title: "Planning",
     description:
-      "Design is the creative process of conceptualizing and crafting user interfaces and experiences that are both visually appealing and easy to use. It involves understanding user needs, wireframing, prototyping, and crafting the overall look and feel of a product.",
+      "We capture and document specific requirements to create a comprehensive plan. Our plan details the phases, the goals, and the processes. The features, functionality, and user experience are clear from the start.",
   },
   {
-    title: "Design",
+    title: "Product Design",
     description:
-      "Design is the creative process of conceptualizing and crafting user interfaces and experiences that are both visually appealing and easy to use. It involves understanding user needs, wireframing, prototyping, and crafting the overall look and feel of a product.",
+      "Employing the best UI/UX ideas, we pay close attention to the functionality, aesthetics, and usability of the product.",
   },
   {
-    title: "Development",
+    title: "Development and Engineering",
     description:
-      "Design is the creative process of conceptualizing and crafting user interfaces and experiences that are both visually appealing and easy to use. It involves understanding user needs, wireframing, prototyping, and crafting the overall look and feel of a product.",
+      "We translate designs into functional, working products. Our developers work collaboratively to build the actual solution, achieving the desired scalability, performance, and technical feasibility.",
   },
   {
-    title: "Engineering",
+    title: "Testing and Iteration:",
     description:
-      "Design is the creative process of conceptualizing and crafting user interfaces and experiences that are both visually appealing and easy to use. It involves understanding user needs, wireframing, prototyping, and crafting the overall look and feel of a product.",
+      "In order to ensure that our products meet quality standards, we conduct internal and user testing. We gather feedback, identify issues, and iterate.",
   },
 ];
 
