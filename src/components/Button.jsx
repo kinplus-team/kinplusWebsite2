@@ -17,7 +17,7 @@ export default function Button({
     case "customizedBlue":
       return (
         <button
-          className={`bg-[#1877F9] w-full ${
+          className={`bg-[#1877F9] w-fit ${
             isLong
               ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left hover:text-[#fff]"
               : " rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"
