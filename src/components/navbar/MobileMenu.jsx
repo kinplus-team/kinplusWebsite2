@@ -29,8 +29,12 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
   return (
     <>
       <IoIosMenu
-        className={`lg:hidden w-7 lg:w-10 h-20  justify-self-end ${
-          pathname === "/" && navbarColor ? "text-black" : "text-white"
+        className={`lg:hidden w-7 lg:w-10 h-20  justify-self-end   ${
+          pathname === "/" && navbarColor
+            ? "text-black"
+            : pathname == "/about-us"
+            ? "text-black"
+            : "text-white"
         }`}
         onClick={() => setIsMobileNav(true)}
       />
