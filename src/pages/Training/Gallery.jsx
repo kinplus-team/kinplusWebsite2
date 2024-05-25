@@ -7,29 +7,25 @@ import arrow from "../../assets/svg/arrow.svg";
 // import gallery4 from "../../assets/gallery/gallery_4.png";
 
 import getTrainingGallery from "../../services/galleryServices.js";
+import Text from "../../components/Text.jsx";
 import PageLayout from "../../components/Layout/PageLayout.jsx";
 
+import {
+  HiOutlineArrowLongRight,
+  HiOutlineArrowLongLeft,
+} from "react-icons/hi2";
+
 export default function Gallery() {
-  const [scaleFactors, setScaleFactor] = useState(Array(10).fill(1));
   const [gallery, setGallery] = useState([]);
 
   const scrollContainerRef = useRef(null);
-  const targetImageRef = useRef(null);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
-
-  const [scaledImage, setScaledImage] = useState(false);
-
-  const handleScroll = () => {
-    const scrollLeft = scrollContainerRef.current.scrollLeft;
-    const triggerPosition = 15; // Adjust this value as needed
-
-    if (scrollLeft <= triggerPosition) {
-      console.log(scrollLeft);
-      if (targetImageRef.current) {
-        targetImageRef.current.style.height = "500px";
-        targetImageRef.current.style.width = "500px";
-      }
-    }
+  const handleScroll = (direction) => {
+    scrollContainerRef.current &&
+      direction === "right" &&
+      (scrollContainerRef.current.scrollLeft += 1000);
+    scrollContainerRef.current &&
+      direction === "left" &&
+      (scrollContainerRef.current.scrollLeft -= 1000);
   };
 
   useEffect(() => {
@@ -41,32 +37,29 @@ export default function Gallery() {
 
   return (
     <div className="bg-[#f1f3f9]">
-      <div className="lg:pt-20 pt-10 lg:pb-32 pb-10 grid lg:gap-10 gap-2 relative lg:px-[0px] px-4 max-w-[100rem] mx-auto">
+      <div className="lg:pt-32 pt-10 grid lg:gap-10 gap-2 relative lg:px-[0px] px-4 max-w-[100rem] mx-auto">
         {/* Navigators */}
-        <div className="grid gap-2 place-self-end right-52">
-          <div className="flex items-center gap-3 lg:text-[20px] text-[#1877F9] font-[500] leading-[150%]">
-            <p>Kinplus gallery</p>
-            <div className="mt-1 w-[73px] h-[2px] bg-[#222831] leading-normal "></div>
-          </div>
-          <p className="text-[#082B5B] lg:text-[40px] text-[35px] font-[700] lg:max-w-md">
-            Check out our past trainees
-          </p>
-          <img
-            src={arrow}
-            className=" w-[197px] mx-auto lg:mx-0 hidden lg:block"
-          />
+        <div className="grid gap-2 lg:place-self-end right-52">
+          <Text type="title" className="text-[#1877F9]">
+            Kinplus gallery
+          </Text>
 
-          <div className="relative lg:block hidden">
-            <div className="grid grid-cols-[50px_100px] gap-10">
-              <div
-                onClick={() => handleScroll("left")}
-                className="w-full h-8 "
-              ></div>
-              <div
-                onClick={() => handleScroll("right")}
-                className="w-full h-8"
-              ></div>
-            </div>
+          <Text
+            type="subheading"
+            className="text-[#082B5B] lg:max-w-md max-w-xs"
+          >
+            Check out our past trainees
+          </Text>
+
+          <div className="lg:flex justify-self-start hidden">
+            <HiOutlineArrowLongLeft
+              className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
+              onClick={() => handleScroll("left")}
+            />
+            <HiOutlineArrowLongRight
+              className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
+              onClick={() => handleScroll("right")}
+            />
           </div>
         </div>
 
@@ -74,12 +67,10 @@ export default function Gallery() {
         <div
           className="flex justify-between items-baseline overflow-hidden gap-5 relative overflow-x-auto scroll-ms-9 no-scroll snap-mandatory snap-x scroll-smooth"
           ref={scrollContainerRef}
-          onScroll={() => handleScroll()}
         >
           {gallery?.map((image, index) => (
             <img
               key={index}
-              ref={targetImageRef}
               src={image.traineePhoto.url}
               className={`w-[500px] h-[500px]`}
             />
@@ -90,15 +81,15 @@ export default function Gallery() {
         <div className="relative lg:hidden block py-8">
           <img src={arrow} className=" w-[197px] mx-auto lg:mx-0" />
 
-          <div className="grid grid-cols-[50px_100px] gap-10 absolute top-0">
-            <div
+          <div className="lg:flex justify-self-end hidden">
+            <HiOutlineArrowLongLeft
+              className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
               onClick={() => handleScroll("left")}
-              className="w-full h-8 "
-            ></div>
-            <div
+            />
+            <HiOutlineArrowLongRight
+              className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
               onClick={() => handleScroll("right")}
-              className="w-full h-8"
-            ></div>
+            />
           </div>
         </div>
       </div>

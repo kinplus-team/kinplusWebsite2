@@ -69,17 +69,9 @@ export default function Input({
             className="flex items-center gap-2 rounded-sm cursor-pointer"
           >
             {isChecked ? (
-              <img
-                src={coloredTick}
-                alt={radioText}
-                className="w-6 h-6"
-              />
+              <img src={coloredTick} alt={radioText} className="w-6 h-6" />
             ) : (
-              <img
-                src={transparentTick}
-                alt={radioText}
-                className="w-6 h-6"
-              />
+              <img src={transparentTick} alt={radioText} className="w-6 h-6" />
             )}
             <p className="text-sm">{radioText}</p>
           </label>

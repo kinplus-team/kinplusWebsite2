@@ -5,6 +5,9 @@ import hardwareF from "../assets/our_services/hardware fade.png";
 import image3 from "../assets/our_services/Rectangle 51.png";
 import image2 from "../assets/our_services/Rectangle 11.png";
 
+import hardwareSalesAndRepairs from "../assets/our_services/hardware_sales_and_repairs.png";
+import hardwareSalesAndRepairsF from "../assets/our_services/hardware_sales_and_repairs_fade.png";
+
 const haveAProjectInMind = [
   {
     id: 1,
@@ -32,8 +35,9 @@ const haveAProjectInMind = [
     description:
       "At Kinplus, we offer top-quality hardware for sale, as well as expert repair services. We stock a wide range of the latest hardware from leading brands, ensuring that you have access to the best technology on the market. And if your hardware is in need of repair, our team of skilled technicians is here to help. We can diagnose and fix any issues, big or small, so you can get back to using your hardware as soon as possible. Rest assured that your hardware needs are in good hands with Kinplus",
     image: {
-      image1: hardwareF,
-      image2: hardware,
+      image1: hardwareSalesAndRepairsF,
+
+      image2: hardwareSalesAndRepairs,
     },
   },
 ];

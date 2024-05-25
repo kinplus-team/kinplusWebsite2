@@ -4,7 +4,11 @@ import formatLink from "../../utilities/formatLink";
 import { useSliderCalculation } from "../../hooks/useSliderCalculation";
 import { Link } from "react-router-dom";
 
-export default function DesktopViewCatalogue({ title, catalogues }) {
+export default function DesktopViewCatalogue({
+  title,
+  catalogues,
+  isLinked = true,
+}) {
   const { index, setIndex, equalHeight } = useSliderCalculation(catalogues);
 
   return (
@@ -47,7 +51,9 @@ export default function DesktopViewCatalogue({ title, catalogues }) {
             {catalogues.map((catalogue, i) => (
               <Link
                 to={
-                  catalogue.link ? `/trainings/courses/${catalogue.link}` : ""
+                  isLinked &&
+                  catalogue.link &&
+                  `/trainings/courses/${catalogue.link}`
                 }
                 key={i}
                 onMouseEnter={() => setIndex(i)}
@@ -56,6 +62,7 @@ export default function DesktopViewCatalogue({ title, catalogues }) {
                   text={catalogue.title}
                   type={`${i == index ? "customizedBlue" : "transparent"}`}
                   isLong={true}
+                  isLinked={isLinked}
                 />
               </Link>
             ))}

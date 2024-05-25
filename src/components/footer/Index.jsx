@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "../Button";
 import footerBg2 from "../../assets/footer/footer-bg-2.png";
 import kinplusLogoBlue from "../../assets/kinplusBlue.png";
@@ -9,6 +9,9 @@ import x from "../../assets/svg/social-media-icons/x.svg";
 import youtube from "../../assets/svg/social-media-icons/youtube.svg";
 
 export default function Footer() {
+  const location = useLocation();
+  const { pathname } = location;
+
   const contactDetails = [
     { type: "Email", value: "help@kinplusgroup.com" },
     { type: "Phone", value: "+234 706 971 8643" },
@@ -73,17 +76,29 @@ export default function Footer() {
       {/* top section */}
       <div className="bg-[#1C1D20] text-white grid lg:grid-cols-[auto_1fr] gap-5 py-20 lg:px-[150px] px-7 mx-auto">
         <div className="grid lg:gap-10 gap-6">
-          <h3 className="lg:text-7xl text-4xl font-bold lg:leading-[80px] lg:text-left text-center lg:max-w-4xl">
-            Ready to <span className="text-[#1877F9]">work</span> on your next
-            project.
-          </h3>
+          {pathname !== "/trainings" ? (
+            <h3 className="lg:text-7xl text-4xl font-bold lg:leading-[80px] lg:text-left text-center lg:max-w-4xl">
+              Ready to <span className="text-[#1877F9]">work</span> on your next
+              project.
+            </h3>
+          ) : (
+            <h3 className="lg:text-7xl text-4xl font-bold lg:leading-[80px] lg:text-left text-center lg:max-w-5xl">
+              Join our <span className="text-[#1877F9]">leading</span> learning
+              programs today
+            </h3>
+          )}
+
           <p className="lg:text-[24px] text-xl leading-[32px] lg:text-left text-center lg:max-w-2xl max-w-80 mx-auto lg:mx-0 ">
             Start learning by registering or reaching out to us
           </p>
         </div>
 
         <Link
-          to={"/contact-us/services"}
+          to={
+            pathname !== "/trainings"
+              ? "/contact-us/services"
+              : "/contact-us/training"
+          }
           className="w-[10em] place-self-center"
         >
           <Button type="customizedWhite" text="Talk to us" />

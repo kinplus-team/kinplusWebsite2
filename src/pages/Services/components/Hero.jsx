@@ -2,29 +2,31 @@ import image10 from "../../../assets/our_services/image 10.png";
 import rectangle from "../../../assets/our_services/Rectangle 1.png";
 import { FaQuoteRight } from "react-icons/fa6";
 import PageLayout from "../../../components/Layout/PageLayout";
+import Text from "../../../components/Text";
 
 export default function Hero() {
   return (
-    <PageLayout className="lg:pt-36 lg:pb-28 pt-28 pb-16">
+    <PageLayout className="pt-24">
       <div id="target-section" className="flex items-center gap-3">
-        <h3 className="text-[#1877F9] font-medium leading-8 text-xl">
+        <Text type="title" className="text-[#1877F9] capitalize">
           Our Services
-        </h3>
+        </Text>
+        {/* <h3 className="text-[#1877F9] font-medium leading-8 text-xl"></h3> */}
 
-        <img src={rectangle} className="w-20 h-[2px] " alt="" />
+        {/* <img src={rectangle} className="w-20 h-[2px] " alt="" /> */}
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-3">
-        <h1 className="lg:text-5xl text-4xl text-[#082B5B] font-bold lg:max-w-xl leading-10">
+      <div className="grid lg:grid-cols-2 gap-3 items-center">
+        <Text type="heading" className="text-[#082B5B]">
           Empowering Creativity, Building Excellent products.
-        </h1>
+        </Text>
 
-        <p className="lg:text-lg leading-6 text-[#101010]">
+        <Text type="subparagraph" className="text-[#556987]">
           We believe that creativity is the key to building excellence. Our
           products are designed with love and attention to detail, to create an
           emotional connection with users. We strive to create products that are
           not only functional, npbut also beautiful and meaningful.
-        </p>
+        </Text>
       </div>
 
       <div className="relative grid lg:grid-cols-[350px_1fr] lg:py-10 pt-32">

@@ -6,20 +6,21 @@ import iconbg2 from "../../../assets/training/Icons.png";
 import image2 from "../../../assets/our_services/Rectangle 11.png";
 import image3 from "../../../assets/our_services/Rectangle 51.png";
 import servicesRepo from "../../../repository/Services";
+import Text from "../../../components/Text";
 
 export default function HaveAProjectInMind() {
   return (
-    <PageLayout className="lg:pt-32 pt-10 pb-16">
+    <PageLayout>
       {/* header */}
       <div className="grid lg:grid-cols-2 gap-3">
-        <h1 className="lg:text-[40px] text-[28px] text-[#082B5B] font-bold lg:leading-[50px] leading-9 capitalize">
+        <Text type="subheading" className="capitalize text-[#082B5B] max-w-lg">
           Have a project in mind? Let's get started here
-        </h1>
+        </Text>
 
-        <p className="lg:text-lg leading-[25px] text-[#000000DE] ">
+        <Text type="subparagraph" className="text-[#556987]">
           At Kinplus, we tackle intricate business challenges through
           exceptional strategy, marketing, and product development services, 
-        </p>
+        </Text>
       </div>
 
       {servicesRepo.haveAProjectInMind.map((projectInMind, index) => (
@@ -62,13 +63,16 @@ export default function HaveAProjectInMind() {
           </div>
 
           <div className="max-w-lg grid grid-rows-[auto_auto_1fr] gap-4">
-            <h3 className="text-[#082B5B] font-bold text-5xl leading-[54px] capitalize hidden lg:block">
+            <Text
+              type="subheading"
+              className="text-[#082B5B] capitalize hidden lg:block"
+            >
               {projectInMind.title}
-            </h3>
+            </Text>
 
-            <p className="text-[#101010] lg:text-lg leading-6">
+            <Text type="subparagraph" className="text-[#556987]">
               {projectInMind.description}
-            </p>
+            </Text>
 
             <Link to="/contact-us/services" className="w-52 self-center">
               <Button type="customizedBlue" text="Talk to us" />

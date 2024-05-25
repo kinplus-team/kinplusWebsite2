@@ -6,6 +6,7 @@ import workPc2 from "../../../assets/AboutUs/NewImages/working-on-pc-2.jpeg";
 import idea from "../../../assets/AboutUs/idea.jpeg";
 import { Link } from "react-router-dom";
 import Button from "../../../components/Button";
+import Text from "../../../components/Text";
 
 export default function NextProject() {
   return (
@@ -18,14 +19,14 @@ export default function NextProject() {
 
         <div className="h-full text-[#ffffff] bg-[#1877F9] grid content-center lg:py-0 py-10">
           <div className="lg:max-w-xl max-w-xs text-center lg:text-left mx-auto grid gap-4">
-            <h3 className="lg:text-6xl text-3xl font-bold lg:leading-[61px] leading-[36px] place-self-center">
+            <Text type="heading" className="text-[#ffff]">
               Ready for your next project?
-            </h3>
+            </Text>
 
-            <p className="lg:text-lg lg:leading-7 leading-6">
+            <Text type="subparagraph" className="text-[#ffff]">
               We design, build, and scale platforms for forward-thinking
               experiences, allowing companies to focus on measurable outcomes.
-            </p>
+            </Text>
 
             <Link
               to={"/contact-us/services"}

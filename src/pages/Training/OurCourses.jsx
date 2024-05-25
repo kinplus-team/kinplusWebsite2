@@ -57,7 +57,7 @@ export default function OurCourses() {
 
   return (
     <PageLayout>
-      <div className="lg:py-12 pt-8 pb-16">
+      <div>
         {listedCourses && (
           <Catalogue title="Our Courses" catalouges={listedCourses} />
         )}
