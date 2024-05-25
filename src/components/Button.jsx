@@ -17,7 +17,7 @@ export default function Button({
     case "customizedBlue":
       return (
         <button
-          className={`bg-[#1877F9] w-fit ${
+          className={`bg-[#1877F9] w-fit hover:bg-opacity-90 hover:text-opacity-85 ${
             isLong
               ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left hover:text-[#fff]"
               : " rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"
@@ -61,7 +61,7 @@ export default function Button({
     case "customizedWhite":
       return (
         <button
-          className={`bg-white w-full ${
+          className={`bg-white w-full hover:bg-opacity-90 hover:text-opacity-85 ${
             isLong
               ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left "
               : " rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"
