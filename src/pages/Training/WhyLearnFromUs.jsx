@@ -16,6 +16,8 @@ import whyLearnFromUs3 from "../../assets/images/training/why-learn-from-us/why-
 import whyLearnFromUs4 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-4.jpg";
 import whyLearnFromUs5 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-1.jpg";
 
+import Text from "../../components/Text.jsx";
+
 export default function WhyLearnFromUs() {
   const reasons = [
     {
@@ -47,27 +49,27 @@ export default function WhyLearnFromUs() {
 
   return (
     <PageLayout>
-      <div className="lg:pt-36 lg:pb-28 pt-8 pb-2 relative">
-        <h4 className="flex items-center text-[#1877F9] lg:text-[20px] font-[500] lg:leading-[30px] leading-[24px] mt-11 lg:mt-0 ">
+      <div className=" relative">
+        <Text type="title" className="text-[#1877F9] ">
           What you stand to gain
-          <div className="ml-3 h-[1.5px] w-[74.75px] bg-[#222831]"></div>
-        </h4>
-        <p className="relative lg:block z-10 text-[#082B5B] lg:text-[40px] text-[35px] font-[700] lg:leading-[50px] leading-10 capitalized lg:max-w-2xl mb-4">
+        </Text>
+
+        <Text type="subheading" className="text-[#082B5B] lg:max-w-2xl">
           All programs are designed to meet all your needs
-        </p>
+        </Text>
         <div>
           <img
             src={backgroundIcon}
-            className="lg:w-[170px] w-[170px] lg:h-[128px] absolute lg:top-[250px] top-[180px] left-52 lg:left-80 z-0"
+            className="lg:w-[170px] w-[170px] lg:h-[128px] absolute lg:top-[100px] top-[180px] left-52 lg:left-80 z-0"
           />
         </div>
         <div>
           <img
             src={sparkle}
-            className="w-40 h-40 absolute top-24 right-36 z-0 hidden lg:block"
+            className="w-40 h-40 absolute top-10 right-36 z-0 hidden lg:block"
           />
         </div>
-        <Catalogue catalouges={reasons} />
+        <Catalogue isLinked={false} catalouges={reasons} />
       </div>
     </PageLayout>
   );

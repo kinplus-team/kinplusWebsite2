@@ -2,9 +2,12 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import icon from "../../../assets/our_services/Mask Group.png";
 import victorImg from "../../../assets/our_services/image 5.png";
 import CTA from "../../../assets/our_services/CTA.png";
-import icon2 from "../../../assets/our_services/Mask Group (1).png";
-import icon3 from "../../../assets/our_services/Group 539.png";
+import Text from "../../../components/Text";
 import image2 from "../../../assets/our_services/Rectangle 11.png";
+import webDevelopment from "../../../assets/our_services/web_development.png";
+import hardwareRepairs from "../../../assets/our_services/hardware_repair.png";
+import mobileDevelopment from "../../../assets/our_services/mobile_development.png";
+
 import { Link } from "react-router-dom";
 
 export default function WhatWeDo() {
@@ -12,9 +15,9 @@ export default function WhatWeDo() {
     <PageLayout>
       <div className="grid lg:grid-cols-[500px_1fr_auto] lg:gap-5 items-center">
         <div className="grid grid-cols-2">
-          <h1 className="  text-[#082B5B] lg:text-[2.5rem] text-2xl font-bold lg:leading-5 leading-7">
+          <Text type="subheading" className="text-[#082B5B]">
             What we do
-          </h1>
+          </Text>
 
           <img
             src={icon}
@@ -23,11 +26,11 @@ export default function WhatWeDo() {
           />
         </div>
 
-        <p className="lg:text-lg lg:leading-6 leading-6 text-[#101010]">
+        <Text type="subparagraph" className="text-[#556987]">
           We'll expertly manage the technical aspects, allowing you to focus on
           bringing your solutions to the market and engaging potential
           investors. Collaborate with our team for seamless execution.
-        </p>
+        </Text>
 
         <div className="hidden lg:block">
           <img src={icon} alt="" />
@@ -35,11 +38,11 @@ export default function WhatWeDo() {
       </div>
 
       {/* What we do  */}
-      <div className="grid lg:grid-cols-3 gap-5 py-10">
+      <div className="grid lg:grid-cols-3 gap-5 pt-10">
         {/* first column */}
         <div className="rounded-md grid gap-3">
           <div className="relative">
-            <img src={victorImg} alt="" />
+            <img src={webDevelopment} alt="" />
 
             <Link to="/contact-us/services">
               <img
@@ -82,7 +85,7 @@ export default function WhatWeDo() {
         {/* last column */}
         <div className="grid gap-3">
           <div className="relative">
-            <img src={image2} alt="" />
+            <img src={mobileDevelopment} alt="" />
 
             <Link to="/contact-us/services">
               <img
@@ -101,7 +104,7 @@ export default function WhatWeDo() {
         {/* last column */}
         <div className="grid gap-3">
           <div className="relative">
-            <img src={image2} alt="" />
+            <img src={hardwareRepairs} alt="" />
             <Link to="/contact-us/services">
               <img
                 src={CTA}

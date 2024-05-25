@@ -12,6 +12,7 @@ export default function Button({
   className,
   isLong,
   isLoading,
+  isLinked,
 }) {
   switch (type) {
     case "customizedBlue":
@@ -50,7 +51,7 @@ export default function Button({
           ) : isLong ? (
             <div className="flex gap-5 items-center">
               {text}
-              <img src={ArrowButton} className="w-[61px]" />
+              {isLinked && <img src={ArrowButton} className="w-[61px]" />}
             </div>
           ) : (
             text
@@ -100,9 +101,9 @@ export default function Button({
     case "transparent":
       return (
         <button
-          className={`w-full ${
-            isLong ? "px-6 py-5" : "px-3 py-3"
-          }   underline rounded-md lg:text-xl leading-[24px] text-left text-[#556987]  ${className}`}
+          className={`w-full ${isLong ? "px-6 py-5" : "px-3 py-3"} ${
+            isLinked && "underline"
+          }rounded-md lg:text-xl leading-[24px] text-left text-[#556987]  ${className}`}
         >
           {text}
         </button>

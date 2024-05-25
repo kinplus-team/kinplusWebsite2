@@ -4,6 +4,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import Button from "../../../components/Button";
 import { ApplyForSIWES } from "../../../services/internshipServices";
 import { toast } from "react-toastify";
+import Text from "../../../components/Text";
 
 export default function ApplyForInternship() {
   const [gender, setGender] = useState("");
@@ -64,29 +65,29 @@ export default function ApplyForInternship() {
       >
         {/* left side bar */}
         <div className="grid lg:grid-rows-[240px_160px_25px_150px] gap-6 place-items-start">
-          <h4 className="flex items-center text-[#082B5B] lg:text-[52px] text-[35px] lg:leading-[60px] leading-[40px] font-[700] max-w-lg ">
+          <Text type="heading" className="text-[#082B5B] max-w-lg">
             We are looking forward to meeting you
-          </h4>
+          </Text>
 
-          <p className="text-lg">
+          <Text type="paragraph" className="text-[#556987]">
             We're thrilled to welcome you to our team! We're looking forward to
             getting to know you, learning about your unique perspective, and
             sharing our expertise with you. We believe that you have the
             potential to make a positive impact in the tech industry, and we're
             excited to be a part of your journey. Get ready to learn, grow, and
             have fun with us
-          </p>
+          </Text>
 
           <div className="bg-[#fff] h-[3px] w-full"></div>
 
-          <p className="text-lg">
+          <Text type="paragraph" className="text-[#556987]">
             During your industrial training at Kinplus, you'll be immersed in a
             dynamic and fast-paced environment. You'll work on real-world
             projects, collaborate with our team, and gain hands-on experience in
             the tech industry. It's a great opportunity to explore your
             interests and gain valuable skills for your future career. Are you
             ready to get started?
-          </p>
+          </Text>
         </div>
 
         {/* right side bar */}

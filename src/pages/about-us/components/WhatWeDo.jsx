@@ -3,28 +3,30 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import raptLaptop from "../../../assets/AboutUs/NewImages/raptly-staring-at-laptop.jpeg";
 import twoGirlsLaptop from "../../../assets/AboutUs/NewImages/two-girls-staring-at-laptop.jpeg";
 import busyLaptop from "../../../assets/AboutUs/NewImages/busy-on-the-laptop.jpeg";
+import Text from "../../../components/Text";
 
 export default function WhatWeDo() {
   return (
-    <PageLayout className="lg:py-20 py-10">
+    <PageLayout>
       <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-10">
         <div className="grid grid-rows-[auto_auto_1fr] gap-3 place-self-center">
-          <h6 className="text-[#1877F9] lg:leading-[35px] leading-[28px] capitalize lg:text-2xl text-xl">
+          <Text type="title" className="text-[#1877F9] capitalize">
             What We Do
-          </h6>
+          </Text>
 
-          <h3 className="text-[#082B5B] lg:text-5xl text-4xl font-bold lg:leading-[54px] leading-[40px] capitalize">
-            We Create beautiful products that capture hearts
-          </h3>
+          <Text type="subheading" className="text-[#082B5B] capitalize">
+            We Create beautiful products that capture the heart
+          </Text>
 
-          <p className="lg:text-lg leading-[25px]">
+          <Text type="subparagraph" className="text-[#556987]">
             We're here to support you through the entire process of product
             development, from ideation to launch and beyond. We'll help you
             navigate any challenges that come up along the way, and we're always
             focused on improving customer retention and increasing Customer
             Lifetime Value. We're not just a service provider, we're a partner
             in your success.
-          </p>
+          </Text>
+          <p className="lg:text-lg leading-[25px]"></p>
         </div>
 
         <div className="grid  gap-4">
