@@ -29,7 +29,7 @@ export default function Testimonials({
         {testimonials.map((testimonial, i) => (
           <div
             key={i}
-            className="grid lg:grid-cols-[1fr_auto] py-4 gap-16 relative snap-end"
+            className="grid lg:grid-cols-[1fr_auto] py-4 lg:gap-16 gap-4 relative snap-end"
           >
             <Text
               type="paragraph"

@@ -34,6 +34,12 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             ? "text-black"
             : pathname == "/about-us"
             ? "text-black"
+            : pathname == "/our-services"
+            ? "text-black"
+            : pathname == "/trainings"
+            ? "text-black"
+            : pathname == "/trainings/internship"
+            ? "text-black"
             : "text-white"
         }`}
         onClick={() => setIsMobileNav(true)}
