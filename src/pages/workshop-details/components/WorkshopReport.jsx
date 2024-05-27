@@ -6,46 +6,49 @@ import timer from "../../../assets/svg/career/timer.svg";
 import backgroundIcon1 from "../../../assets/svg/career/background-icon-1.svg";
 import backgroundPattern from "../../../assets/svg/career/background-pattern.svg";
 import pattern from "../../../assets/Pattern.svg";
+import Text from "../../../components/Text.jsx";
 
 export default function WorkshopReport() {
   const careerOpportunities = [
     {
       icon: developmentOpportunities,
-      title: "Learning and development opportunities",
-      description:
-        "Join our team and grow your career in an innovative and supportive environment.",
+      title: "Participant Attendance:",
+      description: [
+        "85 participants attended the training sessions.",
+        "Training centers were set up in three communities: Ado-Ekiti, Ido-Ekiti, and Ikole-Ekiti.",
+      ],
     },
     {
       icon: compensationAndBenefits,
-      title: "Competitive compensation and benefits",
-      description:
-        "Your salary reflects your worth. Grow your career with competitive pay.",
+      title: "Positive Feedback:",
+      description: [
+        "Participants provided positive feedback on the training.",
+        "Encouraging words were extended to both Kinplus Technologies and NITDA.",
+        "Participants expressed gratitude for the knowledge gained during the training.",
+      ],
     },
     {
       icon: timer,
-      title: "Making a difference in the tech industry",
-      description:
-        "Join our team as we work to make a difference in the tech ecosystem",
+      title: "Supportive Measures:",
+      description: [
+        "Participants were provided with daily meals throughout the training period.",
+        "NITDA offered a stipend to participants as part of their support initiative.",
+      ],
     },
   ];
 
   return (
     <PageLayout>
-      <div className="lg:pt-20 lg:pb-20 py-5 relative">
-        <h4 className="flex items-center text-[#1877F9] lg:text-[20px] font-[500] lg:leading-[30px] leading-[24px] mt-11 mb-5 lg:mt-0 ">
-          Our leading Edge
-          <div className="ml-3 h-[1.5px] w-[74.75px] bg-[#222831]"></div>
-        </h4>
-        <p className="lg:block z-10 lg:text-[36px] text-[24px] font-[700] lg:leading-[50px] leading-9 capitalized lg:max-w-4xl">
-          We bring solutions to make life easier for our customers.
-        </p>
+      <div className=" relative">
+        <Text type="title" className="text-[#1877F9]">
+          Workshop report
+        </Text>
 
-        <p className="lg:text-[18px] font-medium lg:leading-[30px] leading-6 text-[#556987] lg:max-w-4xl">
-          If you're passionate about technology and want to make an impact, we
-          invite you to explore our career opportunities.
-        </p>
+        <Text type="subheading" className="capitalize lg:max-w-3xl">
+          Kinplus-NITDA: Concise Deductions from Workshop Program
+        </Text>
 
-        <div className="grid lg:grid-cols-[750px_1fr] py-8">
+        <div className="grid lg:grid-cols-[750px_1fr] py-2">
           <div className="grid lg:gap-16 gap-10 content-center">
             {careerOpportunities.map((careerOpportunity, i) => (
               <div className="grid grid-cols-[auto_1fr] lg:gap-6 gap-3">
@@ -57,9 +60,18 @@ export default function WorkshopReport() {
                   <h4 className="lg:text-2xl font-bold text-[#2A3342] leading-6">
                     {careerOpportunity.title}
                   </h4>
-                  <p className="text-[#556987] lg:text-base text-sm font-medium leading-[24px] max-w-md">
-                    {careerOpportunity.description}
-                  </p>
+
+                  <ul>
+                    {careerOpportunity.description.map((listItem, index) => (
+                      <li
+                        key={index}
+                        className="text-[#556987] lg:text-base text-sm font-medium leading-[24px] max-w-md list-disc"
+                      >
+                        {" "}
+                        {listItem}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}

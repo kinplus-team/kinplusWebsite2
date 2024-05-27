@@ -2,6 +2,7 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import previousWorkshop1 from "../../../assets/workshop/previous-workshop-1.png";
 import Workshop from "../../../components/cards/Workshop.jsx";
+import Text from "../../../components/Text.jsx";
 import { useRef, useState } from "react";
 
 export default function PreviousWorkshop() {
@@ -30,14 +31,14 @@ export default function PreviousWorkshop() {
       <PageLayout>
         <div className="grid lg:grid-cols-2  pt-16 pb-5">
           <div>
-            <div className="flex items-center gap-3 lg:text-[20px] text-[#1877F9] font-[500] leading-[150%]">
-              <p>Our Previous Workshops</p>
-              <div className="mt-1 w-[73px] h-[2px] bg-[#222831] leading-normal "></div>
-            </div>
-            <p className="lg:text-[40px] text-[35px] font-bold text-[#082B5B]">
+            <Text type="title" className="text-[#1877F9]">
+              Our Previous Workshops
+            </Text>
+
+            <Text type="subheading" className="text-[#082B5B]">
               It's not just a stepping stone to your future, it's a launchpad to
               success
-            </p>
+            </Text>
           </div>
 
           {previousWorkshopCard.length > 1 && (

@@ -7,39 +7,39 @@ import Button from "../../../components/Button";
 export default function OtherOpenings() {
   const availableRoles = [
     {
-      title: "Senior product designer",
+      title: "Product designer",
       department: "Creative & Design",
       employmentType: "Full-time",
       location: "Ado-Ekiti, Nigeria",
-      slug: "senior-product-desginer",
+      slug: "product-desginer",
     },
     {
-      title: "Product manager",
-      department: "product",
+      title: "front-end developer",
+      department: "engineering",
+      employmentType: "Full-time",
+      location: "Ado-Ekiti, Nigeria",
+      slug: "front-end-developer",
+    },
+    {
+      title: "product manager",
+      department: "Product",
       employmentType: "Full-time",
       location: "Ado-Ekiti, Nigeria",
       slug: "product-manager",
-    },
-    {
-      title: "Software developer",
-      department: "Engineering",
-      employmentType: "Full-time",
-      location: "Ado-Ekiti, Nigeria",
-      slug: "software-developer",
     },
   ];
   return (
     <PageLayout>
       {/* desktop view */}
-      <div className="hidden lg:block">
-        <div className="grid grid-cols-2 gap-2 pt-8 lg:pt-20 items-center">
+      <div className="hidden lg:block pb-16">
+        <div className="grid grid-cols-2 gap-2 items-center">
           <p className="text-2xl font-bold leading-9 text-[#0D0C22]">
             Our Other Openings
           </p>
 
-          <Link className="text-[#1877F9] place-self-end font-bold leading-6 capitalize ">
+          {/* <Link className="text-[#1877F9] place-self-end font-bold leading-6 capitalize ">
             View all jobs
-          </Link>
+          </Link> */}
         </div>
 
         <div className="grid gap-10 py-16">

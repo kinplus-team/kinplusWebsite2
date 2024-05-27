@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <div>
       <PageLayout>
-        <div className="grid gap-4 lg:pt-48 pt-28 pb-5">
+        <div id="target-section" className="grid gap-4 pb-5">
           <h2 className="lg:text-[65px] text-[35px] lg:leading-[75px] leading-[40px] capitalize max-w-3xl ">
             NITDA: Mobile App training and the Digital Skill Up training
           </h2>

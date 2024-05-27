@@ -5,10 +5,10 @@ import location from "../../../assets/svg/career-details/location.svg";
 
 export default function Hero() {
   return (
-    <PageLayout>
+    <PageLayout className="pt-36 lg:pt-44">
       <div
         id="target-section"
-        className="grid gap-2 justify-center pt-36 pb-14 lg:pt-44 lg:pb-32 text-center"
+        className="grid gap-2 justify-center text-center"
       >
         <img src={kinplusLogo} className="w-14 h-14 mx-auto" />
         <h3 className="text-[#0D0C22] lg:text-4xl text-[28px] font-bold lg:leading-[52px] leading-9 capitalize">

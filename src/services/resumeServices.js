@@ -7,7 +7,7 @@ export const submitResume = async (
   email,
   phoneNumber,
   jobRole,
-  resume
+  resumeUrl
 ) => {
   const graphQLClient = new GraphQLClient(graphqlAPI, {
     headers: {
@@ -21,7 +21,7 @@ export const submitResume = async (
       $email: String!
       $phoneNumber: String!
       $jobRole: String!
-      $resume: AssetCreateOneInlineInput!
+      $resumeUrl: String!
     ) {
       createJobApplication(
         data: {
@@ -29,7 +29,7 @@ export const submitResume = async (
           email: $email
           phoneNumber: $phoneNumber
           jobRole: $jobRole
-          resume: $resume
+          resumeUrl: $resumeUrl
         }
       ) {
         id
@@ -42,7 +42,7 @@ export const submitResume = async (
     email,
     phoneNumber,
     jobRole,
-    resume,
+    resumeUrl,
   });
 
   return response;

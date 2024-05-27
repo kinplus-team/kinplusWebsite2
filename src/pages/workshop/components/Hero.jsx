@@ -1,6 +1,7 @@
 import Button from "../../../components/Button.jsx";
 import curvedBackground from "../../../assets/svg/career/curved-background.svg";
 import heroImg from "../../../assets/workshop/hero.png";
+import Text from "../../../components/Text.jsx";
 
 export default function Hero() {
   return (
@@ -8,13 +9,15 @@ export default function Hero() {
       <div id="target-section" className="bg-[#082B5B] ">
         <div className=" grid lg:grid-cols-[auto_1fr] relative gap-4 lg:pt-48 pt-28 pb-5 lg:px-[60px] px-4 max-w-[100rem] mx-auto">
           <div className="grid gap-4 max-w-3xl">
-            <h2 className="text-[#fff] lg:text-[65px] text-[35px] font-bold lg:leading-[70px] leading-10 capitalize ">
+            <Text type="heading" className="text-[#fff] capitalize">
               Be a part of our sponsored and partnered training Workshops
-            </h2>
-            <p className="text-[#8896AB] lg:text-xl text-lg lg:leading-8 font-medium leading-6 max-w-lg">
+            </Text>
+
+            <Text type="subparagraph" className="text-[#8896AB] max-w-lg">
               Join our sponsored and partnered training workshop programs. Grow
               your skills and knowledge in a supportive environment
-            </p>
+            </Text>
+
             <div className="w-80">
               <Button
                 type="customizedWhite"
