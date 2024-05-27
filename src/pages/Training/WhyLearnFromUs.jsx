@@ -50,17 +50,20 @@ export default function WhyLearnFromUs() {
   return (
     <PageLayout>
       <div className=" relative">
-        <Text type="title" className="text-[#1877F9] ">
+        <Text type="title" className="text-[#1877F9] relative z-50">
           What you stand to gain
         </Text>
 
-        <Text type="subheading" className="text-[#082B5B] lg:max-w-2xl">
+        <Text
+          type="subheading"
+          className="text-[#082B5B] lg:max-w-2xl relative z-50"
+        >
           All programs are designed to meet all your needs
         </Text>
         <div>
           <img
             src={backgroundIcon}
-            className="lg:w-[170px] w-[170px] lg:h-[128px] absolute lg:top-[100px] top-[180px] left-52 lg:left-80 z-0"
+            className="lg:w-[170px] w-[170px] lg:h-[128px] absolute lg:top-[100px] top-[10px] left-40 lg:left-80 z-0"
           />
         </div>
         <div>

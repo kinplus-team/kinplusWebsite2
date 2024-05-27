@@ -37,8 +37,12 @@ export default function Header() {
       <NavLink to={"/"}>
         <img
           src={
-            pathname == "/careers" || pathname == "/workshop"
+            pathname == "/careers" && !navbarColor
               ? kinplusLogoWhite
+              : pathname == "/workshop" && !navbarColor
+              ? kinplusLogoWhite
+              : pathname == "/careers" && navbarColor
+              ? kinplusLogoBlue
               : kinplusLogoBlue
           }
           alt="Kinplus_Logo_with_blue_color"
@@ -83,7 +87,7 @@ export default function Header() {
 
         {/* Dropdown */}
         <div
-          className={`bg-white absolute top-20 right-[23rem] w-32 z-10 rounded-md font-light 
+          className={`bg-white absolute top-20 right-[19.5rem] w-32 z-10 rounded-md font-light 
               text-neutral-600 px-5 shadow-[0_0_5px_0_rgba(255,255,255,0.5)] overflow-hidden transition-all duration-300 ${
                 isDropDownOpen ? "h-[145.6px]" : "h-0"
               }`}
@@ -91,10 +95,7 @@ export default function Header() {
           onMouseLeave={() => setIsDropDownOpen(false)}
         >
           {staticData.trainingList.map((list, i) => (
-            <NavLink
-              key={i}
-              to={list.to}
-            >
+            <NavLink key={i} to={list.to}>
               <div
                 className={`
                     py-3 grid grid-flow-col gap-3 items-center justify-start hover:text-black

@@ -32,21 +32,27 @@ export default function CareerOpportunity() {
 
   return (
     <PageLayout>
-      <div className="lg:pt-72 pt-16 relative">
+      <div className="lg:pt-56 pt-16 relative">
         <Text type="title" className="text-[#1877F9]">
           Our leading edge
         </Text>
 
-        <Text type="subheading" className="capitalize lg:max-w-3xl">
+        <Text
+          type="subheading"
+          className="capitalize lg:max-w-3xl lg:pt-0 pt-3"
+        >
           We bring solutions to make life easier for our customers.
         </Text>
 
-        <p className="lg:text-[18px] font-medium lg:leading-[30px] leading-6 text-[#556987] lg:max-w-4xl">
+        <Text
+          type="subparagraph"
+          className="text-[#556987] lg:pt-0 pt-3 max-w-2xl"
+        >
           If you're passionate about technology and want to make an impact, we
           invite you to explore our career opportunities.
-        </p>
+        </Text>
 
-        <div className="grid lg:grid-cols-[750px_1fr] py-2">
+        <div className="grid lg:grid-cols-[750px_1fr] pt-6">
           <div className="grid lg:gap-16 gap-10 content-center">
             {careerOpportunities.map((careerOpportunity, i) => (
               <div className="grid grid-cols-[auto_1fr] lg:gap-6 gap-3">
@@ -70,7 +76,7 @@ export default function CareerOpportunity() {
           <div className="relative lg:h-[600px] h-[350px]">
             <img
               src={careerOpportunitiesImage}
-              className="w-[554px] lg:h-[556px] h-[389px] rounded-lg absolute lg:top-0 top-5 lg:right-11 z-10"
+              className="w-[554px] lg:h-[556px] h-[389px] pt-10 rounded-lg absolute lg:top-0 top-5 lg:right-11 z-10"
             />
 
             {/* background images */}

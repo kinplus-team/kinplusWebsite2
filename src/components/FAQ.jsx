@@ -18,7 +18,7 @@ export default function FAQComponent({ FAQs }) {
   };
 
   return (
-    <div className="pb-[130px] grid gap-7">
+    <div className="lg:pb-[130px] pb-[90px] grid gap-7">
       <div className="mx-auto max-w-2xl text-center">
         <Text type="heading" className="text-[#082B5B]">
           FAQs

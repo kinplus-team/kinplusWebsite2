@@ -16,10 +16,10 @@ export default function HeroPage() {
       >
         {/*Hero Text*/}
         <PageLayout heroSpacing isBgColorWhite={true}>
-          <div className="relative z-10 flex flex-col gap-8 h-screen mx-auto max-w-[1500px]">
+          <div className="relative z-10 flex flex-col gap-8 h-screen mx-auto lg:max-w-[1500px]">
             <Text
               type="heading"
-              className="lg:max-w-[979px] max-w-[390px] text-[#F1F1F1] capitalize"
+              className="lg:max-w-[979px] max-w-[600px] text-[#F1F1F1] capitalize"
             >
               Empowering Innovators Through Product Development and Training
             </Text>
@@ -41,7 +41,7 @@ export default function HeroPage() {
           </div>
         </PageLayout>
       </div>
-      <div className="absolute top-0 h-full w-full bg-black opacity-70 bg-fixed"></div>
+      <div className="absolute top-0 h-screen w-full bg-black opacity-70 bg-fixed"></div>
     </header>
   );
 }

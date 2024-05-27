@@ -40,6 +40,18 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             ? "text-black"
             : pathname == "/trainings/internship"
             ? "text-black"
+            : pathname == "/contact-us/services"
+            ? "text-black"
+            : pathname == "/careers" && navbarColor
+            ? "text-black"
+            : pathname == "/careers/frontend-developer"
+            ? "text-black"
+            : pathname == "/careers/backend-developer"
+            ? "text-black"
+            : pathname == "/careers/product-designer"
+            ? "text-black"
+            : pathname == "/careers/product-manager"
+            ? "text-black"
             : "text-white"
         }`}
         onClick={() => setIsMobileNav(true)}
@@ -140,8 +152,8 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
           </div>
 
           {/* bottom section */}
-          <div>
-            <div className="flex gap-3 justify-center py-4">
+          <div className=" grid gap-3 pb-5">
+            <div className="flex gap-3 justify-center">
               {[facebookIcon, linkedInIcon, instagramIcon, twitterIcon].map(
                 (icon, index) => (
                   <img key={index} src={icon} className="w-10 h-10" />

@@ -33,8 +33,9 @@ export default function JoinOurTeam() {
   ];
 
   return (
-    <PageLayout className="relative pb-20">
-      <h4 className="lg:block z-10 lg:text-[36px] text-[#2A3342] text-[28px] lg:py-2 py-4 font-[700] lg:leading-[50px] leading-9 capitalized lg:max-w-4xl">
+    <PageLayout className="relative">
+      <div className="lg:pt-0 pt-10"></div>
+      <h4 className="lg:block z-10 lg:text-[36px] text-[#2A3342] text-[28px] font-[700] lg:leading-[50px] leading-9 capitalized lg:max-w-4xl">
         Join our team
       </h4>
       <p className="lg:text-[18px] font-medium lg:leading-[30px] leading-6 text-[#556987] lg:max-w-2xl">
@@ -48,7 +49,7 @@ export default function JoinOurTeam() {
           {jobOffers.map((jobOffer, i) => (
             <div
               key={i}
-              className="bg-[#fff] lg:p-8 p-4 grid gap-2  lg:grid-cols-[auto_150px] grid-cols-[1fr_120px]"
+              className="bg-[#fff] lg:p-8 p-4 grid gap-2  lg:grid-cols-[auto_150px] grid-cols-[70%_1fr]"
             >
               <div className="grid gap-1">
                 <h4 className="text-[#333F51] lg:text-xl font-bold lg:leading-8 leading-6">
@@ -60,7 +61,10 @@ export default function JoinOurTeam() {
                 </p>
               </div>
 
-              <Link to={`/careers/${jobOffer.slug}`}>
+              <Link
+                className="justify-self-end self-center"
+                to={`/careers/${jobOffer.slug}`}
+              >
                 <Button
                   type="customizedBlue"
                   text="View Job"
