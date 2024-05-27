@@ -7,15 +7,85 @@ import image2 from "../../../assets/our_services/Rectangle 11.png";
 import webDevelopment from "../../../assets/our_services/web_development.png";
 import hardwareRepairs from "../../../assets/our_services/hardware_repair.png";
 import mobileDevelopment from "../../../assets/our_services/mobile_development.png";
+import rectangle from "../../../assets/svg/rectangle.svg";
+import smallArrow from "../../../assets/svg/smallArrow.svg";
+import rightArrowBold from "../../../assets/svg/right-arrow-bold.svg";
 
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+//front of card
+function FrontOfCard({ srcImage, text }) {
+  return (
+    <Link
+      to="/contact-us/services"
+      className="rounded-md grid gap-3 cursor-pointer"
+    >
+      <div className="relative">
+        <img
+          src={srcImage}
+          alt=""
+        />
+
+        <div className="absolute bottom-0 left-0 bg-blue-500 w-[84.71px] h-[72px] flex items-center justify-center">
+          <img
+            src={smallArrow}
+            alt=""
+            className=" h-7 w-7 "
+          />
+        </div>
+      </div>
+      <p className=" text-[#101010] text-xl font-bold text-center">{text}</p>
+    </Link>
+  );
+}
+
+//back of card
+function BackOfCard({ title, text }) {
+  return (
+    <Link
+      to="/contact-us/services"
+      className="bg-[#082B5B] h-[450px] lg:h-auto rounded-[0.3125rem] text-[#F1F1F1] relative px-6"
+    >
+      <div className="mt-32">
+        <p className="text-3xl text-center mt-9 mb-5">{title}</p>
+        <p className=" text-center text-lg leading-7 max-w-sm mx-auto ">
+          {text}
+        </p>
+      </div>
+      <img
+        src={rectangle}
+        alt=""
+        className="absolute top-4 right-4 w-[6.6rem] h-[5.6rem]"
+        loading="lazy"
+      />
+
+      <div className="text-[#F1F1F1] bg-[#1877F9] w-[300px] h-[72px] px-[2em] py-[0.5em] rounded-[0.3125rem] flex gap-3 items-center justify-center  absolute bottom-0 left-0 ">
+        <p className="text-xl font-bold leading-6 flex items-center">
+          {" "}
+          Talk to us
+        </p>
+
+        <img
+          src={rightArrowBold}
+          alt=""
+          className="h-7 w-7 "
+        />
+      </div>
+    </Link>
+  );
+}
 
 export default function WhatWeDo() {
+  const [isHovered, setIsHovered] = useState("");
   return (
     <PageLayout>
       <div className="grid lg:grid-cols-[500px_1fr_auto] lg:gap-5 items-center">
         <div className="grid grid-cols-2">
-          <Text type="subheading" className="text-[#082B5B]">
+          <Text
+            type="subheading"
+            className="text-[#082B5B]"
+          >
             What we do
           </Text>
 
@@ -26,36 +96,47 @@ export default function WhatWeDo() {
           />
         </div>
 
-        <Text type="subparagraph" className="text-[#556987]">
+        <Text
+          type="subparagraph"
+          className="text-[#556987]"
+        >
           We'll expertly manage the technical aspects, allowing you to focus on
           bringing your solutions to the market and engaging potential
           investors. Collaborate with our team for seamless execution.
         </Text>
 
         <div className="hidden lg:block">
-          <img src={icon} alt="" />
+          <img
+            src={icon}
+            alt=""
+          />
         </div>
       </div>
 
       {/* What we do  */}
       <div className="grid lg:grid-cols-3 gap-5 pt-10">
-        {/* first column */}
-        <div className="rounded-md grid gap-3">
-          <div className="relative">
-            <img src={webDevelopment} alt="" />
+        <div
+          className="rounded-md grid gap-3"
+          onMouseEnter={() => setIsHovered("webDevelopment")}
+          onMouseLeave={() => setIsHovered("")}
+        >
+          {/* first column */}
 
-            <Link to="/contact-us/services">
-              <img
-                src={CTA}
-                alt=""
-                className="w-[5.29463rem] h-[4.5] absolute bottom-0 left-0"
-              />
-            </Link>
-          </div>
-
-          <p className=" text-[#101010] text-xl font-bold text-center">
-            Web Development
-          </p>
+          {isHovered === "webDevelopment" ? (
+            <BackOfCard
+              CTAText={"Talk to us"}
+              title={"Mobile Development"}
+              text={
+                "At Kinplus, we excel in mobile development, leveraging innovation to create impactful and user-centric solutions."
+              }
+            />
+          ) : (
+            <FrontOfCard
+              srcImage={webDevelopment}
+              srcCTA={CTA}
+              text={"Web Development"}
+            />
+          )}
         </div>
 
         {/* second column */}
@@ -82,41 +163,54 @@ export default function WhatWeDo() {
           </div>
         </div> */}
 
-        {/* last column */}
-        <div className="grid gap-3">
-          <div className="relative">
-            <img src={mobileDevelopment} alt="" />
+        {/* second column */}
+        <div
+          className="rounded-md grid gap-3"
+          onMouseEnter={() => setIsHovered("mobileDevelopment")}
+          onMouseLeave={() => setIsHovered("")}
+        >
+          {/* first column */}
 
-            <Link to="/contact-us/services">
-              <img
-                src={CTA}
-                alt=""
-                className="w-[5.29463rem] h-[4.5] absolute bottom-0 left-0"
-              />
-            </Link>
-          </div>
-
-          <p className="text-[#101010] text-[1.25rem] font-bold text-center">
-            Mobile development{" "}
-          </p>
+          {isHovered === "mobileDevelopment" ? (
+            <BackOfCard
+              CTAText={"Talk to us"}
+              title={"Mobile Development"}
+              text={
+                "At Kinplus, we excel in mobile development, leveraging innovation to create impactful and user-centric solutions."
+              }
+            />
+          ) : (
+            <FrontOfCard
+              srcImage={mobileDevelopment}
+              srcCTA={CTA}
+              text={"Mobile development"}
+            />
+          )}
         </div>
 
         {/* last column */}
-        <div className="grid gap-3">
-          <div className="relative">
-            <img src={hardwareRepairs} alt="" />
-            <Link to="/contact-us/services">
-              <img
-                src={CTA}
-                alt=""
-                className="w-[5.29463rem] h-[4.5] absolute bottom-0 left-0"
-              />
-            </Link>
-          </div>
+        <div
+          className="rounded-md grid gap-3"
+          onMouseEnter={() => setIsHovered("hardwareRepairs")}
+          onMouseLeave={() => setIsHovered("")}
+        >
+          {/* first column */}
 
-          <p className="text-[#101010] text-[1.25rem] font-bold text-center">
-            Hardware Repairs
-          </p>
+          {isHovered === "hardwareRepairs" ? (
+            <BackOfCard
+              CTAText={"Talk to us"}
+              title={"Mobile Development"}
+              text={
+                "At Kinplus, we excel in mobile development, leveraging innovation to create impactful and user-centric solutions."
+              }
+            />
+          ) : (
+            <FrontOfCard
+              srcImage={hardwareRepairs}
+              srcCTA={CTA}
+              text={"Hardware Repairs"}
+            />
+          )}
         </div>
       </div>
     </PageLayout>
