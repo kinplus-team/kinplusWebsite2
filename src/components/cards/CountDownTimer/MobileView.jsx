@@ -17,11 +17,11 @@ export default function MobileView({ image, time }) {
           {["Days", "Hrs", "Min", "Sec"].map((item, i) => (
             <div key={i}>
               <div className="flex gap-2 items-center">
-                <p className="text-[50px] font-[700] leading-[110%]">
+                <p className="text-[40px] font-[700] leading-[110%]">
                   {time.split(":")[i]}
                 </p>
                 {i < 3 && (
-                  <p className="text-[50px] font-[700] leading-[110%]">:</p>
+                  <p className="text-[40px] font-[700] leading-[110%]">:</p>
                 )}
               </div>
               <p className="text-xl font-bold leading-5 text-center w-[80%]">

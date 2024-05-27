@@ -20,7 +20,7 @@ export default function Careers() {
             Join our Ever-Growing team at Kinplus
           </Text>
 
-          <Link to={"/contact-us/training"} className="w-40 hidden lg:block">
+          <Link to={"/careers"} className="w-40 hidden lg:block">
             <Button type="customizedBlue" text="Join Us" />
           </Link>
         </div>
@@ -34,7 +34,7 @@ export default function Careers() {
             fulfilling and impactful. Come join us and make a difference.
           </Text>
 
-          <Link to={"/contact-us/training"} className="w-40 block lg:hidden">
+          <Link to={"/careers"} className="w-40 block lg:hidden">
             <Button type="customizedBlue" text="Join Us" />
           </Link>
         </div>

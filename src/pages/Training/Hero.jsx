@@ -24,7 +24,7 @@ export default function Index() {
             DIGITAL SKILL TRAINING
           </Text>
 
-          <div className="relative z-10">
+          <div className="relative z-50">
             <Text type="heading" className="text-[#082B5B] ">
               We Are Building Tech Leaders.
             </Text>
@@ -39,7 +39,7 @@ export default function Index() {
         </div>
 
         {/* right side bar */}
-        <div className="grid sm:grid-flow-row gap-6 justify-self-end">
+        <div className="grid sm:grid-flow-row gap-6 justify-self-end relative z-50">
           <Text type="subparagraph" className="text-[#556987]">
             In todays rapidly evolving technological landscape, it is crucial
             for learners, students, and youths to have access to industry

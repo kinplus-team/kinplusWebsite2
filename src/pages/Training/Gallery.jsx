@@ -71,25 +71,21 @@ export default function Gallery() {
             <img
               key={index}
               src={image.traineePhoto.url}
-              className={`w-[500px] h-[500px]`}
+              className={`lg:w-[500px] w-[300px] lg:h-[500px] h-[300px]`}
             />
           ))}
         </div>
 
         {/* mobile view navigators */}
-        <div className="relative lg:hidden block py-8">
-          <img src={arrow} className=" w-[197px] mx-auto lg:mx-0" />
-
-          <div className="lg:flex justify-self-end hidden">
-            <HiOutlineArrowLongLeft
-              className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
-              onClick={() => handleScroll("left")}
-            />
-            <HiOutlineArrowLongRight
-              className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
-              onClick={() => handleScroll("right")}
-            />
-          </div>
+        <div className="flex justify-self-start lg:hidden mx-auto">
+          <HiOutlineArrowLongLeft
+            className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
+            onClick={() => handleScroll("left")}
+          />
+          <HiOutlineArrowLongRight
+            className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
+            onClick={() => handleScroll("right")}
+          />
         </div>
       </div>
     </div>

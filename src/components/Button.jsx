@@ -54,7 +54,7 @@ export default function Button({
               {isLinked && <img src={ArrowButton} className="w-[61px]" />}
             </div>
           ) : (
-            text
+            <p className="lg:text-base text-sm">{text}</p>
           )}
         </button>
       );

@@ -1,9 +1,9 @@
 import React from "react";
 import ContactUsCard from "../../components/contactUs/ContactUsCard/Index";
 import PageLayout from "../../components/Layout/PageLayout";
+import Text from "../../components/Text";
 
 export default function MyForm() {
-
   const contactUsCardDetails = [
     {
       label: "Our Service",
@@ -23,13 +23,13 @@ export default function MyForm() {
 
   return (
     <PageLayout className="py-32">
-      <div className="grid lg:grid-cols-[50%_1fr] gap-10 items-center pt-10 pb-28">
-        <h3
-          id="target-section"
-          className="lg:text-5xl capitalize font-bold text-[#082B5B] max-w-2xl"
-        >
+      <div
+        id="target-section"
+        className="grid lg:grid-cols-[50%_1fr] gap-10 items-center pt-10 pb-28"
+      >
+        <Text type="heading" className="text-[#082B5B] capitalize">
           Interested about our Services and Training Opportunities?
-        </h3>
+        </Text>
 
         <p className="text-lg font-[400] text-[#101010] max-w-2xl">
           At Kinplus, we are committed to providing exceptional solutions and

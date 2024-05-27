@@ -8,7 +8,7 @@ export default function Catalogue({
   isLinked,
 }) {
   return (
-    <div>
+    <div className="relative z-50">
       <div className="hidden lg:block">
         <DesktopViewCatalogue
           title={title}
