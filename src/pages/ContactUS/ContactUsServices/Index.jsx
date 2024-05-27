@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { contactUsForServices } from "../../../services/contactForm";
 import Button from "../../../components/Button";
 import { useState } from "react";
+import Text from "../../../components/Text";
 
 export default function ContactUsServices() {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,10 +47,11 @@ export default function ContactUsServices() {
       className="grid lg:grid-cols-2 gap-10 lg:py-40 pt-32 pb-16"
     >
       {/*Explanation*/}
-      <div className="grid lg:grid-rows-[100px_auto_auto_1fr] grid-rows-[100px_150px_50px_1fr] gap-6 w-full p-2">
-        <h3 className="text-5xl font-bold text-[#082B5B] capitalize max-w-10">
+      <div className="grid lg:grid-rows-[100px_auto_auto_1fr] grid-rows-[auto_150px_50px_1fr] gap-6 w-full p-2">
+        <Text type="heading" className=" text-[#082B5B] capitalize">
           Get Started
-        </h3>
+        </Text>
+
         <ul className="text-[#101010] lg:text-[1.3rem] text-base grid gap-3 list-inside list-disc marker:text-[#101010]">
           <li>Get started quickly (1 - 3 weeks)</li>
           <li>Large pool of vetted and proven developers</li>
@@ -71,9 +73,10 @@ export default function ContactUsServices() {
           onSubmit={handleSubmit(onSubmit)}
           className="mx-auto mt-8 w-[90%]"
         >
-          <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
+          <Text type="heading" className="capitalize">
             Tell us about your project
-          </h3>
+          </Text>
+
           <div className="flex flex-col gap-8 mt-10">
             <div className="flex flex-col gap-[8px]">
               <label htmlFor="fullName">Full Name</label>

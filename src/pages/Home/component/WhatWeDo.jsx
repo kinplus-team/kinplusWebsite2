@@ -36,7 +36,7 @@ export default function WhatWeDo() {
 
       <div className="grid lg:gap-16 gap-5">
         {/* title */}
-        <div className="grid lg:grid-cols-[auto_1fr] gap-4 lg:gap-36 lg:py-8 py-6">
+        <div className="grid lg:grid-cols-[auto_1fr] gap-4 lg:gap-36 lg:py-8 pt-3">
           <Text
             type="subheading"
             className="capitalize text-[#082B5B] max-w-xl"
@@ -62,7 +62,7 @@ export default function WhatWeDo() {
           {WhatWeDoCardDetails.map((WhatWeDoCardDetail, index) => (
             <div
               key={index}
-              className="grid lg:grid-rows-[80px_auto_160px] overflow-hidden grid-rows-[90px_auto_1fr] justify-center items-center gap-5 bg-white rounded-[0.6em] px-8 py-6 shadow-md border-2"
+              className="grid lg:grid-rows-[80px_auto_160px] overflow-hidden grid-rows-[90px_auto_1fr] justify-center items-center gap-5 bg-white rounded-[0.6em] lg:px-8 px-3 py-6 shadow-md border-2"
             >
               <img
                 src={WhatWeDoCardDetail.image}

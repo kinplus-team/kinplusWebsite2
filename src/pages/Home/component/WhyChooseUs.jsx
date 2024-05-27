@@ -12,7 +12,7 @@ export default function WhyChooseUs() {
         Why Choose Us
       </Text>
 
-      <div className="grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-24 lg:py-8 py-7">
+      <div className="grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-24 lg:py-8 pt-3">
         <img
           src={ChooseUsImages}
           alt="why choose us"

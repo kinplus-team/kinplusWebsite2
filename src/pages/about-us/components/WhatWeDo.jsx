@@ -30,7 +30,7 @@ export default function WhatWeDo() {
         </div>
 
         <div className="grid  gap-4">
-          <div className="relative lg:w-[80%] w-[350px]">
+          <div className="relative lg:w-[80%] w-[300px]">
             <div
               style={{
                 backgroundImage: `url(${raptLaptop})`,
