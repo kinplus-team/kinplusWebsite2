@@ -6,6 +6,7 @@ import timer from "../../../assets/svg/career/timer.svg";
 import backgroundIcon1 from "../../../assets/svg/career/background-icon-1.svg";
 import backgroundPattern from "../../../assets/svg/career/background-pattern.svg";
 import pattern from "../../../assets/Pattern.svg";
+import Text from "../../../components/Text.jsx";
 
 export default function CareerOpportunity() {
   const careerOpportunities = [
@@ -31,21 +32,21 @@ export default function CareerOpportunity() {
 
   return (
     <PageLayout>
-      <div className="lg:pt-72 lg:pb-6 pt-16 pb-16 relative">
-        <h4 className="flex items-center text-[#1877F9] lg:text-[20px] font-[500] lg:leading-[30px] leading-[24px] mt-11 mb-5 lg:mt-0 ">
-          Our leading Edge
-          <div className="ml-3 h-[1.5px] w-[74.75px] bg-[#222831]"></div>
-        </h4>
-        <p className="lg:block z-10 lg:text-[36px] text-[24px] font-[700] lg:leading-[50px] leading-9 capitalized lg:max-w-4xl">
+      <div className="lg:pt-72 pt-16 relative">
+        <Text type="title" className="text-[#1877F9]">
+          Our leading edge
+        </Text>
+
+        <Text type="subheading" className="capitalize lg:max-w-3xl">
           We bring solutions to make life easier for our customers.
-        </p>
+        </Text>
 
         <p className="lg:text-[18px] font-medium lg:leading-[30px] leading-6 text-[#556987] lg:max-w-4xl">
           If you're passionate about technology and want to make an impact, we
           invite you to explore our career opportunities.
         </p>
 
-        <div className="grid lg:grid-cols-[750px_1fr] py-8">
+        <div className="grid lg:grid-cols-[750px_1fr] py-2">
           <div className="grid lg:gap-16 gap-10 content-center">
             {careerOpportunities.map((careerOpportunity, i) => (
               <div className="grid grid-cols-[auto_1fr] lg:gap-6 gap-3">

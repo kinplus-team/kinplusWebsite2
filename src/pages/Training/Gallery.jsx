@@ -8,7 +8,6 @@ import arrow from "../../assets/svg/arrow.svg";
 
 import getTrainingGallery from "../../services/galleryServices.js";
 import Text from "../../components/Text.jsx";
-import PageLayout from "../../components/Layout/PageLayout.jsx";
 
 import {
   HiOutlineArrowLongRight,

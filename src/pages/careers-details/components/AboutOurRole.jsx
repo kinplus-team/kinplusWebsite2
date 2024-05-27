@@ -70,8 +70,8 @@ export default function AboutOurRole() {
                 About the role
               </h4>
               <ul className="list-disc pl-4">
-                {responsibilities.map((responsibility) => (
-                  <li className="text-[#0D0C22] leading-6 ">
+                {responsibilities.map((responsibility, index) => (
+                  <li key={index} className="text-[#0D0C22] leading-6 ">
                     {responsibility}
                   </li>
                 ))}
@@ -84,8 +84,10 @@ export default function AboutOurRole() {
                 What you will need
               </h4>
               <ul className="list-disc pl-4">
-                {needs.map((need) => (
-                  <li className="text-[#0D0C22] leading-6 ">{need}</li>
+                {needs.map((need, index) => (
+                  <li key={index} className="text-[#0D0C22] leading-6 ">
+                    {need}
+                  </li>
                 ))}
               </ul>
             </div>

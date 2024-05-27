@@ -2,6 +2,7 @@ import PageLayout from "../../../components/Layout/PageLayout.jsx";
 import Button from "../../../components/Button.jsx";
 import { Link } from "react-router-dom";
 import explore from "../../../assets/workshop/explore.png";
+import Text from "../../../components/Text.jsx";
 
 export default function WorkshopGallery() {
   return (
@@ -10,9 +11,9 @@ export default function WorkshopGallery() {
         <div className="grid lg:grid-cols-2 lg:gap-16 gap-4 pt-16 lg:pb-24 lg:absolute">
           {/* desktop */}
           <div className="lg:grid gap-4 bg-white ml-14 p-16 hidden">
-            <h4 className="text-[#1877F9] text-xl font-medium uppercase tracking-wider">
+            <Text type="title" className="text-[#1877F9] uppercase">
               OUR LAST WORKSHOP
-            </h4>
+            </Text>
 
             <p className="text-[#082B5B] text-5xl font-bold leading-[50px] tracking-wide">
               Kinplus-NITDA: Mobile App training and the Digital Skill Up

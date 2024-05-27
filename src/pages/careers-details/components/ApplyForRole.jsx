@@ -4,6 +4,7 @@ import Input from "../../../components/Inputs";
 import Button from "../../../components/Button";
 import { submitResume } from "../../../services/resumeServices";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 export default function ApplyForRole() {
   const [fullName, setFullName] = useState("");
@@ -25,21 +26,42 @@ export default function ApplyForRole() {
     { label: "Job Role", placeholder: "Enter your Job Role", fn: setJobRole },
   ];
 
-  console.log(cv);
+  // console.log(cv);
 
-  const submitApplicantResume = () => {
+  const handleResumeUpload = async () => {
+    const resume = new FormData();
+    resume.append("file", cv);
+    resume.append("upload_preset", "cover-image");
+
+    return axios.post(
+      "https://api.cloudinary.com/v1_1/dh8baxegc/image/upload",
+      resume
+    );
+  };
+
+  const submitApplicantResume = async () => {
     setIsLoading(true);
 
-    submitResume(fullName, email, phoneNumber, jobRole, cv)
-      .then((response) => {
-        toast.success("Thank you for reaching out to us");
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Something went wrong");
-        setIsLoading(false);
-      });
+    const resumeLink = await handleResumeUpload();
+    if (resumeLink.data.secure_url) {
+      submitResume(
+        fullName,
+        email,
+        phoneNumber,
+        jobRole,
+        resumeLink.data.secure_url
+      )
+        .then((response) => {
+          toast.success(
+            "Thank you for submitting your resume, we will go through it and give you feedback"
+          );
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          toast.error(error.response.errors[0].message);
+          setIsLoading(false);
+        });
+    }
   };
 
   return (
@@ -58,6 +80,7 @@ export default function ApplyForRole() {
             {applicationFormImputs.map((applicationFormImput, i) => (
               <Input
                 type="text"
+                key={i}
                 name={applicationFormImput.label}
                 placeholder={applicationFormImput.placeholder}
                 setInput={applicationFormImput.fn}

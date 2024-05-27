@@ -5,6 +5,11 @@ import gallery1 from "../../../assets/gallery/gallery_1.png";
 import gallery2 from "../../../assets/gallery/gallery_2.png";
 import gallery3 from "../../../assets/gallery/gallery_3.png";
 import gallery4 from "../../../assets/gallery/gallery_4.png";
+import Text from "../../../components/Text";
+import {
+  HiOutlineArrowLongRight,
+  HiOutlineArrowLongLeft,
+} from "react-icons/hi2";
 
 export default function Gallery() {
   let scaleFactors = useState(Array(10).fill(1));
@@ -62,28 +67,23 @@ export default function Gallery() {
     <div className="lg:pt-8 lg:pb-32 pb-10 grid lg:gap-10 gap-2 bg-[#f1f3f9] relative lg:px-[0px] px-4 max-w-[100rem] mx-auto">
       {/* Navigators */}
       <div className="grid gap-2 place-self-end">
-        <div className="flex items-center gap-3 lg:text-[20px] text-[#1877F9] font-[500] leading-[150%]">
-          <p>Kinplus gallery</p>
-          <div className="mt-1 w-[73px] h-[2px] bg-[#222831] leading-normal "></div>
-        </div>
+        <Text type="title" className="text-[#1877F9]">
+          Kinplus gallery
+        </Text>
 
-        <p className="text-[#082B5B] lg:text-[40px] text-[35px] font-[700] max-w-md">
-          Check out our past trainees
-        </p>
+        <Text type="subheading" className="text-[#082B5B] lg:max-w-md max-w-xs">
+          Check out our past workshop
+        </Text>
 
-        <div className="relative lg:block hidden">
-          <img src={arrow} className=" w-[197px] mx-auto lg:mx-0" />
-
-          <div className="grid grid-cols-[50px_100px] gap-10">
-            <div
-              onClick={() => handleScroll("left")}
-              className="w-full h-8 "
-            ></div>
-            <div
-              onClick={() => handleScroll("right")}
-              className="w-full h-8"
-            ></div>
-          </div>
+        <div className="lg:flex justify-self-start hidden">
+          <HiOutlineArrowLongLeft
+            className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
+            onClick={() => handleScroll("left")}
+          />
+          <HiOutlineArrowLongRight
+            className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
+            onClick={() => handleScroll("right")}
+          />
         </div>
       </div>
 
@@ -91,7 +91,7 @@ export default function Gallery() {
       <div
         className="flex justify-between items-baseline overflow-hidden gap-3 relative overflow-x-auto scroll-ms-9 no-scroll snap-mandatory snap-x scroll-smooth"
         ref={imageScroll}
-        onScroll={handleScrollEffect}
+        onScroll={() => handleScrollEffect()}
       >
         {[
           gallery1,
@@ -113,15 +113,15 @@ export default function Gallery() {
       <div className="relative lg:hidden block py-8">
         <img src={arrow} className=" w-[197px] mx-auto lg:mx-0" />
 
-        <div className="grid grid-cols-[50px_100px] gap-10 absolute top-0">
-          <div
+        <div className="lg:flex justify-self-end hidden">
+          <HiOutlineArrowLongLeft
+            className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
             onClick={() => handleScroll("left")}
-            className="w-full h-8 "
-          ></div>
-          <div
+          />
+          <HiOutlineArrowLongRight
+            className="text-[4rem] text-[#817f7f] hover:text-[#1877F9]"
             onClick={() => handleScroll("right")}
-            className="w-full h-8"
-          ></div>
+          />
         </div>
       </div>
     </div>
