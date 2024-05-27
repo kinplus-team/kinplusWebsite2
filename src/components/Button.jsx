@@ -62,7 +62,7 @@ export default function Button({
     case "customizedWhite":
       return (
         <button
-          className={`bg-white w-full hover:bg-opacity-90 hover:text-opacity-85 ${
+          className={`bg-white w-fit hover:bg-opacity-90 hover:text-opacity-85 ${
             isLong
               ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left "
               : " rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"

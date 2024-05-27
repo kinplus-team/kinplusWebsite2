@@ -75,7 +75,7 @@ export default function ApplyForInternship() {
             sharing our expertise with you. We believe that you have the
             potential to make a positive impact in the tech industry, and we're
             excited to be a part of your journey. Get ready to learn, grow, and
-            have fun with us
+            have fun with us.
           </Text>
 
           <div className="bg-[#fff] h-[3px] w-full"></div>

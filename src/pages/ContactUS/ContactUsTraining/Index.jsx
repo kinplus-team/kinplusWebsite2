@@ -189,7 +189,7 @@ export default function ContactUsTraining() {
             {/* availability */}
             <div className="py-3">
               <p className="text-xl text-white">
-                How will you be available for the meeting?
+                How will you be available for the training?
               </p>
               <div onClick={() => setAvailability("Online/virtual")}>
                 <Input

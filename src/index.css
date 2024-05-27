@@ -17,3 +17,47 @@ body {
 img {
   width: 100%;
 }
+
+section {
+  padding: 1em;
+  max-width: 100rem;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.no-scroll::-webkit-scrollbar {
+  @apply hidden;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hover for desktop NavLinks */
+.navLinkHover {
+  border-bottom: 3px solid;
+  border-color: transparent;
+  transition: transform 0.5s ease-in-out, border-color 0.3s ease-in-out;
+  
+
+}
+
+.navLinkHover:hover {
+  border-color:#1877F9;
+  transform: scale(1.05);
+
+}
+
+/* Hide default calendar icon  */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    content: url('../src/assets/svg/calendar.svg');
+  }
+
+
+@media screen and (min-width: 768px) {
+  section {
+    padding: 3em;
+  }
+}
+

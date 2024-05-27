@@ -2,6 +2,7 @@ import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import { useState } from "react";
 import coloredTick from "../assets/svg/input/colored-tick.svg";
 import transparentTick from "../assets/svg/input/transparent-tick.svg";
+import calendarIcon from "../assets/svg/calendar.svg"
 
 export default function Input({
   type,
@@ -15,6 +16,7 @@ export default function Input({
   radioText,
   isChecked,
   onCheck,
+  date
 }) {
   const [isPass, setIsPass] = useState(false);
   const [isSelect, setIsSelect] = useState(false);
@@ -40,7 +42,7 @@ export default function Input({
             </div>
           </label>
           {isSelect && (
-            <div className="absolute top-full mt-2 left-0 right-0 bg-blue-950 z-10 ">
+            <div className="absolute mt-2 left-0 right-0 bg-white z-10 ">
               {options &&
                 options.map((option, i) => (
                   <div
@@ -49,7 +51,7 @@ export default function Input({
                       setSelected(option);
                       setIsSelect(!isSelect);
                     }}
-                    className="lg:px-6 px-3 text-white cursor-pointer hover:text-opacity-80"
+                    className="lg:px-6 px-3 text-black cursor-pointer hover:text-opacity-80"
                   >
                     {option.title}
                   </div>
@@ -91,6 +93,19 @@ export default function Input({
         </label>
       );
 
+    case "date":
+      return (
+        <div className="text-lg text-[#fff] py-3 grid gap-2">
+          {name}
+          <input
+            type="date"
+            placeholder={placeholder}
+            className="text-lg p-4 w-full  appearance-none bg-transparent rounded-md border border-white"
+            onChange={(e) => setInput(e.target.value)}
+          />
+        </div>
+      );
+    
     case "textarea":
       return (
         <div className="text-lg text-[#fff] py-3 grid gap-2">
