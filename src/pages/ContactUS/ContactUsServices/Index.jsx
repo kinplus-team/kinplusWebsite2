@@ -9,6 +9,7 @@ import Text from "../../../components/Text";
 
 export default function ContactUsServices() {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const contactUsExplanation =
     " At Kinplus, our commitment extends beyond service – we're dedicated to shaping tailored solutions that seamlessly integrate innovation, ensuring your experience is not just exceptional but transformative";
@@ -34,6 +35,10 @@ export default function ContactUsServices() {
       .then(() => {
         toast.success("Form submitted successfully");
         setIsLoading(false);
+
+        setTimeout(() => {
+          navigate("/contact-us");
+        }, 2000);
       })
       .catch((error) => {
         toast.error("Something went wrong!");
@@ -184,14 +189,13 @@ export default function ContactUsServices() {
               )}
             </div>
           </div>
-          <div className="text-center mt-[10px] py-9 ">
-            <div className="text-center mt-[10px] py-9 w-40 mx-auto ">
-              <Button
-                text="Submit"
-                type="customizedWhite"
-                isLoading={isLoading}
-              />
-            </div>
+
+          <div className="text-center mt-[10px] py-9 w-40 mx-auto ">
+            <Button
+              text="Submit"
+              type="customizedWhite"
+              isLoading={isLoading}
+            />
           </div>
         </form>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -39,6 +39,8 @@ export default function ContactUsTraining() {
   //gender
   const genderInput = [{ title: "Male" }, { title: "Female" }];
 
+  const [clearFormState, setClearFormState] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -65,8 +67,12 @@ export default function ContactUsTraining() {
       .then(() => {
         toast.success("Form submitted successfully");
         setIsLoading(false);
+        setTimeout(() => {
+          navigate("/contact-us");
+        }, 2000);
       })
       .catch((error) => {
+        console.log(error);
         toast.error("Something went wrong!");
         setIsLoading(false);
       });
@@ -96,15 +102,11 @@ export default function ContactUsTraining() {
         </p>
       </div>
       <div className="w-full bg-blue-950 rounded-[0.9375rem] text-white mx-auto p-10">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto mt-8"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8">
           <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
             Register With Us For Training
           </h3>
           <div className="grid sm:grid-flow-row gap-2">
-
             {/* Full name */}
             <Input
               type="text"
@@ -212,7 +214,7 @@ export default function ContactUsTraining() {
                   onCheck={() => setAvailability("Onsite/Physical")}
                 />
               </div>
-              
+
               <div onClick={() => setAvailability("Hybrid")}>
                 <Input
                   type="checkbox"
@@ -226,8 +228,7 @@ export default function ContactUsTraining() {
             </div>
           </div>
 
-
-          <div className="text-center mt-[10px] py-9 w-60">
+          <div className="text-center mt-[10px]  py-9 w-40 mx-auto">
             <Button
               text="Submit"
               isLoading={isLoading}
