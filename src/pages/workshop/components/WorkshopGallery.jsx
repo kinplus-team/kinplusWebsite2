@@ -12,7 +12,7 @@ export default function WorkshopGallery() {
           {/* desktop */}
           <div className="lg:grid gap-4 bg-white ml-14 p-16 hidden">
             <Text type="title" className="text-[#1877F9] uppercase">
-              OUR LAST WORKSHOP
+              OUR RECENT WORKSHOP
             </Text>
 
             <p className="text-[#082B5B] text-5xl font-bold leading-[50px] tracking-wide">

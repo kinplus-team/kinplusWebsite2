@@ -72,7 +72,7 @@ export default function Gallery() {
         </Text>
 
         <Text type="subheading" className="text-[#082B5B] lg:max-w-md max-w-xs">
-          Check out our past workshop
+          Check out our recent workshop
         </Text>
 
         <div className="lg:flex justify-self-start hidden">

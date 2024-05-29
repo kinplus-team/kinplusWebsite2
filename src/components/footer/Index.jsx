@@ -14,7 +14,7 @@ export default function Footer() {
 
   const contactDetails = [
     { type: "Email", value: "help@kinplusgroup.com" },
-    { type: "Phone", value: "+234 706 971 8643" },
+    { type: "Phone", value: "+234 707 519 9782,", valueOne: "+234 811 640 0858"},
   ];
 
   const quickLinks = [
@@ -116,7 +116,7 @@ export default function Footer() {
         }}
       >
         <div className="py-10 lg:px-[110px] px-7">
-          <div className="grid lg:grid-cols-3 text-white lg:gap-5 gap-8 lg:pb-16">
+          <div className="grid lg:grid-cols-[auto_1fr_1fr] text-white lg:gap-5 gap-8 lg:pb-16">
             {/* contact  */}
             <div className="">
               <Link to={"/"}>
@@ -141,13 +141,19 @@ export default function Footer() {
                         </Link>
                       </div>
                     ) : (
-                      <div className="flex gap-1">
+                      <div className="flex gap-1 text-[15px] lg:text-[16px]">
                         {contactDetail.type}:
                         <Link
                           className="underline"
-                          to="https://wa.me/+2347069718643"
+                          to="https://wa.me/+2347075199782"
                         >
                           {contactDetail.value}
+                        </Link>
+                        <Link
+                          className="underline"
+                          to="https://wa.me/+2348116400858"
+                        >
+                          {contactDetail.valueOne}
                         </Link>
                       </div>
                     )}
@@ -196,8 +202,8 @@ export default function Footer() {
             {/* address and social media links */}
             <div>
               <p className="lg:text-[18px] lg:leading-[35px] leading-[24px]">
-                Top Floor, 68B Christore Building,Opp. Crunchies
-                Restaurant,Similoluwa, Ado Ekiti, Ekiti State, Nigeria.
+                2nd  Floor, Christore Building, Opp. Crunchies
+                Restaurant, Similoluwa, Ado Ekiti, Ekiti State, Nigeria.
               </p>
 
               <div className="flex gap-6 my-3">
