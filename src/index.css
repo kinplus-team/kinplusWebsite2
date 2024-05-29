@@ -23,7 +23,6 @@ section {
   max-width: 100rem;
   margin-right: auto;
   margin-left: auto;
-
 }
 
 .no-scroll::-webkit-scrollbar {
@@ -39,25 +38,40 @@ section {
   border-bottom: 3px solid;
   border-color: transparent;
   transition: transform 0.5s ease-in-out, border-color 0.3s ease-in-out;
-  
-
 }
 
 .navLinkHover:hover {
-  border-color:#1877F9;
+  border-color: #1877f9;
   transform: scale(1.05);
-
 }
 
 /* Hide default calendar icon  */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    content: url('../src/assets/svg/calendar.svg');
-  }
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  width: 100%;
+}
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  content: url("../src/assets/svg/calendar.svg");
+  position: absolute;
+  left: 0;
+  padding-left: 14rem;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button {
+  display: none;
+}
+
+input[type="date"]::-ms-clear {
+  display: none;
+}
 
 @media screen and (min-width: 768px) {
   section {
     padding: 3em;
   }
 }
-
