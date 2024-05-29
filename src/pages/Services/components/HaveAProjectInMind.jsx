@@ -74,7 +74,7 @@ export default function HaveAProjectInMind() {
               {projectInMind.description}
             </Text>
 
-            <Link to="/contact-us/services" className="w-52 self-center">
+            <Link to="/contact-us/services" className="w-40 self-center">
               <Button type="customizedBlue" text="Talk to us" />
             </Link>
           </div>

@@ -19,7 +19,7 @@ export default function Hero({ title, description }) {
 
         <p className="p-2 text-[#101010] lg:text-[18px]">{description}</p>
 
-        <div className="lg:w-44 w-36">
+        <div className="lg:w-40 w-36">
           <Link to="/contact-us/training">
             <Button type="customizedBlue" text="Talk to us" />
           </Link>

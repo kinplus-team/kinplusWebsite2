@@ -220,7 +220,7 @@ export default function ApplyForInternship() {
 
             <div
               onClick={() => uploadInternshipApplication()}
-              className="w-60 mx-auto"
+              className="w-40 mx-auto"
             >
               <Button
                 type="customizedWhite"

@@ -18,11 +18,11 @@ export default function Button({
     case "customizedBlue":
       return (
         <button
-          className={`bg-[#1877F9] w-fit hover:bg-opacity-90 hover:text-opacity-85 ${
+          className={`bg-[#1877F9] w-full hover:bg-opacity-90 hover:text-opacity-85 ${
             isLong
-              ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left hover:text-[#fff]"
+              ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left hover:text-[#fff] "
               : " rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"
-          }  text-white text-xl font-medium leading-[24px] border border-[#1877F9] shadow-md ${className}`}
+          }  text-white text-xl font-medium leading-[24px] border border-[#1877F9] shadow-md  ${className}`}
         >
           {isLoading ? (
             <div className="flex items-center">
