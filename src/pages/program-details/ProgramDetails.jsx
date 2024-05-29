@@ -29,12 +29,12 @@ export default function ProgramDetails() {
   }, []);
 
   return (
-    <PageLayout>
+    <div>
       <Hero
         title={programDetails?.title}
         description={programDetails?.description}
       />
       <Pricing pricingCardDetails={programDetails?.pricingCardInfo} />
-    </PageLayout>
+    </div>
   );
 }

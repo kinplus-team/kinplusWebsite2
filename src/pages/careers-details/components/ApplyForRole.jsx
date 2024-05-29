@@ -113,7 +113,7 @@ export default function ApplyForRole() {
           </label>
 
           <div className="flex lg:justify-end justify-center">
-            <div className="w-44" onClick={() => submitApplicantResume()}>
+            <div className="w-40" onClick={() => submitApplicantResume()}>
               <Button
                 type="customizedWhite"
                 text="Apply Now"

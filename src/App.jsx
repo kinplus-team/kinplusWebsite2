@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <Router>
-    <ScrollToTop/>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -38,7 +38,7 @@ function App() {
           <Route path="/blog/:article" element={<BlogPost />} />
 
           {/* contact us routes */}
-          <Route path="/contact-us/*" element={<ContactUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/contact-us/services" element={<ContactUsServices />} />
           <Route path="/contact-us/training" element={<ContactUsTraining />} />
 

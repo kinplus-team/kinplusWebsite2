@@ -21,7 +21,7 @@ export default function Dedication() {
             tomorrow's workforce
           </Text>
 
-          <Link to="/trainings" className="w-52">
+          <Link to="/trainings" className="w-40">
             <Button type="customizedBlue" text="Learn More" />
           </Link>
         </div>

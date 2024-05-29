@@ -2,10 +2,11 @@ import React from "react";
 import cuteFaces from "../../../assets/pages/home/whychooseus/choose_us.png";
 import Button from "../../../components/Button.jsx";
 import { Link } from "react-router-dom";
+import PageLayout from "../../../components/Layout/PageLayout.jsx";
 
 export default function Hero({ title, description }) {
   return (
-    <div className="grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-36 py-8 lg:py-32 pt-28">
+    <PageLayout className="grid lg:grid-cols-[auto_1fr] gap-10">
       <img
         src={cuteFaces}
         alt="cute_faces"
@@ -19,12 +20,12 @@ export default function Hero({ title, description }) {
 
         <p className="p-2 text-[#101010] lg:text-[18px]">{description}</p>
 
-        <div className="lg:w-44 w-36">
+        <div className="lg:w-40 w-36">
           <Link to="/contact-us/training">
             <Button type="customizedBlue" text="Talk to us" />
           </Link>
         </div>
       </div>
-    </div>
+    </PageLayout>
   );
 }

@@ -3,11 +3,16 @@ import Input from "../../../components/Inputs";
 import PageLayout from "../../../components/Layout/PageLayout";
 import Button from "../../../components/Button";
 import { ApplyForSIWES } from "../../../services/internshipServices";
+
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Text from "../../../components/Text";
 
 export default function ApplyForInternship() {
   const [gender, setGender] = useState("");
+
+  const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(false);
   const genderInput = [{ title: "Male" }, { title: "Female" }];
 
@@ -26,7 +31,7 @@ export default function ApplyForInternship() {
   const [endDate, setEndDate] = useState(null);
   const [anyHealthChallenges, setAnyHealthChallenges] = useState(null);
   const [descriptionOfHealthChallenges, setDescriptionOfHealthChallenges] =
-    useState(null);
+    useState(" ");
 
   const uploadInternshipApplication = () => {
     setIsLoading(true);
@@ -50,6 +55,10 @@ export default function ApplyForInternship() {
         .then((response) => {
           toast.success("Thank you for reaching out to us");
           setIsLoading(false);
+
+          setTimeout(() => {
+            navigate("/our-services");
+          }, 2000);
         })
         .catch((error) => {
           toast.error(error.response.errors[0].message);
@@ -220,7 +229,7 @@ export default function ApplyForInternship() {
 
             <div
               onClick={() => uploadInternshipApplication()}
-              className="w-60 mx-auto"
+              className="w-40 mx-auto"
             >
               <Button
                 type="customizedWhite"

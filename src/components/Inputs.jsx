@@ -2,7 +2,7 @@ import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import { useState } from "react";
 import coloredTick from "../assets/svg/input/colored-tick.svg";
 import transparentTick from "../assets/svg/input/transparent-tick.svg";
-import calendarIcon from "../assets/svg/calendar.svg"
+import calendarIcon from "../assets/svg/calendar.svg";
 
 export default function Input({
   type,
@@ -16,7 +16,7 @@ export default function Input({
   radioText,
   isChecked,
   onCheck,
-  date
+  date,
 }) {
   const [isPass, setIsPass] = useState(false);
   const [isSelect, setIsSelect] = useState(false);
@@ -42,18 +42,23 @@ export default function Input({
             </div>
           </label>
           {isSelect && (
-            <div className="absolute mt-2 left-0 right-0 bg-white z-10 ">
+            <div className="absolute mt-2 left-0 bg-white right-0 z-10 ">
               {options &&
                 options.map((option, i) => (
-                  <div
-                    key={i}
-                    onClick={() => {
-                      setSelected(option);
-                      setIsSelect(!isSelect);
-                    }}
-                    className="lg:px-6 px-3 text-black cursor-pointer hover:text-opacity-80"
-                  >
-                    {option.title}
+                  <div key={i} className="py-[0.8px]">
+                    <div
+                      onClick={() => {
+                        setSelected(option);
+                        setIsSelect(!isSelect);
+                      }}
+                      className="lg:px-6 px-3 text-black cursor-pointer hover:text-opacity-80"
+                    >
+                      {option.title}
+                    </div>
+
+                    {i !== options.length - 1 && (
+                      <div className="h-[0.8px] mx-auto bg-neutral-600"></div>
+                    )}
                   </div>
                 ))}
             </div>
@@ -105,7 +110,7 @@ export default function Input({
           />
         </div>
       );
-    
+
     case "textarea":
       return (
         <div className="text-lg text-[#fff] py-3 grid gap-2">

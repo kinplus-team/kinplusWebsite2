@@ -41,7 +41,7 @@ export default function Hero() {
               and organize page elements.
             </p>
 
-            <div className="grid grid-cols-[250px_1fr] items-center gap-10">
+            <div className="grid grid-cols-[160px_1fr] items-center gap-10">
               <Button type="customizedBlue" text="Read More" />
 
               <img className="w-[105px] place-self-end" src={image1} alt="" />

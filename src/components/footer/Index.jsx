@@ -99,7 +99,7 @@ export default function Footer() {
               ? "/contact-us/services"
               : "/contact-us/training"
           }
-          className="w-[10em] place-self-center"
+          className="w-40 place-self-center"
         >
           <Button type="customizedWhite" text="Talk to us" />
         </Link>
