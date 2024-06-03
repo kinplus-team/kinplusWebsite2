@@ -35,12 +35,12 @@ export default function WorkshopGallery() {
 
           {/* content */}
           <div>
-            <p className="text-[#101010] text-lg leading-6">
+            <Text type="subparagraph" className="text-[#556987]">
               Kinplus Technologies, in partnership with NITDA, trained 50+
               participants in Mobile App Development. Serving as the technology
               hub in Ekiti State, similar sessions were held in three other
               states nationwide. Check out the details of the event.
-            </p>
+            </Text>
 
             <Link to="/trainings/workshop/kinplus-nitda">
               <div className="w-56 my-5">
