@@ -29,7 +29,7 @@ export default function PreviousWorkshop() {
   return (
     <div className="pb-16 bg-[#f1f3f9]">
       <PageLayout>
-        <div className="grid lg:grid-cols-2  pt-16 pb-5">
+        <div className="grid lg:grid-cols-2">
           <div>
             <Text type="title" className="text-[#1877F9]">
               Our Previous Workshops
