@@ -100,7 +100,7 @@ export default function Input({
           <input
             type="date"
             placeholder={placeholder}
-            className="text-lg p-4 w-full  appearance-none bg-transparent rounded-md border border-white"
+            className="text-lg p-4 w-full  appearance-none bg-transparent rounded-md border border-white cursor-pointer"
             onChange={(e) => setInput(e.target.value)}
           />
         </div>

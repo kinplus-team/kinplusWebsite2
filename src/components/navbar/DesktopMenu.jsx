@@ -31,7 +31,7 @@ export default function Header() {
     <nav
       className={`transition-all duration-300 text-black ${
         navbarColor && "bg-[#f1f3f9] w-full"
-      } lg:px-[30px] px-4  fixed z-[99] top-0 w-full grid grid-cols-[150px_1fr] items-center justify-between lg:py-10`}
+      } lg:px-[30px] px-4  fixed z-[99] top-0 w-full grid grid-cols-[150px_1fr] items-center justify-between md:py-10`}
     >
       {/* logo */}
       <NavLink to={"/"}>
@@ -51,10 +51,10 @@ export default function Header() {
       </NavLink>
 
       {/* nav links */}
-      <div className="hidden lg:grid grid-cols-[auto_auto_100px_auto_auto_auto] gap-10 justify-self-end">
+      <div className="hidden md:grid grid-cols-[auto_auto_100px_auto_auto_auto] gap-10 justify-self-end">
         {staticData.NavbarLinks.map((links, i) => (
           <NavLink
-            to={links.to != "/trainings" && links.to}
+            to={links.to !== "/trainings" && links.to}
             onMouseEnter={() =>
               links.to === "/trainings" && setIsDropDownOpen(true)
             }
@@ -62,17 +62,21 @@ export default function Header() {
               links.to === "/trainings" && setIsDropDownOpen(false)
             }
             key={i}
-            className={`flex gap-1 items-center ${
-              links.to != "/trainings" && "navLinkHover"
-            } ${
-              pathname == "/careers" ||
-              pathname == "/trainings/workshop" ||
-              pathname == "/"
-                ? navbarColor
-                  ? "text-[#101010]"
-                  : "text-white"
-                : "text-[#101010]"
-            } text-[20px]`}
+            className={({ isActive }) =>
+              `${
+                isActive &&
+                links.title !== "Trainings" &&
+                "border-b-[3px] border-blue-600"
+              }  ${links.to !== "/trainings" && "navLinkHover"} ${
+                pathname == "/careers" ||
+                pathname == "/trainings/workshop" ||
+                pathname == "/"
+                  ? navbarColor
+                    ? "text-[#101010]"
+                    : "text-white"
+                  : "text-[#101010]"
+              } flex gap-1 items-center text-[20px]`
+            }
           >
             {links.title}
             <div className={`${links.title !== "Trainings" && "hidden"}`}>
@@ -95,7 +99,10 @@ export default function Header() {
           onMouseLeave={() => setIsDropDownOpen(false)}
         >
           {staticData.trainingList.map((list, i) => (
-            <NavLink key={i} to={list.to}>
+            <NavLink
+              key={i}
+              to={list.to}
+            >
               <div
                 className={`
                     py-3 grid grid-flow-col gap-3 items-center justify-start hover:text-black
