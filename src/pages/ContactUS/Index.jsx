@@ -31,13 +31,13 @@ export default function MyForm() {
           Interested about our Services and Training Opportunities?
         </Text>
 
-        <p className="text-lg font-[400] text-[#101010] max-w-2xl">
+        <Text type="subparagraph" className="text-[#556987]">
           At Kinplus, we are committed to providing exceptional solutions and
           services. Whether you have a question, need assistance, or want to
           explore collaboration opportunities, we're here to help. Reach out to
           us using the contact information below, and our dedicated team will be
           delighted to assist you.
-        </p>
+        </Text>
       </div>
       <div className="grid lg:grid-cols-2 gap-10">
         {contactUsCardDetails.map((contactUsCardDetail, index) => (

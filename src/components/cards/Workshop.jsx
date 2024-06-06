@@ -19,7 +19,7 @@ export default function Workshop({ cardInfo }) {
         </p>
 
         <Link to="/trainings/workshop/kinplus-nitda">
-          <div className="w-32">
+          <div className="w-40">
             <Button
               type="transparent"
               text="Explore"

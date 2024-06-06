@@ -25,7 +25,7 @@ export default function Hero() {
           We believe that creativity is the key to building excellence. Our
           products are designed with love and attention to detail, to create an
           emotional connection with users. We strive to create products that are
-          not only functional, npbut also beautiful and meaningful.
+          not only functional, but also beautiful and meaningful.
         </Text>
       </div>
 

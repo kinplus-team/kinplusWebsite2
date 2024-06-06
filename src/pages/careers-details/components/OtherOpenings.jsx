@@ -121,7 +121,7 @@ export default function OtherOpenings() {
         ))}
 
         <div className="flex justify-center">
-          <div className="w-44">
+          <div className="w-40">
             <Button type="customizedBlue" text="Apply Now" />
           </div>
         </div>

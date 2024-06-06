@@ -32,7 +32,7 @@ export default function WhyChooseUs() {
             we are. Let us share our story with you.
           </Text>
 
-          <Link to="/about-us" className="w-52">
+          <Link to="/about-us" className="w-40">
             <Button type="customizedBlue" text="Meet Kinplus" />
           </Link>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -39,6 +39,8 @@ export default function ContactUsTraining() {
   //gender
   const genderInput = [{ title: "Male" }, { title: "Female" }];
 
+  const [clearFormState, setClearFormState] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -65,8 +67,12 @@ export default function ContactUsTraining() {
       .then(() => {
         toast.success("Form submitted successfully");
         setIsLoading(false);
+        setTimeout(() => {
+          navigate("/contact-us");
+        }, 2000);
       })
       .catch((error) => {
+        console.log(error);
         toast.error("Something went wrong!");
         setIsLoading(false);
       });
@@ -96,15 +102,11 @@ export default function ContactUsTraining() {
         </p>
       </div>
       <div className="w-full bg-blue-950 rounded-[0.9375rem] text-white mx-auto p-10">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto mt-8"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8">
           <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
             Register With Us For Training
           </h3>
           <div className="grid sm:grid-flow-row gap-2">
-
             {/* Full name */}
             <Input
               type="text"
@@ -191,30 +193,42 @@ export default function ContactUsTraining() {
               <p className="text-xl text-white">
                 How will you be available for the training?
               </p>
-              <div onClick={() => setAvailability("Online/virtual")}>
+              <div onClick={() => setAvailability("Online/Virtual")}>
                 <Input
                   type="checkbox"
                   name="availability"
                   placeholder="How will you be available for the meeting?"
-                  radioText="Online/virtual"
-                  isChecked={availability === "Online/virtual"}
-                  onCheck={() => setAvailability("Online/virtual")}
+                  radioText="Online/Virtual"
+                  isChecked={availability === "Online/Virtual"}
+                  onCheck={() => setAvailability("Online/Virtual")}
                 />
               </div>
 
-              <div onClick={() => setAvailability("Onsite/physical")}>
+              <div onClick={() => setAvailability("Onsite/Physical")}>
                 <Input
                   type="checkbox"
                   name="availability"
                   placeholder="How will you be available for the meeting?"
-                  radioText="Onsite/physical"
-                  isChecked={availability === "Onsite/physical"}
-                  onCheck={() => setAvailability("Onsite/physical")}
+                  radioText="Onsite/Physical"
+                  isChecked={availability === "Onsite/Physical"}
+                  onCheck={() => setAvailability("Onsite/Physical")}
+                />
+              </div>
+
+              <div onClick={() => setAvailability("Hybrid")}>
+                <Input
+                  type="checkbox"
+                  name="availability"
+                  placeholder="How will you be available for the meeting?"
+                  radioText="Hybrid"
+                  isChecked={availability === "Hybrid"}
+                  onCheck={() => setAvailability("Hybrid")}
                 />
               </div>
             </div>
           </div>
-          <div className="text-center mt-[10px] py-9 w-40 mx-auto">
+
+          <div className="text-center mt-[10px]  py-9 w-40 mx-auto">
             <Button
               text="Submit"
               isLoading={isLoading}
