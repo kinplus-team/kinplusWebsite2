@@ -5,7 +5,6 @@ import Testimonial from "./component/Testimonials";
 import FAQHomepage from "../Training/FAQHomepage";
 import WhatWeDo from "./component/WhatWeDo";
 import NextCohort from "./component/NextCohort";
-import Dedication from "./component/Dedication";
 import OurCourses from "./component/OurCourses";
 import FAQ from "./component/FAQ";
 
@@ -16,7 +15,6 @@ export default function Homepage() {
       <PartnersAndSponsors />
       <WhyChooseUs />
       <WhatWeDo />
-      <Dedication />
       <OurCourses />
       <NextCohort />
       <Testimonial />

@@ -22,6 +22,8 @@ export default function ApplyForInternship() {
   const [religion, setReligion] = useState(null);
   const [dateOfBirth, setDateOfBirth] = useState(null);
 
+  const [formKey, setFormKey] = useState(0);
+
   // const [gender, setGender] = useState(null);
   const [address, setAddress] = useState(null);
   const [nameOfInstitution, setNameOfInstitution] = useState(null);
@@ -56,9 +58,24 @@ export default function ApplyForInternship() {
           toast.success("Thank you for reaching out to us");
           setIsLoading(false);
 
-          setTimeout(() => {
-            navigate("/our-services");
-          }, 2000);
+          setFullName(null);
+          setEmail(null);
+          setPhoneNumber(null);
+          setReligion(null);
+          setDateOfBirth(null);
+
+          // const [gender, setGender] = useState(null);
+          setAddress(null);
+          setNameOfInstitution(null);
+          setGender("");
+          setCourseOfStudy(null);
+          setDuration(null);
+          setStartDate(null);
+          setEndDate(null);
+          setAnyHealthChallenges(null);
+          setDescriptionOfHealthChallenges("");
+
+          setFormKey(formKey + 1);
         })
         .catch((error) => {
           toast.error(error.response.errors[0].message);
@@ -104,7 +121,7 @@ export default function ApplyForInternship() {
           <h3 className="lg:text-[44px] text-[35px] font-[700] text-[#F1F1F1] lg:leading-[54px] leading-[40px] max-w-md">
             Apply for our SIWES/IT program
           </h3>
-          <div className="grid sm:grid-flow-row gap-2">
+          <div key={formKey} className="grid sm:grid-flow-row gap-2">
             <Input
               type="text"
               name="Full Name"

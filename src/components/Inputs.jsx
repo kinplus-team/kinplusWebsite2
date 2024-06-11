@@ -16,6 +16,7 @@ export default function Input({
   radioText,
   isChecked,
   onCheck,
+  ref,
   date,
 }) {
   const [isPass, setIsPass] = useState(false);
@@ -136,6 +137,7 @@ export default function Input({
             className="text-lg font-[400] bg-transparent placeholder:text-[#ffff] placeholder:font-light placeholder:text-[16px] outline-none w-full py-4 lg:px-6 px-3 border border-white rounded-md"
             placeholder={placeholder}
             name={name}
+            ref={ref}
             required
             onChange={(e) => setInput(e.target.value)}
           />

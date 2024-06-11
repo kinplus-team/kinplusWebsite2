@@ -17,12 +17,14 @@ export default function ContactUsTraining() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [fullName, setFullName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [phoneNumber, setPhoneNumber] = useState(null);
-  const [religion, setReligion] = useState(null);
-  const [dateOfBirth, setDateOfBirth] = useState(null);
-  const [address, setAddress] = useState(null);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [religion, setReligion] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [address, setAddress] = useState("");
+
+  const [formKey, setFormKey] = useState(0);
 
   //tracks
   const trackOptions = [
@@ -41,15 +43,9 @@ export default function ContactUsTraining() {
 
   const [clearFormState, setClearFormState] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm();
-
   //Submit
-  const onSubmit = async () => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
 
     await contactUsForTraining(
@@ -67,15 +63,27 @@ export default function ContactUsTraining() {
       .then(() => {
         toast.success("Form submitted successfully");
         setIsLoading(false);
-        setTimeout(() => {
-          navigate("/contact-us");
-        }, 2000);
       })
       .catch((error) => {
         console.log(error);
         toast.error("Something went wrong!");
         setIsLoading(false);
       });
+
+    // Force re-render by updating the form key
+    setFormKey(formKey + 1);
+
+    setGender("");
+    setTrack("");
+    setTrackPackage("");
+    setAvailability("");
+
+    setFullName("");
+    setEmail("");
+    setPhoneNumber("");
+    setReligion("");
+    setDateOfBirth("");
+    setAddress("");
   };
 
   return (
@@ -102,7 +110,7 @@ export default function ContactUsTraining() {
         </p>
       </div>
       <div className="w-full bg-blue-950 rounded-[0.9375rem] text-white mx-auto p-10">
-        <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8">
+        <form key={formKey} onSubmit={onSubmit} className="mx-auto mt-8">
           <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
             Register With Us For Training
           </h3>
