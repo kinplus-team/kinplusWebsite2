@@ -33,7 +33,7 @@ export default function FAQComponent({ FAQs }) {
         {FAQs.map((FAQ, i) => (
           <div
             key={i}
-            onClick={() => toggleFAQ(i)}
+       
             className="grid  max-w-md grid-rows-[auto_auto_1fr] gap-3 w-full mx-auto cursor-pointer"
           >
             <p className="text-[#2A3342] text-[20px] font-medium leading-[30px]">

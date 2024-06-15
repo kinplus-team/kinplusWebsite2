@@ -18,6 +18,7 @@ export default function Input({
   onCheck,
   ref,
   date,
+  isTextAreaRequired,
 }) {
   const [isPass, setIsPass] = useState(false);
   const [isSelect, setIsSelect] = useState(false);
@@ -120,6 +121,7 @@ export default function Input({
             placeholder={placeholder}
             className="text-lg p-4 block resize-none w-full min-h-[200px] bg-transparent rounded-md border border-white"
             onChange={(e) => setInput(e.target.value)}
+            required={isTextAreaRequired}
           ></textarea>
         </div>
       );

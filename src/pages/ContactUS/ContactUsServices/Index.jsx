@@ -20,16 +20,22 @@ export default function ContactUsServices() {
   const [companyName, setCompanyName] = useState("");
   const [message, setMessage] = useState("");
 
+  const [errors, setErrors] = useState({});
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors: formErrors },
     setValue,
   } = useForm({ mode: "all" });
 
-  // const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
   const onSubmit = async (data) => {
+    // const validationErrors = validate();
+    // if (Object.keys(validationErrors).length > 0) {
+    //   setErrors(validationErrors);
+    //   return;
+    // }
+
     setIsLoading(true);
     await contactUsForServices(
       fullName,
@@ -42,6 +48,12 @@ export default function ContactUsServices() {
         toast.success("Form submitted successfully");
         setIsLoading(false);
         setFormKey(formKey + 1);
+        // Reset form fields
+        setFullName("");
+        setEmail("");
+        setPhoneNumber("");
+        setCompanyName("");
+        setMessage("");
       })
       .catch((error) => {
         toast.error("Something went wrong!");
@@ -54,9 +66,9 @@ export default function ContactUsServices() {
       id="target-section"
       className="grid lg:grid-cols-2 gap-10 lg:py-40 pt-32 pb-16"
     >
-      {/*Explanation*/}
+      {/* Explanation */}
       <div className="grid lg:grid-rows-[100px_auto_auto_1fr] grid-rows-[auto_150px_50px_1fr] gap-6 w-full p-2">
-        <Text type="heading" className=" text-[#082B5B] capitalize">
+        <Text type="heading" className="text-[#082B5B] capitalize">
           Get Started
         </Text>
 
@@ -75,8 +87,8 @@ export default function ContactUsServices() {
         </p>
       </div>
 
-      {/*Services Form*/}
-      <div className="w-full bg-blue-950 rounded-[0.9375rem]  text-white mx-auto md:ml-0  pl-1">
+      {/* Services Form */}
+      <div className="w-full bg-blue-950 rounded-[0.9375rem] text-white mx-auto md:ml-0 pl-1">
         <form
           key={formKey}
           onSubmit={handleSubmit(onSubmit)}
@@ -86,44 +98,63 @@ export default function ContactUsServices() {
             Tell us about your project
           </Text>
 
-          <Input
-            type="text"
-            name="Full name"
-            placeholder="Enter your Full Name"
-            setInput={setFullName}
-          />
-          {/* {errors.fullName && (
-                <p className="text-red-500 pt-[2px] text-sm font-300 italic">
-                  {errors.fullName.message}
-                </p>
-              )} */}
+          <div>
+            <Input
+              type="text"
+              name="Full name"
+              placeholder="Enter your Full Name"
+              setInput={setFullName}
+            />
+            {errors.fullName && (
+              <p className="text-red-500">{errors.fullName}</p>
+            )}
+          </div>
 
-          {/* email address */}
-          <Input
-            type="email"
-            name="E-Mail"
-            placeholder="Enter your E-Mail"
-            setInput={setEmail}
-          />
+          <div>
+            <Input
+              type="email"
+              name="E-Mail"
+              placeholder="Enter your E-Mail"
+              setInput={setEmail}
+            />
+            {errors.email && <p className="text-red-500">{errors.email}</p>}
+          </div>
 
-          {/* Phone number */}
-          <Input
-            type="text"
-            name="Phone Number"
-            placeholder="Enter your Phone Number"
-            setInput={setPhoneNumber}
-          />
+          <div>
+            <Input
+              type="text"
+              name="Phone Number"
+              placeholder="Enter your Phone Number"
+              setInput={setPhoneNumber}
+            />
+            {errors.phoneNumber && (
+              <p className="text-red-500">{errors.phoneNumber}</p>
+            )}
+          </div>
 
-          <Input
-            type="text"
-            name="Company name"
-            placeholder="Enter your company name"
-            setInput={setCompanyName}
-          />
+          <div>
+            <Input
+              type="text"
+              name="Company name"
+              placeholder="Enter your Company Name"
+              setInput={setCompanyName}
+            />
+            {errors.companyName && (
+              <p className="text-red-500">{errors.companyName}</p>
+            )}
+          </div>
 
-          <Input type="textarea" name="Message" setInput={setMessage} />
+          <div>
+            <Input
+              type="textarea"
+              name="Message"
+              setInput={setMessage}
+              isTextAreaRequired={true}
+            />
+            {errors.message && <p className="text-red-500">{errors.message}</p>}
+          </div>
 
-          <div className="text-center mt-[10px] py-9 w-40 mx-auto ">
+          <div className="text-center mt-[10px] py-9 w-40 mx-auto">
             <Button
               text="Submit"
               type="customizedWhite"

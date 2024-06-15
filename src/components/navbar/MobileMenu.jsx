@@ -52,6 +52,8 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             ? "text-black"
             : pathname == "/careers/product-manager"
             ? "text-black"
+            : pathname == "/trainings/workshop" && navbarColor
+            ? "text-black"
             : "text-white"
         }`}
         onClick={() => setIsMobileNav(true)}

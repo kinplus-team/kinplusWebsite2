@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Button from "../../../components/Button";
@@ -26,26 +25,34 @@ export default function ContactUsTraining() {
 
   const [formKey, setFormKey] = useState(0);
 
-  //tracks
-  const trackOptions = [
-    { title: "Web development" },
-    { title: "Cybersecurity" },
-    { title: "Product Design" },
-    { title: "Graphics Design" },
-    { title: "Data Analysis" },
-  ];
+  const [errors, setErrors] = useState({});
 
-  //package option
-  const packageOptions = [{ title: "Medium" }, { title: "Pro" }];
+  const handleChange = (setter, fieldName) => (e) => {
+    setter(e.target.value);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [fieldName]: !e.target.value ? `${fieldName} cannot be empty` : "",
+    }));
+  };
 
-  //gender
-  const genderInput = [{ title: "Male" }, { title: "Female" }];
+  const validate = () => {
+    const newErrors = {};
+    if (!fullName) newErrors.fullName = "Full name cannot be empty";
+    if (!email) newErrors.email = "Email cannot be empty";
+    if (!phoneNumber) newErrors.phoneNumber = "Phone number cannot be empty";
+    if (!religion) newErrors.religion = "Religion cannot be empty";
+    if (!address) newErrors.address = "Address cannot be empty";
+    return newErrors;
+  };
 
-  const [clearFormState, setClearFormState] = useState(false);
-
-  //Submit
   const onSubmit = async (e) => {
     e.preventDefault();
+    // const validationErrors = validate();
+    // if (Object.keys(validationErrors).length > 0) {
+    //   setErrors(validationErrors);
+    //   return;
+    // }
+
     setIsLoading(true);
 
     await contactUsForTraining(
@@ -86,6 +93,20 @@ export default function ContactUsTraining() {
     setAddress("");
   };
 
+  // Tracks and package options
+  const trackOptions = [
+    { title: "Web development" },
+    { title: "Cybersecurity" },
+    { title: "Product Design" },
+    { title: "Graphics Design" },
+    { title: "Data Analysis" },
+  ];
+
+  const packageOptions = [{ title: "Medium" }, { title: "Pro" }];
+
+  // Gender options
+  const genderInput = [{ title: "Male" }, { title: "Female" }];
+
   return (
     <PageLayout className="flex justify-between flex-col md:flex-row gap-20 lg:py-40 py-32">
       <div
@@ -116,40 +137,58 @@ export default function ContactUsTraining() {
           </h3>
           <div className="grid sm:grid-flow-row gap-2">
             {/* Full name */}
-            <Input
-              type="text"
-              name="Full name"
-              placeholder="Enter your Full Name"
-              setInput={setFullName}
-            />
+            <div>
+              <Input
+                type="text"
+                name="Full name"
+                placeholder="Enter your Full Name"
+                setInput={setFullName}
+              />
+              {errors.fullName && (
+                <p className="text-red-500">{errors.fullName}</p>
+              )}
+            </div>
 
-            {/* email address */}
-            <Input
-              type="email"
-              name="E-Mail"
-              placeholder="Enter your E-Mail"
-              setInput={setEmail}
-            />
+            {/* Email address */}
+            <div>
+              <Input
+                type="email"
+                name="E-Mail"
+                placeholder="Enter your E-Mail"
+                setInput={setEmail}
+              />
+              {errors.email && <p className="text-red-500">{errors.email}</p>}
+            </div>
 
             {/* Phone number */}
-            <Input
-              type="text"
-              name="Phone Number"
-              placeholder="Enter your Phone Number"
-              setInput={setPhoneNumber}
-            />
+            <div>
+              <Input
+                type="text"
+                name="Phone Number"
+                placeholder="Enter your Phone Number"
+                setInput={setPhoneNumber}
+              />
+              {errors.phoneNumber && (
+                <p className="text-red-500">{errors.phoneNumber}</p>
+              )}
+            </div>
 
             {/* Religion */}
-            <Input
-              type="text"
-              name="Religion"
-              placeholder="Enter your Religion"
-              setInput={setReligion}
-            />
+            <div>
+              <Input
+                type="text"
+                name="Religion"
+                placeholder="Enter your Religion"
+                setInput={setReligion}
+              />
+              {errors.religion && (
+                <p className="text-red-500">{errors.religion}</p>
+              )}
+            </div>
 
             {/* Date of birth and gender */}
             <div className="grid gap-3 sm:grid-cols-2 items-center">
-              {/* date of birth */}
+              {/* Date of birth */}
               <Input
                 type="date"
                 name="Date of Birth"
@@ -169,12 +208,17 @@ export default function ContactUsTraining() {
             </div>
 
             {/* Address */}
-            <Input
-              type="text"
-              name="Address"
-              placeholder="Enter your Address"
-              setInput={setAddress}
-            />
+            <div>
+              <Input
+                type="text"
+                name="Address"
+                placeholder="Enter your Address"
+                setInput={setAddress}
+              />
+              {errors.address && (
+                <p className="text-red-500">{errors.address}</p>
+              )}
+            </div>
 
             {/* Tracks */}
             <Input
@@ -186,7 +230,7 @@ export default function ContactUsTraining() {
               options={trackOptions}
             />
 
-            {/* payment packages */}
+            {/* Payment packages */}
             <Input
               type="select"
               name="Package"
@@ -196,7 +240,7 @@ export default function ContactUsTraining() {
               options={packageOptions}
             />
 
-            {/* availability */}
+            {/* Availability */}
             <div className="py-3">
               <p className="text-xl text-white">
                 How will you be available for the training?
@@ -236,7 +280,7 @@ export default function ContactUsTraining() {
             </div>
           </div>
 
-          <div className="text-center mt-[10px]  py-9 w-40 mx-auto">
+          <div className="text-center mt-[10px] py-9 w-40 mx-auto">
             <Button
               text="Submit"
               isLoading={isLoading}

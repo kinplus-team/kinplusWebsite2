@@ -13,7 +13,7 @@ export default function Testimonials({
 }) {
   return (
     <div>
-      <div className="grid lg:grid-cols-2 grid-cols-[1fr_auto] pb-5">
+      <div className="grid lg:grid-cols-2 grid-cols-[1fr_auto] lg:pb-5 pt-10">
         <Text type="subheading" className="capitalize max-w-lg text-[#082B5B]">
           See what others are saying about us
         </Text>
@@ -23,7 +23,7 @@ export default function Testimonials({
 
       <div
         ref={scrollCon}
-        className={`grid grid-cols-[repeat(3,_100%)] overflow-auto snap-mandatory snap-x 
+        className={`grid grid-cols-[repeat(5,_100%)] h-auto overflow-auto snap-mandatory snap-x 
           scrollbar-hide`}
       >
         {testimonials.map((testimonial, i) => (
@@ -31,14 +31,28 @@ export default function Testimonials({
             key={i}
             className="grid lg:grid-cols-[1fr_auto] py-4 lg:gap-16 gap-4 relative snap-end"
           >
-            <Text
-              type="paragraph"
-              className="text-[#556987] max-w-[795px] leading-[30px]"
-            >
-              {testimonial.text}
-            </Text>
+            <div>
+              <Text
+                type="paragraph"
+                className="text-[#556987] max-w-[795px] leading-[30px]"
+              >
+                {testimonial.text}
+              </Text>
+              <div className="flex justify-center gap-5 pt-10  lg:justify-start">
+                <HiOutlineArrowLongLeft
+                  size={60}
+                  onClick={() => handleTestimonialSlider("left")}
+                  className="hover:text-[#1877F9]"
+                />
+                <HiOutlineArrowLongRight
+                  size={60}
+                  onClick={() => handleTestimonialSlider("right")}
+                  className="hover:text-[#1877F9]"
+                />
+              </div>
+            </div>
 
-            <div className="lg:place-self-end place-self-center">
+            <div className="lg:place-self-start justify-self-center">
               <div className="grid place-items-center">
                 <img
                   src={testimonial.image}
@@ -52,19 +66,6 @@ export default function Testimonials({
             </div>
           </div>
         ))}
-      </div>
-
-      <div className="flex justify-center gap-5  lg:justify-start">
-        <HiOutlineArrowLongLeft
-          size={60}
-          onClick={() => handleTestimonialSlider("left")}
-          className="hover:text-[#1877F9]"
-        />
-        <HiOutlineArrowLongRight
-          size={60}
-          onClick={() => handleTestimonialSlider("right")}
-          className="hover:text-[#1877F9]"
-        />
       </div>
     </div>
   );
