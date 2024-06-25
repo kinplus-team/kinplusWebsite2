@@ -22,17 +22,10 @@ function FrontOfCard({ srcImage, text }) {
       className="rounded-md grid gap-3 cursor-pointer"
     >
       <div className="relative">
-        <img
-          src={srcImage}
-          alt=""
-        />
+        <img src={srcImage} alt="" />
 
         <div className="absolute bottom-0 left-0 bg-blue-500 w-[84.71px] h-[72px] flex items-center justify-center">
-          <img
-            src={smallArrow}
-            alt=""
-            className=" h-7 w-7 "
-          />
+          <img src={smallArrow} alt="" className=" h-7 w-7 " />
         </div>
       </div>
       <p className=" text-[#101010] text-xl font-bold text-center">{text}</p>
@@ -66,11 +59,7 @@ function BackOfCard({ title, text }) {
           Talk to us
         </p>
 
-        <img
-          src={rightArrowBold}
-          alt=""
-          className="h-7 w-7 "
-        />
+        <img src={rightArrowBold} alt="" className="h-7 w-7 " />
       </div>
     </Link>
   );
@@ -82,10 +71,7 @@ export default function WhatWeDo() {
     <PageLayout>
       <div className="grid lg:grid-cols-[500px_1fr_auto] lg:gap-5 items-center">
         <div className="grid grid-cols-2">
-          <Text
-            type="subheading"
-            className="text-[#082B5B]"
-          >
+          <Text type="subheading" className="text-[#082B5B]">
             What we do
           </Text>
 
@@ -96,20 +82,14 @@ export default function WhatWeDo() {
           />
         </div>
 
-        <Text
-          type="subparagraph"
-          className="text-[#556987]"
-        >
+        <Text type="subparagraph" className="text-[#556987]">
           We'll expertly manage the technical aspects, allowing you to focus on
           bringing your solutions to the market and engaging potential
           investors. Collaborate with our team for seamless execution.
         </Text>
 
         <div className="hidden lg:block">
-          <img
-            src={icon}
-            alt=""
-          />
+          <img src={icon} alt="" />
         </div>
       </div>
 
@@ -125,9 +105,9 @@ export default function WhatWeDo() {
           {isHovered === "webDevelopment" ? (
             <BackOfCard
               CTAText={"Talk to us"}
-              title={"Mobile Development"}
+              title={"Web Development"}
               text={
-                "At Kinplus, we excel in mobile development, leveraging innovation to create impactful and user-centric solutions."
+                "We help you establish a strong online presence and achieve your business goals by designing and building websites to meet your needs."
               }
             />
           ) : (
@@ -199,9 +179,9 @@ export default function WhatWeDo() {
           {isHovered === "hardwareRepairs" ? (
             <BackOfCard
               CTAText={"Talk to us"}
-              title={"Mobile Development"}
+              title={"Hardware Repairs"}
               text={
-                "At Kinplus, we excel in mobile development, leveraging innovation to create impactful and user-centric solutions."
+                "We get your tech back up and running smoothly by diagnosing and fixing problems with your computer's physical components. This includes fixing laptops and desktops."
               }
             />
           ) : (

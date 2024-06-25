@@ -1,3 +1,4 @@
+import { LuPlusCircle } from "react-icons/lu";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 import { FaPlus, FaMinus } from "react-icons/fa6";
@@ -33,12 +34,14 @@ export default function FAQComponent({ FAQs }) {
         {FAQs.map((FAQ, i) => (
           <div
             key={i}
-       
             className="grid  max-w-md grid-rows-[auto_auto_1fr] gap-3 w-full mx-auto cursor-pointer"
           >
-            <p className="text-[#2A3342] text-[20px] font-medium leading-[30px]">
-              {FAQ.question}
-            </p>
+            <div className="flex flex-col gap-3">
+              <LuPlusCircle size={25} className="text-blue-400" />
+              <p className="text-[#2A3342] text-[20px] font-medium leading-[30px]">
+                {FAQ.question}
+              </p>
+            </div>
 
             <Text type="subparagraph" className="text-[#556987]">
               {FAQ.ans.summary}

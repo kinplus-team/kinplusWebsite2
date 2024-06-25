@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 // import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import arrow from "../../../assets/svg/arrow.svg";
 import gallery1 from "../../../assets/gallery/gallery_1.png";
@@ -11,9 +11,21 @@ import {
   HiOutlineArrowLongLeft,
 } from "react-icons/hi2";
 
+// import getTrainingGallery from "../../services/galleryServices.js";
+import getTrainingGallery from "../../../services/galleryServices";
+
 export default function Gallery() {
+  const [gallery, setGallery] = useState([]);
+
   let scaleFactors = useState(Array(10).fill(1));
   const imageScroll = useRef(null);
+
+  useEffect(() => {
+    // handleScrollEffect();
+    getTrainingGallery().then((response) => {
+      setGallery(response);
+    });
+  }, []);
 
   const handleScroll = (direction) => {
     imageScroll.current &&
@@ -93,19 +105,12 @@ export default function Gallery() {
         ref={imageScroll}
         onScroll={() => handleScrollEffect()}
       >
-        {[
-          gallery1,
-          gallery2,
-          gallery3,
-          gallery4,
-          gallery4,
-          gallery4,
-          gallery2,
-          gallery1,
-          gallery4,
-          gallery4,
-        ].map((image, index) => (
-          <img key={index} src={image} className={`w-[500px] h-[500px]`} />
+        {gallery.map((image, index) => (
+          <img
+            key={index}
+            src={image.traineePhoto.url}
+            className={`w-[500px] h-[500px]`}
+          />
         ))}
       </div>
 

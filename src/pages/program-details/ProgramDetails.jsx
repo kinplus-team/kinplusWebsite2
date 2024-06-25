@@ -29,7 +29,7 @@ export default function ProgramDetails() {
   }, []);
 
   return (
-    <div>
+    <div id="target-section">
       <Hero
         title={programDetails?.title}
         description={programDetails?.description}

@@ -59,9 +59,9 @@ export default function ApproachToProductDevelopment() {
             key={index}
             className="bg-[#082B5B] w-96 my-10 grid lg:grid-rows-[auto_1fr] h-full  gap-5"
           >
-            <img src={icon2} className="w-20 h-20 justify-self-end" />
+            <img src={icon2} className="w-24 h-24 justify-self-end my-5 mx-5" />
 
-            <div className="text-center grid grid-rows-[auto_1fr] gap-3 content-center w-[350px] p-8">
+            <div className="text-center grid grid-rows-[auto_1fr] gap-3 content-center w-[350px] px-8 py-4">
               <h3 className="text-white text-4xl">{service.title}</h3>
               <p className="text-white max-w-sm leading-6 mx-auto">
                 {service.description}
