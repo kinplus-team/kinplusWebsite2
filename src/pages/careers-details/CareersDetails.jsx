@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "./components/Hero.jsx";
 import AboutOurRole from "./components/AboutOurRole.jsx";
-import ApplyForRole from "./components/ApplyForRole.jsx";
+// import ApplyForRole from "./components/ApplyForRole.jsx";
 import OtherOpenings from "./components/OtherOpenings.jsx";
 
 export default function CareerDetails() {
@@ -9,7 +9,7 @@ export default function CareerDetails() {
     <div>
       <Hero />
       <AboutOurRole />
-      <ApplyForRole />
+      {/* <ApplyForRole /> */}
       <OtherOpenings />
     </div>
   );

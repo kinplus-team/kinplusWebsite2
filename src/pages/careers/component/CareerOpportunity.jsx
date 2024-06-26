@@ -36,14 +36,12 @@ export default function CareerOpportunity() {
         <Text type="title" className="text-[#1877F9]">
           Our leading edge
         </Text>
-
         <Text
           type="subheading"
           className="capitalize lg:max-w-3xl lg:pt-0 pt-3"
         >
           We bring solutions to make life easier for our customers.
         </Text>
-
         <Text
           type="subparagraph"
           className="text-[#556987] lg:pt-0 pt-3 max-w-2xl"
@@ -51,11 +49,10 @@ export default function CareerOpportunity() {
           If you're passionate about technology and want to make an impact, we
           invite you to explore our career opportunities.
         </Text>
-
         <div className="grid lg:grid-cols-[750px_1fr] pt-6">
           <div className="grid lg:gap-16 gap-10 content-center">
             {careerOpportunities.map((careerOpportunity, i) => (
-              <div className="grid grid-cols-[auto_1fr] lg:gap-6 gap-3">
+              <div key={i} className="grid grid-cols-[auto_1fr] lg:gap-6 gap-3">
                 <img
                   src={careerOpportunity.icon}
                   className="w-[46px] h-[46px]"
@@ -91,6 +88,10 @@ export default function CareerOpportunity() {
             />
           </div>
         </div>
+
+        <Text type="heading" className="text-[#2A3342] max-w-2xl mt-20">
+          Join us in building impactful products.
+        </Text>
       </div>
     </PageLayout>
   );

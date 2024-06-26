@@ -1,6 +1,7 @@
 import PageLayout from "../../../components/Layout/PageLayout.jsx";
 import heroDesktopView from "../../../assets/career/hero-desktop-view.png";
 import heroMobileView from "../../../assets/career/hero-mobile-view.png";
+import heroImg from "../../../assets/career/new_image_hero.png";
 import curvedBackground from "../../../assets/svg/career/curved-background.svg";
 import Text from "../../../components/Text.jsx";
 
@@ -33,7 +34,7 @@ export default function Hero() {
           <div
             className="absolute top-0 w-full h-[531px] rounded-lg hidden lg:block "
             style={{
-              background: `url(${heroDesktopView})`,
+              background: `url(${heroImg})`,
               backgroundRepeat: "no-repeat",
             }}
           ></div>
@@ -42,7 +43,7 @@ export default function Hero() {
             <div
               className="absolute top-6 w-[90%] h-[266px] rounded-lg lg:hidden  "
               style={{
-                background: `url(${heroMobileView})`,
+                background: `url(${heroImg})`,
                 backgroundRepeat: "no-repeat",
               }}
             ></div>

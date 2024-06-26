@@ -13,20 +13,34 @@ export default function ApplyForRole() {
   const [jobRole, setJobRole] = useState("");
   const [cv, setCv] = useState("");
 
+  const [portfolioLink, setPortfolioLink] = useState("");
+
+  const [formKey, setFormKey] = useState(0);
+
   const [isloading, setIsLoading] = useState(false);
 
-  const applicationFormImputs = [
-    { label: "Full Name", placeholder: "Enter your Fullname", fn: setFullName },
-    { label: "Email", placeholder: "Enter your email", fn: setEmail },
-    {
-      label: "Phone number",
-      placeholder: "Enter your phone number",
-      fn: setPhoneNumber,
-    },
-    { label: "Job Role", placeholder: "Enter your Job Role", fn: setJobRole },
+  const roleOptions = [
+    { title: "Frontend Developer" },
+    { title: "Product Designer" },
+    { title: "Product Manager" },
+    { title: "Backend Developer" },
+    { title: "Cybersecurity Expert" },
   ];
 
-  // console.log(cv);
+  const applicationFormImputs = [
+    {
+      label: "Full Name",
+      placeholder: "Enter your Fullname",
+      fn: setFullName,
+      type: "text",
+    },
+    {
+      label: "Email",
+      placeholder: "Enter your email",
+      fn: setEmail,
+      type: "text",
+    },
+  ];
 
   const handleResumeUpload = async () => {
     const resume = new FormData();
@@ -48,8 +62,9 @@ export default function ApplyForRole() {
         fullName,
         email,
         phoneNumber,
-        jobRole,
-        resumeLink.data.secure_url
+        jobRole.title,
+        resumeLink.data.secure_url,
+        portfolioLink
       )
         .then((response) => {
           toast.success(
@@ -62,10 +77,14 @@ export default function ApplyForRole() {
           setIsLoading(false);
         });
     }
+
+    setJobRole("");
+    // Force re-render by updating the form key
+    setFormKey(formKey + 1);
   };
 
   return (
-    <div className="lg:px-[54px] px-0 max-w-[100rem] mx-auto">
+    <div className="lg:px-[54px] px-0 max-w-[100rem] mx-auto lg:py-24 py-5 bg-[#f1f3f9]">
       <div className="grid gap-5 bg-[#082B5B] lg:p-14 p-6 rounded-lg">
         <h3 className="lg:text-[48px] text-[35px] font-[700] text-[#fff] lg:leading-[64px] leading-[40px] max-w-md">
           Apply for Job
@@ -76,19 +95,43 @@ export default function ApplyForRole() {
           Kinplus family.
         </p>
         <div className="grid gap-6">
-          <div className="grid lg:gap-x-12 lg:gap-y-6 gap-4 lg:grid-cols-2">
+          <div
+            key={formKey}
+            className="grid lg:gap-x-12 lg:gap-y-6 gap-4 lg:grid-cols-2"
+          >
             {applicationFormImputs.map((applicationFormImput, i) => (
               <Input
-                type="text"
+                type={applicationFormImput.type}
                 key={i}
                 name={applicationFormImput.label}
                 placeholder={applicationFormImput.placeholder}
                 setInput={applicationFormImput.fn}
               />
             ))}
-          </div>
 
-          {/* <Input type="text" placeholder="Upload link to resume" /> */}
+            <Input
+              type="text"
+              name="Phone number"
+              placeholder="Enter your phone number"
+              setInput={setPhoneNumber}
+            />
+
+            <Input
+              type="select"
+              name="Job role"
+              placeholder="What role are you interested in?"
+              selected={jobRole}
+              setSelected={setJobRole}
+              options={roleOptions}
+            />
+
+            <Input
+              type="text"
+              name="portfolio link"
+              placeholder="portfolio link (Optional)"
+              setInput={setPortfolioLink}
+            />
+          </div>
 
           <label className="cursor-pointer">
             <div className="bg-[#D9D9D9] w-full rounded-lg py-8 lg:px-16 px-8 text-center flex flex-col items-center">
