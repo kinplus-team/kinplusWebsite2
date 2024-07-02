@@ -9,7 +9,7 @@ export default function FAQComponent({ FAQs }) {
   const [showAns, setShowAns] = useState(false);
   const [index, setIndex] = useState(0);
 
-  const [isFAQToggled, setIsFAQToggled] = useState(false);
+  const [isFAQToggled, setIsFAQToggled] = useState(true);
 
   const handleToggle = (i) => {
     setIndex(i);
@@ -64,12 +64,12 @@ export default function FAQComponent({ FAQs }) {
             <div
               key={i + 2}
               className={`grid lg:hidden max-w-md ${
-                index == i && "grid-rows-[auto_auto_1fr]"
+                index == i && isFAQToggled && "grid-rows-[auto_auto_1fr]"
               } w-full mx-auto cursor-pointer`}
             >
               <div
                 className={`grid ${
-                  index == i
+                  index == i && isFAQToggled
                     ? "grid-rows-[auto_auto_1fr]"
                     : " grid-cols-[auto_1fr] items-center"
                 } gap-3`}
@@ -83,7 +83,7 @@ export default function FAQComponent({ FAQs }) {
                 </p>
               </div>
 
-              {index == i ? (
+              {index == i && isFAQToggled ? (
                 <>
                   <Text type="subparagraph" className={`text-[#556987]`}>
                     {FAQ.ans.summary}
