@@ -64,42 +64,11 @@ const FAQsOnHomePage = [
     },
   },
   {
-    question: "What training tracks are on offer for IT/SIWES?",
-    ans: {
-      summary:
-        "We offer IT/SIWES training on only a limited number of courses. These include:",
-      options: [
-        "Website Development",
-        "Cyber-security",
-        "Data Analysis",
-        "Product Design",
-      ],
-    },
-  },
-  {
     question:
       "Is IT/SIWES at Kinplus Technologies open to only students of tertiary institutions in Ekiti State?",
     ans: {
       summary:
         "No, we accept students from various tertiary institutions. However, only a limited number of students can be accepted from each institution because we try to maintain a balance across board.",
-    },
-  },
-  {
-    question: "Can I enroll in two training tracks for my IT/SIWES?",
-    ans: {
-      summary:
-        "No. Students can only enroll in just one training track for their industrial training. This is to achieve an intensive training experience and skill acquisition. ",
-    },
-  },
-
-  {
-    question:
-      "Do I need to have experience on my preferred training track before I can observe my IT/SIWES at Kinplus Technologies?",
-    ans: {
-      options: [
-        "No. While experience on your preferred training track will be an advantage to your learning, you do not need to have any experience to undertake your training in our company. Our IT/SIWES training considers newbies.",
-        "Students applying to train on cyber-security are required to undertake lessons on Website Development for a period, to gain the necessary knowledge relevant to their track.",
-      ],
     },
   },
   {

@@ -19,6 +19,7 @@ export default function Input({
   ref,
   date,
   isTextAreaRequired,
+  isRequired,
 }) {
   const [isPass, setIsPass] = useState(false);
   const [isSelect, setIsSelect] = useState(false);
@@ -140,7 +141,7 @@ export default function Input({
             placeholder={placeholder}
             name={name}
             ref={ref}
-            required
+            required={!isRequired ? true : false}
             onChange={(e) => setInput(e.target.value)}
           />
         </label>

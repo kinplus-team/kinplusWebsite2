@@ -71,7 +71,7 @@ export default function Gallery() {
             <img
               key={index}
               src={image.traineePhoto.url}
-              className={`lg:w-[500px] w-[300px] lg:h-[500px] h-[300px]`}
+              className={`w-auto lg:h-[500px] h-[300px]`}
             />
           ))}
         </div>

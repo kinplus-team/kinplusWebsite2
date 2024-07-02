@@ -13,15 +13,18 @@ export default function Button({
   isLong,
   isLoading,
   isLinked,
+  disabled,
 }) {
   switch (type) {
     case "customizedBlue":
       return (
         <button
-          className={`bg-[#1877F9] w-full hover:bg-opacity-90 hover:text-opacity-85 ${
+          className={`w-full hover:bg-opacity-90 hover:text-opacity-85 ${
             isLong
               ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left hover:text-[#fff] "
               : " rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"
+          } ${
+            disabled ? "opacity-50 cursor-not-allowed" : "bg-[#1877F9]"
           }  text-white text-xl font-medium leading-[24px] border border-[#1877F9] shadow-md  ${className}`}
         >
           {isLoading ? (
@@ -66,7 +69,10 @@ export default function Button({
             isLong
               ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left "
               : " rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"
-          } text-[#1877F9] text-xl font-medium leading-[24px] border border-white shadow-md ${className}`}
+          } ${
+            disabled ? "opacity-50 cursor-not-allowed" : "bg-white"
+          }  text-[#1877F9] text-xl font-medium leading-[24px] border border-white shadow-md ${className}`}
+          disabled={disabled}
         >
           {isLoading ? (
             <div className="flex items-center justify-center">

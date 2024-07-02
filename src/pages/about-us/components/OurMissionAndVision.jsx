@@ -35,7 +35,7 @@ export default function OurMissionAndVision() {
                 that will shape a better future. We're at the forefront of the
                 digital revolution, and we're always looking for new ways to
                 make a positive impact on the world. We believe that together,
-                we can build a better tomorrow for everyone
+                we can build a better tomorrow for everyone.
               </Text>
             </div>
           </div>
