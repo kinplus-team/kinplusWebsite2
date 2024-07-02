@@ -43,6 +43,8 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             ? "text-black"
             : pathname == "/trainings/courses/product-design"
             ? "text-black"
+            : pathname == "/sponsor-or-partner-with-us"
+            ? "text-black"
             : pathname == "/trainings/courses/cyber-security"
             ? "text-black"
             : pathname == "/our-services"
