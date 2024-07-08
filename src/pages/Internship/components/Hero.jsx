@@ -6,6 +6,8 @@ import backgroundIcon from "../../../assets/svg/background-icon.svg";
 import maskedGrid from "../../../assets/svg/masked-grid.svg";
 import Text from "../../../components/Text";
 
+import { Link } from "react-scroll";
+
 export default function Hero() {
   return (
     <PageLayout className="lg:pt-36 pt-24">
@@ -40,7 +42,13 @@ export default function Hero() {
 
           <div className="grid gap-6 relative">
             <div className="lg:w-40 w-36">
-              <Button type="customizedBlue" text="Join us" />
+              <Link
+                to="internship-application-form"
+                smooth={true}
+                duration={800}
+              >
+                <Button type="customizedBlue" text="Join us" />
+              </Link>
             </div>
             <img
               src={maskedGrid}

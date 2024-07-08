@@ -6,6 +6,7 @@ import { ApplyForSIWES } from "../../../services/internshipServices";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Text from "../../../components/Text";
+import { Element } from "react-scroll";
 
 export default function ApplyForInternship() {
   const [gender, setGender] = useState("");
@@ -84,7 +85,8 @@ export default function ApplyForInternship() {
 
   return (
     <PageLayout>
-      <div
+      <Element
+        name="internship-application-form"
         className="grid lg:grid-cols-2 gap-8 lg:py-[55px] py-[30px]"
         style={{ borderTop: "1px solid rgba(0, 0, 0, 0.42) " }}
       >
@@ -293,7 +295,7 @@ export default function ApplyForInternship() {
             </form>
           </div>
         </div>
-      </div>
+      </Element>
     </PageLayout>
   );
 }
