@@ -109,7 +109,7 @@ export default function ContactUsServices() {
               type="text"
               name="amount"
               placeholder="Enter the amount (Optional)"
-              isRequired={"not required"}
+              isRequired={false}
               setInput={setAmount}
             />
             {errors.amount && (
@@ -146,7 +146,7 @@ export default function ContactUsServices() {
               type="text"
               name="organization name"
               placeholder="Enter your organization name (Optional)"
-              isRequired={"not required"}
+              isRequired={false}
               setInput={setOrganizationName}
             />
             {errors.organizationName && (
@@ -159,7 +159,7 @@ export default function ContactUsServices() {
               type="text"
               name="organization address"
               placeholder="Enter your organization address (Optional)"
-              isRequired={"not required"}
+              isRequired={false}
               setInput={setOrganizationAddress}
             />
             {errors.organizationAddress && (
@@ -172,7 +172,7 @@ export default function ContactUsServices() {
               type="text"
               name="organization website"
               placeholder="Enter your organization website (Optional)"
-              isRequired={"not required"}
+              isRequired={false}
               setInput={setOrganizationWebsite}
             />
             {errors.organizationWebsite && (
