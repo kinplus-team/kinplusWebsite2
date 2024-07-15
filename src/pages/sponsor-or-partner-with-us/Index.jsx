@@ -107,7 +107,7 @@ export default function ContactUsServices() {
           <div>
             <Input
               type="text"
-              name="amount"
+              name="Amount"
               placeholder="Enter the amount (Optional)"
               isRequired={false}
               setInput={setAmount}
@@ -120,7 +120,7 @@ export default function ContactUsServices() {
           <div>
             <Input
               type="number"
-              name="phone Number"
+              name="Phone Number"
               placeholder="Enter your phone number"
               setInput={setPhoneNumber}
             />
@@ -132,7 +132,7 @@ export default function ContactUsServices() {
           <div>
             <Input
               type="text"
-              name="current address"
+              name="Current address"
               placeholder="Enter your current address"
               setInput={setCurrentAddress}
             />
@@ -144,7 +144,7 @@ export default function ContactUsServices() {
           <div>
             <Input
               type="text"
-              name="organization name"
+              name="Organization name"
               placeholder="Enter your organization name (Optional)"
               isRequired={false}
               setInput={setOrganizationName}
@@ -157,7 +157,7 @@ export default function ContactUsServices() {
           <div>
             <Input
               type="text"
-              name="organization address"
+              name="Organization address"
               placeholder="Enter your organization address (Optional)"
               isRequired={false}
               setInput={setOrganizationAddress}
@@ -170,7 +170,7 @@ export default function ContactUsServices() {
           <div>
             <Input
               type="text"
-              name="organization website"
+              name="Organization website"
               placeholder="Enter your organization website (Optional)"
               isRequired={false}
               setInput={setOrganizationWebsite}
