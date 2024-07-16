@@ -29,7 +29,7 @@ export default function Testimonials({
         {testimonials.map((testimonial, i) => (
           <div
             key={i}
-            className="grid lg:grid-cols-[1fr_auto] py-4 lg:gap-16 gap-4 relative snap-end"
+            className="grid lg:grid-cols-[1fr_auto] grid-rows-[auto_1fr] py-4 lg:gap-16 gap-4 relative snap-end"
           >
             <div>
               <Text
@@ -38,7 +38,7 @@ export default function Testimonials({
               >
                 {testimonial.text}
               </Text>
-              <div className="flex justify-center gap-5 pt-10  lg:justify-start">
+              <div className="hidden lg:flex justify-center gap-5 pt-10  lg:justify-start">
                 <HiOutlineArrowLongLeft
                   size={60}
                   onClick={() => handleTestimonialSlider("left")}
@@ -62,6 +62,19 @@ export default function Testimonials({
                 <Text type="paragraph">{testimonial.name}</Text>
 
                 <Text type="subparagraph">{testimonial.program}</Text>
+
+                <div className="flex lg:hidden justify-center gap-5 pt-10  lg:justify-start">
+                  <HiOutlineArrowLongLeft
+                    size={60}
+                    onClick={() => handleTestimonialSlider("left")}
+                    className="hover:text-[#1877F9]"
+                  />
+                  <HiOutlineArrowLongRight
+                    size={60}
+                    onClick={() => handleTestimonialSlider("right")}
+                    className="hover:text-[#1877F9]"
+                  />
+                </div>
               </div>
             </div>
           </div>
