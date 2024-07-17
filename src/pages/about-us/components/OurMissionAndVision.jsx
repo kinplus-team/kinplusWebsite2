@@ -6,13 +6,16 @@ import Text from "../../../components/Text";
 export default function OurMissionAndVision() {
   return (
     <PageLayout>
-      <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-10">
-        <div className="relative">
-          <img
-            src={aboutUsGrid}
-            className="w-auto mx-auto h-[550px]  lg:absolute"
-          />
-        </div>
+      <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-5">
+        <div
+          style={{
+            backgroundImage: `url(${aboutUsGrid})`,
+            backgroundPosition: "center",
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+          }}
+          className="h-[550px] w-full lg:h-full"
+        ></div>
 
         <div className="grid lg:gap-24 gap-9 lg:px-10 lg:order-last order-first">
           {/* vision */}
