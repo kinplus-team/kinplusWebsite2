@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Button from "../../../components/Button.jsx";
 import curvedBackground from "../../../assets/svg/career/curved-background.svg";
 import heroImg from "../../../assets/workshop/hero.png";
@@ -23,13 +25,17 @@ export default function Hero() {
                 type="customizedWhite"
                 text="Join Ongoing Workshop"
                 className="rounded-md"
+                disabled={true}
               />
             </div>
 
             <div className="lg:px-[54px] px-4 lg:hidden block">
-              <div className="text-lg font-bold underline text-[#fff]">
+              <Link
+                to="/sponsor-or-partner-with-us"
+                className="text-lg font-bold underline text-[#fff] cursor-pointer"
+              >
                 <p>Sponsor or Partner with us</p>
-              </div>
+              </Link>
             </div>
           </div>
           <div className="relative h-32 lg:h-auto lg:w-auto">
@@ -41,9 +47,12 @@ export default function Hero() {
       </div>
       <div className="bg-[#f1f3f9] relative ">
         <div className="lg:px-[54px] px-4 max-w-[100rem] mx-auto lg:block hidden">
-          <div className="text-lg font-bold underline text-[#fff] absolute top-0  z-10">
+          <Link
+            to="/sponsor-or-partner-with-us"
+            className="text-lg font-bold underline text-[#fff] absolute top-0  z-10"
+          >
             <p>Sponsor or Partner with us</p>
-          </div>
+          </Link>
         </div>
 
         <img src={curvedBackground} />

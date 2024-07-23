@@ -152,37 +152,37 @@ const courseDetails = [
       },
     },
   },
-  {
-    title: "Videography",
-    description:
-      "Videography is the art of capturing, editing, and producing video content. With a camera and editing software, you can tell a story, capture a moment, or communicate a message through the power of video..",
-    pricingCardInfo: {
-      medium: {
-        courseDuration: "3 Month plan",
-        courseDescription:
-          "Lorem ipsum dolor sit amet doloroli sitiol conse ctetur adipiscing elit. ",
-        price: 100000,
-        whatsIncluded: [
-          "All analytics features",
-          "Up to 500,000 tracked visits",
-          "Dedicated support",
-          "Up to 50 team members",
-        ],
-      },
-      pro: {
-        courseDuration: "5 Month plan",
-        courseDescription:
-          "Lorem ipsum dolor sit amet doloroli sitiol conse ctetur adipiscing elit. .",
-        price: 120000,
-        whatsIncluded: [
-          "All analytics features",
-          "Up to 1,000,000 tracked visits",
-          "Premium support",
-          "Up to 100 team members",
-        ],
-      },
-    },
-  },
+  // {
+  //   title: "Videography",
+  //   description:
+  //     "Videography is the art of capturing, editing, and producing video content. With a camera and editing software, you can tell a story, capture a moment, or communicate a message through the power of video..",
+  //   pricingCardInfo: {
+  //     medium: {
+  //       courseDuration: "3 Month plan",
+  //       courseDescription:
+  //         "Lorem ipsum dolor sit amet doloroli sitiol conse ctetur adipiscing elit. ",
+  //       price: 100000,
+  //       whatsIncluded: [
+  //         "All analytics features",
+  //         "Up to 500,000 tracked visits",
+  //         "Dedicated support",
+  //         "Up to 50 team members",
+  //       ],
+  //     },
+  //     pro: {
+  //       courseDuration: "5 Month plan",
+  //       courseDescription:
+  //         "Lorem ipsum dolor sit amet doloroli sitiol conse ctetur adipiscing elit. .",
+  //       price: 120000,
+  //       whatsIncluded: [
+  //         "All analytics features",
+  //         "Up to 1,000,000 tracked visits",
+  //         "Premium support",
+  //         "Up to 100 team members",
+  //       ],
+  //     },
+  //   },
+  // },
 ];
 
 export default courseDetails;

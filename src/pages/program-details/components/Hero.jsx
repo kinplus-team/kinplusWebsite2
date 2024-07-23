@@ -13,7 +13,7 @@ export default function Hero({ title, description }) {
         className="lg:w-[636px] lg:h-[619px] w-[380px] h-[380px] order-last lg:order-first "
       />
 
-      <div className="grid lg:gap-6 gap-3 place-self-center">
+      <div className="grid lg:gap-6 gap-3 place-self-center pt-5">
         <h3 className="lg:text-[65px] text-[45px] text-[#082B5B] font-bold leading-[98.462%] lg:max-w-sm max-w-[250px]">
           {title}
         </h3>

@@ -74,16 +74,21 @@ export default function HaveAProjectInMind() {
               {projectInMind.description}
             </Text>
 
-            <Link to="/contact-us/services" className="w-40 self-center">
-              <Button type="customizedBlue" text="Talk to us" />
-            </Link>
+            <div className="relative">
+              <Link
+                to="/contact-us/services"
+                className="w-40 absolute top-0 z-50 self-center"
+              >
+                <Button type="customizedBlue" text="Talk to us" />
+              </Link>
+            </div>
           </div>
 
           {/* mobile view */}
           <div className="py-10 lg:hidden block">
-            <div className="relative w-full h-96 ">
-              <div className="absolute top-[-100px] left-20 flex ">
-                <img src={iconbg2} alt="" className="mt-[-40px]  " />
+            <div className="relative w-full h-96 z-0 ">
+              <div className="absolute top-[-60px] right-0 z-[-150px] lg:flex ">
+                <img src={iconbg2} alt="" className="mt-[-40px]   " />
               </div>
               <div className="absolute top-[5%] mt-[30px] z-[100]">
                 <img

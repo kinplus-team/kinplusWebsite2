@@ -24,6 +24,8 @@ import Blog from "./pages/blog/Index.jsx";
 import BlogPost from "./pages/blog/BlogPost/Index.jsx";
 import ScrollToTop from "./components/scrollToTop/Index.jsx";
 
+import SponsorUs from "./pages/sponsor-or-partner-with-us/Index.jsx";
+
 function App() {
   return (
     <>
@@ -36,12 +38,10 @@ function App() {
           <Route path="/our-services" element={<Services />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:article" element={<BlogPost />} />
-
           {/* contact us routes */}
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/contact-us/services" element={<ContactUsServices />} />
           <Route path="/contact-us/training" element={<ContactUsTraining />} />
-
           {/*training routes  */}
           <Route path="/trainings" element={<Training />} />
           <Route
@@ -54,10 +54,12 @@ function App() {
             path="/trainings/workshop/:details"
             element={<WorkshopDetails />}
           />
-
           {/* career routes */}
           <Route path="/careers" element={<Career />} />
           <Route path="/careers/:career" element={<CareerDetails />} />
+
+          {/* Sponsor or partner with us */}
+          <Route path="/sponsor-or-partner-with-us" element={<SponsorUs />} />
         </Routes>
         <Footer />
       </Router>

@@ -3,35 +3,38 @@ import Input from "../../../components/Inputs";
 import PageLayout from "../../../components/Layout/PageLayout";
 import Button from "../../../components/Button";
 import { ApplyForSIWES } from "../../../services/internshipServices";
-
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Text from "../../../components/Text";
+import { Element } from "react-scroll";
 
 export default function ApplyForInternship() {
   const [gender, setGender] = useState("");
-
   const navigate = useNavigate();
-
   const [isLoading, setIsLoading] = useState(false);
   const genderInput = [{ title: "Male" }, { title: "Female" }];
 
-  const [fullName, setFullName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [phoneNumber, setPhoneNumber] = useState(null);
-  const [religion, setReligion] = useState(null);
-  const [dateOfBirth, setDateOfBirth] = useState(null);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [religion, setReligion] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
 
-  // const [gender, setGender] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [nameOfInstitution, setNameOfInstitution] = useState(null);
-  const [courseOfStudy, setCourseOfStudy] = useState(null);
-  const [duration, setDuration] = useState(null);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [anyHealthChallenges, setAnyHealthChallenges] = useState(null);
+  const [formKey, setFormKey] = useState(0);
+
+  const [address, setAddress] = useState("");
+  const [nameOfInstitution, setNameOfInstitution] = useState("");
+  const [courseOfStudy, setCourseOfStudy] = useState("");
+  const [duration, setDuration] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [anyHealthChallenges, setAnyHealthChallenges] = useState("");
   const [descriptionOfHealthChallenges, setDescriptionOfHealthChallenges] =
-    useState(" ");
+    useState("");
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [errors, setErrors] = useState({});
 
   const uploadInternshipApplication = () => {
     setIsLoading(true);
@@ -56,9 +59,22 @@ export default function ApplyForInternship() {
           toast.success("Thank you for reaching out to us");
           setIsLoading(false);
 
-          setTimeout(() => {
-            navigate("/our-services");
-          }, 2000);
+          setFullName("");
+          setEmail("");
+          setPhoneNumber("");
+          setReligion("");
+          setDateOfBirth("");
+          setAddress("");
+          setNameOfInstitution("");
+          setGender("");
+          setCourseOfStudy("");
+          setDuration("");
+          setStartDate("");
+          setEndDate("");
+          setAnyHealthChallenges("");
+          setDescriptionOfHealthChallenges("");
+
+          setFormKey(formKey + 1);
         })
         .catch((error) => {
           toast.error(error.response.errors[0].message);
@@ -66,9 +82,11 @@ export default function ApplyForInternship() {
         });
     }, 3000);
   };
+
   return (
     <PageLayout>
-      <div
+      <Element
+        name="internship-application-form"
         className="grid lg:grid-cols-2 gap-8 lg:py-[55px] py-[30px]"
         style={{ borderTop: "1px solid rgba(0, 0, 0, 0.42) " }}
       >
@@ -104,142 +122,180 @@ export default function ApplyForInternship() {
           <h3 className="lg:text-[44px] text-[35px] font-[700] text-[#F1F1F1] lg:leading-[54px] leading-[40px] max-w-md">
             Apply for our SIWES/IT program
           </h3>
-          <div className="grid sm:grid-flow-row gap-2">
-            <Input
-              type="text"
-              name="Full Name"
-              placeholder="Enter your Full Name"
-              setInput={setFullName}
-            />
-
-            <Input
-              type="email"
-              name="E-Mail"
-              placeholder="Enter your E-Mail"
-              setInput={setEmail}
-            />
-            <Input
-              type="phone"
-              name="Phone Number"
-              placeholder="Enter your Phone Number"
-              setInput={setPhoneNumber}
-            />
-            <Input
-              type="text"
-              name="Religion"
-              placeholder="Enter your Religion"
-              setInput={setReligion}
-            />
-
-            {/* Date of birth and gender */}
-            <div className="grid gap-3 sm:grid-cols-2 items-center">
-              <Input
-                type="date"
-                name="Date of Birth"
-                placeholder="Date of Birth"
-                setInput={setDateOfBirth}
-              />
-              <Input
-                type="select"
-                name="Gender"
-                placeholder="Gender"
-                selected={gender}
-                setSelected={setGender}
-                options={genderInput}
-              />
-            </div>
-
-            <Input
-              type="text"
-              name="Address"
-              placeholder="Enter your Address"
-              setInput={setAddress}
-            />
-
-            <Input
-              type="text"
-              name="Name of Institution"
-              placeholder="Enter the Name of your School"
-              setInput={setNameOfInstitution}
-            />
-
-            <Input
-              type="text"
-              name="Course of Study"
-              placeholder="Tell us what you are studying"
-              setInput={setCourseOfStudy}
-            />
-
-            <Input
-              type="text"
-              name="Duration"
-              placeholder="How many months are you using?"
-              setInput={setDuration}
-            />
-
-            <div className="grid gap-3 sm:grid-cols-2 items-center">
-              <Input
-                type="date"
-                name="Start Date"
-                placeholder="When are you starting?"
-                setInput={setStartDate}
-              />
-              <Input
-                type="date"
-                name="End Date"
-                placeholder="When are you likely to finish?"
-                setInput={setEndDate}
-              />
-            </div>
-
-            {/* health chanllenges */}
-            <div className="py-3">
-              <p className="text-xl text-white">
-                Do you have any health chanllenges
-              </p>
-              <div onClick={() => setAnyHealthChallenges("Yes")}>
-                <Input
-                  type="checkbox"
-                  name="Do you have any health challenge?"
-                  placeholder="Dou you have any health challenge?"
-                  radioText="Yes"
-                  isChecked={anyHealthChallenges === "Yes"}
-                  onCheck={() => setAnyHealthChallenges("Yes")}
-                />
-              </div>
-
-              <div onClick={() => setAnyHealthChallenges("No")}>
-                <Input
-                  type="checkbox"
-                  name="Do you have any health challenge?"
-                  placeholder="Dou you have any health challenge?"
-                  radioText="No"
-                  isChecked={anyHealthChallenges === "No"}
-                  onCheck={() => setAnyHealthChallenges("No")}
-                />
-              </div>
-            </div>
-
-            {/* if yes describe your health challenges */}
-            <Input
-              type="textarea"
-              name="If yes describe your health Challenge"
-              setInput={setDescriptionOfHealthChallenges}
-            />
-
-            <div
-              onClick={() => uploadInternshipApplication()}
-              className="w-40 mx-auto"
+          <div key={formKey} className="grid sm:grid-flow-row gap-2">
+            <form
+              action=""
+              onSubmit={(e) => {
+                e.preventDefault();
+                uploadInternshipApplication();
+              }}
             >
-              <Button
-                type="customizedWhite"
-                text="Submit"
-                isLoading={isLoading}
-              />
-            </div>
+              <div>
+                <Input
+                  type="text"
+                  name="Full Name"
+                  placeholder="Enter your Full Name"
+                  setInput={setFullName}
+                />
+                {errors.fullName && (
+                  <p className="text-red-500">{errors.fullName}</p>
+                )}
+              </div>
+
+              <div>
+                <Input
+                  type="email"
+                  name="E-Mail"
+                  placeholder="Enter your E-Mail"
+                  setInput={setEmail}
+                />
+                {errors.email && <p className="text-red-500">{errors.email}</p>}
+              </div>
+
+              <div>
+                <Input
+                  type="phone"
+                  name="Phone Number"
+                  placeholder="Enter your Phone Number"
+                  setInput={setPhoneNumber}
+                />
+                {errors.phoneNumber && (
+                  <p className="text-red-500">{errors.phoneNumber}</p>
+                )}
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="Religion"
+                  placeholder="Enter your Religion"
+                  setInput={setReligion}
+                />
+                {errors.religion && (
+                  <p className="text-red-500">{errors.religion}</p>
+                )}
+              </div>
+
+              {/* Date of birth and gender */}
+              <div className="grid gap-3 sm:grid-cols-2 items-center">
+                <Input
+                  type="date"
+                  name="Date of Birth"
+                  placeholder="Date of Birth"
+                  setInput={setDateOfBirth}
+                />
+                <Input
+                  type="select"
+                  name="Gender"
+                  placeholder="Gender"
+                  selected={gender}
+                  setSelected={setGender}
+                  options={genderInput}
+                />
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="Address"
+                  placeholder="Enter your Address"
+                  setInput={setAddress}
+                />
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="Name of Institution"
+                  placeholder="Enter the Name of your School"
+                  setInput={setNameOfInstitution}
+                />
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="Course of Study"
+                  placeholder="Tell us what you are studying"
+                  setInput={setCourseOfStudy}
+                />
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="How long is your IT/SIWES?"
+                  placeholder="How many months are you using?"
+                  setInput={setDuration}
+                />
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2 items-center">
+                <Input
+                  type="date"
+                  name="Start Date"
+                  placeholder="When are you starting?"
+                  setInput={setStartDate}
+                />
+                <Input
+                  type="date"
+                  name="End Date"
+                  placeholder="When are you likely to finish?"
+                  setInput={setEndDate}
+                />
+              </div>
+
+              {/* health challenges */}
+              <div className="py-3">
+                <p className="text-xl text-white">
+                  Do you have any health challenges
+                </p>
+                <div onClick={() => setAnyHealthChallenges("Yes")}>
+                  <Input
+                    type="checkbox"
+                    name="Do you have any health challenge?"
+                    placeholder="Do you have any health challenge?"
+                    radioText="Yes"
+                    isChecked={anyHealthChallenges === "Yes"}
+                    onCheck={() => setAnyHealthChallenges("Yes")}
+                  />
+                </div>
+
+                <div onClick={() => setAnyHealthChallenges("No")}>
+                  <Input
+                    type="checkbox"
+                    name="Do you have any health challenge?"
+                    placeholder="Do you have any health challenge?"
+                    radioText="No"
+                    isChecked={anyHealthChallenges === "No"}
+                    onCheck={() => setAnyHealthChallenges("No")}
+                  />
+                </div>
+              </div>
+
+              {/* if yes describe your health challenges */}
+              <div>
+                <Input
+                  type="textarea"
+                  name="If yes describe your health Challenge"
+                  setInput={setDescriptionOfHealthChallenges}
+                  isTextAreaRequired={
+                    anyHealthChallenges == "Yes" ? true : false
+                  }
+                />
+              </div>
+
+              <div className="w-40 mx-auto">
+                <Button
+                  type="customizedWhite"
+                  text="Submit"
+                  isLoading={isLoading}
+                />
+              </div>
+            </form>
           </div>
         </div>
-      </div>
+      </Element>
     </PageLayout>
   );
 }

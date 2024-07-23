@@ -9,7 +9,7 @@ export default function WorkshopDetails() {
       <Hero />
       <About />
       <WorkshopReport />
-      <PreviousWorkshop />
+      {/* <PreviousWorkshop /> */}
     </div>
   );
 }

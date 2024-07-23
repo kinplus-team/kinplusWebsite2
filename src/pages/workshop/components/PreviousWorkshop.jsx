@@ -32,7 +32,7 @@ export default function PreviousWorkshop() {
         <div className="grid lg:grid-cols-2">
           <div>
             <Text type="title" className="text-[#1877F9]">
-              Our Previous Workshops
+              Our Recent Workshops
             </Text>
 
             <Text type="subheading" className="text-[#082B5B]">

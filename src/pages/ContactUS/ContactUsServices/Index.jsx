@@ -6,39 +6,54 @@ import { contactUsForServices } from "../../../services/contactForm";
 import Button from "../../../components/Button";
 import { useState } from "react";
 import Text from "../../../components/Text";
+import Input from "../../../components/Inputs";
 
 export default function ContactUsServices() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const contactUsExplanation =
-    " At Kinplus, our commitment extends beyond service – we're dedicated to shaping tailored solutions that seamlessly integrate innovation, ensuring your experience is not just exceptional but transformative";
+  const [formKey, setFormKey] = useState(0);
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [errors, setErrors] = useState({});
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors: formErrors },
     setValue,
   } = useForm({ mode: "all" });
 
-  // const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
   const onSubmit = async (data) => {
+    // const validationErrors = validate();
+    // if (Object.keys(validationErrors).length > 0) {
+    //   setErrors(validationErrors);
+    //   return;
+    // }
+
     setIsLoading(true);
     await contactUsForServices(
-      data.fullName,
-      data.email,
-      data.phoneNumber,
-      data.companyName,
-      data.message
+      fullName,
+      email,
+      phoneNumber,
+      companyName,
+      message
     )
       .then(() => {
         toast.success("Form submitted successfully");
         setIsLoading(false);
-
-        setTimeout(() => {
-          navigate("/contact-us");
-        }, 2000);
+        setFormKey(formKey + 1);
+        // Reset form fields
+        setFullName("");
+        setEmail("");
+        setPhoneNumber("");
+        setCompanyName("");
+        setMessage("");
       })
       .catch((error) => {
         toast.error("Something went wrong!");
@@ -51,9 +66,9 @@ export default function ContactUsServices() {
       id="target-section"
       className="grid lg:grid-cols-2 gap-10 lg:py-40 pt-32 pb-16"
     >
-      {/*Explanation*/}
+      {/* Explanation */}
       <div className="grid lg:grid-rows-[100px_auto_auto_1fr] grid-rows-[auto_150px_50px_1fr] gap-6 w-full p-2">
-        <Text type="heading" className=" text-[#082B5B] capitalize">
+        <Text type="heading" className="text-[#082B5B] capitalize">
           Get Started
         </Text>
 
@@ -72,9 +87,10 @@ export default function ContactUsServices() {
         </p>
       </div>
 
-      {/*Services Form*/}
-      <div className="w-full bg-blue-950 rounded-[0.9375rem]  text-white mx-auto md:ml-0  pl-1">
+      {/* Services Form */}
+      <div className="w-full bg-blue-950 rounded-[0.9375rem] text-white mx-auto md:ml-0 pl-1">
         <form
+          key={formKey}
           onSubmit={handleSubmit(onSubmit)}
           className="mx-auto mt-8 w-[90%]"
         >
@@ -82,115 +98,63 @@ export default function ContactUsServices() {
             Tell us about your project
           </Text>
 
-          <div className="flex flex-col gap-8 mt-10">
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="fullName">Full Name</label>
-              <input
-                className="bg-inherit outline-none p-2 border"
-                type="text"
-                id="fullName"
-                placeholder="Enter Your Full Name"
-                {...register("fullName", {
-                  required: "Full name is required",
-                  minLength: {
-                    value: 3,
-                    message: "Full name should have at least 3 characters",
-                  },
-                  maxLength: {
-                    value: 100,
-                    message: "Full name should not exceed 50 characters",
-                  },
-                })}
-              />
-              {errors.fullName && (
-                <p className="text-red-500 pt-[2px] text-sm font-300 italic">
-                  {errors.fullName.message}
-                </p>
-              )}
-            </div>
-
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="email">E-mail</label>
-              <input
-                type="email"
-                id="email"
-                placeholder="Enter Your E-mail address"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
-                    message: "Invalid email address",
-                  },
-                })}
-                className="bg-inherit outline-none border p-2"
-              />
-              {errors.email && (
-                <p className="text-red-500 py-[2px] text-sm font-300 italic">
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
-
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="phoneNumber">Phone Number</label>
-              <input
-                type="text"
-                id="phoneNumber"
-                placeholder="Enter Your Phone Number"
-                {...register("phoneNumber", {
-                  required: "Phone number is required",
-                  minLength: {
-                    value: 5,
-                    message: "Phone number should have at least 5 digits",
-                  },
-                })}
-                className="bg-inherit outline-none border p-2"
-              />
-              {errors.phoneNumber && (
-                <p className="text-red-500 pt-[2px] text-sm font-300 italic">
-                  {errors.phoneNumber.message}
-                </p>
-              )}
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="companyName">Company Name</label>
-              <input
-                type="text"
-                id="companyName"
-                placeholder="Company Name"
-                {...register("companyName", {
-                  required: "Company Name is required",
-                  message: "",
-                })}
-                className="bg-inherit outline-none border p-2"
-              />
-              {errors.phoneNumber && (
-                <p className="text-red-500 pt-[2px] text-sm font-300 italic">
-                  {errors.companyName.message}
-                </p>
-              )}
-            </div>
-            <div className="flex flex-col gap-[8px]">
-              <label htmlFor="message">Message</label>
-              <textarea
-                name="message"
-                id="message"
-                placeholder="What do you have for us"
-                {...register("message", {
-                  required: "Message is required",
-                  message: "",
-                })}
-                className="bg-inherit outline-none border p-2 h-[297px] resize-none"
-              />
-              {errors.message && (
-                <p className="text-red-500 pt-[2px] text-sm font-300 italic">
-                  {errors.message.message}
-                </p>
-              )}
-            </div>
+          <div>
+            <Input
+              type="text"
+              name="Full name"
+              placeholder="Enter your Full Name"
+              setInput={setFullName}
+            />
+            {errors.fullName && (
+              <p className="text-red-500">{errors.fullName}</p>
+            )}
           </div>
 
-          <div className="text-center mt-[10px] py-9 w-40 mx-auto ">
+          <div>
+            <Input
+              type="email"
+              name="E-Mail"
+              placeholder="Enter your E-Mail"
+              setInput={setEmail}
+            />
+            {errors.email && <p className="text-red-500">{errors.email}</p>}
+          </div>
+
+          <div>
+            <Input
+              type="text"
+              name="Phone Number"
+              placeholder="Enter your Phone Number"
+              setInput={setPhoneNumber}
+            />
+            {errors.phoneNumber && (
+              <p className="text-red-500">{errors.phoneNumber}</p>
+            )}
+          </div>
+
+          <div>
+            <Input
+              type="text"
+              name="Company name"
+              placeholder="Enter your Company Name"
+              setInput={setCompanyName}
+            />
+            {errors.companyName && (
+              <p className="text-red-500">{errors.companyName}</p>
+            )}
+          </div>
+
+          <div>
+            <Input
+              type="textarea"
+              name="Message"
+              setInput={setMessage}
+              isTextAreaRequired={true}
+            />
+            {errors.message && <p className="text-red-500">{errors.message}</p>}
+          </div>
+
+          <div className="text-center mt-[10px] py-9 w-40 mx-auto">
             <Button
               text="Submit"
               type="customizedWhite"

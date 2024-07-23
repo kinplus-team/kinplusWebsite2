@@ -8,7 +8,7 @@ export default function Testimonial() {
   const { handleTestimonialSlider, scrollCon } = useTestimonialsSlider();
 
   return (
-    <PageLayout>
+    <PageLayout className="pt-1">
       <Testimonials
         testimonials={testimonials}
         scrollCon={scrollCon}

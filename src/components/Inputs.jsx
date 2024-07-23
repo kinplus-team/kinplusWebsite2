@@ -16,7 +16,10 @@ export default function Input({
   radioText,
   isChecked,
   onCheck,
+  ref,
   date,
+  isTextAreaRequired,
+  isRequired = true,
 }) {
   const [isPass, setIsPass] = useState(false);
   const [isSelect, setIsSelect] = useState(false);
@@ -119,6 +122,7 @@ export default function Input({
             placeholder={placeholder}
             className="text-lg p-4 block resize-none w-full min-h-[200px] bg-transparent rounded-md border border-white"
             onChange={(e) => setInput(e.target.value)}
+            required={isTextAreaRequired}
           ></textarea>
         </div>
       );
@@ -136,7 +140,8 @@ export default function Input({
             className="text-lg font-[400] bg-transparent placeholder:text-[#ffff] placeholder:font-light placeholder:text-[16px] outline-none w-full py-4 lg:px-6 px-3 border border-white rounded-md"
             placeholder={placeholder}
             name={name}
-            required
+            ref={ref}
+            required={isRequired}
             onChange={(e) => setInput(e.target.value)}
           />
         </label>

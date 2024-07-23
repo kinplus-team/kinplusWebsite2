@@ -9,6 +9,7 @@ import kinplusLogoWhite from "../../assets/kinplusWhite.png";
 import { IoIosMenu } from "react-icons/io";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
+// close icon
 import closeIcon from "../../assets/components/navbar/svg/closeSvg.svg";
 
 // social media icon
@@ -34,6 +35,18 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             ? "text-black"
             : pathname == "/about-us"
             ? "text-black"
+            : pathname == "/trainings/courses/graphic-design"
+            ? "text-black"
+            : pathname == "/trainings/courses/software-development"
+            ? "text-black"
+            : pathname == "/trainings/courses/data-analysis"
+            ? "text-black"
+            : pathname == "/trainings/courses/product-design"
+            ? "text-black"
+            : pathname == "/sponsor-or-partner-with-us"
+            ? "text-black"
+            : pathname == "/trainings/courses/cyber-security"
+            ? "text-black"
             : pathname == "/our-services"
             ? "text-black"
             : pathname == "/trainings"
@@ -41,6 +54,8 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             : pathname == "/trainings/internship"
             ? "text-black"
             : pathname == "/contact-us/services"
+            ? "text-black"
+            : pathname == "/trainings/workshop/kinplus-nitda"
             ? "text-black"
             : pathname == "/careers" && navbarColor
             ? "text-black"
@@ -51,6 +66,10 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             : pathname == "/careers/product-designer"
             ? "text-black"
             : pathname == "/careers/product-manager"
+            ? "text-black"
+            : pathname == "/contact-us"
+            ? "text-black"
+            : pathname == "/trainings/workshop" && navbarColor
             ? "text-black"
             : "text-white"
         }`}

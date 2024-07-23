@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Button from "../../../components/Button";
 import PageLayout from "../../../components/Layout/PageLayout";
 import Input from "../../../components/Inputs";
 import { contactUsForTraining } from "../../../services/contactForm";
+import programsDetails from "../../../repository/program-details";
 
 export default function ContactUsTraining() {
   const navigate = useNavigate();
@@ -17,39 +17,20 @@ export default function ContactUsTraining() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [fullName, setFullName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [phoneNumber, setPhoneNumber] = useState(null);
-  const [religion, setReligion] = useState(null);
-  const [dateOfBirth, setDateOfBirth] = useState(null);
-  const [address, setAddress] = useState(null);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [religion, setReligion] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [address, setAddress] = useState("");
 
-  //tracks
-  const trackOptions = [
-    { title: "Web development" },
-    { title: "Cybersecurity" },
-    { title: "Product Design" },
-    { title: "Graphics Design" },
-    { title: "Data Analysis" },
-  ];
+  const [formKey, setFormKey] = useState(0);
 
-  //package option
-  const packageOptions = [{ title: "Medium" }, { title: "Pro" }];
+  const [errors, setErrors] = useState({});
 
-  //gender
-  const genderInput = [{ title: "Male" }, { title: "Female" }];
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
-  const [clearFormState, setClearFormState] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm();
-
-  //Submit
-  const onSubmit = async () => {
     setIsLoading(true);
 
     await contactUsForTraining(
@@ -67,16 +48,48 @@ export default function ContactUsTraining() {
       .then(() => {
         toast.success("Form submitted successfully");
         setIsLoading(false);
-        setTimeout(() => {
-          navigate("/contact-us");
-        }, 2000);
       })
       .catch((error) => {
         console.log(error);
         toast.error("Something went wrong!");
         setIsLoading(false);
       });
+
+    // Force re-render by updating the form key
+    setFormKey(formKey + 1);
+
+    setGender("");
+    setTrack("");
+    setTrackPackage("");
+    setAvailability("");
+
+    setFullName("");
+    setEmail("");
+    setPhoneNumber("");
+    setReligion("");
+    setDateOfBirth("");
+    setAddress("");
   };
+
+  // Tracks and package options
+  const trackOptions = [
+    { title: "Web development" },
+    { title: "Cybersecurity" },
+    { title: "Product Design" },
+    { title: "Graphics Design" },
+    { title: "Data Analysis" },
+  ];
+
+  const packageOptions = [
+    { title: "Standard (3 months ₦150k)" },
+    { title: "Standard (5 months ₦250k)" },
+
+    { title: "Premium (3 months ₦250k)" },
+    { title: "Premium (5 months ₦400k)" },
+  ];
+
+  // Gender options
+  const genderInput = [{ title: "Male" }, { title: "Female" }];
 
   return (
     <PageLayout className="flex justify-between flex-col md:flex-row gap-20 lg:py-40 py-32">
@@ -102,46 +115,64 @@ export default function ContactUsTraining() {
         </p>
       </div>
       <div className="w-full bg-blue-950 rounded-[0.9375rem] text-white mx-auto p-10">
-        <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8">
+        <form key={formKey} onSubmit={onSubmit} className="mx-auto mt-8">
           <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
             Register With Us For Training
           </h3>
           <div className="grid sm:grid-flow-row gap-2">
             {/* Full name */}
-            <Input
-              type="text"
-              name="Full name"
-              placeholder="Enter your Full Name"
-              setInput={setFullName}
-            />
+            <div>
+              <Input
+                type="text"
+                name="Full name"
+                placeholder="Enter your Full Name"
+                setInput={setFullName}
+              />
+              {errors.fullName && (
+                <p className="text-red-500">{errors.fullName}</p>
+              )}
+            </div>
 
-            {/* email address */}
-            <Input
-              type="email"
-              name="E-Mail"
-              placeholder="Enter your E-Mail"
-              setInput={setEmail}
-            />
+            {/* Email address */}
+            <div>
+              <Input
+                type="email"
+                name="E-Mail"
+                placeholder="Enter your E-Mail"
+                setInput={setEmail}
+              />
+              {errors.email && <p className="text-red-500">{errors.email}</p>}
+            </div>
 
             {/* Phone number */}
-            <Input
-              type="text"
-              name="Phone Number"
-              placeholder="Enter your Phone Number"
-              setInput={setPhoneNumber}
-            />
+            <div>
+              <Input
+                type="text"
+                name="Phone Number"
+                placeholder="Enter your Phone Number"
+                setInput={setPhoneNumber}
+              />
+              {errors.phoneNumber && (
+                <p className="text-red-500">{errors.phoneNumber}</p>
+              )}
+            </div>
 
             {/* Religion */}
-            <Input
-              type="text"
-              name="Religion"
-              placeholder="Enter your Religion"
-              setInput={setReligion}
-            />
+            <div>
+              <Input
+                type="text"
+                name="Religion"
+                placeholder="Enter your Religion"
+                setInput={setReligion}
+              />
+              {errors.religion && (
+                <p className="text-red-500">{errors.religion}</p>
+              )}
+            </div>
 
             {/* Date of birth and gender */}
             <div className="grid gap-3 sm:grid-cols-2 items-center">
-              {/* date of birth */}
+              {/* Date of birth */}
               <Input
                 type="date"
                 name="Date of Birth"
@@ -161,12 +192,17 @@ export default function ContactUsTraining() {
             </div>
 
             {/* Address */}
-            <Input
-              type="text"
-              name="Address"
-              placeholder="Enter your Address"
-              setInput={setAddress}
-            />
+            <div>
+              <Input
+                type="text"
+                name="Address"
+                placeholder="Enter your Address"
+                setInput={setAddress}
+              />
+              {errors.address && (
+                <p className="text-red-500">{errors.address}</p>
+              )}
+            </div>
 
             {/* Tracks */}
             <Input
@@ -178,7 +214,7 @@ export default function ContactUsTraining() {
               options={trackOptions}
             />
 
-            {/* payment packages */}
+            {/* Payment packages */}
             <Input
               type="select"
               name="Package"
@@ -188,7 +224,7 @@ export default function ContactUsTraining() {
               options={packageOptions}
             />
 
-            {/* availability */}
+            {/* Availability */}
             <div className="py-3">
               <p className="text-xl text-white">
                 How will you be available for the training?
@@ -228,7 +264,7 @@ export default function ContactUsTraining() {
             </div>
           </div>
 
-          <div className="text-center mt-[10px]  py-9 w-40 mx-auto">
+          <div className="text-center mt-[10px] py-9 w-40 mx-auto">
             <Button
               text="Submit"
               isLoading={isLoading}

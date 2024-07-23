@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../../components/Button";
 import Text from "../../../components/Text";
 
@@ -19,7 +20,9 @@ export default function ReachOut() {
           </Text>
         </div>
         <div>
-          <Button type="customizedBlue" text="Reach Out" />
+          <Link to="/sponsor-or-partner-with-us">
+            <Button type="customizedBlue" text="Reach Out" />
+          </Link>
         </div>
       </div>
     </div>

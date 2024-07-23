@@ -62,7 +62,7 @@ export default function JoinOurTeam() {
               </div>
 
               <Link
-                className="justify-self-end self-center w-40"
+                className="justify-self-end self-center w-auto"
                 to={`/careers/${jobOffer.slug}`}
               >
                 <Button

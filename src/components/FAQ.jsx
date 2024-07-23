@@ -1,20 +1,15 @@
+import { LuPlusCircle, LuMinusCircle } from "react-icons/lu";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Text from "./Text";
 
 export default function FAQComponent({ FAQs }) {
   const [showAns, setShowAns] = useState(false);
-  const [index, setIndex] = useState(-1);
+  const [index, setIndex] = useState(0); // Changed initial state to null
 
-  const toggleFAQ = (i) => {
-    if (index === i) {
-      setShowAns(!showAns);
-    } else {
-      setIndex(i);
-      setShowAns(true);
-    }
+  const handleToggle = (i) => {
+    setIndex(i === index ? null : i); // Toggle the same FAQ back to null
   };
 
   return (
@@ -23,43 +18,78 @@ export default function FAQComponent({ FAQs }) {
         <Text type="heading" className="text-[#082B5B]">
           FAQs
         </Text>
-
         <Text type="subparagraph" className="text-[#556987]">
-          Find answers to oue commonly most asked questions relating to our
+          Find answers to our most commonly asked questions relating to our
           product development and training opportunities here.
         </Text>
       </div>
-      <div className="grid gap-5 pt-[30px]">
+      <div className="grid lg:grid-cols-3 gap-14 pt-[30px]">
         {FAQs.map((FAQ, i) => (
-          <div
-            key={i}
-            onClick={() => toggleFAQ(i)}
-            className="w-full mx-auto cursor-pointer"
-          >
-            <div className="rounded-[10px] grid py-[14px] grid-cols-[1fr_auto]">
-              <Text type="paragraph" className="text-[#556987]">
-                {FAQ.question}
+          <div key={i}>
+            {/* desktop view */}
+            <div className="lg:grid hidden max-w-md grid-rows-[auto_auto_1fr] gap-3 w-full mx-auto cursor-pointer">
+              <div className="flex flex-col gap-3">
+                <LuPlusCircle size={25} className="text-blue-400" />
+                <p className="text-[#2A3342] text-[20px] font-medium leading-[30px]">
+                  {FAQ.question}
+                </p>
+              </div>
+              <Text type="subparagraph" className="text-[#556987]">
+                {FAQ.ans.summary}
               </Text>
-
-              {showAns && index === i ? (
-                <FaMinus className="w-6 h-6 lg:place-self-end place-self-center cursor-pointer" />
-              ) : (
-                <FaPlus className="w-6 h-6 lg:place-self-end place-self-center cursor-pointer" />
-              )}
+              <ul>
+                {FAQ.ans.options &&
+                  FAQ.ans.options.map((option, i) => (
+                    <li key={i} className="text-[#556987] my-1 list-disc ml-5">
+                      {option}
+                    </li>
+                  ))}
+              </ul>
             </div>
 
-            {showAns && index === i && (
-              <div>
-                <Text type="subparagraph" className="px-5 text-[#556987]">
-                  {FAQ.ans.summary}
-
-                  {FAQ.ans.options &&
-                    FAQ.ans.options.map((option, i) => (
-                      <Text type="subparagraph">{option}</Text>
-                    ))}
-                </Text>
+            {/* mobile view */}
+            <div
+              className={`grid lg:hidden max-w-md ${
+                index === i ? "grid-rows-[auto_auto_1fr]" : ""
+              } w-full mx-auto cursor-pointer`}
+            >
+              <div
+                className={`grid ${
+                  index === i
+                    ? "grid-rows-[auto_auto_1fr]"
+                    : "grid-cols-[auto_1fr] items-center"
+                } gap-3`}
+                onClick={() => handleToggle(i)}
+              >
+                {index === i ? (
+                  <LuMinusCircle className="text-blue-400 text-2xl" />
+                ) : (
+                  <LuPlusCircle className="text-blue-400 text-2xl" />
+                )}
+                <p className="text-[#2A3342] text-[18px] font-medium leading-[30px]">
+                  {FAQ.question}
+                </p>
               </div>
-            )}
+
+              {index === i && (
+                <>
+                  <Text type="subparagraph" className="text-[#556987]">
+                    {FAQ.ans.summary}
+                  </Text>
+                  <ul>
+                    {FAQ.ans.options &&
+                      FAQ.ans.options.map((option, i) => (
+                        <li
+                          key={i}
+                          className="text-[#556987] my-1 list-disc ml-5"
+                        >
+                          {option}
+                        </li>
+                      ))}
+                  </ul>
+                </>
+              )}
+            </div>
           </div>
         ))}
       </div>

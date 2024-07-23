@@ -2,10 +2,10 @@ import PageLayout from "../../components/Layout/PageLayout";
 
 export default function Index() {
   const ourStats = [
-    { title: "Resources", value: 28 },
-    { title: "Trained", value: 667 },
-    { title: "Trainees", value: 53 },
-    { title: "cohorts", value: 12 },
+    { title: "Resources", value: 112 },
+    { title: "Trained", value: 713 },
+    { title: "Trainees", value: 161 },
+    { title: "cohorts", value: 17 },
   ];
 
   return (
