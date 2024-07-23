@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Button from "../../../components/Button";
 import PageLayout from "../../../components/Layout/PageLayout";
 import Input from "../../../components/Inputs";
 import { contactUsForTraining } from "../../../services/contactForm";
+import programsDetails from "../../../repository/program-details";
 
 export default function ContactUsTraining() {
   const navigate = useNavigate();
@@ -27,31 +28,8 @@ export default function ContactUsTraining() {
 
   const [errors, setErrors] = useState({});
 
-  const handleChange = (setter, fieldName) => (e) => {
-    setter(e.target.value);
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [fieldName]: !e.target.value ? `${fieldName} cannot be empty` : "",
-    }));
-  };
-
-  const validate = () => {
-    const newErrors = {};
-    if (!fullName) newErrors.fullName = "Full name cannot be empty";
-    if (!email) newErrors.email = "Email cannot be empty";
-    if (!phoneNumber) newErrors.phoneNumber = "Phone number cannot be empty";
-    if (!religion) newErrors.religion = "Religion cannot be empty";
-    if (!address) newErrors.address = "Address cannot be empty";
-    return newErrors;
-  };
-
   const onSubmit = async (e) => {
     e.preventDefault();
-    // const validationErrors = validate();
-    // if (Object.keys(validationErrors).length > 0) {
-    //   setErrors(validationErrors);
-    //   return;
-    // }
 
     setIsLoading(true);
 
@@ -102,7 +80,13 @@ export default function ContactUsTraining() {
     { title: "Data Analysis" },
   ];
 
-  const packageOptions = [{ title: "Medium" }, { title: "Pro" }];
+  const packageOptions = [
+    { title: "Standard (3 months ₦150k)" },
+    { title: "Standard (5 months ₦250k)" },
+
+    { title: "Premium (3 months ₦250k)" },
+    { title: "Premium (5 months ₦400k)" },
+  ];
 
   // Gender options
   const genderInput = [{ title: "Male" }, { title: "Female" }];
