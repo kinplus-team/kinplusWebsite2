@@ -5,6 +5,9 @@ import compensationAndBenefits from "../../../assets/svg/career/compensation-and
 import timer from "../../../assets/svg/career/timer.svg";
 import backgroundIcon1 from "../../../assets/svg/career/background-icon-1.svg";
 import backgroundPattern from "../../../assets/svg/career/background-pattern.svg";
+import pattern from "../../../assets/Pattern.svg";
+import Text from "../../../components/Text.jsx";
+import scrollDown from "../../../assets/career/scroll-down.svg";
 
 export default function CareerOpportunity() {
   const careerOpportunities = [
@@ -30,24 +33,27 @@ export default function CareerOpportunity() {
 
   return (
     <PageLayout>
-      <div className="lg:pt-72 lg:pb-6 pt-16 pb-16 relative">
-        <h4 className="flex items-center text-[#1877F9] lg:text-[20px] font-[500] lg:leading-[30px] leading-[24px] mt-11 mb-5 lg:mt-0 ">
-          Our leading Edge
-          <div className="ml-3 h-[1.5px] w-[74.75px] bg-[#222831]"></div>
-        </h4>
-        <p className="lg:block z-10 lg:text-[36px] text-[24px] font-[700] lg:leading-[50px] leading-9 capitalized lg:max-w-4xl">
+      <div className="relative">
+        <Text type="title" className="text-[#1877F9]">
+          Our leading edge
+        </Text>
+        <Text
+          type="subheading"
+          className="capitalize lg:max-w-3xl lg:pt-0 pt-3"
+        >
           We bring solutions to make life easier for our customers.
-        </p>
-
-        <p className="lg:text-[18px] font-medium lg:leading-[30px] leading-6 text-[#556987] lg:max-w-4xl">
+        </Text>
+        <Text
+          type="subparagraph"
+          className="text-[#556987] lg:pt-0 pt-3 max-w-2xl"
+        >
           If you're passionate about technology and want to make an impact, we
           invite you to explore our career opportunities.
-        </p>
-
-        <div className="grid lg:grid-cols-[750px_1fr] py-8">
+        </Text>
+        <div className="grid lg:grid-cols-[750px_1fr] pt-6">
           <div className="grid lg:gap-16 gap-10 content-center">
             {careerOpportunities.map((careerOpportunity, i) => (
-              <div className="grid grid-cols-[auto_1fr] lg:gap-6 gap-3">
+              <div key={i} className="grid grid-cols-[auto_1fr] lg:gap-6 gap-3">
                 <img
                   src={careerOpportunity.icon}
                   className="w-[46px] h-[46px]"
@@ -68,13 +74,13 @@ export default function CareerOpportunity() {
           <div className="relative lg:h-[600px] h-[350px]">
             <img
               src={careerOpportunitiesImage}
-              className="w-[554px] lg:h-[556px] h-[389px] rounded-lg absolute lg:top-0 top-5 lg:right-11 z-10"
+              className="w-[554px] lg:h-[556px] h-[389px] pt-10 rounded-lg absolute lg:top-0 top-5 lg:right-11 z-10"
             />
 
             {/* background images */}
             <img
-              src={backgroundIcon1}
-              className="w-[366px] h-[208px] absolute top-4 left-[-55px] 2xl:left-[30px] z-0 rotate-180 hidden lg:block"
+              src={pattern}
+              className="w-[200px] h-[200px] absolute top-0 left-[-10px] 2xl:left-[30px] z-0 rotate-180 hidden lg:block"
             />
 
             <img
@@ -82,6 +88,13 @@ export default function CareerOpportunity() {
               className="w-[200px] h-[200px] absolute bottom-4 right-[-40px] 2xl:left-[30px] z-0 rotate-180 hidden lg:block"
             />
           </div>
+        </div>
+
+        <div className="grid lg:grid-cols-2 items-center py-10">
+          <h1 className="text-[#1877F9] lg:max-w-lg sm:my-12 lg:my-0 max-w-96 mt-20 lg:text-[100px] text-[64px] font-semibold leading-[75px] lg:leading-[110px] ">
+            Join us in building impactful products.
+          </h1>
+          <img src={scrollDown} alt="scroll-down" />
         </div>
       </div>
     </PageLayout>

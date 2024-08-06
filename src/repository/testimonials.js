@@ -1,35 +1,41 @@
 import bigHairWoman from "../assets/trainingPics/trainingTestimonial/woman-with-big-hair.jpeg";
 
+import testimonial1 from "../assets/testimonials1.png";
+import testimonial2 from "../assets/testimonials2.png";
+import testimonial3 from "../assets/testimonials3.png";
+import testimonial4 from "../assets/testimonials4.png";
+import testimonial5 from "../assets/testimonials5.png";
+
 const testimonials = [
   {
-    text: `“Partnering with Kinplus has been a game-changer for our business.
-      Their commitment to excellence goes beyond expectations, seamlessly
-      blending innovation and problem-solving. Kinplus not only creates
-      cutting-edge applications but also dives deep into understanding our
-      unique business challenges.”`,
-    image: `${bigHairWoman}`,
-    name: "Oladare Jonathan",
-    program: "Software Developer",
+    text: `“I am Oba Ayorinde Ilori-Faboro, The Olojudo of Ido Kingdom, a 68 years old student of Computer Programming with Kinplus Technologies. Despite the fact that I have not been in a classroom for more than thirty years, Kinplus has succeeded in waking up in me and my Olori such interests in the subject that we now enjoy  it as if we have been programming for a long time. It also gladdens my heart that Nigeria is blessed with such intelligent and selfless WizKids. A learning station has been established in my palace with the help of Hon Akin Oyebode, the Ekiti State Finance Commissioner with the sole purpose of raising young computer programmers locally to face the technological challenges of the future. Kinplus Technologies is a blessing to us in Ekiti State and the Company deserves all the encouragements available.”`,
+    image: `${testimonial1}`,
+    name: "Oba Ayorinde Ilori-Faboro",
+    program: "The Olojudo of Ido-Ekiti Kingdom",
   },
   {
-    text: `“Partnering with Kinplus has been a game-changer for our business.
-      Their commitment to excellence goes beyond expectations, seamlessly
-      blending innovation and problem-solving. Kinplus not only creates
-      cutting-edge applications but also dives deep into understanding our
-      unique business challenges.”`,
-    image: `${bigHairWoman}`,
-    name: "Oladare Jonathan",
-    program: "Software Developer",
+    text: `“As an IT student, I gained valuable real-life experience while working with my team. The trainers, training content, and facilities were all excellent. I learned important skills like working on projects with a team and managing my time effectively”`,
+    image: `${testimonial2}`,
+    name: "Yusuf Michael Sunmonu",
+    program: "IT/SIWES Trainee",
   },
   {
-    text: `“Partnering with Kinplus has been a game-changer for our business.
-      Their commitment to excellence goes beyond expectations, seamlessly
-      blending innovation and problem-solving. Kinplus not only creates
-      cutting-edge applications but also dives deep into understanding our
-      unique business challenges.”`,
-    image: `${bigHairWoman}`,
-    name: "Oladare Jonathan",
-    program: "Software Developer",
+    text: `“Their training facilities are excellent. They have good lighting, and if you don't have a laptop, they will provide one for you to practice on. They met all my expectations, and I had very good trainers. The hands-on activities were very helpful for my learning.”`,
+    image: `${testimonial3}`,
+    name: "Azeez Victor Segun",
+    program: "IT/SIWES Trainee",
+  },
+  {
+    text: `“While at Kinplus Technologies, I have learned a lot and scaled up from a beginner to an intermediate level in web development. I also gained knowledge on version control using Git and GitHub and attended a special training that helped me learn about mobile app development. If I were to recommend an institution for internships and IT, I would definitely recommend Kinplus. I want to give a big shout-out to Kinplus Technologies for allowing me to complete my SIWES (Students Industrial Work Experience Scheme) here”`,
+    image: `${testimonial4}`,
+    name: "Olanrewaju Yusuf",
+    program: "IT/SIWES Trainee",
+  },
+  {
+    text: `“Kinplus has been a very good association. I have been trained to be a confident frontend developer, and I can confidently recommend them to my colleagues who wish to learn software development. They have impacted me so much that I now have friends who are proud of me being a developer. The facilitators are great, and the facilities are useful and top-notch”`,
+    image: `${testimonial5}`,
+    name: "Olubodun Stephen",
+    program: "IT/SIWES Trainee",
   },
 ];
 

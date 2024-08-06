@@ -4,6 +4,7 @@ import pro from "../../../assets/svg/pricing-card/pro.svg";
 import paperPlane from "../../../assets/pricing-card/paper-plane.png";
 import blueCheckMark from "../../../assets/svg/pricing-card/blue-check-mark.svg";
 import whiteCheckMark from "../../../assets/svg/pricing-card/white-check-mark.svg";
+import { Link } from "react-router-dom";
 import Button from "../../Button";
 
 export default function Pricing({
@@ -65,9 +66,11 @@ export default function Pricing({
               ))}
             </div>
 
-            <div className="w-44 mx-auto">
-              <Button type="customizedBlue" text="Apply Now" />
-            </div>
+            <Link to="/contact-us/training">
+              <div className="w-40 mx-auto">
+                <Button type="customizedBlue" text="Apply Now" />
+              </div>
+            </Link>
           </div>
         </div>
       );
@@ -126,9 +129,11 @@ export default function Pricing({
               ))}
             </div>
 
-            <div className="w-44 mx-auto">
-              <Button type="customizedWhite" text="Apply Now" />
-            </div>
+            <Link to="/contact-us/training">
+              <div className="w-40 mx-auto">
+                <Button type="customizedWhite" text="Apply Now" />
+              </div>
+            </Link>
           </div>
         </div>
       );

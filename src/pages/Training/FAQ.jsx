@@ -6,7 +6,7 @@ import FAQs from "../../repository/FAQ";
 export default function FAQ() {
   return (
     <PageLayout>
-      <FAQComponent FAQs={FAQs} />
+      <FAQComponent FAQs={FAQs.FAQsOnTrainingPage} />
     </PageLayout>
   );
 }

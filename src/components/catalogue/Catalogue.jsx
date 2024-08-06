@@ -1,11 +1,20 @@
 import DesktopViewCatalogue from "./DesktopView.jsx";
 import MobileViewCatalogue from "./MobileView.jsx";
 
-export default function Catalogue({ title, catalouges }) {
+export default function Catalogue({
+  title,
+  catalouges,
+  sidebarImage,
+  isLinked,
+}) {
   return (
-    <div>
+    <div className="relative z-50">
       <div className="hidden lg:block">
-        <DesktopViewCatalogue title={title} catalogues={catalouges} />
+        <DesktopViewCatalogue
+          title={title}
+          catalogues={catalouges}
+          isLinked={isLinked}
+        />
       </div>
 
       <div className="lg:hidden block">

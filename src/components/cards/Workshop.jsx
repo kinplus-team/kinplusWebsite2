@@ -1,10 +1,11 @@
 import React from "react";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 
 export default function Workshop({ cardInfo }) {
   return (
     <div className="bg-white shadow-md">
-      <div className="w-[400px] h-[400px]">
+      <div className=" h-[400px]">
         <img src={cardInfo.coverImage} className="h-full w-full" />
       </div>
 
@@ -17,13 +18,15 @@ export default function Workshop({ cardInfo }) {
           {cardInfo.cardDescription}
         </p>
 
-        <div className="w-32">
-          <Button
-            type="transparent"
-            text="Explore"
-            className="border border-[#B8C5D9] text-[#1877F9] font-medium text-center rounded-2xl"
-          />
-        </div>
+        <Link to="/trainings/workshop/kinplus-nitda">
+          <div className="w-40">
+            <Button
+              type="transparent"
+              text="Explore"
+              className="border border-[#B8C5D9] text-[#1877F9] font-medium text-center rounded-2xl"
+            />
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -10,11 +10,15 @@ export const useCountdownTimer = () => {
   });
 
   let targetDate;
+
   useEffect(() => {
     countdownTimer().then((response) => {
       targetDate = new Date(response);
     });
 
+    console.log(targetDate);
+
+    // if (targetDate != undefined) {
     const interval = setInterval(() => {
       const now = new Date();
 
@@ -35,6 +39,9 @@ export const useCountdownTimer = () => {
     }, 1000);
 
     return () => clearInterval(interval);
+    // }
+
+    // setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   }, [targetDate]);
 
   return timeLeft;

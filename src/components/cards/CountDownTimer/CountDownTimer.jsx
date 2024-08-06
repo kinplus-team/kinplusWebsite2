@@ -11,9 +11,7 @@ export default function CountDownTimer({ image }) {
       <div className="lg:block hidden">
         <DesktopView
           image={image.desktopImg}
-          time={`${formatNumber(days)}:${formatNumber(hours)}:${formatNumber(
-            minutes
-          )}:${formatNumber(seconds)}`}
+          time={`${formatNumber(days)}:${formatNumber(hours)}:${formatNumber(minutes)}:${formatNumber(seconds)}`}
         />
       </div>
 

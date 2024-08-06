@@ -1,4 +1,5 @@
 import Button from "../Button";
+import { Link } from "react-router-dom";
 // import trainingImage from "../../assets/training/training-image-2.png";
 
 export default function MobileViewCatalogue({ title, catalogues }) {
@@ -11,9 +12,9 @@ export default function MobileViewCatalogue({ title, catalogues }) {
 
       <div className={`grid grid-rows-${catalogues.length} gap-3`}>
         {catalogues.map((catalogue, i) => (
-          <div key={i}>
+          <Link key={i} to={`/trainings/courses/${catalogue.link}`}>
             <Button text={catalogue.title} icon={catalogue.icon} type="icon" />
-          </div>
+          </Link>
         ))}
       </div>
     </div>

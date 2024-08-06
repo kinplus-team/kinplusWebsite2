@@ -13,9 +13,23 @@ export default function MobileView({ image, time }) {
         <h4 className="capitalize text-[28px] font-[700] leading-[36px] tracking-[-0.12px]">
           next cohort starts in
         </h4>
-        <p className="text-[60px] font-[700] leading-[60px] tracking-[-0.4px]">
-          {time}
-        </p>
+        <div className="flex justify-center gap-3">
+          {["Days", "Hrs", "Min", "Sec"].map((item, i) => (
+            <div key={i}>
+              <div className="flex gap-2 items-center">
+                <p className="text-[40px] font-[700] leading-[110%]">
+                  {time.split(":")[i]}
+                </p>
+                {i < 3 && (
+                  <p className="text-[40px] font-[700] leading-[110%]">:</p>
+                )}
+              </div>
+              <p className="text-xl font-bold leading-5 text-center w-[80%]">
+                {item}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

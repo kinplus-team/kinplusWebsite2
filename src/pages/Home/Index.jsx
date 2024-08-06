@@ -1,12 +1,12 @@
 import Hero from "./component/Hero";
 import PartnersAndSponsors from "./component/PartnerAndSponsors";
 import WhyChooseUs from "./component/WhyChooseUs";
-import TrainingComponent from "../../components/trainingPrograms/TrainingComponent/Index";
-// import TrainingTestimonial from "../Training/TrainingTestimonial/Index";
+import Testimonial from "./component/Testimonials";
 import FAQHomepage from "../Training/FAQHomepage";
-import WhatWeDo from "../../components/whatWeDoComponent/WhatWeDo/Index";
-import NextCohort from "../../components/NextCohort/index";
-import InfiniteLoop from "../../components/InfinteLoop/Index";
+import WhatWeDo from "./component/WhatWeDo";
+import NextCohort from "./component/NextCohort";
+import OurCourses from "./component/OurCourses";
+import FAQ from "./component/FAQ";
 
 export default function Homepage() {
   return (
@@ -14,23 +14,11 @@ export default function Homepage() {
       <Hero />
       <PartnersAndSponsors />
       <WhyChooseUs />
-
-      {/* <WhatWeDo /> */}
-
-      {/* Next Cohort */}
-      {/* <NextCohort /> */}
-
-      {/*Training Component */}
-      {/* <TrainingComponent /> */}
-
-      {/*Testimonial */}
-      {/* <TrainingTestimonial /> */}
-
-      {/*Infinte loop */}
-      {/* <InfiniteLoop /> */}
-
-      {/*FAQ */}
-      {/* <FAQHomepage /> */}
+      <WhatWeDo />
+      <OurCourses />
+      <NextCohort />
+      <Testimonial />
+      <FAQ />
     </>
   );
 }
