@@ -17,6 +17,8 @@ export default function ContactUsTraining() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [stateType, setStateType] = useState("")
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -26,6 +28,9 @@ export default function ContactUsTraining() {
 
   const [formKey, setFormKey] = useState(0);
 
+  const [isSelect, setIsSelect] = useState(false);
+  
+  
   const [errors, setErrors] = useState({});
 
   const onSubmit = async (e) => {
@@ -90,6 +95,13 @@ export default function ContactUsTraining() {
 
   // Gender options
   const genderInput = [{ title: "Male" }, { title: "Female" }];
+
+  const [ activeDropdown, setActiveDropdown] = useState(null)
+
+  const handleDropdownToggle = (dropdownName) => {
+    // If the clicked dropdown is already open, close it; otherwise, open it
+    setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
+  };
 
   return (
     <PageLayout className="flex justify-between flex-col md:flex-row gap-20 lg:py-40 py-32">
@@ -181,6 +193,7 @@ export default function ContactUsTraining() {
               />
 
               {/* Gender */}
+              <div onClick={() => setStateType("Gender")}>
               <Input
                 type="select"
                 name="Gender"
@@ -188,7 +201,11 @@ export default function ContactUsTraining() {
                 selected={gender}
                 setSelected={setGender}
                 options={genderInput}
+                isSelect={activeDropdown === 'gender'}
+                setIsSelect={() => handleDropdownToggle('gender')}
               />
+              </div>
+          
             </div>
 
             {/* Address */}
@@ -205,6 +222,7 @@ export default function ContactUsTraining() {
             </div>
 
             {/* Tracks */}
+            <div onClick={() => setStateType("Track")}>
             <Input
               type="select"
               name="Track"
@@ -212,7 +230,11 @@ export default function ContactUsTraining() {
               selected={track}
               setSelected={setTrack}
               options={trackOptions}
+              isSelect={activeDropdown === 'track'}
+              setIsSelect={() => handleDropdownToggle('track')}
             />
+            </div>
+            
 
             {/* Payment packages */}
             <Input
@@ -222,6 +244,8 @@ export default function ContactUsTraining() {
               selected={trackPackage}
               setSelected={setTrackPackage}
               options={packageOptions}
+              isSelect={activeDropdown === 'package'}
+              setIsSelect={() => handleDropdownToggle('package')}
             />
 
             {/* Availability */}

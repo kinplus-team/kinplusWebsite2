@@ -27,6 +27,13 @@ export default function ApplyForRole() {
     { title: "Cybersecurity Expert" },
   ];
 
+  const [ activeDropdown, setActiveDropdown] = useState(null)
+
+  const handleDropdownToggle = (dropdownName) => {
+    // If the clicked dropdown is already open, close it; otherwise, open it
+    setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
+  };
+
   const applicationFormImputs = [
     {
       label: "Full Name",
@@ -135,6 +142,8 @@ export default function ApplyForRole() {
                 selected={jobRole}
                 setSelected={setJobRole}
                 options={roleOptions}
+                isSelect={activeDropdown === 'Job role'}
+                setIsSelect={() => handleDropdownToggle('Job role')}
               />
 
               <Input

@@ -16,13 +16,15 @@ export default function Input({
   radioText,
   isChecked,
   onCheck,
+  setIsSelect, // Use this to toggle the dropdown state
+  isSelect,
   ref,
   date,
   isTextAreaRequired,
   isRequired = true,
 }) {
   const [isPass, setIsPass] = useState(false);
-  const [isSelect, setIsSelect] = useState(false);
+  // const [isSelect, setIsSelect] = useState(false);
 
   switch (type) {
     case "select":
