@@ -91,12 +91,12 @@ export default function ApplyForInternship() {
         style={{ borderTop: "1px solid rgba(0, 0, 0, 0.42) " }}
       >
         {/* left side bar */}
-        <div className="grid lg:grid-rows-[240px_160px_25px_150px] gap-6 place-items-start">
-          <Text type="heading" className="text-[#082B5B] max-w-lg">
+        <div className="grid lg:grid-rows-[240px_160px_25px_150px] gap-6 place-items-start mt-4 md:mt-8 lg:mt-16">
+          <div className="text-[#082B5B] text-[2.188em] sm:text-[2.5em] md:text-[2.75em] lg:text-[3.25em] font-bold leading-[40px] md:leading-[114.286%] lg:leading-[62px] max-w-lg capitalize">
             We are looking forward to meeting you
-          </Text>
+          </div>
 
-          <Text type="paragraph" className="text-[#556987]">
+          <Text type="paragraph" className="text-[#101010] sm:mt-4 md:mt-6 lg:mt-0 lg:w-[90%] lg:pb-6">
             We're thrilled to welcome you to our team! We're looking forward to
             getting to know you, learning about your unique perspective, and
             sharing our expertise with you. We believe that you have the
@@ -105,9 +105,9 @@ export default function ApplyForInternship() {
             have fun with us.
           </Text>
 
-          <div className="bg-[#fff] h-[3px] w-full"></div>
+          <div className="bg-[#fff] h-[3px] w-full sm:my-6 md:my-8 lg:my-12"></div>
 
-          <Text type="paragraph" className="text-[#556987]">
+          <Text type="paragraph" className="text-[#101010] lg:w-[90%] sm:mt-4 md:mt-2 lg:mt-12">
             During your industrial training at Kinplus, you'll be immersed in a
             dynamic and fast-paced environment. You'll work on real-world
             projects, collaborate with our team, and gain hands-on experience in
@@ -118,11 +118,11 @@ export default function ApplyForInternship() {
         </div>
 
         {/* right side bar */}
-        <div className="bg-[#082B5B] lg:p-14 p-6 rounded-lg">
-          <h3 className="lg:text-[44px] text-[35px] font-[700] text-[#F1F1F1] lg:leading-[54px] leading-[40px] max-w-md">
+        <div className="bg-[#082B5B] lg:p-14 p-6 rounded-lg lg:mt-4">
+          <h3 className="lg:text-[44px] text-[35px] font-[700] text-[#F1F1F1] lg:leading-[54px] leading-[40px] max-w-md ">
             Apply for our SIWES/IT program
           </h3>
-          <div key={formKey} className="grid sm:grid-flow-row gap-2">
+          <div key={formKey} className="grid sm:grid-flow-row gap-2 mt-4 sm:mt-5 md:mt-6 lg:mt-8">
             <form
               action=""
               onSubmit={(e) => {

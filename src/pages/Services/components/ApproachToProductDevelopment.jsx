@@ -51,7 +51,7 @@ export default function ApproachToProductDevelopment() {
       {/* images */}
       <div
         className="flex justify-between items-baseline overflow-hidden gap-3 h-[480px] relative overflow-x-auto scroll-ms-9 no-scroll snap-mandatory snap-x scroll-smooth"
-        ref={cardScroll}
+        ref={cardScroll}  
         //   onScroll={handleScrollEffect}
       >
         {servicesRepo.approachesToProductDevelopment.map((service, index) => (

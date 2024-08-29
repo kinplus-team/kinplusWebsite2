@@ -41,13 +41,16 @@ export default function WhatYouStandToGain() {
 
   return (
     <PageLayout className="relative">
-      <Text type="title" className="text-[#1877F9]">
-        What you stand to gain
-      </Text>
+      <div className="flex items-center gap-4 lg:gap-5">
+            <Text type="title" className="text-[#1877F9] text-sm sm:text-base md:text-lg lg:text-xl">
+              What you stand to gain
+            </Text>
+            <div className="w-[3.625em] md:w-[4.563em] h-[0.125em] bg-[#222831]"></div>
+      </div>
 
       <Text
         type="subheading"
-        className="text-[#082B5B] capitalize  lg:max-w-2xl relative z-10"
+        className="text-[#082B5B] sm:text-[1.75em] md:text-[2.25em] lg:text-[2.5em] md:leading-[128.571%] sm:max-w-lg md:max-w-2xl mt-4 lg:mt-1 relative z-10"
       >
         It's not just a stepping stone to your future, it's a launchpad to
         success
