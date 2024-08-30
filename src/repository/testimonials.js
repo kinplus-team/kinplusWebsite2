@@ -8,7 +8,7 @@ import testimonial5 from "../assets/testimonials5.png";
 
 const testimonials = [
   {
-    text: `“I am Oba Ayorinde Ilori-Faboro, The Olojudo of Ido Kingdom, a 68 years old student of Computer Programming with Kinplus Technologies. Despite the fact that I have not been in a classroom for more than thirty years, Kinplus has succeeded in waking up in me and my Olori such interests in the subject that we now enjoy  it as if we have been programming for a long time. It also gladdens my heart that Nigeria is blessed with such intelligent and selfless WizKids. A learning station has been established in my palace with the help of Hon Akin Oyebode, the Ekiti State Finance Commissioner with the sole purpose of raising young computer programmers locally to face the technological challenges of the future. Kinplus Technologies is a blessing to us in Ekiti State and the Company deserves all the encouragements available.”`,
+    text: `“I am Oba Ayorinde Ilori-Faboro, The Olojudo of Ido Kingdom, a 68-year-old student of Computer Programming with Kinplus Technologies. After over thirty years away from the classroom, Kinplus has reignited my passion for learning as well as my Olori. With their support, a learning station has been established in my palace to nurture young computer programmers. Kinplus Technologies is truly a blessing to Ekiti State and deserves all the support it can get."`,
     image: `${testimonial1}`,
     name: "Oba Ayorinde Ilori-Faboro",
     program: "The Olojudo of Ido-Ekiti Kingdom",
