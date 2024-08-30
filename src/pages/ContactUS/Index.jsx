@@ -27,11 +27,11 @@ export default function MyForm() {
         id="target-section"
         className="grid lg:grid-cols-[50%_1fr] gap-10 items-center pt-10 pb-28"
       >
-        <Text type="heading" className="text-[#082B5B] capitalize">
+        <Text type="heading" className="text-[#082B5B] lg:w-[110%]">
           Interested about our Services and Training Opportunities?
         </Text>
 
-        <Text type="subparagraph" className="text-[#556987]">
+        <Text type="subparagraph" className="text-[#556987] mt-[-1em] sm:mt-[0.5em] md:mt-[0.8em] lg:mt-0 lg:w-[90%] lg:ml-[3.313em]">
           At Kinplus, we are committed to providing exceptional solutions and
           services. Whether you have a question, need assistance, or want to
           explore collaboration opportunities, we're here to help. Reach out to
@@ -39,7 +39,7 @@ export default function MyForm() {
           delighted to assist you.
         </Text>
       </div>
-      <div className="grid lg:grid-cols-2 gap-10">
+      <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 mt-[-5em] sm:mt-[-3.5em] md:mt-[-2.5em] lg:mt-0 mb-[-5.5em] sm:mb-[-3.5em] md:mb-[-2.5em] lg:mb-0">
         {contactUsCardDetails.map((contactUsCardDetail, index) => (
           <ContactUsCard
             key={contactUsCardDetail.title + index}
@@ -50,6 +50,10 @@ export default function MyForm() {
             to={contactUsCardDetail.to}
           />
         ))}
+      </div>
+
+      <div className="hidden lg:block text-[#556987] text-[1.125em] lg:mt-[4em] lg:mb-[-4em]">
+      For more sponsorship and enquiries, reach us on: <a href="#" className="underline">+2347069718643,</a> <a href="#" className="underline">+2348071572767</a>
       </div>
     </PageLayout>
   );

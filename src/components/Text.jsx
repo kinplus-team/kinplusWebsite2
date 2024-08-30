@@ -1,9 +1,9 @@
-export default function Text({ type, children, className }) {
+export default function Text({ type, children, className, useComponentFont = "" }) {
   switch (type) {
     case "heading":
       return (
         <h1
-          className={`lg:text-[65px] text-[30px] font-bold leading-[40px] lg:leading-[75px] ${className}`}
+          className={`lg:text-[65px] ${useComponentFont = "" ? "text-[30px]" : useComponentFont }  font-bold leading-[40px] lg:leading-[75px] ${className}`}
         >
           {children}
         </h1>
