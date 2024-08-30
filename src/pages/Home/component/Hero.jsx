@@ -7,6 +7,7 @@ import Text from "../../../components/Text";
 export default function HeroPage() {
   return (
     <header>
+      {/* Background Image */}
       <div
         id="target-section"
         style={{
