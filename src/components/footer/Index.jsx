@@ -127,7 +127,7 @@ export default function Footer() {
                 />
               </Link>
 
-              <div>
+              <div className="lg:mr-[5em] 2xl:mr-[10em]">
                 {contactDetails.map((contactDetail, i) => (
                   <div key={i} className={`lg:text-lg`}>
                     {i == 0 ? (
@@ -141,7 +141,7 @@ export default function Footer() {
                         </Link>
                       </div>
                     ) : (
-                      <div className="flex gap-1 text-[15px] lg:text-[16px]">
+                      <div className="flex flex-col md:flex-row gap-1 text-[15px] lg:text-base">
                         {contactDetail.type}:
                         <Link
                           className="underline"
@@ -163,7 +163,7 @@ export default function Footer() {
             </div>
 
             {/* quick links*/}
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 ">
               <div>
                 <p className="text-[#1877F9] mb-5 lg:text-lg font-bold">
                   {" "}

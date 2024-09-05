@@ -12,22 +12,23 @@ export default function HeroPage() {
         id="target-section"
         style={{
           backgroundImage: `url(${girlOnLaptop})`,
+      
         }}
-        className="max-w-[100rem] h-screen relative bg-cover lg:bg-right-bottom bg-center bg-fixed"
+        className="max-w-[100%] h-screen w-screen relative bg-cover lg:bg-right-bottom bg-center bg-fixed"
       >
         {/*Hero Text*/}
         <PageLayout heroSpacing isBgColorWhite={true}>
-          <div className="relative z-10 flex flex-col gap-8 h-screen mx-auto lg:max-w-[1500px]">
+          <div className="relative z-10 flex flex-col gap-8 h-screen mx-auto lg:max-w-[100%]">
             <Text
               type="heading"
-              className="lg:max-w-[979px] max-w-[600px] text-[#F1F1F1] capitalize"
+              className="lg:max-w-[62rem] max-w-[600px] text-[#F1F1F1] text-[35px] lg:text-[65px] capitalize"
             >
               Empowering Innovators Through Product Development and Training
             </Text>
 
             <Text
               type="paragraph"
-              className="lg:max-w-[974px] max-w-[390px] text-[#F1F1F1] capitalize"
+              className="lg:max-w-[974px] max-w-[390px] text-[#F1F1F1]"
             >
               We're your product development partners. We turn your ideas into
               reality. We're experts, we pay attention to details, and we're

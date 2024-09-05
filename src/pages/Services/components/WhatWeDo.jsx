@@ -82,7 +82,7 @@ export default function WhatWeDo() {
           />
         </div>
 
-        <Text type="subparagraph" className="text-[#556987]">
+        <Text type="subparagraph" className="text-[#101010]">
           We'll expertly manage the technical aspects, allowing you to focus on
           bringing your solutions to the market and engaging potential
           investors. Collaborate with our team for seamless execution.

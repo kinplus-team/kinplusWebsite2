@@ -16,12 +16,12 @@ export default function Hero() {
         {/* <img src={rectangle} className="w-20 h-[2px] " alt="" /> */}
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-3 items-center">
-        <Text type="heading" className="text-[#082B5B]">
+      <div className="grid lg:grid-cols-2 gap-3 my-4 lg:my-0 items-center">
+        <Text type="heading" className="text-[#082B5B] text-[35px] lg:text-[52px]">
           Empowering Creativity, Building Excellent products.
         </Text>
 
-        <Text type="subparagraph" className="text-[#556987]">
+        <Text type="subparagraph" className="text-[#101010] lg:ml-[55px] mt-[12px] lg:mt-[-40px] lg:w-[87%]">
           We believe that creativity is the key to building excellence. Our
           products are designed with love and attention to detail, to create an
           emotional connection with users. We strive to create products that are

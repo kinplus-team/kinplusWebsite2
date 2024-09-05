@@ -34,7 +34,7 @@ export default function Testimonials({
             <div>
               <Text
                 type="paragraph"
-                className="text-[#556987] max-w-[795px] leading-[30px]"
+                className="text-[#101010] max-w-[795px] leading-[30px]"
               >
                 {testimonial.text}
               </Text>
