@@ -30,7 +30,7 @@ export default function ApproachToProductDevelopment() {
           </Text>
         </div>
         <div>
-          <Text type="subparagraph" className="text-[#556987] max-w-lg">
+          <Text type="subparagraph" className="text-[#101010] max-w-lg">
             We take a startup-like approach to thinking smarter, shipping
             faster, and scaling far and wide.
           </Text>
@@ -57,12 +57,12 @@ export default function ApproachToProductDevelopment() {
         {servicesRepo.approachesToProductDevelopment.map((service, index) => (
           <div
             key={index}
-            className="bg-[#082B5B] w-96 my-10 grid grid-rows-[auto_1fr] h-full  gap-5"
+            className="bg-[#082B5B] w-96 my-10 grid grid-rows-[auto_1fr] h-[75%] lg:h-full gap-5"
           >
-            <img src={icon2} className="w-24 h-24 justify-self-end my-5 mx-5" />
+            <img src={icon2} className="w-12 lg:w-24 lg:h-24 justify-self-end my-5 mx-5" />
 
-            <div className="text-center grid grid-rows-[auto_1fr] gap-3 content-center w-[350px] px-8 lg:py-4 py-2">
-              <h3 className="text-white text-4xl">{service.title}</h3>
+            <div className="text-center grid grid-rows-[auto_1fr] gap-2 lg:gap-3 content-center w-[350px] px-8 lg:py-4 py-2">
+              <h3 className="text-white text-[28px] lg:text-4xl">{service.title}</h3>
               <p className="text-white max-w-sm leading-6 mx-auto">
                 {service.description}
               </p>

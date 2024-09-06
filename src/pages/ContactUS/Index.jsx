@@ -31,7 +31,7 @@ export default function MyForm() {
           Interested about our Services and Training Opportunities?
         </Text>
 
-        <Text type="subparagraph" className="text-[#556987] mt-[-1em] sm:mt-[0.5em] md:mt-[0.8em] lg:mt-0 lg:w-[90%] lg:ml-[3.313em]">
+        <Text type="subparagraph" className="text-[#101010] mt-[-1em] sm:mt-[0.5em] md:mt-[0.8em] lg:mt-0 lg:w-[90%] lg:ml-[3.313em]">
           At Kinplus, we are committed to providing exceptional solutions and
           services. Whether you have a question, need assistance, or want to
           explore collaboration opportunities, we're here to help. Reach out to

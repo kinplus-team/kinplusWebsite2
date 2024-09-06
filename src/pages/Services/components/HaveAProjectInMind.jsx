@@ -17,7 +17,7 @@ export default function HaveAProjectInMind() {
           Have a project in mind? Let's get started here
         </Text>
 
-        <Text type="subparagraph" className="text-[#556987]">
+        <Text type="subparagraph" className="text-[#101010]">
           At Kinplus, we tackle intricate business challenges through
           exceptional strategy, marketing, and product development services, 
         </Text>
@@ -70,7 +70,7 @@ export default function HaveAProjectInMind() {
               {projectInMind.title}
             </Text>
 
-            <Text type="subparagraph" className="text-[#556987]">
+            <Text type="subparagraph" className="text-[#101010]">
               {projectInMind.description}
             </Text>
 

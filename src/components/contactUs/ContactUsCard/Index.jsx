@@ -11,7 +11,7 @@ export default function ContactUsCard({ label, title, text, link, to }) {
         {title}
       </Text>
 
-      <Text type="subparagraph" className="text-[#556987] lg:w-[90%]">
+      <Text type="subparagraph" className="text-[#101010] lg:w-[90%]">
         {text}
       </Text>
 
