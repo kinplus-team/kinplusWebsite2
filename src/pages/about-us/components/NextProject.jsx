@@ -1,8 +1,8 @@
 import React from "react";
-import traineeListen from "../../../assets/AboutUs/NewImages/trainees-listening.jpeg";
-import traineeListen2 from "../../../assets/AboutUs/NewImages/three-people-looking-at-laptop.jpeg";
-import workPc from "../../../assets/AboutUs/NewImages/working-on-pc-1.jpeg";
-import workPc2 from "../../../assets/AboutUs/NewImages/working-on-pc-2.jpeg";
+import traineeListen from "../../../assets/AboutUs/NewImages/trainees-listening.webp";
+import traineeListen2 from "../../../assets/AboutUs/NewImages/three-people-looking-at-laptop.webp";
+import workPc from "../../../assets/AboutUs/NewImages/working-on-pc-1.webp";
+import workPc2 from "../../../assets/AboutUs/NewImages/working-on-pc-2.webp";
 import idea from "../../../assets/AboutUs/idea.jpeg";
 import { Link } from "react-router-dom";
 import Button from "../../../components/Button";

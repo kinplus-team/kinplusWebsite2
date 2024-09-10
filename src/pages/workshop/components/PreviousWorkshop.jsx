@@ -58,7 +58,7 @@ export default function PreviousWorkshop() {
           ref={imageScroll}
         >
           {previousWorkshopCard.map((cardDetails, i) => (
-            <div className="max-w-md">
+            <div key={i} className="max-w-md">
               <Workshop key={i} cardInfo={cardDetails} />
             </div>
           ))}

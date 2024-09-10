@@ -3,14 +3,14 @@ import ekitiStateGovernment from "../../assets/svg/trusted-by/ekiti-state-govern
 import GDG from "../../assets/svg/trusted-by/GDG.svg";
 import microsoft from "../../assets/svg/trusted-by/microsoft.svg";
 import NITDA from "../../assets/svg/trusted-by/NITDA.svg";
-import trainingHall from "../../assets/training/training-hall.png";
-import trainingHallMobileView from "../../assets/training/training-hall-mobile.png";
+import trainingHall from "../../assets/training/training-hall.webp";
+import trainingHallMobileView from "../../assets/training/training-hall-mobile.webp";
 import PageLayout from "../../components/Layout/PageLayout";
 import backgroundIcon from "../../assets/svg/background-icon.svg";
 import Text from "../../components/Text";
 
 export default function Index() {
-  const trustedByArray = [DSN, ekitiStateGovernment, GDG, microsoft, NITDA];
+  const trustedByArray = [DSN, ekitiStateGovernment, GDG, NITDA];
 
   return (
     <PageLayout className="lg:pt-36 pt-24">

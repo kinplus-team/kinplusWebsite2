@@ -1,5 +1,5 @@
 import React from "react";
-import aboutUsGrid from "../../../assets/AboutUs/NewImages/new-about-us-grid.png";
+import aboutUsGrid from "../../../assets/AboutUs/NewImages/new-about-us-grid.webp";
 import PageLayout from "../../../components/Layout/PageLayout";
 import Text from "../../../components/Text";
 

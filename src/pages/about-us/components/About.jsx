@@ -1,5 +1,5 @@
 import React from "react";
-import peopleLookingAtLaptop from "../../../assets/AboutUs/NewImages/three-people-looking-at-laptop.jpeg";
+import peopleLookingAtLaptop from "../../../assets/AboutUs/NewImages/three-people-looking-at-laptop.webp";
 import peopleLookingAtLaptopMobile from "../../../assets/looking_at_laptop.png";
 import Text from "../../../components/Text";
 

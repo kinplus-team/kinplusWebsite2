@@ -1,7 +1,7 @@
 import React from "react";
-import guyLookingAtLaptop from "../../../assets/AboutUs/NewImages/guy-looking-at-laptop.jpeg";
-import girlLookingAtLaptop from "../../../assets/AboutUs/NewImages/girl-looking-at-laptop.jpeg";
-import lookingAtLaptop from "../../../assets/AboutUs/NewImages/looking-at-laptop.jpeg";
+import guyLookingAtLaptop from "../../../assets/AboutUs/NewImages/guy-looking-at-laptop.webp";
+import girlLookingAtLaptop from "../../../assets/AboutUs/NewImages/girl-looking-at-laptop.webp"
+import lookingAtLaptop from "../../../assets/AboutUs/NewImages/looking-at-laptop.webp";
 import Text from "../../../components/Text";
 import PageLayout from "../../../components/Layout/PageLayout";
 

@@ -11,7 +11,7 @@ export default function Workshop() {
       <WorkshopGallery />
       <ReachOut />
       <PreviousWorkshop />
-      <Gallery />
+      {/* <Gallery /> */}
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function Header() {
     <nav
       className={`transition-all duration-300 text-black ${
         navbarColor && "bg-[#f1f3f9] w-full"
-      } lg:px-[30px] px-4  fixed z-[99] top-0 w-full grid grid-cols-[150px_1fr] items-center justify-between md:py-10`}
+      } lg:px-[30px] px-4 fixed z-[999] top-0 w-full grid grid-cols-[150px_1fr] items-center justify-between md:py-10`}
     >
       {/* logo */}
       <NavLink to={"/"}>
