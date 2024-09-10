@@ -1,4 +1,4 @@
-import image10 from "../../../assets/our_services/image 10.png";
+import image10 from "../../../assets/our_services/image 10.webp";
 import rectangle from "../../../assets/our_services/Rectangle 1.png";
 import { FaQuoteRight } from "react-icons/fa6";
 import PageLayout from "../../../components/Layout/PageLayout";

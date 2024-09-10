@@ -1,7 +1,7 @@
 import React from "react";
-import heroImg from "../../../assets/career/new_image_hero.png";
-import heroImgMobile from "../../../assets/career/new_image_hero_mobile.png";
-import target from "../../../assets/career/target.png";
+import heroImg from "../../../assets/career/new_image_hero.webp";
+import heroImgMobile from "../../../assets/career/new_image_hero_mobile.webp";
+import target from "../../../assets/career/target.webp";
 import curvedBackground from "../../../assets/svg/career/curved-background.svg";
 import Text from "../../../components/Text.jsx";
 

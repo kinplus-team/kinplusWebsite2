@@ -13,6 +13,11 @@ export default function ApplyForInternship() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const genderInput = [{ title: "Male" }, { title: "Female" }];
+  const [ activeDropdown, setActiveDropdown] = useState(null)
+  const handleDropdownToggle = (dropdownName) => {
+    // If the clicked dropdown is already open, close it; otherwise, open it
+    setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
+  };
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -185,12 +190,15 @@ export default function ApplyForInternship() {
                   setInput={setDateOfBirth}
                 />
                 <Input
+                  onClick={() => setStateType("Gender")}
                   type="select"
                   name="Gender"
                   placeholder="Gender"
                   selected={gender}
                   setSelected={setGender}
                   options={genderInput}
+                  isSelect={activeDropdown === 'gender'}
+                  setIsSelect={() => handleDropdownToggle('gender')}
                 />
               </div>
 

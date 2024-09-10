@@ -10,11 +10,11 @@ import backgroundIcon from "../../assets/svg/background-icon.svg";
 import sparkle from "../../assets/why-learn-from-us/sparkle.png";
 
 // images on the catalogue card
-import whyLearnFromUs1 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-1.jpg";
-import whyLearnFromUs2 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-2.jpg";
-import whyLearnFromUs3 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-3.jpg";
-import whyLearnFromUs4 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-4.jpg";
-import whyLearnFromUs5 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-1.jpg";
+import whyLearnFromUs1 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-1.webp";
+import whyLearnFromUs2 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-2.webp";
+import whyLearnFromUs3 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-3.webp";
+import whyLearnFromUs4 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-4.webp";
+import whyLearnFromUs5 from "../../assets/images/training/why-learn-from-us/why-learn-from-us-1.webp";
 
 import Text from "../../components/Text.jsx";
 

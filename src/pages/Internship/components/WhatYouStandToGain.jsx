@@ -5,7 +5,7 @@ import collaborate from "../../../assets/svg/what-you-stand-to-gain/collaborate.
 import exploreInterest from "../../../assets/svg/what-you-stand-to-gain/explore-interest.svg";
 import gainValuableSkills from "../../../assets/svg/what-you-stand-to-gain/gain-valuable-skills.svg";
 import learnFromKnowledgeableMentors from "../../../assets/svg/what-you-stand-to-gain/learn-from-knowledgeable-mentors.svg";
-import sideBarImage from "../../../assets/IT_SIWES/what-you-stand-to-gain.png";
+import sideBarImage from "../../../assets/IT_SIWES/what-you-stand-to-gain.webp";
 import backgroundIcon from "../../../assets/svg/background-icon.svg";
 import sparkle from "../../../assets/why-learn-from-us/sparkle.png";
 import Text from "../../../components/Text.jsx";

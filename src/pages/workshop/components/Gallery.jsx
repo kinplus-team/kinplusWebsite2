@@ -20,12 +20,13 @@ export default function Gallery() {
   let scaleFactors = useState(Array(10).fill(1));
   const imageScroll = useRef(null);
 
-  useEffect(() => {
-    // handleScrollEffect();
-    getTrainingGallery().then((response) => {
-      setGallery(response);
-    });
-  }, []);
+  setGallery(gallery1, gallery2, gallery3, gallery4)
+  // useEffect(() => {
+  //   // handleScrollEffect();
+  //   getTrainingGallery().then((response) => {
+  //     setGallery(response);
+  //   });
+  // }, []);
 
   const handleScroll = (direction) => {
     imageScroll.current &&
@@ -100,19 +101,19 @@ export default function Gallery() {
       </div>
 
       {/* images */}
-      <div
+      {/* <div
         className="flex justify-between items-baseline overflow-hidden gap-3 relative overflow-x-auto scroll-ms-9 no-scroll snap-mandatory snap-x scroll-smooth"
         ref={imageScroll}
         onScroll={() => handleScrollEffect()}
       >
-        {gallery.map((image, index) => (
+        {gallery?.map((image, index) => (
           <img
             key={index}
-            src={image.traineePhoto.url}
+            src={image}
             className={`w-auto h-[400px]`}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* mobile view navigators */}
       <div className="relative lg:hidden block py-8">

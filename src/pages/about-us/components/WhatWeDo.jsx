@@ -1,8 +1,8 @@
 import React from "react";
 import PageLayout from "../../../components/Layout/PageLayout";
-import raptLaptop from "../../../assets/AboutUs/NewImages/raptly-staring-at-laptop.jpeg";
-import twoGirlsLaptop from "../../../assets/AboutUs/NewImages/two-girls-staring-at-laptop.jpeg";
-import busyLaptop from "../../../assets/AboutUs/NewImages/busy-on-the-laptop.jpeg";
+import raptLaptop from "../../../assets/AboutUs/NewImages/raptly-staring-at-laptop.webp";
+import twoGirlsLaptop from "../../../assets/AboutUs/NewImages/two-girls-staring-at-laptop.webp";
+import busyLaptop from "../../../assets/AboutUs/NewImages/busy-on-the-laptop.webp";
 import Text from "../../../components/Text";
 
 export default function WhatWeDo() {
