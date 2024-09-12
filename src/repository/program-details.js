@@ -62,37 +62,6 @@ const courseDetails = [
     },
   },
   {
-    title: "Graphic Design",
-    description:
-      "To better understand the meaning of graphic design, it is important to be aware of the elements and principles that make up design. Elements are used in conjunction or opposition with each other to create visually striking and impactful designs.",
-    pricingCardInfo: {
-      medium: {
-        courseDuration: "3 Month plan",
-        courseDescription:
-          "Get introduced to the elements that create striking visuals.",
-        price: 100000,
-        whatsIncluded: [
-          "Basic design software and tools",
-          "Creativity in flyer designs",
-          "Graphics and design thinking",
-          "Branding",
-        ],
-      },
-      pro: {
-        courseDuration: "5 Month plan",
-        courseDescription:
-          "Become a professional designer with advanced creative skills",
-        price: 150000,
-        whatsIncluded: [
-          "Complex designs in flyers",
-          "Advanced branding",
-          "Photo manipulation",
-          "Design content, client pitching, and lots more",
-        ],
-      },
-    },
-  },
-  {
     title: "Data Analysis",
     description:
       "To better understand the meaning of Data Science/Analysis”, it describes a series of techniques aimed at extracting relevant and valuable information from extensive and diverse sets of data gathered from different sources and varying in sizes. Apply to get started",
@@ -118,6 +87,37 @@ const courseDetails = [
           "Real life data projects; and lots more",
           "Advanced analytics techniques",
           "Exploration, Dashboards, and Advanced Tableau ",
+        ],
+      },
+    },
+  },
+  {
+    title: "Graphics Design",
+    description:
+      "To better understand the meaning of graphic design, it is important to be aware of the elements and principles that make up design. Elements are used in conjunction or opposition with each other to create visually striking and impactful designs.",
+    pricingCardInfo: {
+      medium: {
+        courseDuration: "3 Month plan",
+        courseDescription:
+          "Get introduced to the elements that create striking visuals.",
+        price: 100000,
+        whatsIncluded: [
+          "Basic design software and tools",
+          "Creativity in flyer designs",
+          "Graphics and design thinking",
+          "Branding",
+        ],
+      },
+      pro: {
+        courseDuration: "5 Month plan",
+        courseDescription:
+          "Become a professional designer with advanced creative skills",
+        price: 150000,
+        whatsIncluded: [
+          "Complex designs in flyers",
+          "Advanced branding",
+          "Photo manipulation",
+          "Design content, client pitching, and lots more",
         ],
       },
     },

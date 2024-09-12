@@ -13,7 +13,7 @@ export default function PartnersAndSponsors() {
         Our Partners
       </Text>
       <div className="flex flex-wrap lg:gap-16 gap-8 items-center max-w-5xl mx-auto justify-center">
-        {Partners.map((partner, i) => (
+        {Partners.map ((partner, i) => (
           <img
             key={i}
             src={partner}
