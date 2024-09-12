@@ -14,7 +14,7 @@ const trainingList = [
   },
   {
     title: "IT / SIWES",
-    to: "/trainings/internship",
+    to: "/trainings/siwes",
   },
   {
     title: "Workshop",
