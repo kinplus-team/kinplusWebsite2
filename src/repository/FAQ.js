@@ -53,7 +53,7 @@ const FAQsOnHomePage = [
     question: "Can I repair my laptop at Kinplus Technologies?",
     ans: {
       summary:
-        "Yes. At Kinplus Technologies, we offer Hardware repair services. You can repair your damaged desktop device at our company. Contact our Hardware Team whenever you visit our Ado–Ekiti office.",
+        "Yes. At Kinplus Technologies, we offer Hardware repair services. You can repair your damaged computer device at our company. Contact our Hardware Team whenever you visit our Ado–Ekiti office.",
     },
   },
   {

@@ -82,8 +82,8 @@ export default function ApplyForInternship() {
           setFormKey(formKey + 1);
         })
         .catch((error) => {
-          toast.error(error.response.errors[0].message);
           setIsLoading(false);
+          toast.error(error.response.errors[0].message);
         });
     }, 3000);
   };

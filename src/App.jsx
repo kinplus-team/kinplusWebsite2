@@ -48,7 +48,7 @@ function App() {
             path="/trainings/courses/:training"
             element={<ProgramDetails />}
           />
-          <Route path="/trainings/internship" element={<Internship />} />
+          <Route path="/trainings/siwes" element={<Internship />} />
           <Route path="/trainings/workshop" element={<Workshop />} />
           <Route
             path="/trainings/workshop/:details"

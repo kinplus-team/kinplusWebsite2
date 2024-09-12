@@ -5,6 +5,6 @@ import GovernmentOfEkitiLogo from "../../assets/pages/home/partners_and_sponsors
 import Microsoft from "../../assets/pages/home/partners_and_sponsors/Microsoft.png";
 import Nitda from "../../assets/pages/home/partners_and_sponsors/Nitda.png";
 
-const Partners = [Nitda, GovernmentOfEkitiLogo, Akintunde, Microsoft];
+const Partners = [Nitda, GovernmentOfEkitiLogo, Akintunde];
 
 export default Partners;

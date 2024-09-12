@@ -2,7 +2,6 @@ import { GraphQLClient, request, gql } from "graphql-request";
 
 const graphqlAPI = process.env.GRAPHCMS_ENDPOINT;
 
-// export a default function for API route to work
 export const ApplyForSIWES = async (
   fullName,
   email,
@@ -65,22 +64,27 @@ export const ApplyForSIWES = async (
     }
   `;
 
-  const response = await graphQLClient.request(query, {
-    fullName,
-    email,
-    phoneNumber,
-    religion,
-    dateOfBirth,
-    gender,
-    address,
-    institutionName,
-    courseOfStudy,
-    duration,
-    startDate,
-    endDate,
-    anyHealthChallenges,
-    healthChallengesDescription,
-  });
+  try {
+    const response = await graphQLClient.request(query, {
+      fullName,
+      email,
+      phoneNumber,
+      religion,
+      dateOfBirth,
+      gender,
+      address,
+      institutionName,
+      courseOfStudy,
+      duration,
+      startDate,
+      endDate,
+      anyHealthChallenges,
+      healthChallengesDescription,
+    });
 
-  return response;
+    return response;
+  } catch (error) {
+    console.error('Error occurred while applying for SIWES:', error);
+    throw new Error('Failed to apply for SIWES. Please try again later.');
+  }
 };
