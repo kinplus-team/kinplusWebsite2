@@ -51,7 +51,7 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             ? "text-black"
             : pathname == "/trainings"
             ? "text-black"
-            : pathname == "/trainings/internship"
+            : pathname == "/trainings/siwes"
             ? "text-black"
             : pathname == "/contact-us/services"
             ? "text-black"
@@ -151,13 +151,13 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
                       {staticData.trainingList.map((list, i) => (
                         <NavLink key={i} to={list.to}>
                           <div
-                            className={`px-3 py-1 grid grid-flow-col gap-2 items-center justify-start hover:text-black font-light`}
+                            className={`px-3 py-1 mt-4 grid grid-flow-col gap-2 items-center justify-start hover:text-black font-light`}
                             onClick={() => {
                               setIsMobileNav(false);
                               setIsDropDownOpen(false);
                             }}
                           >
-                            <p className="cursor-pointer text-base">
+                            <p className="cursor-pointer text-[1.3rem] mb-2">
                               {list.title}
                             </p>
                           </div>
@@ -171,7 +171,7 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
           </div>
 
           {/* bottom section */}
-          <div className=" grid gap-3 pb-5">
+          <div className=" mt-8 grid gap-3 pb-5">
             <div className="flex gap-3 justify-center">
               {[facebookIcon, linkedInIcon, instagramIcon, twitterIcon].map(
                 (icon, index) => (

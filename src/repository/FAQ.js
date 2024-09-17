@@ -1,14 +1,14 @@
 const FAQsOnTrainingPage = [
   {
-    question: "What training tracks are on offer for IT/SIWES??",
+    question: "What training tracks are on offer for IT/SIWES?",
     ans: {
       summary:
         "We offer IT/SIWES training on only a limited number of courses. These include:",
       options: [
         "Website Development",
         "Cyber-security",
-        "c. Data Analysis",
-        "d. Product Design",
+        "Data Analysis",
+        "Product Design",
       ],
     },
   },
@@ -24,8 +24,7 @@ const FAQsOnTrainingPage = [
       "Do I need to have experience on my preferred training track before I can observe my IT/SIWES at Kinplus Technologies?",
     ans: {
       summary:
-        "We offer IT/SIWES training on only a limited number of courses. These include:",
-      options: ["Website Development", "Cyber-security"],
+        "Yes, you need to have at least basic knowledge on your prefered training track because you'll be working with other teammates. These include: Designers, Analysts, and Engineers(Developers).",
     },
   },
   {
@@ -34,7 +33,7 @@ const FAQsOnTrainingPage = [
     ans: {
       summary:
         "We offer IT/SIWES training on only a limited number of courses. These include:",
-      options: ["Website Development", "Cyber-security"],
+      options: ["Website Development", "Cyber-security", "Data Analytics", "Product(UI/UX) Design", "Graphics Design", "Product Management"],
     },
   },
 ];

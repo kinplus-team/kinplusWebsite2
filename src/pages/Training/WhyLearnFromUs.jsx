@@ -56,7 +56,7 @@ export default function WhyLearnFromUs() {
 
         <Text
           type="subheading"
-          className="text-[#082B5B] lg:max-w-2xl relative z-50"
+          className="text-[#082B5B] text-[30px] lg:text-[40px] mt-4 lg:mt-0 mb-4 lg:mb-0 lg:max-w-2xl relative z-50"
         >
           All programs are designed to meet all your needs
         </Text>

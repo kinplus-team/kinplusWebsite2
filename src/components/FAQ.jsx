@@ -13,12 +13,12 @@ export default function FAQComponent({ FAQs }) {
   };
 
   return (
-    <div className="lg:pb-[130px] pb-[90px] grid gap-7">
+    <div className="lg:pb-[130px] pb-[90px] grid gap-7 -mt-6 lg:mt-0">
       <div className="mx-auto max-w-2xl text-center">
-        <Text type="heading" className="text-[#082B5B]">
+        <Text type="heading" className="text-[#082B5B] text-[60px] lg:text-[65px] mb-8">
           FAQs
         </Text>
-        <Text type="subparagraph" className="text-[#556987]">
+        <Text type="subparagraph" className="text-[#101010]">
           Find answers to our most commonly asked questions relating to our
           product development and training opportunities here.
         </Text>
@@ -29,18 +29,18 @@ export default function FAQComponent({ FAQs }) {
             {/* desktop view */}
             <div className="lg:grid hidden max-w-md grid-rows-[auto_auto_1fr] gap-3 w-full mx-auto cursor-pointer">
               <div className="flex flex-col gap-3">
-                <LuPlusCircle size={25} className="text-blue-400" />
+                <LuPlusCircle size={25} className="text-[#0F172A]" />
                 <p className="text-[#2A3342] text-[20px] font-medium leading-[30px]">
                   {FAQ.question}
                 </p>
               </div>
-              <Text type="subparagraph" className="text-[#556987]">
+              <Text type="subparagraph" className="text-[#101010]">
                 {FAQ.ans.summary}
               </Text>
               <ul>
                 {FAQ.ans.options &&
                   FAQ.ans.options.map((option, i) => (
-                    <li key={i} className="text-[#556987] my-1 list-disc ml-5">
+                    <li key={i} className="text-[#101010] my-1 list-disc ml-5">
                       {option}
                     </li>
                   ))}
@@ -62,18 +62,18 @@ export default function FAQComponent({ FAQs }) {
                 onClick={() => handleToggle(i)}
               >
                 {index === i ? (
-                  <LuMinusCircle className="text-blue-400 text-2xl" />
+                  <LuMinusCircle className="text-[#0F172A] text-2xl" />
                 ) : (
-                  <LuPlusCircle className="text-blue-400 text-2xl" />
+                  <LuPlusCircle className="text-[#0F172A] text-2xl" />
                 )}
-                <p className="text-[#2A3342] text-[18px] font-medium leading-[30px]">
+                <p className="text-[#101010] text-[18px] font-medium leading-[30px]">
                   {FAQ.question}
                 </p>
               </div>
 
               {index === i && (
                 <>
-                  <Text type="subparagraph" className="text-[#556987]">
+                  <Text type="subparagraph" className="text-[#101010]">
                     {FAQ.ans.summary}
                   </Text>
                   <ul>
@@ -81,7 +81,7 @@ export default function FAQComponent({ FAQs }) {
                       FAQ.ans.options.map((option, i) => (
                         <li
                           key={i}
-                          className="text-[#556987] my-1 list-disc ml-5"
+                          className="text-[#101010] my-1 list-disc ml-5"
                         >
                           {option}
                         </li>

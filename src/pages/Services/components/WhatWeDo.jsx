@@ -94,7 +94,7 @@ export default function WhatWeDo() {
       </div>
 
       {/* What we do  */}
-      <div className="grid lg:grid-cols-3 gap-5 pt-10">
+      <div className="grid lg:grid-cols-3 gap-5 px-1 lg:px-0 pt-10">
         <div
           className="rounded-md grid gap-3"
           onMouseEnter={() => setIsHovered("webDevelopment")}

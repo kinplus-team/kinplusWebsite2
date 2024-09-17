@@ -20,12 +20,15 @@ export default function Index() {
       >
         {/* left side bar */}
         <div className="grid sm:grid-flow-row gap-4 lg:gap-6 relative">
-          <Text type="title" className="text-[#1877F9] capitalize">
-            DIGITAL SKILL TRAINING
-          </Text>
+          <div className="flex items-center gap-4">
+            <Text type="title" className="text-[#1877F9] text-base lg:text-lg lg:tracking-[3px] capitalize">
+              DIGITAL SKILL TRAINING
+            </Text>
+            <div className="w-[74px] lg:w-[74.775px] h-[2px] lg:h-[2px] bg-[#222831]"></div>
+          </div>
 
           <div className="relative z-50">
-            <Text type="heading" className="text-[#082B5B] ">
+            <Text type="heading" className="text-[#082B5B] text-[35px] lg:text-[52px]">
               We Are Building Tech Leaders.
             </Text>
           </div>
@@ -40,16 +43,16 @@ export default function Index() {
 
         {/* right side bar */}
         <div className="grid sm:grid-flow-row gap-6 justify-self-end relative z-50">
-          <Text type="subparagraph" className="text-[#556987]">
+          <Text type="subparagraph" className="text-[#101010] mt-2 lg:mt-0">
             In todays rapidly evolving technological landscape, it is crucial
             for learners, students, and youths to have access to industry
             knowledge and opportunities in the tech industry.
           </Text>
           <p className="text-[#101010] lg:text-[18px] lg:max-w-[600px] mt-5 lg:mt-0"></p>
-          <div className="grid gap-6">
+          <div className="grid gap-6 -mt-6 lg:mt-0">
             <p className="text-[#556987] text-sm lg:text-base">
               Trusted by <br />
-              leading companies
+              leading companies/agencies
             </p>
             <div className="grid grid-cols-[50px_50px_50px_50px_0.5fr] lg:grid-cols-[60px_60px_60px_0.2fr_0.3fr] gap-3 lg:gap-10 items-center">
               {trustedByArray.map((image, i) => (
@@ -58,6 +61,7 @@ export default function Index() {
                   src={image}
                   alt="Kinplus_Logo_with_blue_color"
                   loading="lazy"
+                  className="flex place-items-center h-10"
                 />
               ))}
             </div>

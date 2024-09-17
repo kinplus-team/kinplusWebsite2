@@ -21,6 +21,10 @@ export default function PartnersAndSponsors() {
             alt="Nitda_Logo"
           />
         ))}
+        <p className="text-[15.403px] lg:text-[23.719px] font-medium leading-[110%]">
+          Akintunde
+          <span className="block font-normal">Oyebode</span>
+        </p>
       </div>
     </PageLayout>
   );

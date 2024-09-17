@@ -11,7 +11,7 @@ export default function Hero() {
       <div id="target-section" className="bg-[#082B5B] ">
         <div className=" grid lg:grid-cols-[auto_1fr] relative gap-4 lg:pt-48 pt-28 pb-5 lg:px-[60px] px-4 max-w-[100rem] mx-auto">
           <div className="grid gap-4 max-w-3xl">
-            <Text type="heading" className="text-[#fff] capitalize">
+            <Text type="heading" className="text-[#fff] text-[35px] lg:text-[65px] capitalize">
               Be a part of our sponsored and partnered training Workshops
             </Text>
 
@@ -20,7 +20,7 @@ export default function Hero() {
               your skills and knowledge in a supportive environment
             </Text>
 
-            <div className="w-80">
+            <div className="w-80 mb-4">
               <Button
                 type="customizedWhite"
                 text="Join Ongoing Workshop"
@@ -29,10 +29,10 @@ export default function Hero() {
               />
             </div>
 
-            <div className="lg:px-[54px] px-4 lg:hidden block">
+            <div className="lg:px-[54px] px-4 lg:hidden block ml-6">
               <Link
                 to="/sponsor-or-partner-with-us"
-                className="text-lg font-bold underline text-[#fff] cursor-pointer"
+                className="text-base lg:text-lg font-bold underline text-[#fff] cursor-pointer"
               >
                 <p>Sponsor or Partner with us</p>
               </Link>
@@ -49,7 +49,7 @@ export default function Hero() {
         <div className="lg:px-[54px] px-4 max-w-[100rem] mx-auto lg:block hidden">
           <Link
             to="/sponsor-or-partner-with-us"
-            className="text-lg font-bold underline text-[#fff] absolute top-0  z-10"
+            className="text-base lg:text-lg font-bold underline text-[#fff] absolute top-0  z-10 lg:ml-6"
           >
             <p>Sponsor or Partner with us</p>
           </Link>
