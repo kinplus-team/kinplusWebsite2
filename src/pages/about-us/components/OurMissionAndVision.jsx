@@ -53,7 +53,7 @@ export default function OurMissionAndVision() {
               <Text type="subparagraph" className="text-[#23242A]">
                 To enhance societal development and sustainability by empowering
                 youths with skills and expertise that will make them employable,
-                business minded, skilful and industrious.
+                business minded, skillful and industrious.
               </Text>
 
               <Text type="subparagraph" className="text-[#23242A]">

@@ -25,6 +25,7 @@ export default function ApplyForRole() {
     { title: "Product Manager" },
     { title: "Backend Developer" },
     { title: "Cybersecurity Expert" },
+    { title: "Others"},
   ];
 
   const [ activeDropdown, setActiveDropdown] = useState(null)
