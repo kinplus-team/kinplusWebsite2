@@ -90,11 +90,11 @@ export default function CareerOpportunity() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 items-center py-10">
-          <h1 className="text-[#1877F9] lg:max-w-lg sm:my-12 lg:my-0 max-w-96 mt-20 lg:text-[100px] text-[64px] font-semibold leading-[75px] lg:leading-[110px] ">
+        <div className="grid lg:grid-cols-2 gap-[10%] lg:gap-[20%] items-center pb-[8rem] lg:mb-0 py-10">
+          <h1 className="text-[#1877F9] lg:max-w-lg sm:my-12 lg:my-0 max-w-96 mt-20 lg:text-[108.474px] text-[64.024px] font-semibold leading-[75px] lg:leading-[110px] ">
             Join us in building impactful products.
           </h1>
-          <img src={scrollDown} alt="scroll-down" />
+          <img src={scrollDown} alt="scroll-down"  className="w-[295px] lg:w-[377px]"/>
         </div>
       </div>
     </PageLayout>

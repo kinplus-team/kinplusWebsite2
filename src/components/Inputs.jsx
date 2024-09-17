@@ -56,7 +56,7 @@ export default function Input({
                         setSelected(option);
                         setIsSelect(!isSelect);
                       }}
-                      className="lg:px-6 px-3 text-black cursor-pointer hover:text-opacity-80"
+                      className="lg:px-6 px-3 py-4 text-black cursor-pointer hover:text-opacity-80"
                     >
                       {option.title}
                     </div>

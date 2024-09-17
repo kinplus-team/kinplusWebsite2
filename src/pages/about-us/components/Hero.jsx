@@ -68,11 +68,11 @@ export default function Hero() {
             Who We Are
           </Text>
 
-          <Text type="heading" className="text-[#082B5B] capitalize">
+          <Text type="heading" className="text-[#082B5B] text-[35px] lg:text-[52px] capitalize">
             About Kinplus
           </Text>
 
-          <Text type="subparagraph" className="text-[#556987]">
+          <Text type="subparagraph" className="text-[#101010]">
             We are a team of energetic and innovative developers and designers,
             who are passionate about implementing customer needs with an
             approach focused on satisfaction and timely delivery.

@@ -9,9 +9,11 @@ export default function Hero() {
   return (
     <div id="target-section">
       <div className="bg-[#082B5B] lg:pt-48 pb-10 lg:px-[30px] px-4">
+
+        {/* Desktop view */}
         <div className="lg:grid hidden grid-cols-2 gap-10 items-center ">
           <div className="flex flex-col gap-4 max-w-4xl mx-auto text-center lg:text-left">
-            <Text type="heading" className="text-[#f1f1f1] capitalize">
+            <Text type="heading" className="text-[#f1f1f1] text-[35px] lg:text-[65px] capitalize">
               Join our team to help shape the future of development.
             </Text>
             <Text
@@ -23,9 +25,9 @@ export default function Hero() {
             </Text>
           </div>
           <div className="flex justify-center lg:justify-end">
-            <div className="relative w-4/5 lg:w-full h-96 lg:h-[400px] z-10">
+            <div className="relative w-4/5 lg:w-full h-96 lg:h-[500px] z-10">
               <div
-                className="hidden lg:block w-full h-full rounded-lg bg-cover bg-center bg-no-repeat border-4 border-white"
+                className="hidden lg:block w-full h-full rounded-lg bg-cover bg-center bg-no-repeat border-y-[7px] border-white"
                 style={{
                   backgroundImage: `url(${heroImg})`,
                 }}
@@ -33,9 +35,11 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
+        {/* Mobile screen */}
         <div className="grid lg:hidden grid-rows-[1fr_auto] pt-32 gap-10 items-center ">
           <div className="flex flex-col gap-4 max-w-4xl mx-auto text-center lg:text-left">
-            <Text type="heading" className="text-[#f1f1f1] capitalize">
+            <Text type="heading" className="text-[#f1f1f1] text-[35px] lg:text-[52px] mb-4 lg:mb-0 capitalize">
               Join our team to help shape the future of development.
             </Text>
             <Text
@@ -60,16 +64,16 @@ export default function Hero() {
 
         <img
           src={target}
-          className="lg:w-[500px] lg:h-[500px] w-auto h-[200px] absolute lg:top-96 top-[640px] right-0 z-0"
+          className="lg:h-[450px] w-auto h-[250px] absolute lg:top-96 top-[640px] right-0 z-0"
         />
       </div>
-      <div className="bg-[#f1f3f9]">
+      {/* <div className="bg-[#f1f3f9]">
         <img
           src={curvedBackground}
           alt="Curved Background"
           className="w-full"
         />
-      </div>
+      </div> */}
     </div>
   );
 }

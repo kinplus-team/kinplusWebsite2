@@ -97,7 +97,7 @@ export default function HaveAProjectInMind() {
                   className="w-full"
                 />
               </div>
-              <div className="absolute z-[10] top-5 left-[5%]">
+              <div className="absolute z-[150] top-5 left-[5%]">
                 <img
                   src={projectInMind.image.image2}
                   alt=""
@@ -116,7 +116,7 @@ export default function HaveAProjectInMind() {
               <img src={iconbg1} alt="" className="mt-[-20px] ml-[-40px]" />
               <img src={iconbg2} alt="" className="mt-[-40px] ml-[-80px] " />
             </div>
-            <div className="absolute top-[5%] mt-[30px] z-[100]">
+            <div className="absolute top-[5%] mt-[30px] z-[10]">
               <img src={projectInMind.image.image1} alt="" className="w-full" />
             </div>
             <div className="absolute z-[200] top-5 left-[5%]">

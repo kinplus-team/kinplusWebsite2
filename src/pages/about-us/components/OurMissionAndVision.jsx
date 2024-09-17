@@ -20,19 +20,19 @@ export default function OurMissionAndVision() {
         <div className="grid lg:gap-24 gap-9 lg:px-10 lg:order-last order-first">
           {/* vision */}
           <div className="self-center grid lg:gap-2 gap-3">
-            <Text type="heading" className="text-[#082B5B]">
+            <Text type="heading" className="text-[#082B5B] text-[35px] lg:text-[64px]">
               Our Vision
             </Text>
 
             <div className="grid gap-4">
-              <Text type="subparagraph" className="text-[#556987]">
+              <Text type="subparagraph" className="text-[#23242A]">
                 To promote youth empowerment and create employment via on the
                 job training with a team of experts while developing products
                 and providing services that will help the society and the world
                 at large.
               </Text>
 
-              <Text type="subparagraph" className="text-[#556987]">
+              <Text type="subparagraph" className="text-[#23242A]">
                 We believe that technology should connect and empower people.
                 We're committed to driving innovation and creating solutions
                 that will shape a better future. We're at the forefront of the
@@ -45,18 +45,18 @@ export default function OurMissionAndVision() {
 
           {/* mission */}
           <div className="self-center grid lg:gap-2 gap-3">
-            <Text type="heading" className="text-[#082B5B] capitalize">
+            <Text type="heading" className="text-[#082B5B] text-[35px] lg:text-[64px] capitalize">
               Our Mission
             </Text>
 
             <div className="grid gap-4">
-              <Text type="subparagraph" className="text-[#556987]">
+              <Text type="subparagraph" className="text-[#23242A]">
                 To enhance societal development and sustainability by empowering
                 youths with skills and expertise that will make them employable,
                 business minded, skilful and industrious.
               </Text>
 
-              <Text type="subparagraph" className="text-[#556987]">
+              <Text type="subparagraph" className="text-[#23242A]">
                 We're driven by a desire to use our technological expertise to
                 deliver solutions that exceed expectations. We work
                 collaboratively with our clients to develop innovative solutions

@@ -7,7 +7,7 @@ import Text from "../../../components/Text";
 export default function Careers() {
   return (
     <PageLayout>
-      <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-4 items-center">
+      <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-6 items-center">
         <div className="grid gap-3">
           <Text type="title" className="text-[#1877F9]">
             Careers
@@ -15,7 +15,7 @@ export default function Careers() {
 
           <Text
             type="subheading"
-            className="text-[#082B5B] capitalize max-w-md"
+            className="text-[#082B5B] text-[35px] lg:text-[44px] leading-[114.286%] lg:capitalize max-w-md"
           >
             Join our Ever-Growing team at Kinplus
           </Text>
@@ -26,7 +26,7 @@ export default function Careers() {
         </div>
 
         <div className=" grid gap-2">
-          <Text type="subparagraph" className="text-[#556987]">
+          <Text type="subparagraph" className="text-[#101010]">
             When you join Kinplus, you'll be working with some of the most
             innovative brands and ventures in the industry. You'll be immersed
             in a culture that values creativity, personal development, and

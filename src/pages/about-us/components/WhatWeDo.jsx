@@ -8,17 +8,17 @@ import Text from "../../../components/Text";
 export default function WhatWeDo() {
   return (
     <PageLayout>
-      <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-10">
-        <div className="grid grid-rows-[auto_auto_1fr] gap-3 place-self-center">
+      <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-10 -mt-10 lg:mt-0">
+        <div className="grid grid-rows-[auto_auto_1fr] gap-6 lg:gap-3 place-self-center">
           <Text type="title" className="text-[#1877F9] capitalize">
             What We Do
           </Text>
 
-          <Text type="subheading" className="text-[#082B5B] capitalize">
+          <Text type="subheading" className="text-[#082B5B] text-[35px] lg:text-[44px] leading-[114.286%] lg:capitalize">
             We Create beautiful products that capture the heart
           </Text>
 
-          <Text type="subparagraph" className="text-[#556987]">
+          <Text type="subparagraph" className="text-[#101010]">
             We're here to support you through the entire process of product
             development, from ideation to launch and beyond. We'll help you
             navigate any challenges that come up along the way, and we're always
