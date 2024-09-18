@@ -27,7 +27,7 @@ export default function MyForm() {
         id="target-section"
         className="grid lg:grid-cols-[50%_1fr] gap-10 items-center pt-10 pb-28"
       >
-        <Text type="heading" className="text-[#082B5B] lg:w-[110%]">
+        <Text type="heading" className="text-[#082B5B] text-[35px] lg:text-[52px] lg:w-[110%]">
           Interested about our Services and Training Opportunities?
         </Text>
 

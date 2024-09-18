@@ -24,7 +24,7 @@ export default function WorkshopGallery() {
           {/* mobile */}
           <div className="grid gap-4 lg:hidden">
             <h4 className="text-[#1877F9] lg:text-xl text-base lg:font-medium lg:uppercase lg:tracking-wider">
-              OUR LAST WORKSHOP
+              OUR PREVIOUS WORKSHOP
             </h4>
 
             <p className="text-[#082B5B] lg:text-5xl text-4xl font-bold lg:leading-[50px] tracking-wide">
