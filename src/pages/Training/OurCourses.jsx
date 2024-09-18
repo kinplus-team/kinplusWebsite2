@@ -12,11 +12,11 @@ import icon5 from "../../assets/components/courses/course-list/SVG/simple-icons_
 import icon6 from "../../assets/components/courses/course-list/SVG/logos_adobe-premiere.svg";
 
 // images
-import trainingImage1 from "../../assets/components/courses/course-list/images/training-1.jpg";
-import trainingImage2 from "../../assets/components/courses/course-list/images/training-2.jpg";
-import trainingImage3 from "../../assets/components/courses/course-list/images/training-3.jpg";
-import trainingImage4 from "../../assets/components/courses/course-list/images/training-4.jpg";
-import trainingImage5 from "../../assets/components/courses/course-list/images/training-5.jpg";
+import trainingImage1 from "../../assets/components/courses/course-list/images/training-1.webp";
+import trainingImage2 from "../../assets/components/courses/course-list/images/training-2.webp";
+import trainingImage3 from "../../assets/components/courses/course-list/images/training-3.webp";
+import trainingImage4 from "../../assets/components/courses/course-list/images/training-4.webp";
+import trainingImage5 from "../../assets/components/courses/course-list/images/training-5.webp";
 
 import courses from "../../services/courseServices.js";
 
