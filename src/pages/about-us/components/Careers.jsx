@@ -15,7 +15,7 @@ export default function Careers() {
 
           <Text
             type="subheading"
-            className="text-[#082B5B] text-[35px] lg:text-[44px] leading-[114.286%] lg:capitalize max-w-md"
+            className="text-[#082B5B] text-[35px] lg:text-[44px] leading-[114.286%] lg:capitalize max-w-md lg:max-w-lg"
           >
             Join our Ever-Growing team at Kinplus
           </Text>
