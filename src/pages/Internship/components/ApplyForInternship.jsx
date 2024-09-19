@@ -141,6 +141,7 @@ export default function ApplyForInternship() {
                   name="Full Name"
                   placeholder="Enter your Full Name"
                   setInput={setFullName}
+                  isRequired={true}
                 />
                 {errors.fullName && (
                   <p className="text-red-500">{errors.fullName}</p>
@@ -153,6 +154,7 @@ export default function ApplyForInternship() {
                   name="E-Mail"
                   placeholder="Enter your E-Mail"
                   setInput={setEmail}
+                  isRequired={true}
                 />
                 {errors.email && <p className="text-red-500">{errors.email}</p>}
               </div>
@@ -163,6 +165,7 @@ export default function ApplyForInternship() {
                   name="Phone Number"
                   placeholder="Enter your Phone Number"
                   setInput={setPhoneNumber}
+                  isRequired={true}
                 />
                 {errors.phoneNumber && (
                   <p className="text-red-500">{errors.phoneNumber}</p>
@@ -175,6 +178,7 @@ export default function ApplyForInternship() {
                   name="Religion"
                   placeholder="Enter your Religion"
                   setInput={setReligion}
+                  isRequired={true}
                 />
                 {errors.religion && (
                   <p className="text-red-500">{errors.religion}</p>
@@ -188,6 +192,7 @@ export default function ApplyForInternship() {
                   name="Date of Birth"
                   placeholder="Date of Birth"
                   setInput={setDateOfBirth}
+                  isRequired={true}
                 />
                 <Input
                   onClick={() => setStateType("Gender")}
@@ -199,6 +204,7 @@ export default function ApplyForInternship() {
                   options={genderInput}
                   isSelect={activeDropdown === 'gender'}
                   setIsSelect={() => handleDropdownToggle('gender')}
+                  isRequired={true}
                 />
               </div>
 
@@ -272,6 +278,7 @@ export default function ApplyForInternship() {
                     radioText="Yes"
                     isChecked={anyHealthChallenges === "Yes"}
                     onCheck={() => setAnyHealthChallenges("Yes")}
+                    isRequired={true}
                   />
                 </div>
 
@@ -283,6 +290,7 @@ export default function ApplyForInternship() {
                     radioText="No"
                     isChecked={anyHealthChallenges === "No"}
                     onCheck={() => setAnyHealthChallenges("No")}
+                    isRequired={true}
                   />
                 </div>
               </div>
