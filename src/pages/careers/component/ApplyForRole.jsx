@@ -126,6 +126,7 @@ export default function ApplyForRole() {
                   name={applicationFormImput.label}
                   placeholder={applicationFormImput.placeholder}
                   setInput={applicationFormImput.fn}
+                  isRequired={true}
                 />
               ))}
 
@@ -134,6 +135,7 @@ export default function ApplyForRole() {
                 name="Phone number"
                 placeholder="Enter your phone number"
                 setInput={setPhoneNumber}
+                isRequired={true}
               />
 
               <Input
@@ -145,6 +147,7 @@ export default function ApplyForRole() {
                 options={roleOptions}
                 isSelect={activeDropdown === 'Job role'}
                 setIsSelect={() => handleDropdownToggle('Job role')}
+                isRequired={true}
               />
 
               <Input

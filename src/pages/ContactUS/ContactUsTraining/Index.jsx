@@ -139,6 +139,7 @@ export default function ContactUsTraining() {
                 name="Full name"
                 placeholder="Enter your Full Name"
                 setInput={setFullName}
+                isRequired={true}
               />
               {errors.fullName && (
                 <p className="text-red-500">{errors.fullName}</p>
@@ -152,6 +153,7 @@ export default function ContactUsTraining() {
                 name="E-Mail"
                 placeholder="Enter your E-Mail"
                 setInput={setEmail}
+                isRequired={true}
               />
               {errors.email && <p className="text-red-500">{errors.email}</p>}
             </div>
@@ -163,6 +165,7 @@ export default function ContactUsTraining() {
                 name="Phone Number"
                 placeholder="Enter your Phone Number"
                 setInput={setPhoneNumber}
+                isRequired={true}
               />
               {errors.phoneNumber && (
                 <p className="text-red-500">{errors.phoneNumber}</p>
@@ -176,6 +179,7 @@ export default function ContactUsTraining() {
                 name="Religion"
                 placeholder="Enter your Religion"
                 setInput={setReligion}
+                isRequired={true}
               />
               {errors.religion && (
                 <p className="text-red-500">{errors.religion}</p>
@@ -190,6 +194,7 @@ export default function ContactUsTraining() {
                 name="Date of Birth"
                 placeholder="Date of Birth"
                 setInput={setDateOfBirth}
+                isRequired={true}
               />
 
               {/* Gender */}
@@ -203,6 +208,7 @@ export default function ContactUsTraining() {
                 options={genderInput}
                 isSelect={activeDropdown === 'gender'}
                 setIsSelect={() => handleDropdownToggle('gender')}
+                isRequired={true}
               />
               </div>
           
@@ -215,6 +221,7 @@ export default function ContactUsTraining() {
                 name="Address"
                 placeholder="Enter your Address"
                 setInput={setAddress}
+                isRequired={true}
               />
               {errors.address && (
                 <p className="text-red-500">{errors.address}</p>
@@ -232,6 +239,7 @@ export default function ContactUsTraining() {
               options={trackOptions}
               isSelect={activeDropdown === 'track'}
               setIsSelect={() => handleDropdownToggle('track')}
+              isRequired={true}
             />
             </div>
             
@@ -246,6 +254,7 @@ export default function ContactUsTraining() {
               options={packageOptions}
               isSelect={activeDropdown === 'package'}
               setIsSelect={() => handleDropdownToggle('package')}
+              isRequired={true}
             />
 
             {/* Availability */}
@@ -257,7 +266,7 @@ export default function ContactUsTraining() {
                 <Input
                   type="checkbox"
                   name="availability"
-                  placeholder="How will you be available for the meeting?"
+                  placeholder="How will you be available for the training?"
                   radioText="Online/Virtual"
                   isChecked={availability === "Online/Virtual"}
                   onCheck={() => setAvailability("Online/Virtual")}
@@ -268,7 +277,7 @@ export default function ContactUsTraining() {
                 <Input
                   type="checkbox"
                   name="availability"
-                  placeholder="How will you be available for the meeting?"
+                  placeholder="How will you be available for the training?"
                   radioText="Onsite/Physical"
                   isChecked={availability === "Onsite/Physical"}
                   onCheck={() => setAvailability("Onsite/Physical")}
@@ -279,7 +288,7 @@ export default function ContactUsTraining() {
                 <Input
                   type="checkbox"
                   name="availability"
-                  placeholder="How will you be available for the meeting?"
+                  placeholder="How will you be available for the training?"
                   radioText="Hybrid"
                   isChecked={availability === "Hybrid"}
                   onCheck={() => setAvailability("Hybrid")}

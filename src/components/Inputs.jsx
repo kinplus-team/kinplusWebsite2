@@ -21,7 +21,7 @@ export default function Input({
   ref,
   date,
   isTextAreaRequired,
-  isRequired = true,
+  isRequired,
 }) {
   const [isPass, setIsPass] = useState(false);
   // const [isSelect, setIsSelect] = useState(false);
