@@ -21,7 +21,7 @@ export default function HeroPage() {
           <div className="relative z-10 flex flex-col gap-8 h-screen mx-auto lg:max-w-[100%]">
             <Text
               type="heading"
-              className="lg:max-w-[62rem] max-w-[600px] text-[#F1F1F1] text-[35px] lg:text-[65px] lg:-mt-5 capitalize"
+              className="lg:max-w-[62rem] max-w-[600px] text-[#F1F1F1] text-[35px] lg:text-[65px] lg:mt-3 capitalize"
             >
               Empowering Innovators Through Product Development and Training
             </Text>

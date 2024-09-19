@@ -104,6 +104,7 @@ export default function ContactUsServices() {
               name="Full name"
               placeholder="Enter your Full Name"
               setInput={setFullName}
+              isRequired={true}
             />
             {errors.fullName && (
               <p className="text-red-500">{errors.fullName}</p>
@@ -116,6 +117,7 @@ export default function ContactUsServices() {
               name="E-Mail"
               placeholder="Enter your E-Mail"
               setInput={setEmail}
+              isRequired={true}
             />
             {errors.email && <p className="text-red-500">{errors.email}</p>}
           </div>
@@ -126,6 +128,7 @@ export default function ContactUsServices() {
               name="Phone Number"
               placeholder="Enter your Phone Number"
               setInput={setPhoneNumber}
+              isRequired={true}
             />
             {errors.phoneNumber && (
               <p className="text-red-500">{errors.phoneNumber}</p>
@@ -138,6 +141,8 @@ export default function ContactUsServices() {
               name="Company name"
               placeholder="Enter your Company Name"
               setInput={setCompanyName}
+              isRequired={false}
+              
             />
             {errors.companyName && (
               <p className="text-red-500">{errors.companyName}</p>

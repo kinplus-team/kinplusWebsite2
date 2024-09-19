@@ -6,12 +6,12 @@ import Text from "../../../components/Text";
 export default function About() {
   return (
     <div className="grid lg:grid-cols-2 bg-[#094FAF]">
-      <div className="grid gap-4 content-center lg:px-10 px-5 pt-28 pb-10">
+      <div className="grid gap-4 content-center lg:px-10 px-5 pt-28 pb-10 -mt-[4rem] lg:mt-0">
         <Text type="subheading" className="text-[#f1f1f1] capitalize">
-          What is Kinplus?
+          get to know kinplus
         </Text>
 
-        <div className="grid gap-3">
+        <div className="grid gap-10">
           <Text type="paragraph" className="text-[#f1f1f1]">
             Kinplus Technologies is a software development company with a focus
             on delivering scalable applications and software to businesses,

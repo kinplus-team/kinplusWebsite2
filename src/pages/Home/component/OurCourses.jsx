@@ -10,7 +10,7 @@ export default function OurCourses() {
   return (
     <PageLayout>
       <div className="grid lg:grid-cols-[auto_1fr] gap-4 lg:gap-36 lg:pb-20 pb-6">
-        <Text type="subheading" className=" max-w-[700px] text-[#082B5B]">
+        <Text type="subheading" className=" max-w-[700px] text-[#082B5B] capitalize">
           We are dedicated to empowering the next generation with essential
           skills to thrive in the ever-evolving tech landscape
         </Text>

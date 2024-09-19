@@ -208,6 +208,7 @@ export default function ApplyForInternship() {
                   name="Address"
                   placeholder="Enter your Address"
                   setInput={setAddress}
+                  isRequired={true}
                 />
               </div>
 
@@ -217,6 +218,7 @@ export default function ApplyForInternship() {
                   name="Name of Institution"
                   placeholder="Enter the Name of your School"
                   setInput={setNameOfInstitution}
+                  isRequired={true}
                 />
               </div>
 
@@ -226,6 +228,7 @@ export default function ApplyForInternship() {
                   name="Course of Study"
                   placeholder="Tell us what you are studying"
                   setInput={setCourseOfStudy}
+                  isRequired={true}
                 />
               </div>
 
@@ -235,6 +238,7 @@ export default function ApplyForInternship() {
                   name="How long is your IT/SIWES?"
                   placeholder="How many months are you using?"
                   setInput={setDuration}
+                  isRequired={true}
                 />
               </div>
 
@@ -244,12 +248,14 @@ export default function ApplyForInternship() {
                   name="Start Date"
                   placeholder="When are you starting?"
                   setInput={setStartDate}
+                  isRequired={true}
                 />
                 <Input
                   type="date"
                   name="End Date"
                   placeholder="When are you likely to finish?"
                   setInput={setEndDate}
+                  isRequired={true}
                 />
               </div>
 
