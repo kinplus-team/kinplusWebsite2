@@ -44,7 +44,7 @@ export default function Index() {
         {/* right side bar */}
         <div className="grid sm:grid-flow-row gap-6 justify-self-end relative z-50">
           <Text type="subparagraph" className="text-[#101010] mt-2 lg:mt-0">
-            In todays rapidly evolving technological landscape, it is crucial
+            In today's rapidly evolving technological landscape, it is crucial
             for learners, students, and youths to have access to industry
             knowledge and opportunities in the tech industry.
           </Text>

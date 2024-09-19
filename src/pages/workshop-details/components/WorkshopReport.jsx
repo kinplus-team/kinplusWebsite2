@@ -39,7 +39,7 @@ export default function WorkshopReport() {
 
   return (
     <PageLayout>
-      <div className=" relative">
+      <div className=" relative mb-24 lg:mb-0">
         <Text type="title" className="text-[#1877F9]">
           Workshop report
         </Text>

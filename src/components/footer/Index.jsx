@@ -202,8 +202,9 @@ export default function Footer() {
             {/* address and social media links */}
             <div>
               <p className="lg:text-[18px] lg:leading-[35px] leading-[24px]">
-                2nd  Floor, Christore Building, Opp. Crunchies
-                Restaurant, Similoluwa, Ado Ekiti, Ekiti State, Nigeria.
+                2nd  Floor, Christore Building, <br />
+                Opp. Crunchies Restaurant, Similoluwa, <br />
+                Ado Ekiti, Ekiti State, Nigeria.
               </p>
 
               <div className="flex gap-6 my-3">
