@@ -25,6 +25,7 @@ import BlogPost from "./pages/blog/BlogPost/Index.jsx";
 import ScrollToTop from "./components/scrollToTop/Index.jsx";
 
 import SponsorUs from "./pages/sponsor-or-partner-with-us/Index.jsx";
+import PageNotFound from "./pages/PageNotFound/index.jsx";
 
 function App() {
   return (
@@ -60,6 +61,8 @@ function App() {
 
           {/* Sponsor or partner with us */}
           <Route path="/sponsor-or-partner-with-us" element={<SponsorUs />} />
+
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </Router>

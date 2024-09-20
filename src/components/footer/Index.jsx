@@ -71,6 +71,10 @@ export default function Footer() {
     { icon: youtube, link: "https://www.youtube.com/@kinplustech" },
   ];
 
+  // if(pathname !== '/' || '/about-us '|| '/our-services' || '/trainings ' || '/trainings/workshop'  || '/blog' || '/careers'){
+  //   return null    
+  // }
+
   return (
     <div>
       {/* top section */}
