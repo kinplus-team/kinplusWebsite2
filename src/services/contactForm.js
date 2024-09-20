@@ -74,7 +74,7 @@ export const contactUsForServices = async (
   email,
   phoneNumber,
   companyName,
-  message
+  description
 ) => {
   const graphQLClient = new GraphQLClient(graphqlAPI, {
     headers: {
@@ -88,7 +88,7 @@ export const contactUsForServices = async (
       $email: String!
       $phoneNumber: String!
       $companyName: String!
-      $message: String!
+      $description: String!
     ) {
       createPartnersContact(
         data: {
@@ -96,7 +96,7 @@ export const contactUsForServices = async (
           email: $email
           phoneNumber: $phoneNumber
           companyName: $companyName
-          message: $message
+          description: $description
         }
       ) {
         id
@@ -109,7 +109,7 @@ export const contactUsForServices = async (
     email,
     phoneNumber,
     companyName,
-    message,
+    description,
   });
 
   return response;

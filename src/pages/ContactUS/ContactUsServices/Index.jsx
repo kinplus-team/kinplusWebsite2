@@ -1,64 +1,71 @@
-import axios from "axios";
-import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { contactUsForServices } from "../../../services/contactForm";
 import Button from "../../../components/Button";
-import { useState } from "react";
 import Text from "../../../components/Text";
 import Input from "../../../components/Inputs";
+import useDelay from "../../../hooks/useDelay";
+
+// Define the Zod schema for form validation
+const schema = z.object({
+  fullName: z
+    .string()
+    .min(1, "Full name is required")
+    .regex(/^[a-zA-Z\s]+$/, "Full Name must contain only alphabets"), // Allow spaces in full name
+  email: z.string().email("Invalid email address"),
+  phoneNumber: z
+    .string()
+    .regex(/^\d{11}$/, "Phone number must contain exactly 11 digits"),
+  companyName: z.string().optional(),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters")
+    .refine((desc) => desc.trim().length >= 20, {
+      message:
+        "Description must have at least 20 characters (excluding leading/trailing spaces)",
+    }),
+});
 
 export default function ContactUsServices() {
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const [formKey, setFormKey] = useState(0);
-
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [message, setMessage] = useState("");
-
-  const [errors, setErrors] = useState({});
-
+  const [formKey, setFormKey] = useState(0); // To reset the form
   const {
     register,
     handleSubmit,
-    formState: { errors: formErrors },
-    setValue,
-  } = useForm({ mode: "all" });
+    control,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(schema),
+    mode: "onChange", // Validate on every change
+  });
+
+  const delay = useDelay();
 
   const onSubmit = async (data) => {
-    // const validationErrors = validate();
-    // if (Object.keys(validationErrors).length > 0) {
-    //   setErrors(validationErrors);
-    //   return;
-    // }
-
     setIsLoading(true);
-    await contactUsForServices(
-      fullName,
-      email,
-      phoneNumber,
-      companyName,
-      message
-    )
-      .then(() => {
-        toast.success("Form submitted successfully");
-        setIsLoading(false);
-        setFormKey(formKey + 1);
-        // Reset form fields
-        setFullName("");
-        setEmail("");
-        setPhoneNumber("");
-        setCompanyName("");
-        setMessage("");
-      })
-      .catch((error) => {
-        toast.error("Something went wrong!");
-        setIsLoading(false);
-      });
+    await delay(2000);
+    try {
+      await contactUsForServices(
+        data.fullName,
+        data.email,
+        data.phoneNumber,
+        data.companyName,
+        data.description
+      );
+      toast.success("Form submitted successfully");
+      reset(); // Reset form after submission
+      setFormKey((prevKey) => prevKey + 1); // Reset the form key
+    } catch (error) {
+      console.log("error submitting: ", error)
+      toast.error("Something went wrong!");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -66,9 +73,12 @@ export default function ContactUsServices() {
       id="target-section"
       className="grid lg:grid-cols-2 gap-10 lg:py-40 pt-32 pb-16"
     >
-      {/* Explanation */}
+      {/* Description */}
       <div className="grid lg:grid-rows-[100px_auto_auto_1fr] grid-rows-[auto_150px_50px_1fr] gap-6 w-full p-2">
-        <Text type="heading" className="text-[#082B5B] capitalize">
+        <Text
+          type="heading"
+          className="text-[#082B5B] capitalize"
+        >
           Get Started
         </Text>
 
@@ -88,38 +98,43 @@ export default function ContactUsServices() {
       </div>
 
       {/* Services Form */}
-      <div className="w-full bg-blue-950 rounded-[0.9375rem] text-white mx-auto md:ml-0 pl-1">
+      <div className="w-full bg-blue-950 rounded-lg text-white">
         <form
           key={formKey}
           onSubmit={handleSubmit(onSubmit)}
           className="mx-auto mt-8 w-[90%]"
         >
-          <Text type="heading" className="capitalize">
+          <Text
+            type="heading"
+            className="capitalize"
+          >
             Tell us about your project
           </Text>
 
           <div>
             <Input
               type="text"
-              name="Full name"
+              name="Full Name"
               placeholder="Enter your Full Name"
-              setInput={setFullName}
               isRequired={true}
+              {...register("fullName")}
             />
             {errors.fullName && (
-              <p className="text-red-500">{errors.fullName}</p>
+              <p className="text-red-500">{errors.fullName.message}</p>
             )}
           </div>
 
           <div>
             <Input
               type="email"
-              name="E-Mail"
+              name="Email"
               placeholder="Enter your E-Mail"
-              setInput={setEmail}
               isRequired={true}
+              {...register("email")}
             />
-            {errors.email && <p className="text-red-500">{errors.email}</p>}
+            {errors.email && (
+              <p className="text-red-500">{errors.email.message}</p>
+            )}
           </div>
 
           <div>
@@ -127,41 +142,53 @@ export default function ContactUsServices() {
               type="text"
               name="Phone Number"
               placeholder="Enter your Phone Number"
-              setInput={setPhoneNumber}
               isRequired={true}
+              maxLength={11}
+              {...register("phoneNumber")}
             />
             {errors.phoneNumber && (
-              <p className="text-red-500">{errors.phoneNumber}</p>
+              <p className="text-red-500">{errors.phoneNumber.message}</p>
             )}
           </div>
 
           <div>
             <Input
               type="text"
-              name="Company name"
+              name="Company Name"
               placeholder="Enter your Company Name"
-              setInput={setCompanyName}
               isRequired={false}
-              
+              {...register("companyName")}
             />
             {errors.companyName && (
-              <p className="text-red-500">{errors.companyName}</p>
+              <p className="text-red-500">{errors.companyName.message}</p>
             )}
           </div>
 
           <div>
-            <Input
-              type="textarea"
-              name="Message"
-              setInput={setMessage}
-              isTextAreaRequired={true}
+            {/* Use Controller if needed for textarea */}
+            <Controller
+              control={control}
+              name="description"
+              spanText={"(At least 20 characters)"}
+              render={({ field }) => (
+                <Input
+                  type="textarea"
+                  name="Description"
+                  placeholder="Enter your Message "
+                  isTextAreaRequired={true}
+                  minLength={20}
+                  {...field}
+                />
+              )}
             />
-            {errors.message && <p className="text-red-500">{errors.message}</p>}
+            {errors.description && (
+              <p className="text-red-500">{errors.description.message}</p>
+            )}
           </div>
 
-          <div className="text-center mt-[10px] py-9 w-40 mx-auto">
+          <div className="text-center mt-4 py-6 w-40 mx-auto">
             <Button
-              text="Submit"
+              text={isLoading ? "Submitting..." : "Submit"}
               type="customizedWhite"
               isLoading={isLoading}
             />
