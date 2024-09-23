@@ -98,7 +98,7 @@ export default function ApplyForInternship() {
         data.startDate,
         data.endDate,
         data.anyHealthChallenges,
-        data.descriptionOfHealthChallenges
+        data.descriptionOfHealthChallenges || ""
       );
 
       toast.success("Thank you for applying!");
@@ -156,7 +156,7 @@ export default function ApplyForInternship() {
                 {...register("fullName")}
               />
               {errors.fullName && (
-                <p className="text-red-500 -mt-5">{errors.fullName.message}</p>
+                <p className="text-red-500 ">{errors.fullName.message}</p>
               )}
             </div>
 
@@ -170,7 +170,7 @@ export default function ApplyForInternship() {
                 {...register("email")}
               />
               {errors.email && (
-                <p className="text-red-500 -mt-5">{errors.email.message}</p>
+                <p className="text-red-500 ">{errors.email.message}</p>
               )}
             </div>
             {/* Phone Number */}
@@ -184,9 +184,7 @@ export default function ApplyForInternship() {
                 {...register("phoneNumber")}
               />
               {errors.phoneNumber && (
-                <p className="text-red-500 -mt-5">
-                  {errors.phoneNumber.message}
-                </p>
+                <p className="text-red-500 ">{errors.phoneNumber.message}</p>
               )}
             </div>
 
@@ -252,7 +250,7 @@ export default function ApplyForInternship() {
                 {...register("address")}
               />
               {errors.address && (
-                <p className="text-red-500 -mt-5">{errors.address.message}</p>
+                <p className="text-red-500 ">{errors.address.message}</p>
               )}
             </div>
 
@@ -266,7 +264,7 @@ export default function ApplyForInternship() {
                 {...register("nameOfInstitution")}
               />
               {errors.nameOfInstitution && (
-                <p className="text-red-500 -mt-5">
+                <p className="text-red-500 ">
                   {errors.nameOfInstitution.message}
                 </p>
               )}
@@ -283,9 +281,7 @@ export default function ApplyForInternship() {
                 {...register("courseOfStudy")}
               />
               {errors.courseOfStudy && (
-                <p className="text-red-500 -mt-5">
-                  {errors.courseOfStudy.message}
-                </p>
+                <p className="text-red-500 ">{errors.courseOfStudy.message}</p>
               )}
             </div>
 
@@ -300,7 +296,7 @@ export default function ApplyForInternship() {
                 {...register("duration")}
               />
               {errors.duration && (
-                <p className="text-red-500 -mt-5">{errors.duration.message}</p>
+                <p className="text-red-500 ">{errors.duration.message}</p>
               )}
             </div>
 
