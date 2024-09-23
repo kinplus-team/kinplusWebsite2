@@ -15,7 +15,7 @@ const schema = z.object({
   fullName: z
     .string()
     .min(1, "Full name is required")
-    .regex(/^[a-zA-Z\s]+$/, "Full Name must contain only alphabets"), // Allow spaces in full name
+    .regex(/^[a-zA-Z\s]+$/, "Full Name must contain only alphabets"),
   email: z.string().email("Invalid email address"),
   phoneNumber: z
     .string()

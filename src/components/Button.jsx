@@ -14,6 +14,7 @@ export default function Button({
   isLoading,
   isLinked,
   disabled,
+  onClick,
 }) {
   switch (type) {
     case "customizedBlue":
@@ -26,6 +27,7 @@ export default function Button({
           } ${
             disabled ? "opacity-50 cursor-not-allowed" : "bg-[#1877F9]"
           }  text-white text-xl font-medium leading-[24px] border border-[#1877F9] shadow-md  ${className}`}
+          onClick={onClick}
         >
           {isLoading ? (
             <div className="flex items-center">
@@ -54,7 +56,12 @@ export default function Button({
           ) : isLong ? (
             <div className="flex gap-5 items-center">
               {text}
-              {isLinked && <img src={ArrowButton} className="w-[61px]" />}
+              {isLinked && (
+                <img
+                  src={ArrowButton}
+                  className="w-[61px]"
+                />
+              )}
             </div>
           ) : (
             <p className="lg:text-base text-sm">{text}</p>
@@ -73,6 +80,7 @@ export default function Button({
             disabled ? "opacity-50 cursor-not-allowed" : "bg-white"
           }  text-[#1877F9] text-xl font-medium leading-[24px] border border-white shadow-md ${className}`}
           disabled={disabled}
+          onClick={onClick}
         >
           {isLoading ? (
             <div className="flex items-center justify-center">
@@ -110,6 +118,7 @@ export default function Button({
           className={`w-full ${isLong ? "px-6 py-5" : "px-3 py-3"} ${
             isLinked && "underline"
           }rounded-md lg:text-xl leading-[24px] text-left text-[#556987]  ${className}`}
+          onClick={onClick}
         >
           {text}
         </button>
@@ -119,8 +128,12 @@ export default function Button({
       return (
         <button
           className={`bg-[#F8FAFC] flex items-center gap-5 w-full px-6 py-5 rounded-md text-[#556987] leading-6 text-left border border-[#F8FAFC] ${className}`}
+          onClick={onClick}
         >
-          <img src={icon} className="w-6 h-6" />
+          <img
+            src={icon}
+            className="w-6 h-6"
+          />
           {text}
         </button>
       );

@@ -24,6 +24,7 @@ const Input = React.forwardRef(
       maxLength,
       minLength,
       spanText,
+      error,
       ...rest
     },
     ref
@@ -37,24 +38,20 @@ const Input = React.forwardRef(
         .replace(/^./, function (str) {
           return str.toUpperCase();
         }) // capitalize the first letter
-        .trim(); // remove any leading or trailing spaces
+        .trim(); 
     };
 
     switch (type) {
       case "select":
         return (
-          <div className="relative py-4 gap-2 rounded-sm text-lg text-[#fff]">
+          <div className="relative py-3 gap-2 rounded-sm text-lg text-[#fff]">
             {formatName(name)}
             <label
               onClick={() => setIsSelect(!isSelect)}
               className="p-4 rounded-md grid grid-cols-[1fr_auto] mt-2 border border-white items-center cursor-pointer"
             >
               <div className="text-lg whitespace-nowrap overflow-hidden text-ellipsis">
-                {selected === "" ? (
-                  <span className="text-[#fff]">{placeholder}</span>
-                ) : (
-                  selected.title
-                )}
+                {selected ? selected : placeholder}
               </div>
               <div>
                 {isSelect ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
@@ -67,14 +64,12 @@ const Input = React.forwardRef(
                     <div
                       key={i}
                       className="py-[0.8px]"
+                      onClick={() => {
+                        setSelected(option.value);
+                        setIsSelect(false);
+                      }}
                     >
-                      <div
-                        onClick={() => {
-                          setSelected(option);
-                          setIsSelect(!isSelect);
-                        }}
-                        className="lg:px-6 px-3 py-4 text-black cursor-pointer hover:text-opacity-80"
-                      >
+                      <div className="lg:px-6 px-3 py-4 text-black cursor-pointer hover:text-opacity-80">
                         {option.title}
                       </div>
                       {i !== options.length - 1 && (
@@ -84,6 +79,7 @@ const Input = React.forwardRef(
                   ))}
               </div>
             )}
+            {error && <p className="text-red-500 mt-1">{error}</p>}
           </div>
         );
 
@@ -91,9 +87,7 @@ const Input = React.forwardRef(
         return (
           <div className="p-1 py-3 lg:grid gap-2 rounded-sm text-lg text-white font-semibold relative">
             <label
-              onClick={(e) => {
-                onCheck();
-              }}
+              onClick={onCheck}
               className="flex items-center gap-2 rounded-sm cursor-pointer"
             >
               {isChecked ? (
@@ -111,6 +105,7 @@ const Input = React.forwardRef(
               )}
               <p className="text-sm">{radioText}</p>
             </label>
+            {error && <p className="text-red-500 mt-1">{error}</p>}
           </div>
         );
 
@@ -153,7 +148,10 @@ const Input = React.forwardRef(
             htmlFor={name}
             className="grid gap-2 py-3 rounded-sm text-lg text-[#fff]"
           >
-            {formatName(name)}
+            <p className="flex items-center space-x-2">
+              {formatName(name)}
+              <span className="text-xs ml-2 text-smoke-500">{spanText}</span>
+            </p>
             <input
               ref={ref}
               type={type}

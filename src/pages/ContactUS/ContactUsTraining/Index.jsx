@@ -1,107 +1,104 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
+import { z } from "zod";
 import Button from "../../../components/Button";
 import PageLayout from "../../../components/Layout/PageLayout";
 import Input from "../../../components/Inputs";
 import { contactUsForTraining } from "../../../services/contactForm";
-import programsDetails from "../../../repository/program-details";
+import useDelay from "../../../hooks/useDelay";
+
+// validation schema
+const contactUsTrainingSchema = z.object({
+  fullName: z
+    .string()
+    .min(1, "Full name is required")
+    .regex(/^[a-zA-Z\s]+$/, "Full Name must contain only alphabets"),
+  email: z.string().email("Invalid email address"),
+  phoneNumber: z
+    .string()
+    .regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
+  religion: z.string().min(1, "Religion is required"),
+  dateOfBirth: z.preprocess(
+    (val) => (val ? new Date(val) : null),
+    z
+      .date()
+      .max(new Date("2010-12-31"), "Date of birth must be before 2010-12-31")
+  ),
+  gender: z.string().min(1, "Gender is required"),
+  address: z.string().min(5, "Address must be at least 5 characters"),
+  track: z.string().min(1, "Track is required"),
+  trackPackage: z.string().min(1, "Track Package is required"),
+  availability: z.string().min(1, "Availability is required"),
+});
 
 export default function ContactUsTraining() {
-  const navigate = useNavigate();
-
-  const [gender, setGender] = useState("");
-  const [track, setTrack] = useState("");
-  const [trackPackage, setTrackPackage] = useState("");
-  const [availability, setAvailability] = useState("");
-
+  const delay = useDelay();
   const [isLoading, setIsLoading] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
-  const [stateType, setStateType] = useState("")
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(contactUsTrainingSchema),
+    mode: "onChange",
+  });
 
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [religion, setReligion] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [address, setAddress] = useState("");
-
-  const [formKey, setFormKey] = useState(0);
-
-  const [isSelect, setIsSelect] = useState(false);
-  
-  
-  const [errors, setErrors] = useState({});
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-
-    setIsLoading(true);
-
-    await contactUsForTraining(
-      fullName,
-      email,
-      phoneNumber,
-      religion,
-      dateOfBirth,
-      gender.title,
-      address,
-      track.title,
-      trackPackage.title,
-      availability
-    )
-      .then(() => {
-        toast.success("Form submitted successfully");
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Something went wrong!");
-        setIsLoading(false);
-      });
-
-    // Force re-render by updating the form key
-    setFormKey(formKey + 1);
-
-    setGender("");
-    setTrack("");
-    setTrackPackage("");
-    setAvailability("");
-
-    setFullName("");
-    setEmail("");
-    setPhoneNumber("");
-    setReligion("");
-    setDateOfBirth("");
-    setAddress("");
+  const handleDropdownToggle = (dropdownName) => {
+    setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
   };
 
-  // Tracks and package options
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+    await delay(2000);
+
+    try {
+      await contactUsForTraining(
+        data.fullName,
+        data.email,
+        data.phoneNumber,
+        data.religion,
+        data.dateOfBirth,
+        data.gender,
+        data.address,
+        data.track,
+        data.trackPackage,
+        data.availability
+      );
+      toast.success("Form submitted successfully");
+      reset();
+    } catch (error) {
+      toast.error("Something went wrong!");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const trackOptions = [
-    { title: "Web development" },
-    { title: "Cybersecurity" },
-    { title: "Product Design" },
-    { title: "Graphics Design" },
-    { title: "Data Analysis" },
+    { title: "Web development", value: "Web development" },
+    { title: "Cybersecurity", value: "Cybersecurity" },
+    { title: "Product Design", value: "Product Design" },
+    { title: "Graphics Design", value: "Graphics Design" },
+    { title: "Data Analysis", value: "Data Analysis" },
   ];
 
   const packageOptions = [
-    { title: "Standard (3 months ₦150k)" },
-    { title: "Standard (5 months ₦250k)" },
-
-    { title: "Premium (3 months ₦250k)" },
-    { title: "Premium (5 months ₦400k)" },
+    { title: "Standard (3 months ₦150k)", value: "Standard (3 months ₦150k)" },
+    { title: "Standard (5 months ₦250k)", value: "Standard (5 months ₦250k)" },
+    { title: "Premium (3 months ₦250k)", value: "Premium (3 months ₦250k)" },
+    { title: "Premium (5 months ₦400k)", value: "Premium (5 months ₦400k)" },
   ];
 
-  // Gender options
-  const genderInput = [{ title: "Male" }, { title: "Female" }];
-
-  const [ activeDropdown, setActiveDropdown] = useState(null)
-
-  const handleDropdownToggle = (dropdownName) => {
-    // If the clicked dropdown is already open, close it; otherwise, open it
-    setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
-  };
+  const genderInput = [
+    { title: "Male", value: "Male" },
+    { title: "Female", value: "Female" },
+  ];
 
   return (
     <PageLayout className="flex justify-between flex-col md:flex-row gap-20 lg:py-40 py-32">
@@ -126,174 +123,175 @@ export default function ContactUsTraining() {
           get in touch.
         </p>
       </div>
+      {/* Right side form */}
       <div className="w-full bg-blue-950 rounded-[0.9375rem] text-white mx-auto p-10">
-        <form key={formKey} onSubmit={onSubmit} className="mx-auto mt-8">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="mx-auto mt-8"
+        >
           <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
             Register With Us For Training
           </h3>
           <div className="grid sm:grid-flow-row gap-2">
-            {/* Full name */}
             <div>
               <Input
                 type="text"
-                name="Full name"
+                name="Full Name"
                 placeholder="Enter your Full Name"
-                setInput={setFullName}
                 isRequired={true}
+                {...register("fullName")}
               />
               {errors.fullName && (
-                <p className="text-red-500">{errors.fullName}</p>
+                <p className="text-red-500 -mt-5">{errors.fullName.message}</p>
               )}
             </div>
 
-            {/* Email address */}
             <div>
               <Input
                 type="email"
-                name="E-Mail"
+                name="Email"
                 placeholder="Enter your E-Mail"
-                setInput={setEmail}
                 isRequired={true}
+                {...register("email")}
               />
-              {errors.email && <p className="text-red-500">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-red-500">{errors.email.message}</p>
+              )}
             </div>
 
-            {/* Phone number */}
             <div>
               <Input
                 type="text"
                 name="Phone Number"
                 placeholder="Enter your Phone Number"
-                setInput={setPhoneNumber}
                 isRequired={true}
+                maxLength={11}
+                {...register("phoneNumber")}
               />
               {errors.phoneNumber && (
-                <p className="text-red-500">{errors.phoneNumber}</p>
+                <p className="text-red-500">{errors.phoneNumber.message}</p>
               )}
             </div>
 
-            {/* Religion */}
             <div>
               <Input
                 type="text"
                 name="Religion"
                 placeholder="Enter your Religion"
-                setInput={setReligion}
                 isRequired={true}
+                {...register("religion")}
               />
               {errors.religion && (
-                <p className="text-red-500">{errors.religion}</p>
+                <p className="text-red-500">{errors.religion.message}</p>
               )}
             </div>
 
-            {/* Date of birth and gender */}
             <div className="grid gap-3 sm:grid-cols-2 items-center">
-              {/* Date of birth */}
-              <Input
-                type="date"
-                name="Date of Birth"
-                placeholder="Date of Birth"
-                setInput={setDateOfBirth}
-                isRequired={true}
-              />
-
-              {/* Gender */}
-              <div onClick={() => setStateType("Gender")}>
-              <Input
-                type="select"
-                name="Gender"
-                placeholder="Gender"
-                selected={gender}
-                setSelected={setGender}
-                options={genderInput}
-                isSelect={activeDropdown === 'gender'}
-                setIsSelect={() => handleDropdownToggle('gender')}
-                isRequired={true}
-              />
+              <div className="relative">
+                <Input
+                  type="date"
+                  name="Date of Birth"
+                  placeholder="Date of Birth"
+                  isRequired={true}
+                  max="2010-12-31"
+                  {...register("dateOfBirth")}
+                />
+                {errors.dateOfBirth && (
+                  <p className="text-red-500 absolute -bottom-5">
+                    {errors.dateOfBirth.message}
+                  </p>
+                )}
               </div>
-          
+
+              <div className="relative">
+                <Input
+                  type="select"
+                  name="gender"
+                  placeholder="Gender"
+                  options={genderInput}
+                  isSelect={activeDropdown === "gender"}
+                  setIsSelect={() => handleDropdownToggle("gender")}
+                  error={errors.gender?.message}
+                  selected={watch("gender")}
+                  setSelected={(value) => setValue("gender", value)}
+                />
+                {errors.gender && (
+                  <p className="text-red-500 absolute -bottom-5">
+                    {errors.gender.message}
+                  </p>
+                )}
+              </div>
             </div>
 
-            {/* Address */}
             <div>
               <Input
                 type="text"
                 name="Address"
                 placeholder="Enter your Address"
-                setInput={setAddress}
                 isRequired={true}
+                {...register("address")}
               />
               {errors.address && (
-                <p className="text-red-500">{errors.address}</p>
+                <p className="text-red-500">{errors.address.message}</p>
               )}
             </div>
 
-            {/* Tracks */}
-            <div onClick={() => setStateType("Track")}>
-            <Input
-              type="select"
-              name="Track"
-              placeholder="Select Learning Track"
-              selected={track}
-              setSelected={setTrack}
-              options={trackOptions}
-              isSelect={activeDropdown === 'track'}
-              setIsSelect={() => handleDropdownToggle('track')}
-              isRequired={true}
-            />
+            <div>
+              <Input
+                type="select"
+                name="track"
+                placeholder="Select Learning Track"
+                options={trackOptions}
+                isSelect={activeDropdown === "track"}
+                setIsSelect={() => handleDropdownToggle("track")}
+                error={errors.track?.message}
+                selected={watch("track")}
+                setSelected={(value) => setValue("track", value)}
+              />
             </div>
-            
 
-            {/* Payment packages */}
-            <Input
-              type="select"
-              name="Package"
-              placeholder="Select payment package"
-              selected={trackPackage}
-              setSelected={setTrackPackage}
-              options={packageOptions}
-              isSelect={activeDropdown === 'package'}
-              setIsSelect={() => handleDropdownToggle('package')}
-              isRequired={true}
-            />
+            <div>
+              <Input
+                type="select"
+                name="trackPackage"
+                placeholder="Select payment package"
+                options={packageOptions}
+                isSelect={activeDropdown === "trackPackage"}
+                setIsSelect={() => handleDropdownToggle("trackPackage")}
+                error={errors.trackPackage?.message}
+                selected={watch("trackPackage")}
+                setSelected={(value) => setValue("trackPackage", value)}
+              />
+            </div>
 
-            {/* Availability */}
             <div className="py-3">
               <p className="text-xl text-white">
                 How will you be available for the training?
               </p>
-              <div onClick={() => setAvailability("Online/Virtual")}>
-                <Input
-                  type="checkbox"
-                  name="availability"
-                  placeholder="How will you be available for the training?"
-                  radioText="Online/Virtual"
-                  isChecked={availability === "Online/Virtual"}
-                  onCheck={() => setAvailability("Online/Virtual")}
-                />
-              </div>
-
-              <div onClick={() => setAvailability("Onsite/Physical")}>
-                <Input
-                  type="checkbox"
-                  name="availability"
-                  placeholder="How will you be available for the training?"
-                  radioText="Onsite/Physical"
-                  isChecked={availability === "Onsite/Physical"}
-                  onCheck={() => setAvailability("Onsite/Physical")}
-                />
-              </div>
-
-              <div onClick={() => setAvailability("Hybrid")}>
-                <Input
-                  type="checkbox"
-                  name="availability"
-                  placeholder="How will you be available for the training?"
-                  radioText="Hybrid"
-                  isChecked={availability === "Hybrid"}
-                  onCheck={() => setAvailability("Hybrid")}
-                />
-              </div>
+              <Input
+                type="checkbox"
+                name="availability"
+                radioText="Online/Virtual"
+                isChecked={watch("availability") === "Online/Virtual"}
+                onCheck={() => setValue("availability", "Online/Virtual")}
+                error={errors.availability?.message}
+              />
+              <Input
+                type="checkbox"
+                name="availability"
+                radioText="Onsite/Physical"
+                isChecked={watch("availability") === "Onsite/Physical"}
+                onCheck={() => setValue("availability", "Onsite/Physical")}
+                error={errors.availability?.message}
+              />
+              <Input
+                type="checkbox"
+                name="availability"
+                radioText="Hybrid"
+                isChecked={watch("availability") === "Hybrid"}
+                onCheck={() => setValue("availability", "Hybrid")}
+                error={errors.availability?.message}
+              />
             </div>
           </div>
 
