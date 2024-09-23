@@ -142,7 +142,7 @@ export default function ContactUsTraining() {
                 {...register("fullName")}
               />
               {errors.fullName && (
-                <p className="text-red-500 -mt-5">{errors.fullName.message}</p>
+                <p className="text-red-500">{errors.fullName.message}</p>
               )}
             </div>
 

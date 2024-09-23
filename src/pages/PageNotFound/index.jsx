@@ -12,11 +12,10 @@ const PageNotFound = () => {
   const navigate = useNavigate();
 
   // Navigate back one page in the browser's history
-  const handleGoBack = () => {
-    console.log("working....");
-    
+  const handleGoBack = () => {    
     navigate(-1);
   };
+
   return (
     <div className="py-10 flex flex-col items-center justify-center">
       {/* Kinplus logo */}
