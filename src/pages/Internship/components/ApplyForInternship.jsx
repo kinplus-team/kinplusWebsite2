@@ -7,85 +7,109 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Text from "../../../components/Text";
 import { Element } from "react-scroll";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, Controller } from "react-hook-form";
+import useDelay from "../../../hooks/useDelay";
+
+// Validation schema for SIWES form
+const siwesSchema = z.object({
+  fullName: z
+    .string()
+    .min(1, "Full name is required")
+    .regex(/^[a-zA-Z\s]+$/, "Full Name must contain only alphabets"),
+  email: z.string().email("Invalid email address"),
+  phoneNumber: z
+    .string()
+    .regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
+  religion: z.string().min(1, "Religion is required"),
+  dateOfBirth: z.preprocess(
+    (val) => (val ? new Date(val) : null),
+    z
+      .date()
+      .max(new Date("2010-12-31"), "Date of birth must be before 2010-12-31")
+  ),
+  gender: z.string().min(1, "Gender is required"),
+  address: z.string().min(5, "Address must be at least 5 characters"),
+  nameOfInstitution: z.string().min(1, "Institution name is required"),
+  courseOfStudy: z.string().min(1, "Course of study is required"),
+  duration: z
+    .string()
+    .min(1, "Duration is required")
+    .regex(/^\d+$/, "Duration should be a number"),
+  startDate: z.preprocess(
+    (val) => (val ? new Date(val) : null),
+    z.date().min(new Date(), "Start date must be in the future")
+  ),
+  endDate: z.preprocess(
+    (val) => (val ? new Date(val) : null),
+    z.date().min(new Date(), "End date must be in the future")
+  ),
+  anyHealthChallenges: z.string(),
+  descriptionOfHealthChallenges: z.string().optional(),
+});
 
 export default function ApplyForInternship() {
-  const [gender, setGender] = useState("");
-  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const genderInput = [{ title: "Male" }, { title: "Female" }];
-  const [ activeDropdown, setActiveDropdown] = useState(null)
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const delay = useDelay();
+  const navigate = useNavigate();
+  const [formKey, setFormKey] = useState(0);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(siwesSchema),
+    mode: "onChange",
+  });
+
   const handleDropdownToggle = (dropdownName) => {
-    // If the clicked dropdown is already open, close it; otherwise, open it
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
   };
 
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [religion, setReligion] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const genderInput = [
+    { title: "Male", value: "Male" },
+    { title: "Female", value: "Female" },
+  ];
+  const healthChallenge = watch("anyHealthChallenges");
 
-  const [formKey, setFormKey] = useState(0);
-
-  const [address, setAddress] = useState("");
-  const [nameOfInstitution, setNameOfInstitution] = useState("");
-  const [courseOfStudy, setCourseOfStudy] = useState("");
-  const [duration, setDuration] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [anyHealthChallenges, setAnyHealthChallenges] = useState("");
-  const [descriptionOfHealthChallenges, setDescriptionOfHealthChallenges] =
-    useState("");
-
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const [errors, setErrors] = useState({});
-
-  const uploadInternshipApplication = () => {
+  const onSubmit = async (data) => {
     setIsLoading(true);
-    setTimeout(() => {
-      ApplyForSIWES(
-        fullName,
-        email,
-        phoneNumber,
-        religion,
-        dateOfBirth,
-        gender.title,
-        address,
-        nameOfInstitution,
-        courseOfStudy,
-        duration,
-        startDate,
-        endDate,
-        anyHealthChallenges,
-        descriptionOfHealthChallenges
-      )
-        .then((response) => {
-          toast.success("Thank you for reaching out to us");
-          setIsLoading(false);
+    await delay(2000);
 
-          setFullName("");
-          setEmail("");
-          setPhoneNumber("");
-          setReligion("");
-          setDateOfBirth("");
-          setAddress("");
-          setNameOfInstitution("");
-          setGender("");
-          setCourseOfStudy("");
-          setDuration("");
-          setStartDate("");
-          setEndDate("");
-          setAnyHealthChallenges("");
-          setDescriptionOfHealthChallenges("");
+    try {
+      await ApplyForSIWES(
+        data.fullName,
+        data.email,
+        data.phoneNumber,
+        data.religion,
+        data.dateOfBirth,
+        data.gender,
+        data.address,
+        data.nameOfInstitution,
+        data.courseOfStudy,
+        data.duration,
+        data.startDate,
+        data.endDate,
+        data.anyHealthChallenges,
+        data.descriptionOfHealthChallenges || ""
+      );
 
-          setFormKey(formKey + 1);
-        })
-        .catch((error) => {
-          setIsLoading(false);
-          toast.error(error.response.errors[0].message);
-        });
-    }, 3000);
+      toast.success("Thank you for applying!");
+      reset(); // Clear the form
+      setFormKey((prevKey) => prevKey + 1); // Reset form key to clear inputs
+    } catch (error) {
+      console.log("error: ", error);
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -95,227 +119,258 @@ export default function ApplyForInternship() {
         className="grid lg:grid-cols-2 gap-8 lg:py-[55px] py-[30px]"
         style={{ borderTop: "1px solid rgba(0, 0, 0, 0.42) " }}
       >
-        {/* left side bar */}
+        {/* Left side */}
         <div className="grid lg:grid-rows-[240px_160px_25px_150px] gap-6 place-items-start mt-4 md:mt-8 lg:mt-16">
           <div className="text-[#082B5B] text-[2.188em] sm:text-[2.5em] md:text-[2.75em] lg:text-[3.25em] font-bold leading-[40px] md:leading-[114.286%] lg:leading-[62px] max-w-lg capitalize">
             We are looking forward to meeting you
           </div>
-
-          <Text type="paragraph" className="text-[#101010] sm:mt-4 md:mt-6 lg:mt-0 lg:w-[90%] lg:pb-6">
+          <Text
+            type="paragraph"
+            className="text-[#101010] sm:mt-4 md:mt-6 lg:mt-0 lg:w-[90%] lg:pb-6"
+          >
             We're thrilled to welcome you to our team! We're looking forward to
             getting to know you, learning about your unique perspective, and
-            sharing our expertise with you. We believe that you have the
-            potential to make a positive impact in the tech industry, and we're
-            excited to be a part of your journey. Get ready to learn, grow, and
-            have fun with us.
-          </Text>
-
-          <div className="bg-[#fff] h-[3px] w-full sm:my-6 md:my-8 lg:my-12"></div>
-
-          <Text type="paragraph" className="text-[#101010] lg:w-[90%] sm:mt-4 md:mt-2 lg:mt-12">
-            During your industrial training at Kinplus, you'll be immersed in a
-            dynamic and fast-paced environment. You'll work on real-world
-            projects, collaborate with our team, and gain hands-on experience in
-            the tech industry. It's a great opportunity to explore your
-            interests and gain valuable skills for your future career. Are you
-            ready to get started?
+            sharing our expertise with you. You have the potential to make a
+            positive impact in the tech industry, and we're excited to be part
+            of your journey. Get ready to learn, grow, and have fun with us.
           </Text>
         </div>
 
-        {/* right side bar */}
+        {/* Right side form */}
         <div className="bg-[#082B5B] lg:p-14 p-6 rounded-lg lg:mt-4">
-          <h3 className="lg:text-[44px] text-[35px] font-[700] text-[#F1F1F1] lg:leading-[54px] leading-[40px] max-w-md ">
+          <h3 className="lg:text-[44px] text-[35px] font-[700] text-[#F1F1F1] lg:leading-[54px] leading-[40px] max-w-md">
             Apply for our SIWES/IT program
           </h3>
-          <div key={formKey} className="grid sm:grid-flow-row gap-2 mt-4 sm:mt-5 md:mt-6 lg:mt-8">
-            <form
-              action=""
-              onSubmit={(e) => {
-                e.preventDefault();
-                uploadInternshipApplication();
-              }}
-            >
-              <div>
-                <Input
-                  type="text"
-                  name="Full Name"
-                  placeholder="Enter your Full Name"
-                  setInput={setFullName}
-                  isRequired={true}
-                />
-                {errors.fullName && (
-                  <p className="text-red-500">{errors.fullName}</p>
-                )}
-              </div>
 
-              <div>
-                <Input
-                  type="email"
-                  name="E-Mail"
-                  placeholder="Enter your E-Mail"
-                  setInput={setEmail}
-                  isRequired={true}
-                />
-                {errors.email && <p className="text-red-500">{errors.email}</p>}
-              </div>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="grid gap-4 mt-6"
+          >
+            {/* Full Name */}
+            <div>
+              <Input
+                type="text"
+                name="Full Name"
+                placeholder="Enter your Full Name"
+                isRequired={true}
+                {...register("fullName")}
+              />
+              {errors.fullName && (
+                <p className="text-red-500 ">{errors.fullName.message}</p>
+              )}
+            </div>
 
-              <div>
-                <Input
-                  type="phone"
-                  name="Phone Number"
-                  placeholder="Enter your Phone Number"
-                  setInput={setPhoneNumber}
-                  isRequired={true}
-                />
-                {errors.phoneNumber && (
-                  <p className="text-red-500">{errors.phoneNumber}</p>
-                )}
-              </div>
+            {/* Email */}
+            <div>
+              <Input
+                type="email"
+                name="Email"
+                placeholder="Enter your E-Mail"
+                isRequired={true}
+                {...register("email")}
+              />
+              {errors.email && (
+                <p className="text-red-500 ">{errors.email.message}</p>
+              )}
+            </div>
+            {/* Phone Number */}
+            <div>
+              <Input
+                type="text"
+                name="Phone Number"
+                placeholder="Enter your Phone Number"
+                isRequired={true}
+                maxLength={11}
+                {...register("phoneNumber")}
+              />
+              {errors.phoneNumber && (
+                <p className="text-red-500 ">{errors.phoneNumber.message}</p>
+              )}
+            </div>
 
-              <div>
-                <Input
-                  type="text"
-                  name="Religion"
-                  placeholder="Enter your Religion"
-                  setInput={setReligion}
-                  isRequired={true}
-                />
-                {errors.religion && (
-                  <p className="text-red-500">{errors.religion}</p>
-                )}
-              </div>
+            {/* Religion */}
+            <div>
+              {" "}
+              <Input
+                type="text"
+                name="Religion"
+                placeholder="Enter your Religion"
+                isRequired={true}
+                {...register("religion")}
+              />
+              {errors.religion && (
+                <p className="text-red-500">{errors.religion.message}</p>
+              )}
+            </div>
 
-              {/* Date of birth and gender */}
-              <div className="grid gap-3 sm:grid-cols-2 items-center">
+            {/* Date of Birth & Gender */}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="relative flex flex-col">
                 <Input
                   type="date"
-                  name="Date of Birth"
+                  name="dateOfBirth"
                   placeholder="Date of Birth"
-                  setInput={setDateOfBirth}
-                  isRequired={true}
+                  max="2010-12-31"
+                  {...register("dateOfBirth")}
                 />
+                {errors.dateOfBirth && (
+                  <p className="text-red-500 absolute -bottom-5">
+                    {errors.dateOfBirth.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="relative flex flex-col">
                 <Input
-                  onClick={() => setStateType("Gender")}
                   type="select"
-                  name="Gender"
+                  name="gender"
                   placeholder="Gender"
-                  selected={gender}
-                  setSelected={setGender}
                   options={genderInput}
-                  isSelect={activeDropdown === 'gender'}
-                  setIsSelect={() => handleDropdownToggle('gender')}
-                  isRequired={true}
+                  isSelect={activeDropdown === "gender"}
+                  setIsSelect={() => handleDropdownToggle("gender")}
+                  error={errors.gender?.message}
+                  selected={watch("gender")}
+                  setSelected={(value) => setValue("gender", value)}
                 />
+                {errors.gender && (
+                  <p className="text-red-500 absolute -bottom-5">
+                    {errors.gender.message}
+                  </p>
+                )}
               </div>
+            </div>
 
-              <div>
-                <Input
-                  type="text"
-                  name="Address"
-                  placeholder="Enter your Address"
-                  setInput={setAddress}
-                  isRequired={true}
-                />
-              </div>
+            {/* Address */}
+            <div>
+              <Input
+                type="text"
+                name="Address"
+                placeholder="Enter your Address"
+                isRequired={true}
+                {...register("address")}
+              />
+              {errors.address && (
+                <p className="text-red-500 ">{errors.address.message}</p>
+              )}
+            </div>
 
-              <div>
-                <Input
-                  type="text"
-                  name="Name of Institution"
-                  placeholder="Enter the Name of your School"
-                  setInput={setNameOfInstitution}
-                  isRequired={true}
-                />
-              </div>
+            {/* Institution Name */}
+            <div>
+              <Input
+                type="text"
+                name="Name of Institution"
+                placeholder="Enter the Name of your School"
+                isRequired={true}
+                {...register("nameOfInstitution")}
+              />
+              {errors.nameOfInstitution && (
+                <p className="text-red-500 ">
+                  {errors.nameOfInstitution.message}
+                </p>
+              )}
+            </div>
 
-              <div>
-                <Input
-                  type="text"
-                  name="Course of Study"
-                  placeholder="Tell us what you are studying"
-                  setInput={setCourseOfStudy}
-                  isRequired={true}
-                />
-              </div>
+            {/* Course of Study */}
+            <div>
+              {" "}
+              <Input
+                type="text"
+                name="Course of Study"
+                placeholder="Tell us what you are studying"
+                isRequired={true}
+                {...register("courseOfStudy")}
+              />
+              {errors.courseOfStudy && (
+                <p className="text-red-500 ">{errors.courseOfStudy.message}</p>
+              )}
+            </div>
 
-              <div>
-                <Input
-                  type="text"
-                  name="How long is your IT/SIWES?"
-                  placeholder="How many months are you using?"
-                  setInput={setDuration}
-                  isRequired={true}
-                />
-              </div>
+            {/* Duration */}
+            <div>
+              <Input
+                type="text"
+                name="How long is your IT/SIWES?"
+                placeholder="How many months are you using?"
+                isRequired={true}
+                spanText={"( in months )"}
+                {...register("duration")}
+              />
+              {errors.duration && (
+                <p className="text-red-500 ">{errors.duration.message}</p>
+              )}
+            </div>
 
-              <div className="grid gap-3 sm:grid-cols-2 items-center">
+            {/* Start Date & End Date */}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="relative">
                 <Input
                   type="date"
                   name="Start Date"
                   placeholder="When are you starting?"
-                  setInput={setStartDate}
-                  isRequired={true}
+                  min={new Date().toISOString().split("T")[0]} // Ensure future date
+                  {...register("startDate")}
                 />
+                {errors.startDate && (
+                  <p className="text-red-500 absolute -bottom-5">
+                    {errors.startDate.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="relative">
                 <Input
                   type="date"
                   name="End Date"
                   placeholder="When are you likely to finish?"
-                  setInput={setEndDate}
-                  isRequired={true}
+                  min={new Date().toISOString().split("T")[0]} // Ensure future date
+                  {...register("endDate")}
                 />
+                {errors.endDate && (
+                  <p className="text-red-500 absolute -bottom-5">
+                    {errors.endDate.message}
+                  </p>
+                )}
               </div>
+            </div>
 
-              {/* health challenges */}
-              <div className="py-3">
-                <p className="text-xl text-white">
-                  Do you have any health challenges
-                </p>
-                <div onClick={() => setAnyHealthChallenges("Yes")}>
-                  <Input
-                    type="checkbox"
-                    name="Do you have any health challenge?"
-                    placeholder="Do you have any health challenge?"
-                    radioText="Yes"
-                    isChecked={anyHealthChallenges === "Yes"}
-                    onCheck={() => setAnyHealthChallenges("Yes")}
-                    isRequired={true}
-                  />
-                </div>
+            {/* Health Challenges */}
+            <div className="py-3">
+              <p className="text-xl text-white">
+                Do you have any health challenges?
+              </p>
+              <Input
+                type="checkbox"
+                radioText="Yes"
+                isChecked={healthChallenge === "Yes"}
+                onCheck={() => setValue("anyHealthChallenges", "Yes")}
+              />
+              <Input
+                type="checkbox"
+                radioText="No"
+                isChecked={healthChallenge === "No"}
+                onCheck={() => setValue("anyHealthChallenges", "No")}
+              />
+            </div>
 
-                <div onClick={() => setAnyHealthChallenges("No")}>
-                  <Input
-                    type="checkbox"
-                    name="Do you have any health challenge?"
-                    placeholder="Do you have any health challenge?"
-                    radioText="No"
-                    isChecked={anyHealthChallenges === "No"}
-                    onCheck={() => setAnyHealthChallenges("No")}
-                    isRequired={true}
-                  />
-                </div>
-              </div>
+            {/* Health Challenges Description (Conditional) */}
+            {healthChallenge === "Yes" && (
+              <Input
+                type="textarea"
+                name="Description of Health Challenges"
+                placeholder="Please describe your health challenge"
+                {...register("descriptionOfHealthChallenges")}
+              />
+            )}
 
-              {/* if yes describe your health challenges */}
-              <div>
-                <Input
-                  type="textarea"
-                  name="If yes describe your health Challenge"
-                  setInput={setDescriptionOfHealthChallenges}
-                  isTextAreaRequired={
-                    anyHealthChallenges == "Yes" ? true : false
-                  }
-                />
-              </div>
-
-              <div className="w-40 mx-auto">
-                <Button
-                  type="customizedWhite"
-                  text="Submit"
-                  isLoading={isLoading}
-                />
-              </div>
-            </form>
-          </div>
+            {/* Submit Button */}
+            <div className="w-40 mx-auto">
+              <Button
+                type="customizedWhite"
+                text="Submit"
+                isLoading={isLoading}
+              />
+            </div>
+          </form>
         </div>
       </Element>
     </PageLayout>

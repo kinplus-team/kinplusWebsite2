@@ -5,101 +5,106 @@ import Button from "../../../components/Button";
 import { submitResume } from "../../../services/resumeServices";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { z } from "zod";
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+// validation schema
+const applyForRoleSchema = z.object({
+  fullName: z
+    .string()
+    .min(1, "Full name is required")
+    .regex(/^[a-zA-Z\s]+$/, "Full Name must contain only alphabets"),
+  email: z.string().email("Invalid email address"),
+  phoneNumber: z
+    .string()
+    .regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
+  jobRole: z.string().min(1, "Job role is required"),
+  portfolioLink: z
+    .string()
+    .url("Please enter a valid URL starting with https://")
+    .optional(),
+  cv: z.instanceof(File).refine((file) => file?.type === "application/pdf", {
+    message: "Please upload a PDF file",
+  }),
+});
 
 export default function ApplyForRole() {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [jobRole, setJobRole] = useState("");
-  const [cv, setCv] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
-  const [portfolioLink, setPortfolioLink] = useState("");
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(applyForRoleSchema),
+    mode: "onChange", // Validate on every change
+  });
 
-  const [formKey, setFormKey] = useState(0);
+  const watchCV = watch("cv");
 
-  const [isloading, setIsLoading] = useState(false);
+  const handleResumeUpload = async (file) => {
+    const resume = new FormData();
+
+    if (file.type !== "application/pdf") {
+      throw new Error("Please upload a PDF file");
+    }
+
+    resume.append("file", file);
+    resume.append("upload_preset", "cover-image");
+
+    try {
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dh8baxegc/image/upload",
+        resume
+      );
+      return response.data.secure_url;
+    } catch (error) {
+      console.error("Error uploading to Cloudinary:", error);
+      throw new Error("Failed to upload resume");
+    }
+  };
 
   const roleOptions = [
-    { title: "Frontend Developer" },
-    { title: "Product Designer" },
-    { title: "Product Manager" },
-    { title: "Backend Developer" },
-    { title: "Cybersecurity Expert" },
-    { title: "Others"},
+    { title: "Frontend Developer", value: "Frontend Developer" },
+    { title: "Product Designer", value: "Product Designer" },
+    { title: "Product Manager", value: "Product Manager" },
+    { title: "Backend Developer", value: "Backend Developer" },
+    { title: "Cybersecurity Expert", value: "Cybersecurity Expert" },
+    { title: "Others", value: "Others" },
   ];
 
-  const [ activeDropdown, setActiveDropdown] = useState(null)
-
   const handleDropdownToggle = (dropdownName) => {
-    // If the clicked dropdown is already open, close it; otherwise, open it
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
   };
 
-  const applicationFormImputs = [
-    {
-      label: "Full Name",
-      placeholder: "Enter your Fullname",
-      fn: setFullName,
-      type: "text",
-    },
-    {
-      label: "Email",
-      placeholder: "Enter your email",
-      fn: setEmail,
-      type: "text",
-    },
-  ];
-
-  console.log(cv.type);
-  const handleResumeUpload = async () => {
-    const resume = new FormData();
-
-    if (cv.type != "application/pdf") {
-      setIsLoading(false);
-      return toast.error("Please upload your resume");
-    }
-
-    resume.append("file", cv);
-    resume.append("upload_preset", "cover-image");
-
-    return axios.post(
-      "https://api.cloudinary.com/v1_1/dh8baxegc/image/upload",
-      resume
-    );
-  };
-
-  const submitApplicantResume = async (event) => {
-    event.preventDefault();
+  const onSubmit = async (data) => {
     setIsLoading(true);
-    const resumeLink = await handleResumeUpload();
-
-    if (jobRole == "") {
+    try {
+      const resumeLink = await handleResumeUpload(data.cv);
+      await submitResume(
+        data.fullName,
+        data.email,
+        data.phoneNumber,
+        data.jobRole,
+        data.portfolioLink,
+        resumeLink
+      );
       setIsLoading(false);
-      return toast.error("Select a job role");
+      toast.success("Thank you for submitting your resume!");
+      reset();
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      toast.error(
+        error.message || "Something went wrong with your application."
+      );
+      setIsLoading(false);
     }
-    if (resumeLink.data.secure_url) {
-      submitResume(
-        fullName,
-        email,
-        phoneNumber,
-        jobRole.title,
-        resumeLink.data.secure_url,
-        portfolioLink
-      )
-        .then((response) => {
-          toast.success(
-            "Thank you for submitting your resume, we will go through it and give you feedback"
-          );
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          toast.error(error.response.errors[0].message);
-          setIsLoading(false);
-        });
-    }
-    setJobRole("");
-    // Force re-render by updating the form key
-    setFormKey(formKey + 1);
   };
 
   return (
@@ -108,87 +113,131 @@ export default function ApplyForRole() {
         <h3 className="lg:text-[48px] text-[35px] font-[700] text-[#fff] lg:leading-[64px] leading-[40px] max-w-md">
           Apply for Job
         </h3>
-        <p className="text-[#fff] text-lg  lg:leading-[30px] leading-[26px] max-w-2xl">
+        <p className="text-[#fff] text-lg lg:leading-[30px] leading-[26px] max-w-2xl">
           You are just a single step away from joining the best team to work
-          with, look for a perfect opportunity with us and become a part of the
-          Kinplus family.
+          with. Apply now to become a part of the Kinplus family.
         </p>
         <div className="grid gap-6">
-          <form onSubmit={submitApplicantResume}>
-            <div
-              key={formKey}
-              className="grid lg:gap-x-12 lg:gap-y-6 gap-4 lg:grid-cols-2 mb-10"
-            >
-              {applicationFormImputs.map((applicationFormImput, i) => (
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="grid lg:gap-x-12 lg:gap-y-6 gap-4 lg:grid-cols-2 mb-10">
+              <div>
                 <Input
-                  type={applicationFormImput.type}
-                  key={i}
-                  name={applicationFormImput.label}
-                  placeholder={applicationFormImput.placeholder}
-                  setInput={applicationFormImput.fn}
+                  type="text"
+                  name="Full Name"
+                  placeholder="Enter your Full Name"
                   isRequired={true}
+                  {...register("fullName")}
                 />
-              ))}
+                {errors.fullName && (
+                  <p className="text-red-500 ">{errors.fullName.message}</p>
+                )}
+              </div>
 
-              <Input
-                type="text"
-                name="Phone number"
-                placeholder="Enter your phone number"
-                setInput={setPhoneNumber}
-                isRequired={true}
-              />
+              <div>
+                <Input
+                  type="email"
+                  name="Email"
+                  placeholder="Enter your E-Mail"
+                  isRequired={true}
+                  {...register("email")}
+                />
+                {errors.email && (
+                  <p className="text-red-500">{errors.email.message}</p>
+                )}
+              </div>
 
-              <Input
-                type="select"
-                name="Job role"
-                placeholder="What role are you interested in?"
-                selected={jobRole}
-                setSelected={setJobRole}
-                options={roleOptions}
-                isSelect={activeDropdown === 'Job role'}
-                setIsSelect={() => handleDropdownToggle('Job role')}
-                isRequired={true}
-              />
+              <div>
+                <Input
+                  type="text"
+                  name="Phone Number"
+                  placeholder="Enter your Phone Number"
+                  isRequired={true}
+                  maxLength={11}
+                  {...register("phoneNumber")}
+                />
+                {errors.phoneNumber && (
+                  <p className="text-red-500">{errors.phoneNumber.message}</p>
+                )}
+              </div>
 
-              <Input
-                type="text"
-                name="Portfolio link"
-                placeholder="portfolio link (Optional)"
-                setInput={setPortfolioLink}
-                isRequired={false}
-              />
+              {/* Dropdown for Job Role */}
+              <div>
+                <Input
+                  type="select"
+                  name="jobRole"
+                  placeholder="What role are you interested in?"
+                  options={roleOptions}
+                  isSelect={activeDropdown === "jobRole"}
+                  setIsSelect={() => handleDropdownToggle("jobRole")}
+                  error={errors.jobRole?.message}
+                  selected={watch("jobRole")}
+                  setSelected={(value) => setValue("jobRole", value)}
+                />
+                {errors.jobRole && (
+                  <p className="text-red-500">{errors.jobRole.message}</p>
+                )}
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="Portfolio link"
+                  placeholder="Portfolio link (Optional)"
+                  isRequired={false}
+                  {...register("portfolioLink")}
+                />
+                {errors.portfolioLink && (
+                  <p className="text-red-500">{errors.portfolioLink.message}</p>
+                )}
+              </div>
             </div>
 
-            <label className="cursor-pointer">
-              <div className="bg-[#D9D9D9] w-full rounded-lg py-8 lg:px-16 px-8 text-center flex flex-col items-center">
-                <p className="text-lg font-medium">Upload Your CV/Resume*</p>
-                <p className="text-lg font-light">Supported Format: PDF</p>
-                <input
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file && file.type === "application/pdf") {
-                      setCv(file);
-                    } else {
-                      alert("Please upload a PDF file.");
-                    }
-                  }}
-                  type="file"
-                  className="hidden"
-                  accept="application/pdf"
-                  name="resume"
-                  required
-                />
-
-                {cv.name}
-              </div>
-            </label>
+            <Controller
+              name="cv"
+              control={control}
+              render={({ field: { onChange, onBlur, name } }) => (
+                <div>
+                  <label className="cursor-pointer">
+                    <div className="bg-[#D9D9D9] w-full rounded-lg py-8 lg:px-16 px-8 text-center flex flex-col items-center">
+                      {watchCV ? (
+                        <p>{watchCV.name}</p>
+                      ) : (
+                        <>
+                          <p className="text-lg font-medium">
+                            Upload Your CV/Resume{" "}
+                            <span className="text-red-500">*</span>
+                          </p>
+                          <p className="text-lg font-light">
+                            Supported Format: PDF
+                          </p>
+                        </>
+                      )}
+                      <input
+                        type="file"
+                        onChange={(e) => {
+                          const file = e.target.files[0];
+                          onChange(file);
+                        }}
+                        onBlur={onBlur}
+                        name={name}
+                        accept="application/pdf"
+                        className="hidden"
+                      />
+                    </div>
+                  </label>
+                  {errors.cv && (
+                    <p className="text-red-500 mt-1">{errors.cv.message}</p>
+                  )}
+                </div>
+              )}
+            />
 
             <div className="flex lg:justify-end justify-center mt-5">
               <div className="w-40">
                 <Button
                   type="customizedWhite"
                   text="Apply Now"
-                  isLoading={isloading}
+                  isLoading={isLoading}
                 />
               </div>
             </div>
