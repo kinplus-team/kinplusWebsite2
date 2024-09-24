@@ -77,12 +77,12 @@ export default function ContactUsServices() {
       <div className="grid lg:grid-rows-[100px_auto_auto_1fr] grid-rows-[auto_150px_50px_1fr] gap-6 w-full p-2">
         <Text
           type="heading"
-          className="text-[#082B5B] capitalize"
+          className="text-[#082B5B] text-[35px] lg:text-[52px] leading-[110.286%]  max-w-5 capitalize"
         >
           Get Started
         </Text>
 
-        <ul className="text-[#101010] lg:text-[1.3rem] text-base grid gap-3 list-inside list-disc marker:text-[#101010]">
+        <ul className="text-[#101010] lg:text-[1.3rem] lg:mt-12 text-base grid gap-3 list-inside list-disc marker:text-[#101010]">
           <li>Get started quickly (1 - 3 weeks)</li>
           <li>Large pool of vetted and proven developers</li>
           <li>All popular software languages and frameworks</li>
