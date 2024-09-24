@@ -104,12 +104,12 @@ export default function ContactUsTraining() {
     <PageLayout className="flex justify-between flex-col md:flex-row gap-20 lg:py-40 py-32">
       <div
         id="target-section"
-        className="grid lg:grid-rows-[100px_auto_auto_1fr] grid-rows-[100px_150px_50px_1fr] gap-6 w-full p-2"
+        className="grid lg:grid-rows-[100px_auto_auto_1fr] grid-rows-[100px_150px_50px_1fr] gap-6 w-full p-2 mt-10 lg:mt-20"
       >
-        <h3 className="text-5xl font-bold text-[#082B5B] capitalize max-w-10">
+        <h3 className="text-[35px] lg:text-[52px] leading-[110.286%] font-bold text-[#082B5B] capitalize max-w-10">
           Get Started
         </h3>
-        <ul className="text-[#101010] lg:text-[1.3rem] text-base grid gap-3 list-inside list-disc marker:text-[#101010]">
+        <ul className="text-[#101010] lg:text-[1.3rem] lg:mt-8 text-base grid gap-3 list-inside list-disc marker:text-[#101010]">
           <li>Different Plan Options for you</li>
           <li>Large pool of vetted and proven instructors</li>
           <li>Available Resources to help later on</li>
