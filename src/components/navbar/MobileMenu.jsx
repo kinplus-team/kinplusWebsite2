@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 // assets
 import kinplusLogoBlue from "../../assets/kinplusBlue.png";
@@ -17,6 +17,25 @@ import facebookIcon from "../../assets/components/navbar/svg/facebook.svg";
 import instagramIcon from "../../assets/components/navbar/svg/instagram.svg";
 import linkedInIcon from "../../assets/components/navbar/svg/linkedIn.svg";
 import twitterIcon from "../../assets/components/navbar/svg/twitter.svg";
+
+// Social media links
+const bottomIcons = [
+  {
+    icon: facebookIcon,
+    link: "https://web.facebook.com/kinplustechnologies/?_rdc=1&_rdr",
+  },
+  {
+    icon: linkedInIcon,
+    link: "https://www.linkedin.com/company/kinplustechnologies/",
+  },
+  {
+    icon: instagramIcon,
+    link: "https://www.instagram.com/kinplustechnologies/",
+  },
+  { icon: twitterIcon, 
+    link: "https://twitter.com/kinplustech" },
+  // { icon: youtube, link: "https://www.youtube.com/@kinplustech" },
+];
 
 // Static Data
 import staticData from "../../repository/home/navbar";
@@ -54,6 +73,8 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             : pathname == "/trainings/siwes"
             ? "text-black"
             : pathname == "/contact-us/services"
+            ? "text-black"
+            : pathname == "/contact-us/training"
             ? "text-black"
             : pathname == "/trainings/workshop/kinplus-nitda"
             ? "text-black"
@@ -175,9 +196,11 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
           {/* bottom section */}
           <div className=" mt-8 grid gap-3 pb-5">
             <div className="flex gap-3 justify-center">
-              {[facebookIcon, linkedInIcon, instagramIcon, twitterIcon].map(
-                (icon, index) => (
-                  <img key={index} src={icon} className="w-10 h-10" />
+            {bottomIcons.map(
+                (bottomIcon, index) => (
+                  <a href={bottomIcon.link}>
+                    <img key={index} src={bottomIcon.icon} className="w-10 h-10" />
+                  </a>
                 )
               )}
             </div>
