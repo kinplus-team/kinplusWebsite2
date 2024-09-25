@@ -53,7 +53,7 @@ export default function MyForm() {
       </div>
 
       <div className="hidden lg:block text-[#556987] text-[1.125em] lg:mt-[4em] lg:mb-[-4em]">
-      For more sponsorship and enquiries, reach us on: <a href="https://wa.me/+2347069718643" className="underline">+2347069718643,</a> <a href="https://wa.me/+2348116400858" className="underline">+2348116400858</a>
+      For more sponsorship and enquiries, reach us on: <a href="https://wa.me/+2347075199782" className="underline">+2347075199782,</a> <a href="https://wa.me/+2348116400858" className="underline">+2348116400858</a>
       </div>
     </PageLayout>
   );

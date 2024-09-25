@@ -14,7 +14,7 @@ export default function Footer() {
 
   const contactDetails = [
     { type: "Email", value: "help@kinplusgroup.com" },
-    { type: "Phone", value: "+234 706 971 8643,", valueOne: "+234 811 640 0858"},
+    { type: "Phone", value: "+234 707 519 9782,", valueOne: "+234 811 640 0858"},
   ];
 
   const quickLinks = [
@@ -149,7 +149,7 @@ export default function Footer() {
                         {contactDetail.type}:
                         <Link
                           className="underline"
-                          to="https://wa.me/+2347069718643"
+                          to="https://wa.me/+2347075199782"
                         >
                           {contactDetail.value}
                         </Link>
