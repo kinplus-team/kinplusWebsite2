@@ -21,7 +21,7 @@ export default function WhatWeDo() {
           <Text type="subparagraph" className="text-[#101010]">
             We're here to support you through the entire process of product
             development, from ideation to launch and beyond. We'll help you
-            navigate any challenges that come up along the way, and we're always
+            navigate any challenge that come up along the way, and we're always
             focused on improving customer retention and increasing Customer
             Lifetime Value. We're not just a service provider, we're a partner
             in your success.
