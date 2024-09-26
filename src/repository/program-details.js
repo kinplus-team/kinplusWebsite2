@@ -125,7 +125,7 @@ const courseDetails = [
   {
     title: "Cyber Security",
     description:
-      "Dive your way into learning how to identifying, troubleshooting and resolving problems and issues in a faulty computer. Dive your way into learning how to identifying, troubleshooting and resolving problems and issues in a faulty computer.",
+      "Our world reply on Digital Systems, dive your way into learning how to identify threats, mitigate threats, secure future and defend organization from cyber attacks. Cybersecurity is more than important in today global world environment because of the cyber risk",
     pricingCardInfo: {
       medium: {
         courseDuration: "3 Month plan",
