@@ -41,7 +41,7 @@ export default function WhatWeDo() {
             type="subheading"
             className="capitalize text-[#082B5B] max-w-xl"
           >
-            We create beautiful product that captures the heart
+            We create beautiful products that capture the heart
           </Text>
 
           <div className="grid gap-6 place-self-center">

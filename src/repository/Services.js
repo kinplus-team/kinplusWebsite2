@@ -69,7 +69,7 @@ const approachesToProductDevelopment = [
       "We translate designs into functional, working products. Our developers work collaboratively to build the actual solution, achieving the desired scalability, performance, and technical feasibility.",
   },
   {
-    title: "Testing and Iteration:",
+    title: "Testing and Iteration",
     description:
       "In order to ensure that our products meet quality standards, we conduct internal and user testing. We gather feedback, identify issues, and iterate.",
   },

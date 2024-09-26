@@ -4,8 +4,8 @@ export default function Index() {
   const ourStats = [
     { title: "Resources", value: 112 },
     { title: "Trained", value: 713 },
-    { title: "Trainees", value: 161 },
-    { title: "cohorts", value: 17 },
+    // { title: "Trainees", value: 161 },
+    { title: "cohorts", value: 9 },
   ];
 
   return (
