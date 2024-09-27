@@ -8,6 +8,7 @@ import Text from "../../../components/Text";
 export default function WhatWeDo() {
   return (
     <PageLayout>
+      {/* What We Do */}
       <div className="grid lg:grid-cols-[43%_1fr] lg:gap-[90px] gap-10 -mt-10 lg:mt-0">
         <div className="grid grid-rows-[auto_auto_1fr] gap-6 lg:gap-3 place-self-center">
           <Text type="title" className="text-[#1877F9] capitalize">
