@@ -12,8 +12,8 @@ const courseDetails = [
         whatsIncluded: [
           "fundamental of programming",
           "Creative styling",
-          "One framework",
-          "One programming languange ",
+          "HTML and CSS",
+          "One real life project ",
         ],
       },
       pro: {
@@ -22,10 +22,10 @@ const courseDetails = [
           "Gain hands-on experience in programming software products.",
         price: 150000,
         whatsIncluded: [
-          "fundamental of programming",
-          "Creative styling",
+          "All on the 3 months plan",
+          "One additional real life project",
+          "Javascript",
           "One framework",
-          "One programming languange ",
         ],
       },
     },
@@ -33,7 +33,7 @@ const courseDetails = [
   {
     title: "Product Design",
     description:
-      "A magnificent UI goes beyond capturing the user’s attention, creating outstanding UX, and building the business brand. Choose a career path in ui/ux design to become a professional Product designer using our training guidelines",
+      "A magnificent UI achieves the art of capturing the user’s attention, creating outstanding UX, and building the business brand. Choose a career path in ui/ux design to become a professional Product designer using our training guidelines",
     pricingCardInfo: {
       medium: {
         courseDuration: "3 Month plan",
@@ -64,7 +64,7 @@ const courseDetails = [
   {
     title: "Data Analysis",
     description:
-      "To better understand the meaning of Data Science/Analysis”, it describes a series of techniques aimed at extracting relevant and valuable information from extensive and diverse sets of data gathered from different sources and varying in sizes. Apply to get started",
+      "Gain the techniques of extracting relevant and valuable information from extensive and diverse sets of data gathered from different sources and varying in sizes. Apply to get started",
     pricingCardInfo: {
       medium: {
         courseDuration: "3 Month plan",
@@ -114,10 +114,11 @@ const courseDetails = [
           "Become a professional designer with advanced creative skills",
         price: 150000,
         whatsIncluded: [
+          
+          "All on the three month plan",
           "Complex designs in flyers",
-          "Advanced branding",
-          "Photo manipulation",
-          "Design content, client pitching, and lots more",
+          "Photo manipulation ",
+          "Advanced branding, design content, client pitching, and lots more",
         ],
       },
     },
@@ -125,7 +126,7 @@ const courseDetails = [
   {
     title: "Cyber Security",
     description:
-      "Our world reply on Digital Systems, dive your way into learning how to identify threats, mitigate threats, secure future and defend organization from cyber attacks. Cybersecurity is more than important in today global world environment because of the cyber risk",
+      "Our world revolves around on Digital Systems. Dive your way into learning how to identify threats, mitigate threats, secure the future, and defend organization from cyber attacks. Cybersecurity is more than important in today's global world environment because of the many cyber risks",
     pricingCardInfo: {
       medium: {
         courseDuration: "3 Month plan",
