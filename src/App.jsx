@@ -226,6 +226,8 @@ function App() {
           element={<PageNotFound />}
         />
       </Routes>
+
+      {/* toast alert */}
       <ToastContainer
         autoClose={3000}
         hideProgressBar={false}
