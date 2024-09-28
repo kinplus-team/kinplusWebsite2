@@ -49,7 +49,23 @@ function App() {
            }
          />
          <Route
+           path="/kinplus"
+           element={
+             <MainLayout>
+               <Home />
+             </MainLayout>
+           }
+         />
+         <Route
            path="/about-us"
+           element={
+             <MainLayout>
+               <AboutUs />
+             </MainLayout>
+           }
+         />
+         <Route
+           path="/about"
            element={
              <MainLayout>
                <AboutUs />
@@ -113,6 +129,14 @@ function App() {
            }
          />
          <Route
+           path="/training"
+           element={
+             <MainLayout>
+               <Training />
+             </MainLayout>
+           }
+         />
+         <Route
            path="/trainings/courses/:training"
            element={
              <MainLayout>
@@ -122,6 +146,14 @@ function App() {
          />
          <Route
            path="/trainings/siwes"
+           element={
+             <MainLayout>
+               <Internship />
+             </MainLayout>
+           }
+         />
+         <Route
+           path="/siwes"
            element={
              <MainLayout>
                <Internship />
@@ -174,7 +206,7 @@ function App() {
          />
        </Routes>
        <ToastContainer
-         autoClose={2000}
+         autoClose={3000}
          hideProgressBar={false}
          newestOnTop={false}
          closeOnClick
