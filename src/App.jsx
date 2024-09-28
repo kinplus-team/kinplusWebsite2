@@ -202,7 +202,7 @@ function App() {
           }
         />
         <Route
-          path="/swies"
+          path="/siwes"
           element={
             <Navigate
               to="/trainings/siwes"
