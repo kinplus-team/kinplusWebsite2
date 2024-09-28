@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Disallow crawling of administrative areas
+Disallow: /admin/
+Disallow: /login/
+Disallow: /user/
+
+# Allow crawling of specific file types
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+
+# Sitemap location
+Sitemap: https://www.kinplusgroup.com/sitemap.xml
+
+# Crawl-delay for specific bots (optional)
+User-agent: AdsBot-Google
+Crawl-delay: 5
