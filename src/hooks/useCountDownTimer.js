@@ -16,7 +16,7 @@ export const useCountdownTimer = () => {
     let targetDate = new Date("10/29/2024 23:59:59");
     // });
 
-    console.log(targetDate);
+    // console.log(targetDate);
 
     if (targetDate != undefined) {
       const interval = setInterval(() => {

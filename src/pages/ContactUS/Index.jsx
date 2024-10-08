@@ -2,8 +2,10 @@ import React from "react";
 import ContactUsCard from "../../components/contactUs/ContactUsCard/Index";
 import PageLayout from "../../components/Layout/PageLayout";
 import Text from "../../components/Text";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 export default function MyForm() {
+  useDocumentTitle("Comtact Us")
   const contactUsCardDetails = [
     {
       label: "Our Service",

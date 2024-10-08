@@ -7,8 +7,10 @@ import WhatWeDo from "./component/WhatWeDo";
 import NextCohort from "./component/NextCohort";
 import OurCourses from "./component/OurCourses";
 import FAQ from "./component/FAQ";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 export default function Homepage() {
+  useDocumentTitle("Homepage")
   return (
     <>
       <Hero />

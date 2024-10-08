@@ -6,10 +6,12 @@ import errorImage from "../../assets/PageNotFound/errorImage.svg";
 import errorImageMobile from "../../assets/PageNotFound/errorImageMobile.svg";
 import Button from "../../components/Button";
 import { Link, useNavigate } from "react-router-dom";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const PageNotFound = () => {
   const [isHover, setIsHover] = useState(false);
   const navigate = useNavigate();
+  useDocumentTitle("Error Page")
 
   // Navigate back one page in the browser's history
   const handleGoBack = () => {    

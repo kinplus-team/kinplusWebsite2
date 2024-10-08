@@ -7,8 +7,10 @@ import WhyLearnFromUs from "./WhyLearnFromUs.jsx";
 import Gallery from "./Gallery.jsx";
 import Testimonial from "./Testimonial.jsx";
 import FAQ from "./FAQ.jsx";
+import useDocumentTitle from "../../hooks/useDocumentTitle.jsx";
 
 export default function Training() {
+  useDocumentTitle("Training")
   return (
     <div>
       <Hero />

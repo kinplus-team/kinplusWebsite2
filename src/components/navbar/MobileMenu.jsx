@@ -32,8 +32,7 @@ const bottomIcons = [
     icon: instagramIcon,
     link: "https://www.instagram.com/kinplustechnologies/",
   },
-  { icon: twitterIcon, 
-    link: "https://twitter.com/kinplustech" },
+  { icon: twitterIcon, link: "https://twitter.com/kinplustech" },
   // { icon: youtube, link: "https://www.youtube.com/@kinplustech" },
 ];
 
@@ -44,6 +43,8 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
   const [isMobileNav, setIsMobileNav] = useState(false);
   const location = useLocation();
   const { pathname } = location;
+
+  const currentYear = new Date().getFullYear()
 
   // console.log(navbarColor);
   return (
@@ -92,7 +93,7 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             ? "text-black"
             : pathname == "/trainings/workshop" && navbarColor
             ? "text-black"
-             : pathname == "/*" && navbarColor
+            : pathname == "/*" && navbarColor
             ? "text-black"
             : "text-white"
         }`}
@@ -172,7 +173,10 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
                   {isDropDownOpen && navLinks.title == "Trainings" && (
                     <div>
                       {staticData.trainingList.map((list, i) => (
-                        <NavLink key={i} to={list.to}>
+                        <NavLink
+                          key={i}
+                          to={list.to}
+                        >
                           <div
                             className={`px-3 py-1 mt-4 grid grid-flow-col gap-2 items-center justify-start hover:text-black font-light`}
                             onClick={() => {
@@ -196,19 +200,23 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
           {/* bottom section */}
           <div className=" mt-8 grid gap-3 pb-5">
             <div className="flex gap-3 justify-center">
-            {bottomIcons.map(
-                (bottomIcon, index) => (
-                  <a href={bottomIcon.link}>
-                    <img key={index} src={bottomIcon.icon} className="w-10 h-10" />
-                  </a>
-                )
-              )}
+              {bottomIcons.map((bottomIcon, index) => (
+                <a
+                  href={bottomIcon.link}
+                  key={index}
+                >
+                  <img
+                    src={bottomIcon.icon}
+                    className="w-10 h-10"
+                  />
+                </a>
+              ))}
             </div>
 
             <div className="bg-black h-[0.915px] w-full"></div>
             <div className="py-4">
               <p className="text-lg leading-6 mx-auto text-center max-w-xs">
-                Copyright © 2024 Kinplus Technologies. All rights reserved.
+                Copyright © {currentYear} Kinplus Technologies. All rights reserved.
               </p>
             </div>
           </div>

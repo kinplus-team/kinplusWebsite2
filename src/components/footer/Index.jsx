@@ -14,7 +14,11 @@ export default function Footer() {
 
   const contactDetails = [
     { type: "Email", value: "help@kinplusgroup.com" },
-    { type: "Phone", value: "+234 707 519 9782,", valueOne: "+234 811 640 0858"},
+    {
+      type: "Phone",
+      value: "+234 707 519 9782,",
+      valueOne: "+234 811 640 0858",
+    },
   ];
 
   const quickLinks = [
@@ -67,12 +71,18 @@ export default function Footer() {
       icon: instagram,
       link: "https://www.instagram.com/kinplustechnologies/",
     },
-    { icon: x, link: "https://twitter.com/kinplustech" },
-    { icon: youtube, link: "https://www.youtube.com/@kinplustech" },
+    {
+      icon: x,
+      link: "https://twitter.com/kinplustech",
+    },
+    {
+      icon: youtube,
+      link: "https://www.youtube.com/@kinplustech",
+    },
   ];
 
   // if(pathname !== '/' || '/about-us '|| '/our-services' || '/trainings ' || '/trainings/workshop'  || '/blog' || '/careers'){
-  //   return null    
+  //   return null
   // }
 
   return (
@@ -105,7 +115,10 @@ export default function Footer() {
           }
           className="w-40 place-self-center"
         >
-          <Button type="customizedWhite" text="Talk to us" />
+          <Button
+            type="customizedWhite"
+            text="Talk to us"
+          />
         </Link>
       </div>
 
@@ -133,7 +146,10 @@ export default function Footer() {
 
               <div className="lg:mr-[5em] 2xl:mr-[10em]">
                 {contactDetails.map((contactDetail, i) => (
-                  <div key={i} className={`lg:text-lg`}>
+                  <div
+                    key={i}
+                    className={`lg:text-lg`}
+                  >
                     {i == 0 ? (
                       <div className="flex gap-1">
                         {contactDetail.type}:{" "}
@@ -206,14 +222,17 @@ export default function Footer() {
             {/* address and social media links */}
             <div>
               <p className="lg:text-[18px] lg:leading-[35px] leading-[24px]">
-                2nd  Floor, Christore Building, <br />
+                2nd Floor, Christore Building, <br />
                 Opp. Crunchies Restaurant, Similoluwa, <br />
                 Ado Ekiti, Ekiti State, Nigeria.
               </p>
 
               <div className="flex gap-6 my-3">
                 {socialMediaIcons.map((socialMediaIcon, i) => (
-                  <Link to={socialMediaIcon.link} key={i}>
+                  <Link
+                    to={socialMediaIcon.link}
+                    key={i}
+                  >
                     <img
                       src={socialMediaIcon.icon}
                       alt="social media icon"

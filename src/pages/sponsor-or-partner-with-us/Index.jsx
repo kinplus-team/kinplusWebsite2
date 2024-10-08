@@ -8,8 +8,10 @@ import Button from "../../components/Button";
 import { useState } from "react";
 import Text from "../../components/Text";
 import Input from "../../components/Inputs";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 export default function ContactUsServices() {
+  useDocumentTitle("Partner with us")
   const [isLoading, setIsLoading] = useState(false);
   //   const navigate = useNavigate();
 
