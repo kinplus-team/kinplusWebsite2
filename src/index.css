@@ -37,7 +37,7 @@ section {
 .navLinkHover {
   border-bottom: 3px solid;
   border-color: transparent;
-  transition: transform 0.5s ease-in-out, border-color 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
 .navLinkHover:hover {
