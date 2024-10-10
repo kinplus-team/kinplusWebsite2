@@ -29,6 +29,7 @@ import BlogPost from "./pages/blog/BlogPost/Index.jsx";
 import ScrollToTop from "./components/scrollToTop/Index.jsx";
 import SponsorUs from "./pages/sponsor-or-partner-with-us/Index.jsx";
 import PageNotFound from "./pages/PageNotFound/index.jsx";
+import CookieConsent from "./components/cookies/CookiesConsent.jsx";
 
 const MainLayout = ({ children }) => (
   <>
@@ -41,6 +42,7 @@ const MainLayout = ({ children }) => (
 function App() {
   return (
     <Router>
+      <CookieConsent />
       <ScrollToTop />
       <Routes>
         <Route

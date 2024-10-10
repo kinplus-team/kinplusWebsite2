@@ -14,7 +14,7 @@ export default function NextProject() {
       <div className="grid lg:grid-cols-2 lg:gap-2">
         <div className="relative">
           <img src={traineeListen} className="w-full h-full" />
-          <div className="absolute top-0 h-full w-full z-30 bg-black opacity-30 rounded-[20px]"></div>
+          <div className="absolute top-0 h-full w-full z-30 bg-black opacity-30"></div>
         </div>
 
         <div className="h-full text-[#ffffff] bg-[#1877F9] grid content-center lg:py-0 py-10">
