@@ -85,11 +85,11 @@ const CookieConsent = () => {
       tabIndex="0"
       aria-live="polite"
     >
-      <p className="text-[1.15rem] max-w-[60%] mx-auto text-center">
+      <p className="text-base md:text-[1.15rem] mx-auto text-center w-[90%] md:w-[60%]">
         This website uses cookies to ensure you get the best experience. By
         continuing, you consent to our use of cookies.
       </p>
-      <div className="mt-5">
+      <div className="mt-5 flex flex-wrap items-center justify-center">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={handleAcceptCookies}
@@ -105,7 +105,7 @@ const CookieConsent = () => {
           Reject All
         </button>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-5 md:mt-0 rounded"
           onClick={() => setShowPreferences(true)}
           aria-label="Manage cookie preferences"
         >
