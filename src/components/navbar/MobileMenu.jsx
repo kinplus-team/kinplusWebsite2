@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 // assets
 import kinplusLogoBlue from "../../assets/kinplusBlue.png";
@@ -12,7 +12,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 // close icon
 import closeIcon from "../../assets/components/navbar/svg/closeSvg.svg";
 
-// social media icon
+// social media icons
 import facebookIcon from "../../assets/components/navbar/svg/facebook.svg";
 import instagramIcon from "../../assets/components/navbar/svg/instagram.svg";
 import linkedInIcon from "../../assets/components/navbar/svg/linkedIn.svg";
@@ -45,12 +45,35 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
 
   const currentYear = new Date().getFullYear();
 
+  // Determine the color based on the pathname and navbarColor
+  const getMenuIconColor = () => {
+    const pathsWithBlackIcon = [
+      "/about-us",
+      "/trainings/courses/graphic-design",
+      "/trainings/courses/software-development",
+      "/trainings/courses/data-analysis",
+      "/trainings/courses/product-design",
+      "/sponsor-or-partner-with-us",
+      "/trainings/courses/cyber-security",
+      "/our-services",
+      "/trainings",
+      "/trainings/siwes",
+      "/contact-us/services",
+      "/contact-us/training",
+      "/trainings/workshop/kinplus-nitda",
+      "/contact-us",
+      "/trainings/workshop",
+      "/*",
+    ];
+    return pathsWithBlackIcon.includes(pathname) || navbarColor
+      ? "text-black"
+      : "text-white";
+  };
+
   return (
     <>
       <IoIosMenu
-        className={`lg:hidden w-7 lg:w-10 h-20 justify-self-end ${
-          pathname === "/" && navbarColor ? "text-black" : "text-white"
-        }`}
+        className={`lg:hidden w-7 lg:w-10 h-20 justify-self-end ${getMenuIconColor()}`}
         onClick={() => setIsMobileNav(true)}
       />
       <div
@@ -59,13 +82,11 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
         }`}
       >
         <div className="lg:px-[44px] px-4 h-screen flex flex-col justify-between">
-          {/* header */}
+          {/* Header */}
           <div className="grid grid-cols-2 items-center">
             <NavLink
-              to={"/"}
-              onClick={() => {
-                setIsMobileNav(false);
-              }}
+              to="/"
+              onClick={() => setIsMobileNav(false)}
             >
               <img
                 src={
@@ -78,20 +99,20 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
                 loading="lazy"
               />
             </NavLink>
-
             <div
               className="bg-white w-full h-full py-5 grid content-start"
               onClick={() => setIsMobileNav(false)}
             >
               <img
                 src={closeIcon}
-                className="justify-self-end text-xl text-neutral-600 w-14 h-14"
+                className="justify-self-end text-xl text-neutral-600 w-14 h-14 cursor-pointer"
+                alt="Close menu"
               />
             </div>
           </div>
 
-          {/* links */}
-          <div className="grid gap-8 ">
+          {/* Links */}
+          <div className="grid gap-8">
             {staticData.NavbarLinks.map((navLinks, i) => (
               <div key={i}>
                 <NavLink
@@ -107,16 +128,12 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
                 >
                   <div className="flex items-center gap-2">
                     {navLinks.title}
-
-                    {navLinks.title === "Trainings" && (
-                      <div>
-                        {isDropDownOpen ? (
-                          <IoIosArrowUp size={13} />
-                        ) : (
-                          <IoIosArrowDown size={13} />
-                        )}
-                      </div>
-                    )}
+                    {navLinks.title === "Trainings" &&
+                      (isDropDownOpen ? (
+                        <IoIosArrowUp size={13} />
+                      ) : (
+                        <IoIosArrowDown size={13} />
+                      ))}
                   </div>
                 </NavLink>
 
@@ -127,7 +144,7 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
                       <NavLink
                         key={i}
                         to={list.to}
-                        className="px-3 py-1 mt-4 grid grid-flow-col gap-2 items-center justify-start hover:text-black font-light"
+                        className="px-3 py-1 mt-4 grid grid-flow-col gap-2 items-center justify-start hover:text-black hover:font-semibold"
                         onClick={() => setIsMobileNav(false)} // Close the mobile nav on click
                       >
                         <p className="text-[1.3rem] mb-2">{list.title}</p>
