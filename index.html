@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0"
     />
     <!-- Google Tag Manager -->
-    <script>
+    <!-- <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -18,7 +18,7 @@
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-M9FVKLGW");
-    </script>
+    </script> -->
     <!-- End Google Tag Manager -->
     <!-- Title -->
     <title>Kinplus Technologies | Empowering Technology Solutions</title>
@@ -42,10 +42,6 @@
       href="/favicon-16x16.png"
     />
     <link
-      rel="manifest"
-      href="/site.webmanifest"
-    />
-    <link
       rel="mask-icon"
       href="/safari-pinned-tab.svg"
       color="#5bbad5"
@@ -57,6 +53,14 @@
     <meta
       name="theme-color"
       content="#ffffff"
+    />
+    <link
+      rel="manifest"
+      href="/manifest.json"
+    />
+    <link
+      rel="manifest"
+      href="/site.webmanifest"
     />
     <link
       rel="manifest"
@@ -225,15 +229,18 @@
       src="/src/main.jsx"
     ></script>
     <!-- Google Analytics or your preferred analytics script here -->
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-NS6WQ3KF"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M8G6XBFLQC"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-M8G6XBFLQC");
+    </script>
   </body>
 </html>

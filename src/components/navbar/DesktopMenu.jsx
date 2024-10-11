@@ -18,14 +18,14 @@ export default function Header() {
   // handle background color on scroll
   useEffect(() => {
     window.addEventListener("scroll", () => changeBackground(setNavbarColor));
-  });
+  }, []);
 
   // close dropdown after click on a link
-  // useEffect(() => {
-  //   return () => {
-  //     setIsDropDownOpen(false);
-  //   };
-  // }, [pathname]);
+  useEffect(() => {
+    return () => {
+      setIsDropDownOpen(false);
+    };
+  }, [pathname]);
 
   return (
     <nav
@@ -37,11 +37,11 @@ export default function Header() {
       <NavLink to={"/"}>
         <img
           src={
-            pathname == "/careers" && !navbarColor
+            pathname === "/careers" && !navbarColor
               ? kinplusLogoWhite
-              : pathname == "/workshop" && !navbarColor
+              : pathname === "/workshop" && !navbarColor
               ? kinplusLogoWhite
-              : pathname == "/careers" && navbarColor
+              : navbarColor
               ? kinplusLogoBlue
               : kinplusLogoBlue
           }
@@ -53,68 +53,55 @@ export default function Header() {
       {/* nav links */}
       <div className="hidden md:grid grid-cols-[auto_auto_100px_auto_auto_auto] gap-10 justify-self-end">
         {staticData.NavbarLinks.map((links, i) => (
-          <NavLink
-            to={links.to !== "/trainings" && links.to}
+          <div
+            key={i}
             onMouseEnter={() =>
               links.to === "/trainings" && setIsDropDownOpen(true)
             }
             onMouseLeave={() =>
               links.to === "/trainings" && setIsDropDownOpen(false)
             }
-            key={i}
-            className={({ isActive }) =>
-              `${
-                isActive &&
-                links.title !== "Trainings" &&
-                "border-b-[3px] border-blue-600"
-              }  ${links.to !== "/trainings" && "navLinkHover"} ${
-                pathname == "/careers" ||
-                pathname == "/trainings/workshop" ||
-                pathname == "/"
-                  ? navbarColor
-                    ? "text-[#101010]"
-                    : "text-white"
-                  : "text-[#101010]"
-              } flex gap-1 items-center text-[20px]`
-            }
           >
-            {links.title}
-            <div className={`${links.title !== "Trainings" && "hidden"}`}>
-              {isDropDownOpen ? (
-                <IoIosArrowUp size={13} />
-              ) : (
-                <IoIosArrowDown size={13} />
-              )}
-            </div>
-          </NavLink>
-        ))}
-
-        {/* Dropdown */}
-        <div
-          className={`bg-white absolute top-20 right-[19.5rem] w-32 z-10 rounded-md font-light 
-              text-neutral-600 px-5 shadow-[0_0_5px_0_rgba(255,255,255,0.5)] overflow-hidden transition-all duration-300 ${
-                isDropDownOpen ? "h-[145.6px]" : "h-0"
-              }`}
-          onMouseEnter={() => setIsDropDownOpen(true)}
-          onMouseLeave={() => setIsDropDownOpen(false)}
-        >
-          {staticData.trainingList.map((list, i) => (
             <NavLink
-              key={i}
-              to={list.to}
+              to={links.to !== "/trainings" ? links.to : "#"}
+              className={({ isActive }) =>
+                `${
+                  isActive &&
+                  links.title !== "Trainings" &&
+                  "border-b-[3px] border-blue-600"
+                } ${links.to !== "/trainings" && "navLinkHover"} ${
+                  navbarColor ? "text-[#101010]" : "text-white"
+                } flex gap-1 items-center text-[20px]`
+              }
             >
-              <div
-                className={`
-                    py-3 grid grid-flow-col gap-3 items-center justify-start hover:text-black
-                    ${i > 0 && "border-t border-neutral-200"} `}
-              >
-                <p className="cursor-pointer hover:font-semibold">
-                  {list.title}
-                </p>
-              </div>
+              {links.title}
+              {links.title === "Trainings" && (
+                <div>
+                  {isDropDownOpen ? (
+                    <IoIosArrowUp size={13} />
+                  ) : (
+                    <IoIosArrowDown size={13} />
+                  )}
+                </div>
+              )}
             </NavLink>
-          ))}
-        </div>
+            {/* Dropdown */}
+            {links.title === "Trainings" && isDropDownOpen && (
+              <div className="bg-white absolute top-20 right-[19.5rem] w-32 z-10 rounded-md font-light text-neutral-600 px-5 shadow-[0_0_5px_0_rgba(255,255,255,0.5)] overflow-hidden transition-all duration-300">
+                {staticData.trainingList.map((list, i) => (
+                  <NavLink
+                    key={i}
+                    to={list.to}
+                    className="block py-3 hover:text-black"
+                    onClick={() => setIsDropDownOpen(false)} // Close dropdown when clicked
+                  >
+                    {list.title}
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
 
       {/* mobile menu */}

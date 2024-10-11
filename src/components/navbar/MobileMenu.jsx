@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 // assets
 import kinplusLogoBlue from "../../assets/kinplusBlue.png";
@@ -33,7 +33,6 @@ const bottomIcons = [
     link: "https://www.instagram.com/kinplustechnologies/",
   },
   { icon: twitterIcon, link: "https://twitter.com/kinplustech" },
-  // { icon: youtube, link: "https://www.youtube.com/@kinplustech" },
 ];
 
 // Static Data
@@ -44,58 +43,13 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
   const location = useLocation();
   const { pathname } = location;
 
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
-  // console.log(navbarColor);
   return (
     <>
       <IoIosMenu
-        className={`lg:hidden w-7 lg:w-10 h-20  justify-self-end   ${
-          pathname === "/" && navbarColor
-            ? "text-black"
-            : pathname == "/about-us"
-            ? "text-black"
-            : pathname == "/trainings/courses/graphic-design"
-            ? "text-black"
-            : pathname == "/trainings/courses/software-development"
-            ? "text-black"
-            : pathname == "/trainings/courses/data-analysis"
-            ? "text-black"
-            : pathname == "/trainings/courses/product-design"
-            ? "text-black"
-            : pathname == "/sponsor-or-partner-with-us"
-            ? "text-black"
-            : pathname == "/trainings/courses/cyber-security"
-            ? "text-black"
-            : pathname == "/our-services"
-            ? "text-black"
-            : pathname == "/trainings"
-            ? "text-black"
-            : pathname == "/trainings/siwes"
-            ? "text-black"
-            : pathname == "/contact-us/services"
-            ? "text-black"
-            : pathname == "/contact-us/training"
-            ? "text-black"
-            : pathname == "/trainings/workshop/kinplus-nitda"
-            ? "text-black"
-            : pathname == "/careers" && navbarColor
-            ? "text-black"
-            : pathname == "/careers/frontend-developer"
-            ? "text-black"
-            : pathname == "/careers/backend-developer"
-            ? "text-black"
-            : pathname == "/careers/product-designer"
-            ? "text-black"
-            : pathname == "/careers/product-manager"
-            ? "text-black"
-            : pathname == "/contact-us"
-            ? "text-black"
-            : pathname == "/trainings/workshop" && navbarColor
-            ? "text-black"
-            : pathname == "/*" && navbarColor
-            ? "text-black"
-            : "text-white"
+        className={`lg:hidden w-7 lg:w-10 h-20 justify-self-end ${
+          pathname === "/" && navbarColor ? "text-black" : "text-white"
         }`}
         onClick={() => setIsMobileNav(true)}
       />
@@ -115,7 +69,7 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
             >
               <img
                 src={
-                  pathname == "/careers" || pathname == "/workshop"
+                  pathname === "/careers" || pathname === "/workshop"
                     ? kinplusLogoWhite
                     : kinplusLogoBlue
                 }
@@ -139,85 +93,72 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
           {/* links */}
           <div className="grid gap-8 ">
             {staticData.NavbarLinks.map((navLinks, i) => (
-              <NavLink
-                key={i}
-                to={navLinks.to}
-                className={`text-3xl font-medium leading-[36px] flex gap-3 ${
-                  !isDropDownOpen && "items-center"
-                }`}
-                onClick={() => {
-                  navLinks.title !== "Trainings"
-                    ? setIsMobileNav(false)
-                    : setIsDropDownOpen(!isDropDownOpen);
-                }}
-              >
-                <div>
+              <div key={i}>
+                <NavLink
+                  to={navLinks.to}
+                  className={`text-3xl font-medium leading-[36px] flex gap-3 ${
+                    !isDropDownOpen && "items-center"
+                  }`}
+                  onClick={() => {
+                    navLinks.title !== "Trainings"
+                      ? setIsMobileNav(false)
+                      : setIsDropDownOpen(!isDropDownOpen);
+                  }}
+                >
                   <div className="flex items-center gap-2">
                     {navLinks.title}
 
-                    <div
-                      className={`${
-                        navLinks.title !== "Trainings" && "hidden"
-                      }`}
-                    >
-                      {isDropDownOpen ? (
-                        <>
+                    {navLinks.title === "Trainings" && (
+                      <div>
+                        {isDropDownOpen ? (
                           <IoIosArrowUp size={13} />
-                        </>
-                      ) : (
-                        <IoIosArrowDown size={13} />
-                      )}
-                    </div>
+                        ) : (
+                          <IoIosArrowDown size={13} />
+                        )}
+                      </div>
+                    )}
                   </div>
+                </NavLink>
 
-                  {isDropDownOpen && navLinks.title == "Trainings" && (
-                    <div>
-                      {staticData.trainingList.map((list, i) => (
-                        <NavLink
-                          key={i}
-                          to={list.to}
-                        >
-                          <div
-                            className={`px-3 py-1 mt-4 grid grid-flow-col gap-2 items-center justify-start hover:text-black font-light`}
-                            onClick={() => {
-                              setIsMobileNav(false);
-                              setIsDropDownOpen(false);
-                            }}
-                          >
-                            <p className="cursor-pointer text-[1.3rem] mb-2">
-                              {list.title}
-                            </p>
-                          </div>
-                        </NavLink>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </NavLink>
+                {/* Dropdown Links */}
+                {isDropDownOpen && navLinks.title === "Trainings" && (
+                  <div>
+                    {staticData.trainingList.map((list, i) => (
+                      <NavLink
+                        key={i}
+                        to={list.to}
+                        className="px-3 py-1 mt-4 grid grid-flow-col gap-2 items-center justify-start hover:text-black font-light"
+                        onClick={() => setIsMobileNav(false)} // Close the mobile nav on click
+                      >
+                        <p className="text-[1.3rem] mb-2">{list.title}</p>
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
-          {/* bottom section */}
-          <div className=" mt-8 grid gap-3 pb-5">
-            <div className="flex gap-3 justify-center">
-              {bottomIcons.map((bottomIcon, index) => (
+          {/* Footer */}
+          <div className="border-t border-[#f1f3f9] pt-6 pb-4 mt-auto">
+            <p className="text-center text-sm font-medium">
+              &copy; {currentYear} Kinplus Technologies. All rights reserved.
+            </p>
+            <div className="flex justify-center gap-5 mt-3">
+              {bottomIcons.map((item, index) => (
                 <a
-                  href={bottomIcon.link}
                   key={index}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <img
-                    src={bottomIcon.icon}
-                    className="w-10 h-10"
+                    src={item.icon}
+                    className="w-6 h-6"
+                    alt="social icon"
                   />
                 </a>
               ))}
-            </div>
-
-            <div className="bg-black h-[0.915px] w-full"></div>
-            <div className="py-4">
-              <p className="text-lg leading-6 mx-auto text-center max-w-xs">
-                Copyright © {currentYear} Kinplus Technologies. All rights reserved.
-              </p>
             </div>
           </div>
         </div>

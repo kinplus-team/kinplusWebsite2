@@ -3,7 +3,7 @@
  * The name of the cache used by this service worker.
  * @constant {string}
  */
-const CACHE_NAME = "kinplus-cache-v1";
+const CACHE_NAME = "kinplus-cache-v2";
 
 /**
  * An array of URLs to cache when the service worker is installed.
@@ -31,7 +31,14 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log("Opened cache");
-      return cache.addAll(urlsToCache);
+      return Promise.all(
+        urlsToCache.map((url) => {
+          return cache.add(url).catch((error) => {
+            console.error("Failed to cache:", url, error);
+            // Continue despite the error
+          });
+        })
+      );
     })
   );
 });
@@ -48,7 +55,10 @@ self.addEventListener("fetch", (event) => {
       if (response) {
         return response;
       }
-      return fetch(event.request);
+      return fetch(event.request).catch((error) => {
+        console.error("Fetch failed:", error);
+        // You might want to return a custom response here
+      });
     })
   );
 });
