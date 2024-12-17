@@ -13,7 +13,7 @@ export const useCountdownTimer = () => {
 
   useEffect(() => {
     // countdownTimer().then((response) => {
-    let targetDate = new Date("10/29/2024 23:59:59");
+    let targetDate = new Date("01/06/2025 09:00:00");
     // });
 
     // console.log(targetDate);
