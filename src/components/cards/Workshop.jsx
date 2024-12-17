@@ -6,7 +6,10 @@ export default function Workshop({ cardInfo }) {
   return (
     <div className="bg-white shadow-md">
       <div className=" h-[400px]">
-        <img src={cardInfo.coverImage} className="h-full w-full" />
+        <img
+          src={cardInfo.coverImage}
+          className="h-full w-full"
+        />
       </div>
 
       <div className="p-8 grid gap-2">
@@ -23,7 +26,7 @@ export default function Workshop({ cardInfo }) {
             <Button
               type="transparent"
               text="Explore"
-              className="border border-[#B8C5D9] text-[#1877F9] font-medium text-center rounded-2xl"
+              className="border hover:bg-[#212121] hover:text-[#f1f1f1] transition duration-300 ease-in-out border-[#B8C5D9] text-[#1877F9] font-medium text-center rounded-2xl"
             />
           </div>
         </Link>

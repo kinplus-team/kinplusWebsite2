@@ -9,6 +9,7 @@ import sideBarImage from "../../../assets/IT_SIWES/what-you-stand-to-gain.webp";
 import backgroundIcon from "../../../assets/svg/background-icon.svg";
 import sparkle from "../../../assets/why-learn-from-us/sparkle.png";
 import Text from "../../../components/Text.jsx";
+import { motion } from "framer-motion";
 
 export default function WhatYouStandToGain() {
   const reasons = [
@@ -39,22 +40,41 @@ export default function WhatYouStandToGain() {
     },
   ];
 
+  // animation variants
+  const slideInLeft = {
+    initial: { x: -100, opacity: 0 },
+    whileInView: { x: 0, opacity: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.8 },
+  };
+
   return (
     <PageLayout className="relative">
       <div className="flex items-center gap-4 lg:gap-5">
-            <Text type="title" className="text-[#1877F9] text-sm sm:text-base md:text-lg lg:text-xl">
-              What you stand to gain
-            </Text>
-            <div className="w-[3.625em] md:w-[4.563em] h-[0.125em] bg-[#222831]"></div>
+        <motion.div {...slideInLeft}>
+          <Text
+            type="title"
+            className="text-[#1877F9] text-sm sm:text-base md:text-lg lg:text-xl"
+          >
+            What you stand to gain
+          </Text>
+        </motion.div>
+        <motion.div
+          className="w-[3.625em] md:w-[4.673em] h-[0.125em] bg-[#222831]"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        />
       </div>
-
-      <Text
-        type="subheading"
-        className="text-[#082B5B] sm:text-[1.75em] md:text-[2.25em] lg:text-[2.5em] md:leading-[128.571%] sm:max-w-lg md:max-w-2xl mt-4 lg:mt-1 relative z-10"
-      >
-        It's not just a stepping stone to your future, it's a launchpad to
-        success
-      </Text>
+      <motion.div {...slideInLeft}>
+        <Text
+          type="subheading"
+          className="text-[#082B5B] sm:text-[1.75em] md:text-[2.25em] lg:text-[2.5em] md:leading-[128.571%] sm:max-w-lg md:max-w-2xl mt-4 lg:mt-1 relative z-10"
+        >
+          It's not just a stepping stone to your future, it's a launchpad to
+          success
+        </Text>
+      </motion.div>
 
       <div>
         <img

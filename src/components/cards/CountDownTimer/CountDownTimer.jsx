@@ -1,28 +1,27 @@
 import DesktopView from "../../../components/cards/CountDownTimer/DesktopView.jsx";
 import MobileView from "../../../components/cards/CountDownTimer/MobileView.jsx";
 import formatNumber from "../../../utilities/formatNumber.js";
-import { useCountdownTimer } from "../../../hooks/useCountDownTimer";
+import { useCountDownTimer } from "../../../hooks/useCountDownTimer";
 
 export default function CountDownTimer({ image }) {
-  const { days, hours, minutes, seconds } = useCountdownTimer();
+  const { days, hours, minutes, seconds } = useCountDownTimer();
+
+  const formattedTime = `${formatNumber(days)}:${formatNumber(
+    hours
+  )}:${formatNumber(minutes)}:${formatNumber(seconds)}`;
 
   return (
     <div>
-      <div className="lg:block hidden">
+      <div className="md:block hidden">
         <DesktopView
           image={image.desktopImg}
-          time={`${formatNumber(days)}:${formatNumber(hours)}:${formatNumber(
-            minutes
-          )}:${formatNumber(seconds)}`}
+          time={formattedTime}
         />
       </div>
-
-      <div className="lg:hidden block">
+      <div className="md:hidden block">
         <MobileView
           image={image.mobileImg}
-          time={`${formatNumber(days)}:${formatNumber(hours)}:${formatNumber(
-            minutes
-          )}:${formatNumber(seconds)}`}
+          time={formattedTime}
         />
       </div>
     </div>

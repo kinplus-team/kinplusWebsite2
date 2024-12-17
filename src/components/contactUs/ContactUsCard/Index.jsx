@@ -2,16 +2,29 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Text from "../../Text";
+import { motion } from "framer-motion";
 
 export default function ContactUsCard({ label, title, text, link, to }) {
+   const scaleIn = {
+     initial: { scale: 0.8, opacity: 0 },
+     whileInView: { scale: 1, opacity: 1 },
+     viewport: { once: true },
+     transition: { duration: 0.6, delay: 0.3 },
+   };
   return (
-    <div className="w-full flex flex-col justify-center gap-3 bg-white rounded-[0.6em] px-8 py-6">
+    <motion.div {...scaleIn} className="w-full flex flex-col justify-center gap-3 bg-white rounded-[0.6em] px-8 py-6">
       <span className="text-[#1877F9] text-2xl font-[400]">{label}</span>
-      <Text type="subheading" className="text-[#101010] lg:w-[80%] lg:mb-8 capitalize">
+      <Text
+        type="subheading"
+        className="text-[#101010] lg:w-[80%] lg:mb-8 capitalize"
+      >
         {title}
       </Text>
 
-      <Text type="subparagraph" className="text-[#101010] lg:w-[90%]">
+      <Text
+        type="subparagraph"
+        className="text-[#101010] lg:w-[90%]"
+      >
         {text}
       </Text>
 
@@ -21,7 +34,7 @@ export default function ContactUsCard({ label, title, text, link, to }) {
       >
         {link}
       </Link>
-    </div>
+    </motion.div>
   );
 }
 

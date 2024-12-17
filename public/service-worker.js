@@ -1,85 +1,92 @@
+// Cache version identifiers
+const STATIC_CACHE = "static-v2"; // Increment for updates
+const DYNAMIC_CACHE = "dynamic-v1";
+const MAX_DYNAMIC_CACHE_ITEMS = 50; // Limit for dynamic cache size
 
-/**
- * The name of the cache used by this service worker.
- * @constant {string}
- */
-const CACHE_NAME = "kinplus-cache-v2";
-
-/**
- * An array of URLs to cache when the service worker is installed.
- * @constant {string[]}
- */
-const urlsToCache = [
-  "/",
+// Core assets for caching
+const ASSETS = [
   "/index.html",
-  "/static/js/main.chunk.js",
-  "/static/js/0.chunk.js",
-  "/static/js/bundle.js",
-  "/static/css/main.chunk.css",
-  "/manifest.json",
-  "/logo192.png",
-  "/logo512.png",
+  "/favicon-32x32.png",
+  "/favicon-16x16.png",
+  "/apple-touch-icon.png",
+  "/static/css/main.css",
+  "/assets/kinplus-og-image.webp", 
+  "/assets/kinplus-og-image.png", 
 ];
 
+// skips cache for back/forward navigations
+self.addEventListener("fetch", (event) => {
+  if (
+    event.request.cache === "only-if-cached" &&
+    event.request.mode !== "same-origin"
+  ) {
+    return;
+  }
+  event.respondWith(fetch(event.request));
+});
 
-/**
- * Install event listener for the service worker.
- * This function caches all URLs specified in urlsToCache.
- * @param {ExtendableEvent} event - The install event.
- */
+
+// Install event - pre-cache static assets
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log("Opened cache");
-      return Promise.all(
-        urlsToCache.map((url) => {
-          return cache.add(url).catch((error) => {
-            console.error("Failed to cache:", url, error);
-            // Continue despite the error
-          });
-        })
-      );
+    caches.open(STATIC_CACHE).then((cache) => {
+      return cache.addAll(ASSETS);
     })
   );
 });
 
-
-/**
- * Fetch event listener for the service worker.
- * This function intercepts fetch requests and returns cached responses if available.
- * @param {FetchEvent} event - The fetch event.
- */
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) {
-        return response;
-      }
-      return fetch(event.request).catch((error) => {
-        console.error("Fetch failed:", error);
-        // You might want to return a custom response here
-      });
-    })
-  );
-});
-
-
-/**
- * Activate event listener for the service worker.
- * This function cleans up any old caches.
- * @param {ExtendableEvent} event - The activate event.
- */
+// Activate event - clean up old caches
 self.addEventListener("activate", (event) => {
-  const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
+        cacheNames
+          .filter((cache) => cache !== STATIC_CACHE && cache !== DYNAMIC_CACHE)
+          .map((cache) => caches.delete(cache))
       );
     })
   );
+});
+
+// Fetch event - cache with network fallback
+self.addEventListener("fetch", (event) => {
+  const request = event.request;
+
+  // Skip caching for requests that should always be fresh (like API requests)
+  if (request.url.includes("/api/")) {
+    return; // Skip API requests
+  }
+
+  // Cache resources with stale-while-revalidate strategy
+  event.respondWith(
+    caches.match(request).then((cachedResponse) => {
+      const fetchPromise = fetch(request).then((networkResponse) => {
+        return caches.open(DYNAMIC_CACHE).then((cache) => {
+          cache.put(request, networkResponse.clone());
+          limitCacheSize(DYNAMIC_CACHE, MAX_DYNAMIC_CACHE_ITEMS);
+          return networkResponse;
+        });
+      });
+
+      // Return cached response immediately or fallback to network request
+      return cachedResponse || fetchPromise;
+    })
+  );
+});
+
+// Function to limit dynamic cache size
+const limitCacheSize = async (cacheName, maxItems) => {
+  const cache = await caches.open(cacheName);
+  const keys = await cache.keys();
+  if (keys.length > maxItems) {
+    await cache.delete(keys[0]); // Delete the oldest item
+    return limitCacheSize(cacheName, maxItems); // Recheck the cache size
+  }
+};
+
+// Listen for the 'message' event to handle updates from the main thread
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });

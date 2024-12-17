@@ -1,6 +1,6 @@
 import { request, gql } from "graphql-request";
 
-const graphqlAPI = process.env.GRAPHCMS_ENDPOINT;
+const graphqlAPI = import.meta.env.VITE_GRAPHCMS_ENDPOINT;
 
 const cohortCountDowntimer = async () => {
   const query = gql`

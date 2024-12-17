@@ -1,14 +1,13 @@
-import Hero from "./components/Hero.jsx";
-import About from "./components/About.jsx";
-import PreviousWorkshop from "./components/PreviousWorkshop.jsx";
-import WorkshopReport from "./components/WorkshopReport.jsx";
+import WorkshopReportDetails from "./components/WorkshopReportDetails.jsx";
+import AboutWorkshopDetails from "./components/AboutWorkshopDetails.jsx";
+import HeroWorkshopDetails from "./components/HeroWorkshopDetails.jsx";
 
 export default function WorkshopDetails() {
   return (
-    <div>
-      <Hero />
-      <About />
-      <WorkshopReport />
+    <div className="overflow-x-hidden">
+      <HeroWorkshopDetails />
+      <AboutWorkshopDetails />
+      <WorkshopReportDetails />
       {/* <PreviousWorkshop /> */}
     </div>
   );

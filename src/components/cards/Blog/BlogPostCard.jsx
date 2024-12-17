@@ -1,5 +1,5 @@
 import React from "react";
-import RecentBlog1 from "../../../assets/Blog/Image.png";
+import RecentBlog1 from "../../../assets/Blog/Image.webp";
 
 import Arrow from "../../../assets/Blog/arrow-up-right (1).png";
 import { Link } from "react-router-dom";

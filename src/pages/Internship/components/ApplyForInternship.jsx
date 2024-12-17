@@ -11,6 +11,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import useDelay from "../../../hooks/useDelay";
+import { motion } from "framer-motion";
 
 // Validation schema for SIWES form
 const siwesSchema = z.object({
@@ -112,6 +113,21 @@ export default function ApplyForInternship() {
     }
   };
 
+  // animation variants
+  const slideInLeft = {
+    initial: { x: -100, opacity: 0 },
+    whileInView: { x: 0, opacity: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.8 },
+  };
+
+  const slideInRight = {
+    initial: { x: 100, opacity: 0 },
+    whileInView: { x: 0, opacity: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.8 },
+  };
+
   return (
     <PageLayout>
       <Element
@@ -121,23 +137,30 @@ export default function ApplyForInternship() {
       >
         {/* Left side */}
         <div className="grid lg:grid-rows-[240px_160px_25px_150px] gap-6 place-items-start mt-4 md:mt-8 lg:mt-16">
-          <div className="text-[#082B5B] text-[2.188em] sm:text-[2.5em] md:text-[2.75em] lg:text-[3.25em] font-bold leading-[40px] md:leading-[114.286%] lg:leading-[62px] max-w-lg capitalize">
-            We are looking forward to meeting you
-          </div>
-          <Text
-            type="paragraph"
-            className="text-[#101010] sm:mt-4 md:mt-6 lg:mt-0 lg:w-[90%] lg:pb-6"
+          <motion.div
+            {...slideInLeft}
+            className="text-[#082B5B] text-[2.188em] sm:text-[2.5em] md:text-[2.75em] lg:text-[3.25em] font-bold leading-[40px] md:leading-[114.286%] lg:leading-[62px] max-w-lg capitalize"
           >
-            We're thrilled to welcome you to our team! We're looking forward to
-            getting to know you, learning about your unique perspective, and
-            sharing our expertise with you. You have the potential to make a
-            positive impact in the tech industry, and we're excited to be part
-            of your journey. Get ready to learn, grow, and have fun with us.
-          </Text>
+            We are looking forward to meeting you
+          </motion.div>
+
+          <motion.dev {...slideInLeft}>
+            <Text
+              type="paragraph"
+              className="text-[#101010] sm:mt-4 md:mt-6 lg:mt-0 lg:w-[90%] lg:pb-6"
+            >
+              We're thrilled to welcome you to our team! We're looking forward
+              to getting to know you, learning about your unique perspective,
+              and sharing our expertise with you. You have the potential to make
+              a positive impact in the tech industry, and we're excited to be
+              part of your journey. Get ready to learn, grow, and have fun with
+              us.
+            </Text>
+          </motion.dev>
         </div>
 
         {/* Right side form */}
-        <div className="bg-[#082B5B] lg:p-14 p-6 rounded-lg lg:mt-4">
+        <motion.div {...slideInRight} className="bg-[#082B5B] lg:p-14 p-6 rounded-lg lg:mt-4">
           <h3 className="lg:text-[44px] text-[35px] font-[700] text-[#F1F1F1] lg:leading-[54px] leading-[40px] max-w-md">
             Apply for our SIWES/IT program
           </h3>
@@ -371,7 +394,7 @@ export default function ApplyForInternship() {
               />
             </div>
           </form>
-        </div>
+        </motion.div>
       </Element>
     </PageLayout>
   );

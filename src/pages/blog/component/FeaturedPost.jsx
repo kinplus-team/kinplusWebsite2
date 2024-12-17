@@ -1,5 +1,5 @@
 import PageLayout from "../../../components/Layout/PageLayout";
-import image4 from "../../../assets/Blog/white-concrete-building-1838640.png";
+import image4 from "../../../assets/Blog/white-concrete-building-1838640.webp";
 import Button from "../../../components/Button";
 import { getFeaturedPost, getPosts } from "../../../services/blogServices";
 import { useEffect, useState } from "react";

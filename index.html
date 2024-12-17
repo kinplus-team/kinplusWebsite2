@@ -2,66 +2,133 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Kinplus Technologies | Empowering Technology Solutions</title>
+    <!-- Critical Meta Tags -->
+    <meta
+      name="description"
+      content="Kinplus Technologies provides cutting-edge technology solutions that help businesses grow and innovate in the ever-evolving tech world. Our services include software development, IT consulting, and digital transformation strategies."
+    />
+    <link
+      rel="canonical"
+      href="https://www.kinplusgroup.com"
+    />
 
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-    <meta name="msapplication-TileColor" content="#603cba" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Preconnect to Critical Domains -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      rel="preconnect"
+      href="https://www.googletagmanager.com"
+      crossorigin
+    />
+    <link
+      rel="preconnect"
+      href="https://www.google-analytics.com"
+      crossorigin
+    />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Preload Critical Assets -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    />
+    
 
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="Kinplus Technologies | Empowering Technology Solutions" />
-    <meta name="description" content="Kinplus Technologies provides cutting-edge technology solutions that help businesses grow and innovate in the ever-evolving tech world. Our services include software development, IT consulting, and digital transformation strategies." />
-    <meta name="keywords" content="Kinplus, technology solutions, IT services, software development, digital transformation, tech consulting, cloud computing, cybersecurity, artificial intelligence, machine learning" />
-    <meta name="author" content="Kinplus Technologies" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="language" content="English" />
-    <meta name="revisit-after" content="7 days" />
+    <!-- Favicon (Deferred) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.kinplusgroup.com" />
-    <meta property="og:site_name" content="Kinplus Technologies" />
-    <meta property="og:title" content="Kinplus Technologies | Empowering Technology Solutions" />
-    <meta property="og:description" content="Cutting-edge technology solutions for business growth and innovation. Explore our services in software development, IT consulting, and digital transformation." />
-    <meta property="og:image" content="https://www.kinplusgroup.com/assets/images/kinplus-og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Kinplus Technologies logo" />
-    <meta property="og:locale" content="en_US" />
+    <!-- Non-critical CSS -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://www.kinplusgroup.com" />
-    <meta name="twitter:title" content="Kinplus Technologies | Empowering Technology Solutions" />
-    <meta name="twitter:description" content="Cutting-edge technology solutions for business growth and innovation. Explore our services in software development, IT consulting, and digital transformation." />
-    <meta name="twitter:image" content="https://www.kinplusgroup.com/assets/images/kinplus-twitter-image.jpg" />
-    <meta name="twitter:image:alt" content="Kinplus Technologies logo" />
-    <meta name="twitter:site" content="@KinplusTech" />
-    <meta name="twitter:creator" content="@KinplusTech" />
+    <!-- Social Media Tags (Non-blocking) -->
+    <meta
+      property="og:type"
+      content="website"
+    />
+    <meta
+      property="og:url"
+      content="https://www.kinplusgroup.com"
+    />
+    <meta
+      property="og:title"
+      content="Kinplus Technologies | Empowering Technology Solutions"
+    />
+    <meta
+      property="og:description"
+      content="Cutting-edge technology solutions for business growth and innovation."
+    />
+    <meta
+      property="og:image"
+      content="https://www.kinplusgroup.com/assets/kinplus-og-image.png"
+    />
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+    <!-- Deferred Analytics Script -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      
+      const initAnalytics = () => {
+        const script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-M8G6XBFLQC';
+        script.async = true;
+        script.fetchPriority = 'low';
+        script.onload = () => {
+          gtag('js', new Date());
+          gtag('config', 'G-M8G6XBFLQC', {
+            transport_type: 'beacon',
+            anonymize_ip: true,
+            page_load_strategy: 'delayed'
+          });
+        };
+        // Defer analytics load until after main content
+        requestIdleCallback(() => document.head.appendChild(script));
+      };
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.kinplusgroup.com" />
-
+      // Initialize analytics after page load
+      window.addEventListener('load', () => {
+        setTimeout(initAnalytics, 2000);
+      });
+    </script>
     <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": "https://www.kinplusgroup.com/#organization",
         "name": "Kinplus Technologies",
         "url": "https://www.kinplusgroup.com",
         "logo": "https://www.kinplusgroup.com/Kinplus-favicon.png",
-        "description": "Kinplus Technologies provides cutting-edge technology solutions that help businesses grow and innovate in the ever-evolving tech world.",
+        "description": "Kinplus Technologies is an institute that offers training in technology and builds software products, helping individuals and businesses grow through innovation.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+2347075199782",
+          "contactType": "customer service",
+          "email": "info@kinplusgroup.com"
+        },
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "2nd Floor, Christore Building, Opposite Crunchies Restaurant",
@@ -70,33 +137,37 @@
           "postalCode": "360281",
           "addressCountry": "Nigeria"
         },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+2347075199782",
-          "contactType": "customer service",
-          "email": "info@kinplusgroup.com"
-        },
         "sameAs": [
           "https://www.facebook.com/kinplustechnologies",
           "https://www.twitter.com/KinplusTech",
           "https://www.linkedin.com/company/kinplustechnologies/",
           "https://www.instagram.com/kinplustechnologies/"
+        ],
+        "department": [
+          {
+            "@type": "EducationalOrganization",
+            "name": "Kinplus Technologies Training Institute",
+            "description": "Provides training programs in software development, IT consulting, and digital transformation.",
+            "url": "https://www.kinplusgroup.com/contact-us/training"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Kinplus Software Development",
+            "description": "Develops cutting-edge software solutions for business growth and digital transformation.",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Cross-platform",
+            "softwareVersion": "1.0",
+            "url": "https://www.kinplusgroup.com/contact-us/services"
+          }
         ]
       }
     </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx" async></script>
+    
+  </body>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8G6XBFLQC"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-M8G6XBFLQC");
-    </script>
   </body>
 </html>

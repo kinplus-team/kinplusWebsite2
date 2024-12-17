@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PageLayout from "../../../components/Layout/PageLayout";
 import Input from "../../../components/Inputs";
 import Button from "../../../components/Button";
 import { submitResume } from "../../../services/resumeServices";
@@ -8,6 +7,7 @@ import axios from "axios";
 import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "framer-motion";
 
 // validation schema
 const applyForRoleSchema = z.object({
@@ -109,7 +109,13 @@ export default function ApplyForRole() {
 
   return (
     <div className="lg:px-[54px] px-0 max-w-[100rem] mx-auto lg:py-24 py-5 bg-[#f1f3f9]">
-      <div className="grid gap-5 bg-[#082B5B] lg:p-14 p-6 rounded-lg">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="grid gap-5 bg-[#082B5B] lg:p-14 p-6 rounded-lg"
+      >
         <h3 className="lg:text-[48px] text-[35px] font-[700] text-[#fff] lg:leading-[64px] leading-[40px] max-w-md">
           Apply for Job
         </h3>
@@ -243,7 +249,7 @@ export default function ApplyForRole() {
             </div>
           </form>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

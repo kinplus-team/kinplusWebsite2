@@ -1,194 +1,151 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { motion } from "framer-motion";
+import CookieOption from "./CookieOption";
+
+const COOKIE_NAME = "cookieConsent";
+const COOKIE_EXPIRE_DAYS = 365;
 
 const CookieConsent = () => {
-  const [isBannerVisible, setIsBannerVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
-  const [cookiePreferences, setCookiePreferences] = useState({
+  const [preferences, setPreferences] = useState({
     necessary: true,
     performance: false,
     marketing: false,
   });
 
   useEffect(() => {
-    const cookieConsent = Cookies.get("cookieConsent");
-    if (!cookieConsent) {
-      setIsBannerVisible(true);
-    } else {
-      try {
-        const parsedConsent = JSON.parse(cookieConsent);
-        setCookiePreferences(parsedConsent);
-      } catch (error) {
-        console.error("Error parsing cookie consent:", error);
-        setIsBannerVisible(true);
-      }
+    const savedConsent = Cookies.get(COOKIE_NAME);
+    if (!savedConsent) {
+      setTimeout(() => setIsVisible(true), 200); // Short delay to avoid LCP impact
+      return;
+    }
+    try {
+      const parsedConsent = JSON.parse(savedConsent);
+      setPreferences(parsedConsent);
+      setIsVisible(false);
+    } catch {
+      setIsVisible(true);
+      Cookies.remove(COOKIE_NAME);
     }
   }, []);
 
-  useEffect(() => {
-    if (isBannerVisible) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isBannerVisible]);
+  const savePreferences = (newPreferences) => {
+    Cookies.set(COOKIE_NAME, JSON.stringify(newPreferences), {
+      expires: COOKIE_EXPIRE_DAYS,
+      sameSite: "Strict",
+    });
+    setPreferences(newPreferences);
+    setIsVisible(false);
+    setShowPreferences(false);
+  };
 
   const handleAcceptAll = () => {
-    const allAccepted = {
+    savePreferences({
       necessary: true,
       performance: true,
       marketing: true,
-    };
-    saveCookiePreferences(allAccepted);
+    });
   };
 
   const handleRejectAll = () => {
-    const allRejected = {
+    savePreferences({
       necessary: true,
       performance: false,
       marketing: false,
-    };
-    saveCookiePreferences(allRejected);
+    });
   };
 
-  const handleSavePreferences = () => {
-    saveCookiePreferences(cookiePreferences);
-  };
-
-  const saveCookiePreferences = (preferences) => {
-    Cookies.set("cookieConsent", JSON.stringify(preferences), { expires: 365 });
-    setCookiePreferences(preferences);
-    setIsBannerVisible(false);
-    setShowPreferences(false);
-    initializeCookies(preferences);
-  };
-
-  const initializeCookies = (preferences) => {
-    if (preferences.performance) {
-      initializeGoogleAnalytics();
-    }
-    if (preferences.marketing) {
-      initializeFacebookPixel();
-    }
-  };
-
-  const initializeGoogleAnalytics = () => {
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () {
-      window.dataLayer.push(arguments);
-    };
-    window.gtag("js", new Date());
-    window.gtag("config", "G-M8G6XBFLQC");
-  };
-
-  const initializeFacebookPixel = () => {
-    // Facebook Pixel initialization code (unchanged)
-  };
-
-  if (!isBannerVisible) return null;
+  if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[1000]">
-      <div
-        role="dialog"
-        aria-labelledby="cookie-consent-title"
-        className="bg-white text-black p-6 rounded-lg max-w-2xl w-full mx-4"
+    <motion.div
+      className="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] transition-opacity duration-500"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.div
+        className="bg-white p-6 rounded-lg max-w-2xl w-full mx-4 shadow-lg"
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 50, opacity: 0 }}
+        transition={{ duration: 0.3 }}
       >
-        <h2
-          id="cookie-consent-title"
-          className="text-2xl font-bold mb-4"
-        >
-          Cookie Consent
-        </h2>
+        <h2 className="text-2xl font-bold mb-4">Cookie Consent</h2>
         <p className="mb-4">
           We use cookies to enhance your browsing experience, serve personalized
-          ads or content, and analyze our traffic. By clicking "Accept All", you
-          consent to our use of cookies.
+          ads or content, and analyze our traffic. By clicking{" "}
+          <span className="text-blue-800 border-b-2 border-blue-800">
+            Accept All
+          </span>
+          , you consent to our use of cookies.
         </p>
+
         {showPreferences ? (
-          <>
-            <div className="mb-4">
-              <div className="flex items-center mb-2">
-                <input
-                  id="necessary"
-                  name="necessary"
-                  type="checkbox"
-                  checked={cookiePreferences.necessary}
-                  disabled
-                  className="mr-2"
-                />
-                <label htmlFor="necessary">Necessary Cookies</label>
-              </div>
-              <div className="flex items-center mb-2">
-                <input
-                  id="performance"
-                  name="performance"
-                  type="checkbox"
-                  checked={cookiePreferences.performance}
-                  onChange={(e) =>
-                    setCookiePreferences({
-                      ...cookiePreferences,
-                      performance: e.target.checked,
-                    })
-                  }
-                  className="mr-2"
-                />
-                <label htmlFor="performance">Performance Cookies</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  id="marketing"
-                  name="marketing"
-                  type="checkbox"
-                  checked={cookiePreferences.marketing}
-                  onChange={(e) =>
-                    setCookiePreferences({
-                      ...cookiePreferences,
-                      marketing: e.target.checked,
-                    })
-                  }
-                  className="mr-2"
-                />
-                <label htmlFor="marketing">Marketing Cookies</label>
-              </div>
-            </div>
-            <div className="flex justify-end">
-              <button
-                onClick={handleSavePreferences}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Save Preferences
-              </button>
-            </div>
-          </>
+          <div className="mb-4 space-y-3">
+            <CookieOption
+              id="necessary"
+              label="Necessary Cookies"
+              description="Required for the website to function properly. Cannot be disabled."
+              checked={preferences.necessary}
+              disabled={true}
+            />
+
+            <CookieOption
+              id="performance"
+              label="Performance Cookies"
+              description="Help us understand how visitors interact with our website."
+              checked={preferences.performance}
+              onChange={(checked) =>
+                setPreferences({ ...preferences, performance: checked })
+              }
+            />
+
+            <CookieOption
+              id="marketing"
+              label="Marketing Cookies"
+              description="Used to deliver personalized advertisements."
+              checked={preferences.marketing}
+              onChange={(checked) =>
+                setPreferences({ ...preferences, marketing: checked })
+              }
+            />
+          </div>
         ) : (
-          <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-4">
-            <button
+          <div className="flex flex-col md:flex-row md:justify-center gap-4">
+            <motion.button
               onClick={handleRejectAll}
               className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Reject All
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => setShowPreferences(true)}
               className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Manage Preferences
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={handleAcceptAll}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Accept All
-            </button>
+            </motion.button>
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
+
+
 
 export default CookieConsent;

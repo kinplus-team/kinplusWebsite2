@@ -1,6 +1,6 @@
 import { GraphQLClient, request, gql } from "graphql-request";
 
-const graphqlAPI = process.env.GRAPHCMS_ENDPOINT;
+const graphqlAPI = import.meta.env.VITE_GRAPHCMS_ENDPOINT;
 
 export const getMostEngagedPost = async () => {
   const query = gql`

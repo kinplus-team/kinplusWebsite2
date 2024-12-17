@@ -1,12 +1,10 @@
-import mobile from "../assets/our_services/mobile.png";
-import mobileF from "../assets/our_services/mobile-fade.png";
-import hardware from "../assets/our_services/hardware.png";
-import hardwareF from "../assets/our_services/hardware fade.png";
-import image3 from "../assets/our_services/Rectangle 51.png";
-import image2 from "../assets/our_services/Rectangle 11.png";
+import mobile from "../assets/our_services/mobile.webp";
+import mobileF from "../assets/our_services/mobile-fade.webp";
+import image3 from "../assets/our_services/Rectangle 51.webp";
+import image2 from "../assets/our_services/Rectangle 11.webp";
 
-import hardwareSalesAndRepairs from "../assets/our_services/hardware_sales_and_repairs.png";
-import hardwareSalesAndRepairsF from "../assets/our_services/hardware_sales_and_repairs_fade.png";
+import hardwareSalesAndRepairs from "../assets/our_services/hardware_sales_and_repairs.webp";
+import hardwareSalesAndRepairsF from "../assets/our_services/hardware_sales_and_repairs_fade.webp";
 
 const haveAProjectInMind = [
   {

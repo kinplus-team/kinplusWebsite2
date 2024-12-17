@@ -1,51 +1,71 @@
-import { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-
-// assets
-import kinplusLogoBlue from "../../assets/kinplusBlue.png";
-import kinplusLogoWhite from "../../assets/kinplusWhite.png";
-
-// react icons
+import React, { useState, Suspense, memo } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import { IoIosMenu } from "react-icons/io";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-
-// close icon
-import closeIcon from "../../assets/components/navbar/svg/closeSvg.svg";
-
-// social media icons
-import facebookIcon from "../../assets/components/navbar/svg/facebook.svg";
-import instagramIcon from "../../assets/components/navbar/svg/instagram.svg";
-import linkedInIcon from "../../assets/components/navbar/svg/linkedIn.svg";
-import twitterIcon from "../../assets/components/navbar/svg/twitter.svg";
-
-// Social media links
-const bottomIcons = [
-  {
-    icon: facebookIcon,
-    link: "https://web.facebook.com/kinplustechnologies/?_rdc=1&_rdr",
-  },
-  {
-    icon: linkedInIcon,
-    link: "https://www.linkedin.com/company/kinplustechnologies/",
-  },
-  {
-    icon: instagramIcon,
-    link: "https://www.instagram.com/kinplustechnologies/",
-  },
-  { icon: twitterIcon, link: "https://twitter.com/kinplustech" },
-];
-
-// Static Data
 import staticData from "../../repository/home/navbar";
+import closeIcon from "../../assets/components/navbar/svg/closeSvg.svg";
+import kinplusBlue from "../../assets/kinplusBlue.webp";
+import kinplusWhite from "../../assets/kinplusWhite.webp";
+
+// Import components lazily
+const SocialLinks = React.lazy(() => import("./socialLinks"));
+
+// Lazy load images
+const KinplusLogoBlue = memo(() => (
+  <img
+    src={kinplusBlue}
+    alt="Kinplus Logo Blue"
+    loading="lazy"
+    width="150"
+    height="40"
+  />
+));
+
+const KinplusLogoWhite = memo(() => (
+  <img
+    src={kinplusWhite}
+    alt="Kinplus Logo White"
+    loading="lazy"
+    width="150"
+    height="40"
+  />
+));
 
 const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
   const [isMobileNav, setIsMobileNav] = useState(false);
   const location = useLocation();
   const { pathname } = location;
-
   const currentYear = new Date().getFullYear();
 
-  // Determine the color based on the pathname and navbarColor
+  const menuVariants = {
+    open: {
+      left: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 30,
+        duration: 0.2,
+      },
+    },
+    closed: {
+      left: "-100vw",
+      opacity: 0,
+      transition: {
+        type: "spring",
+        stiffness: 500,
+        damping: 60,
+        duration: 0.15,
+      },
+    },
+  };
+
+  const dropdownVariants = {
+    hidden: { opacity: 0, height: 0, transition: { duration: 0.2 } },
+    visible: { opacity: 1, height: "auto", transition: { duration: 0.2 } },
+  };
+
   const getMenuIconColor = () => {
     const pathsWithBlackIcon = [
       "/about-us",
@@ -62,7 +82,8 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
       "/contact-us/training",
       "/trainings/workshop/kinplus-nitda",
       "/contact-us",
-      "/trainings/workshop",
+      "/blog",
+      "/events",
       "/*",
     ];
     return pathsWithBlackIcon.includes(pathname) || navbarColor
@@ -73,113 +94,127 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
   return (
     <>
       <IoIosMenu
-        className={`lg:hidden w-7 lg:w-10 h-20 justify-self-end ${getMenuIconColor()}`}
+        className={`lg:hidden w-7 lg:w-10 h-20 justify-self-end cursor-pointer ${getMenuIconColor()}`}
         onClick={() => setIsMobileNav(true)}
       />
-      <div
-        className={`fixed z-50 top-0 h-screen w-full bg-white transition-[1s] ${
-          isMobileNav ? "left-0" : "left-[-100vw]"
-        }`}
-      >
-        <div className="lg:px-[44px] px-4 h-screen flex flex-col justify-between">
-          {/* Header */}
-          <div className="grid grid-cols-2 items-center">
-            <NavLink
-              to="/"
-              onClick={() => setIsMobileNav(false)}
-            >
-              <img
-                src={
-                  pathname === "/careers" || pathname === "/workshop"
-                    ? kinplusLogoWhite
-                    : kinplusLogoBlue
-                }
-                className="w-32"
-                alt="Kinplus_Logo"
-                loading="lazy"
-              />
-            </NavLink>
-            <div
-              className="bg-white w-full h-full py-5 grid content-start"
-              onClick={() => setIsMobileNav(false)}
-            >
-              <img
-                src={closeIcon}
-                className="justify-self-end text-xl text-neutral-600 w-14 h-14 cursor-pointer"
-                alt="Close menu"
-              />
-            </div>
-          </div>
 
-          {/* Links */}
-          <div className="grid gap-8">
-            {staticData.NavbarLinks.map((navLinks, i) => (
-              <div key={i}>
+      <AnimatePresence>
+        {isMobileNav && (
+          <motion.div
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={menuVariants}
+            className="fixed z-50 top-0 h-screen w-full bg-white"
+          >
+            <div className="lg:px-11 px-4 h-screen flex flex-col justify-between">
+              {/* Header */}
+              <div className="grid grid-cols-2 items-center">
                 <NavLink
-                  to={navLinks.to}
-                  className={`text-3xl font-medium leading-[36px] flex gap-3 ${
-                    !isDropDownOpen && "items-center"
-                  }`}
-                  onClick={() => {
-                    navLinks.title !== "Trainings"
-                      ? setIsMobileNav(false)
-                      : setIsDropDownOpen(!isDropDownOpen);
-                  }}
+                  to="/"
+                  onClick={() => setIsMobileNav(false)}
+                  className="focus:outline-none w-fit h-[40px]"
                 >
-                  <div className="flex items-center gap-2">
-                    {navLinks.title}
-                    {navLinks.title === "Trainings" &&
-                      (isDropDownOpen ? (
-                        <IoIosArrowUp size={13} />
-                      ) : (
-                        <IoIosArrowDown size={13} />
-                      ))}
-                  </div>
+                  {pathname === "/careers" || pathname === "/workshop" ? (
+                    <KinplusLogoWhite />
+                  ) : (
+                    <KinplusLogoBlue />
+                  )}
                 </NavLink>
-
-                {/* Dropdown Links */}
-                {isDropDownOpen && navLinks.title === "Trainings" && (
-                  <div>
-                    {staticData.trainingList.map((list, i) => (
-                      <NavLink
-                        key={i}
-                        to={list.to}
-                        className="px-3 py-1 mt-4 grid grid-flow-col gap-2 items-center justify-start hover:text-black hover:font-semibold"
-                        onClick={() => setIsMobileNav(false)} // Close the mobile nav on click
-                      >
-                        <p className="text-[1.3rem] mb-2">{list.title}</p>
-                      </NavLink>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Footer */}
-          <div className="border-t border-[#f1f3f9] pt-6 pb-4 mt-auto">
-            <p className="text-center text-sm font-medium">
-              &copy; {currentYear} Kinplus Technologies. All rights reserved.
-            </p>
-            <div className="flex justify-center gap-5 mt-3">
-              {bottomIcons.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  className="bg-white w-full h-full py-5 grid content-start justify-items-end"
+                  onClick={() => setIsMobileNav(false)}
+                  aria-label="Close menu"
                 >
                   <img
-                    src={item.icon}
-                    className="w-6 h-6"
-                    alt="social icon"
+                    src={closeIcon}
+                    alt="multiplication icon"
+                    className="w-14 h-14 text-neutral-600 cursor-pointer"
                   />
-                </a>
-              ))}
+                </button>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="grid gap-8">
+                {staticData.NavbarLinks.map((navLink, i) => (
+                  <div key={i}>
+                    {navLink.title === "Trainings" ? (
+                      // Use a button for the "Trainings" item instead of NavLink
+                      <button
+                        className={`text-2xl font-medium leading-9 flex gap-3 items-center w-fit transition-colors duration-200 hover:text-primary`}
+                        onClick={() => setIsDropDownOpen(!isDropDownOpen)}
+                      >
+                        <span>{navLink.title}</span>
+                        {isDropDownOpen ? (
+                          <IoIosArrowUp className="w-4 h-4" />
+                        ) : (
+                          <IoIosArrowDown className="w-4 h-4" />
+                        )}
+                      </button>
+                    ) : (
+                      // Regular NavLink for other items
+                      <NavLink
+                        to={navLink.to}
+                        className={({ isActive }) =>
+                          `text-2xl font-medium leading-9 flex gap-3 items-center
+                          hover:text-primary transition-colors duration-200 w-fit border-b-[3px] hover:border-blue-600 border-transparent
+                          ${
+                            isActive && navLink.to !== "/trainings"
+                              ? "border-blue-600"
+                              : "hover:border-blue-600 border-transparent"
+                          }`
+                        }
+                        onClick={() => setIsMobileNav(false)}
+                      >
+                        <span>{navLink.title}</span>
+                      </NavLink>
+                    )}
+
+                    {/* Dropdown Menu */}
+                    <AnimatePresence>
+                      {isDropDownOpen && navLink.title === "Trainings" && (
+                        <motion.div
+                          initial="hidden"
+                          animate="visible"
+                          exit="hidden"
+                          variants={dropdownVariants}
+                        >
+                          {staticData.trainingList.map((list, i) => (
+                            <NavLink
+                              key={i}
+                              to={list.to}
+                              className="px-3 py-1 mt-4 grid grid-flow-col gap-2 items-center 
+                            justify-start hover:text-primary hover:font-semibold
+                            transition-all duration-200"
+                              onClick={() => {
+                                setIsMobileNav(false);
+                                setIsDropDownOpen(false);
+                              }}
+                            >
+                              <p className="text-xl mb-2">{list.title}</p>
+                            </NavLink>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </nav>
+
+              {/* Footer */}
+              <footer className="border-t border-gray-100 pt-4 pb-2 mt-auto">
+                <p className="text-center text-xs font-medium">
+                  &copy; {currentYear} Kinplus Technologies. All rights
+                  reserved.
+                </p>
+                <Suspense fallback={<div className="h-9" />}>
+                  <SocialLinks />
+                </Suspense>
+              </footer>
             </div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

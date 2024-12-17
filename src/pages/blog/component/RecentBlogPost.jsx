@@ -1,10 +1,10 @@
 import PageLayout from "../../../components/Layout/PageLayout";
-import RecentBlog1 from "../../../assets/Blog/Image.png";
+import RecentBlog1 from "../../../assets/Blog/Image.webp";
 import Arrow from "../../../assets/Blog/arrow-up-right.png";
-import image3 from "../../../assets/Blog/Image (1).png";
+import image3 from "../../../assets/Blog/Image (1).webp";
 import { Link } from "react-router-dom";
 import { getRecentPosts } from "../../../services/blogServices";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 export async function recentPost(setRecentArticles) {
   getRecentPosts().then((response) => {

@@ -70,11 +70,27 @@ input[type="date"]::-ms-clear {
   display: none;
 }
 
+.cookie-banner-visible {
+  overflow: hidden;
+}
 
+/* Hide scrollbar for Webkit browsers */
+.gallery-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for other browsers */
+.gallery-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+img {
+  object-fit: cover;
+}
 
 @media screen and (min-width: 768px) {
   section {
     padding: 3em;
   }
 }
-

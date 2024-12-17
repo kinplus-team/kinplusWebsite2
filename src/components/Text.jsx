@@ -1,12 +1,28 @@
-export default function Text({ type, children, className, useComponentFont = "" }) {
+export default function Text({
+  type,
+  children,
+  className,
+  useComponentFont = "",
+}) {
   switch (type) {
     case "heading":
       return (
         <h1
-          className={`lg:text-[65px] ${useComponentFont = "" ? "text-[30px]" : useComponentFont }  font-bold leading-[40px] lg:leading-[75px] ${className}`}
+          className={`lg:text-[65px] ${(useComponentFont = ""
+            ? "text-[30px]"
+            : useComponentFont)} font-bold leading-[40px] lg:leading-[75px] ${className}`}
         >
           {children}
         </h1>
+      );
+
+    case "title":
+      return (
+        <h2
+          className={`lg:text-[20px] text-lg lg:font-medium font-normal lg:leading-[30px] leading-[26px] ${className}`}
+        >
+          {children}
+        </h2>
       );
 
     case "subheading":
@@ -16,15 +32,6 @@ export default function Text({ type, children, className, useComponentFont = "" 
         >
           {children}
         </h3>
-      );
-
-    case "title":
-      return (
-        <h5
-          className={` lg:text-[20px] text-lg lg:font-medium font-normal lg:leading-[30px] leading-[26px] ${className}`}
-        >
-          {children}
-        </h5>
       );
 
     case "paragraph":
@@ -39,7 +46,7 @@ export default function Text({ type, children, className, useComponentFont = "" 
     case "subparagraph":
       return (
         <p
-          className={`lg:text-lg  text-base lg:leading[30px] leading-[24px] ${className}`}
+          className={`lg:text-lg text-base lg:leading[30px] leading-[24px] ${className}`}
         >
           {children}
         </p>

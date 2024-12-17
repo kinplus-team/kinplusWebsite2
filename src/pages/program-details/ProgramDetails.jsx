@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import PageLayout from "../../components/Layout/PageLayout.jsx";
-import Hero from "./components/Hero.jsx";
 import Pricing from "./components/Pricing.jsx";
 import programsDetails from "../../repository/program-details.js";
+import HeroProgramDetails from "./components/HeroProgramDetails.jsx";
 
 export default function ProgramDetails() {
   const { training } = useParams();
@@ -30,7 +29,7 @@ export default function ProgramDetails() {
 
   return (
     <div id="target-section">
-      <Hero
+      <HeroProgramDetails
         title={programDetails?.title}
         description={programDetails?.description}
       />

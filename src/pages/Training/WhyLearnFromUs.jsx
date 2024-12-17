@@ -5,7 +5,6 @@ import handsOnExperience from "../../assets/svg/why-learn-from-us/hands-on-exper
 import industryHeight from "../../assets/svg/why-learn-from-us/industry-heights.svg";
 import professionalGrowth from "../../assets/svg/why-learn-from-us/professional-growth.svg";
 import tailoredCurriculum from "../../assets/svg/why-learn-from-us/tailored-curriculum.svg";
-// import sideBarImage from "../../assets/why-learn-from-us/why-learn-from-us.png";
 import backgroundIcon from "../../assets/svg/background-icon.svg";
 import sparkle from "../../assets/why-learn-from-us/sparkle.png";
 
@@ -50,7 +49,10 @@ export default function WhyLearnFromUs() {
   return (
     <PageLayout>
       <div className=" relative">
-        <Text type="title" className="text-[#1877F9] relative z-50">
+        <Text
+          type="title"
+          className="text-[#1877F9] relative z-50"
+        >
           What you stand to gain
         </Text>
 
@@ -72,7 +74,10 @@ export default function WhyLearnFromUs() {
             className="w-40 h-40 absolute top-10 right-36 z-0 hidden lg:block"
           />
         </div>
-        <Catalogue isLinked={false} catalouges={reasons} />
+        <Catalogue
+          isLinked={false}
+          catalouges={reasons}
+        />
       </div>
     </PageLayout>
   );

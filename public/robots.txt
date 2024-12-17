@@ -5,6 +5,9 @@ Allow: /
 Disallow: /admin/
 Disallow: /login/
 Disallow: /user/
+Disallow: /api/
+Disallow: /temp/
+Disallow: /*.json$
 
 # Allow crawling of specific file types
 Allow: /*.js$

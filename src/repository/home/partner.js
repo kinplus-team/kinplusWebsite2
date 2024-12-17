@@ -1,10 +1,9 @@
-import Akintunde from "../../assets/pages/home/partners_and_sponsors/AkintundeOyebode.png";
-// import DSN from "../../assets/pages/home/partners_and_sponsors/DSN.png";
-import GovernmentOfEkitiLogo from "../../assets/pages/home/partners_and_sponsors/EkitiStateGovernment.png";
-// import GDG from "../../assets/pages/home/partners_and_sponsors/GDG.png";
-import Microsoft from "../../assets/pages/home/partners_and_sponsors/Microsoft.png";
-import Nitda from "../../assets/pages/home/partners_and_sponsors/Nitda.png";
+import GovernmentOfEkitiLogo from "../../assets/pages/home/partners_and_sponsors/EkitiStateGovernment.webp";
+import Nitda from "../../assets/pages/home/partners_and_sponsors/Nitda.webp";
 
-const Partners = [Nitda, GovernmentOfEkitiLogo];
+const Partners = [
+  { icon: Nitda, width: 603, height: 173, alt: "NITDA Logo" },
+  {icon: GovernmentOfEkitiLogo, width:248, height:267, alt:"Ekiti State governmen logo"},
+];
 
 export default Partners;

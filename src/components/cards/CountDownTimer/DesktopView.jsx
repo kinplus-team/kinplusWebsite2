@@ -1,10 +1,11 @@
-import PageLayout from "../../Layout/PageLayout";
 import rightArrow from "../../../assets/svg/right-arrow.svg";
 import { Link } from "react-router-dom";
 
 export default function NextCohort({ image, time }) {
+  const sanitizedTime = time.replace(/[^0-9:]/g, ""); // Remove any non-numeric, non-colon characters
   return (
     <div
+      load="lazy"
       style={{
         background: `linear-gradient(0deg, rgba(24, 119, 249, 0) 0%, rgba(24, 119, 249, 0) 100%), 
                     url(${image}) lightgray 50% / cover no-repeat`,
@@ -21,9 +22,9 @@ export default function NextCohort({ image, time }) {
         <div className="flex justify-center gap-3">
           {["Days", "Hrs", "Min", "Sec"].map((item, i) => (
             <div key={i}>
-              <div className="flex gap-2 items-center">
-                <p className="text-[96px] font-[700] leading-[110%]">
-                  {time.split(":")[i]}
+              <div className="flex gap-2 items-center max-w-60">
+                <p className="text-[96px] font-[700] leading-[110%] w-40 text-center">
+                  {sanitizedTime.split(":")[i]}
                 </p>
                 {i < 3 && (
                   <p className="text-[96px] font-[700] leading-[110%]">:</p>
@@ -41,7 +42,11 @@ export default function NextCohort({ image, time }) {
           className="flex justify-center items-center gap-2 text-[20px] font-[700] leading-[112%]"
         >
           Register now{" "}
-          <img src={rightArrow} alt="right arrow" className="w-10 h-10" />
+          <img
+            src={rightArrow}
+            alt="right arrow"
+            className="w-10 h-10"
+          />
         </Link>
       </div>
     </div>
