@@ -11,8 +11,8 @@ export default function CountDownTimer({ image }) {
   )}:${formatNumber(minutes)}:${formatNumber(seconds)}`;
 
   return (
-    <div>
-      <div className="md:block hidden">
+    <div className="rounded-[30px]">
+      <div className="md:block hidden rounded-[30px]">
         <DesktopView
           image={image.desktopImg}
           time={formattedTime}

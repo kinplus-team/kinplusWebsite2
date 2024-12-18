@@ -50,7 +50,7 @@ export default function DesktopViewCatalogue({
       >
         {title && (
           <motion.h3
-            className="text-[#082B5B] lg:text-[40px] text-[25px] border border-red-900 font-[700] lg:leading-[50px] leading-10 capitalized lg:max-w-2xl pb-[17px]"
+            className="text-[#082B5B] lg:text-[40px] text-[25px] font-[700] lg:leading-[50px] leading-10 capitalized lg:max-w-2xl pb-[17px]"
             variants={itemVariants}
           >
             {title}

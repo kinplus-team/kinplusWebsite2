@@ -10,7 +10,8 @@ export default function NextCohortHome() {
   };
 
   return (
+    <div className="rounded-[30px] mt-5">
       <CountDownTimer image={countDownTimerProps} />
- 
+    </div>
   );
 }

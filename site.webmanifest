@@ -1,0 +1,23 @@
+{
+  "name": "Kinplus Technologies",
+  "short_name": "Kinplus",
+  "description": "Providing cutting-edge technology solutions that help businesses grow and innovate in the ever-evolving tech world.",
+  "lang": "en-US",
+  "start_url": "/",
+  "theme_color": "#1d4ed8",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

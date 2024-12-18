@@ -1,5 +1,5 @@
 // Cache version identifiers
-const STATIC_CACHE = "static-v2"; // Increment for updates
+const STATIC_CACHE = "static-v3"; // Increment for updates
 const DYNAMIC_CACHE = "dynamic-v1";
 const MAX_DYNAMIC_CACHE_ITEMS = 50; // Limit for dynamic cache size
 

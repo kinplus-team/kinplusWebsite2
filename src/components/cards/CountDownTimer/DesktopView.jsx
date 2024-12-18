@@ -7,8 +7,7 @@ export default function NextCohort({ image, time }) {
     <div
       load="lazy"
       style={{
-        background: `linear-gradient(0deg, rgba(24, 119, 249, 0) 0%, rgba(24, 119, 249, 0) 100%), 
-                    url(${image}) lightgray 50% / cover no-repeat`,
+        background: `linear-gradient(0deg, rgba(24, 119, 249, 0) 0%, rgba(24, 119, 249, 0) 100%), url(${image}) lightgray 50% / cover no-repeat`,
         height: "450px",
       }}
       loading="lazy"

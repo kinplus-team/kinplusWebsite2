@@ -6,7 +6,7 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { motion } from "framer-motion";
 
 export default function MyForm() {
-  useDocumentTitle("Comtact Us");
+  useDocumentTitle("Contact Us");
   const contactUsCardDetails = [
     {
       label: "Our Service",

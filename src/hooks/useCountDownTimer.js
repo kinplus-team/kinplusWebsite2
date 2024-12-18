@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
-export const useCountDownTimer = (targetDate = "12/04/2024 23:59:59") => {
+export const useCountDownTimer = (
+  targetDate = "2024-12-04T23:59:59"
+) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -9,33 +11,29 @@ export const useCountDownTimer = (targetDate = "12/04/2024 23:59:59") => {
   });
 
   useEffect(() => {
-    const endDate = new Date(targetDate);
+    const target = new Date(targetDate);
 
-    if (isNaN(endDate.getTime())) {
-      console.error(
-        "Invalid target date format. Ensure it's in 'MM/DD/YYYY HH:MM:SS' format."
-      );
-      return;
-    }
-
-    const interval = setInterval(() => {
+    const updateTimer = () => {
       const now = new Date();
-      const difference = endDate.getTime() - now.getTime();
+      const difference = target.getTime() - now.getTime();
 
       if (difference <= 0) {
-        clearInterval(interval);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      } else {
-        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const h = Math.floor(
-          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((difference % (1000 * 60)) / 1000);
-
-        setTimeLeft({ days: d, hours: h, minutes: m, seconds: s });
+        return;
       }
-    }, 1000);
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    };
+
+    updateTimer(); // Initialize immediately
+    const interval = setInterval(updateTimer, 1000);
 
     return () => clearInterval(interval);
   }, [targetDate]);
