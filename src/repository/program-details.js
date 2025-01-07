@@ -69,7 +69,7 @@ const courseDetails = [
       medium: {
         courseDuration: "3 Month plan",
         courseDescription: "Understand socioeconomic issues in data format.",
-        price: 100000,
+        price: 130000,
         whatsIncluded: [
           "Data with Microsoft tools",
           "Data processing formats",
@@ -131,7 +131,7 @@ const courseDetails = [
       medium: {
         courseDuration: "3 Month plan",
         courseDescription: "Learn the foundations of Cybersecurity.",
-        price: 120000,
+        price: 150000,
         whatsIncluded: [
           "Footprinting and Reconnaissance",
           "Scanning Networks",
@@ -143,7 +143,7 @@ const courseDetails = [
         courseDuration: "5 Month plan",
         courseDescription:
           "Get in tune with how data speaks. Apply data to the spheres of life.",
-        price: 180000,
+        price: 250000,
         whatsIncluded: [
           "All on the three month plan",
           "Network security & Threat analysis",
