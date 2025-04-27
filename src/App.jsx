@@ -54,6 +54,24 @@ const MainLayout = ({ children }) => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-M8G6XBFLQC";
+    script.async = true;
+    script.onload = () => {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-M8G6XBFLQC", {
+        transport_type: "beacon",
+        anonymize_ip: true,
+      });
+    };
+    document.head.appendChild(script);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

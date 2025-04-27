@@ -9,6 +9,7 @@ import Input from "../../../components/Inputs";
 import { contactUsForTraining } from "../../../services/contactForm";
 import useDelay from "../../../hooks/useDelay";
 import { motion } from "framer-motion";
+import DefaultHelmet from "../../../components/DefaultHelmet";
 
 // validation schema
 const contactUsTrainingSchema = z.object({
@@ -117,215 +118,225 @@ export default function ContactUsTraining() {
   };
 
   return (
-    <PageLayout className="overflow-x-hidden flex justify-between flex-col md:flex-row gap-20 lg:py-40 py-32">
-      <div
-        id="target-section"
-        className="grid lg:grid-rows-[350px_80px_auto] grid-rows-[200px_50px_1fr] gap-6 w-full p-2 mt-10 lg:mt-20"
-      >
-        <motion.div {...slideInLeft}>
-          <h3 className="text-[35px] lg:text-[52px] leading-[110.286%] font-bold text-[#082B5B] capitalize max-w-10 mb-8">
-            Get Started
-          </h3>
-          <ul className="text-[#101010] lg:text-[1.3rem] mt-8 text-base grid gap-3 list-inside list-disc marker:text-[#101010]">
-            <li>Different Plan Options for you</li>
-            <li>Large pool of vetted and proven instructors</li>
-            <li>Available Resources to help later on</li>
-            <li>Online courses for you to watch anytime</li>
-          </ul>
-        </motion.div>
+    <>
+      {/* Default Helmet for SEO */}
+      <DefaultHelmet
+        title="Register for Tech Training | Kinplus Technologies"
+        description="Join Kinplus Technologies' training programs to kickstart your career in tech. Learn Web Development, Cybersecurity, Product Design, Data Analysis, and more. Flexible packages and expert instructors available."
+        url="https://www.kinplusgroup.com/contact-us/training"
+        image="https://www.kinplusgroup.com/kinplus-opengraph-image.png"
+      />
 
-        <hr className="h-[4px] bg-white my-12 mr-5" />
-        <p className="text-[#101010] lg:text-xl leading-8">
-          Looking to partner with us? We'd love to hear from you. Contact us
-          using the details below to explore how we can work together. We're
-          committed to providing the best possible service, so don't hesitate to
-          get in touch.
-        </p>
-      </div>
-      {/* Right side form */}
-      <motion.div
-        {...slideInRight}
-        className="w-full mt-8 bg-blue-950 rounded-[0.9375rem] text-white mx-auto p-10"
-      >
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto "
+      <PageLayout className="overflow-x-hidden flex justify-between flex-col md:flex-row gap-20 lg:py-40 py-32">
+        <div
+          id="target-section"
+          className="grid lg:grid-rows-[350px_80px_auto] grid-rows-[200px_50px_1fr] gap-6 w-full p-2 mt-10 lg:mt-20"
         >
-          <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
-            Register With Us For Training
-          </h3>
-          <div className="grid sm:grid-flow-row gap-2">
-            <div>
-              <Input
-                type="text"
-                name="Full Name"
-                placeholder="Enter your Full Name"
-                isRequired={true}
-                {...register("fullName")}
-              />
-              {errors.fullName && (
-                <p className="text-red-500">{errors.fullName.message}</p>
-              )}
-            </div>
+          <motion.div {...slideInLeft}>
+            <h3 className="text-[35px] lg:text-[52px] leading-[110.286%] font-bold text-[#082B5B] capitalize max-w-10 mb-8">
+              Get Started
+            </h3>
+            <ul className="text-[#101010] lg:text-[1.3rem] mt-8 text-base grid gap-3 list-inside list-disc marker:text-[#101010]">
+              <li>Different Plan Options for you</li>
+              <li>Large pool of vetted and proven instructors</li>
+              <li>Available Resources to help later on</li>
+              <li>Online courses for you to watch anytime</li>
+            </ul>
+          </motion.div>
 
-            <div>
-              <Input
-                type="email"
-                name="Email"
-                placeholder="Enter your E-Mail"
-                isRequired={true}
-                {...register("email")}
-              />
-              {errors.email && (
-                <p className="text-red-500">{errors.email.message}</p>
-              )}
-            </div>
-
-            <div>
-              <Input
-                type="text"
-                name="Phone Number"
-                placeholder="Enter your Phone Number"
-                isRequired={true}
-                maxLength={11}
-                {...register("phoneNumber")}
-              />
-              {errors.phoneNumber && (
-                <p className="text-red-500">{errors.phoneNumber.message}</p>
-              )}
-            </div>
-
-            <div>
-              <Input
-                type="text"
-                name="Religion"
-                placeholder="Enter your Religion"
-                isRequired={true}
-                {...register("religion")}
-              />
-              {errors.religion && (
-                <p className="text-red-500">{errors.religion.message}</p>
-              )}
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2 items-center">
-              <div className="relative">
+          <hr className="h-[4px] bg-white my-12 mr-5" />
+          <p className="text-[#101010] lg:text-xl leading-8">
+            Looking to partner with us? We'd love to hear from you. Contact us
+            using the details below to explore how we can work together. We're
+            committed to providing the best possible service, so don't hesitate
+            to get in touch.
+          </p>
+        </div>
+        {/* Right side form */}
+        <motion.div
+          {...slideInRight}
+          className="w-full mt-8 bg-blue-950 rounded-[0.9375rem] text-white mx-auto p-10"
+        >
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="mx-auto "
+          >
+            <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
+              Register With Us For Training
+            </h3>
+            <div className="grid sm:grid-flow-row gap-2">
+              <div>
                 <Input
-                  type="date"
-                  name="Date of Birth"
-                  placeholder="Date of Birth"
+                  type="text"
+                  name="Full Name"
+                  placeholder="Enter your Full Name"
                   isRequired={true}
-                  max="2010-12-31"
-                  {...register("dateOfBirth")}
+                  {...register("fullName")}
                 />
-                {errors.dateOfBirth && (
-                  <p className="text-red-500 absolute -bottom-5">
-                    {errors.dateOfBirth.message}
-                  </p>
+                {errors.fullName && (
+                  <p className="text-red-500">{errors.fullName.message}</p>
                 )}
               </div>
 
-              <div className="relative">
+              <div>
+                <Input
+                  type="email"
+                  name="Email"
+                  placeholder="Enter your E-Mail"
+                  isRequired={true}
+                  {...register("email")}
+                />
+                {errors.email && (
+                  <p className="text-red-500">{errors.email.message}</p>
+                )}
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="Phone Number"
+                  placeholder="Enter your Phone Number"
+                  isRequired={true}
+                  maxLength={11}
+                  {...register("phoneNumber")}
+                />
+                {errors.phoneNumber && (
+                  <p className="text-red-500">{errors.phoneNumber.message}</p>
+                )}
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="Religion"
+                  placeholder="Enter your Religion"
+                  isRequired={true}
+                  {...register("religion")}
+                />
+                {errors.religion && (
+                  <p className="text-red-500">{errors.religion.message}</p>
+                )}
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2 items-center">
+                <div className="relative">
+                  <Input
+                    type="date"
+                    name="Date of Birth"
+                    placeholder="Date of Birth"
+                    isRequired={true}
+                    max="2010-12-31"
+                    {...register("dateOfBirth")}
+                  />
+                  {errors.dateOfBirth && (
+                    <p className="text-red-500 absolute -bottom-5">
+                      {errors.dateOfBirth.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="relative">
+                  <Input
+                    type="select"
+                    name="gender"
+                    placeholder="Gender"
+                    options={genderInput}
+                    isSelect={activeDropdown === "gender"}
+                    setIsSelect={() => handleDropdownToggle("gender")}
+                    error={errors.gender?.message}
+                    selected={watch("gender")}
+                    setSelected={(value) => setValue("gender", value)}
+                  />
+                  {errors.gender && (
+                    <p className="text-red-500 absolute -bottom-5">
+                      {errors.gender.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="Address"
+                  placeholder="Enter your Address"
+                  isRequired={true}
+                  {...register("address")}
+                />
+                {errors.address && (
+                  <p className="text-red-500">{errors.address.message}</p>
+                )}
+              </div>
+
+              <div>
                 <Input
                   type="select"
-                  name="gender"
-                  placeholder="Gender"
-                  options={genderInput}
-                  isSelect={activeDropdown === "gender"}
-                  setIsSelect={() => handleDropdownToggle("gender")}
-                  error={errors.gender?.message}
-                  selected={watch("gender")}
-                  setSelected={(value) => setValue("gender", value)}
+                  name="track"
+                  placeholder="Select Learning Track"
+                  options={trackOptions}
+                  isSelect={activeDropdown === "track"}
+                  setIsSelect={() => handleDropdownToggle("track")}
+                  error={errors.track?.message}
+                  selected={watch("track")}
+                  setSelected={(value) => setValue("track", value)}
                 />
-                {errors.gender && (
-                  <p className="text-red-500 absolute -bottom-5">
-                    {errors.gender.message}
-                  </p>
-                )}
+              </div>
+
+              <div>
+                <Input
+                  type="select"
+                  name="trackPackage"
+                  placeholder="Select payment package"
+                  options={packageOptions}
+                  isSelect={activeDropdown === "trackPackage"}
+                  setIsSelect={() => handleDropdownToggle("trackPackage")}
+                  error={errors.trackPackage?.message}
+                  selected={watch("trackPackage")}
+                  setSelected={(value) => setValue("trackPackage", value)}
+                />
+              </div>
+
+              <div className="py-3">
+                <p className="text-xl text-white">
+                  How will you be available for the training?
+                </p>
+                <Input
+                  type="checkbox"
+                  name="availability"
+                  radioText="Online/Virtual"
+                  isChecked={watch("availability") === "Online/Virtual"}
+                  onCheck={() => setValue("availability", "Online/Virtual")}
+                  error={errors.availability?.message}
+                />
+                <Input
+                  type="checkbox"
+                  name="availability"
+                  radioText="Onsite/Physical"
+                  isChecked={watch("availability") === "Onsite/Physical"}
+                  onCheck={() => setValue("availability", "Onsite/Physical")}
+                  error={errors.availability?.message}
+                />
+                <Input
+                  type="checkbox"
+                  name="availability"
+                  radioText="Hybrid"
+                  isChecked={watch("availability") === "Hybrid"}
+                  onCheck={() => setValue("availability", "Hybrid")}
+                  error={errors.availability?.message}
+                />
               </div>
             </div>
 
-            <div>
-              <Input
-                type="text"
-                name="Address"
-                placeholder="Enter your Address"
-                isRequired={true}
-                {...register("address")}
-              />
-              {errors.address && (
-                <p className="text-red-500">{errors.address.message}</p>
-              )}
-            </div>
-
-            <div>
-              <Input
-                type="select"
-                name="track"
-                placeholder="Select Learning Track"
-                options={trackOptions}
-                isSelect={activeDropdown === "track"}
-                setIsSelect={() => handleDropdownToggle("track")}
-                error={errors.track?.message}
-                selected={watch("track")}
-                setSelected={(value) => setValue("track", value)}
+            <div className="text-center mt-[10px] py-9 w-40 mx-auto">
+              <Button
+                text="Submit"
+                isLoading={isLoading}
+                type="customizedWhite"
               />
             </div>
-
-            <div>
-              <Input
-                type="select"
-                name="trackPackage"
-                placeholder="Select payment package"
-                options={packageOptions}
-                isSelect={activeDropdown === "trackPackage"}
-                setIsSelect={() => handleDropdownToggle("trackPackage")}
-                error={errors.trackPackage?.message}
-                selected={watch("trackPackage")}
-                setSelected={(value) => setValue("trackPackage", value)}
-              />
-            </div>
-
-            <div className="py-3">
-              <p className="text-xl text-white">
-                How will you be available for the training?
-              </p>
-              <Input
-                type="checkbox"
-                name="availability"
-                radioText="Online/Virtual"
-                isChecked={watch("availability") === "Online/Virtual"}
-                onCheck={() => setValue("availability", "Online/Virtual")}
-                error={errors.availability?.message}
-              />
-              <Input
-                type="checkbox"
-                name="availability"
-                radioText="Onsite/Physical"
-                isChecked={watch("availability") === "Onsite/Physical"}
-                onCheck={() => setValue("availability", "Onsite/Physical")}
-                error={errors.availability?.message}
-              />
-              <Input
-                type="checkbox"
-                name="availability"
-                radioText="Hybrid"
-                isChecked={watch("availability") === "Hybrid"}
-                onCheck={() => setValue("availability", "Hybrid")}
-                error={errors.availability?.message}
-              />
-            </div>
-          </div>
-
-          <div className="text-center mt-[10px] py-9 w-40 mx-auto">
-            <Button
-              text="Submit"
-              isLoading={isLoading}
-              type="customizedWhite"
-            />
-          </div>
-        </form>
-      </motion.div>
-    </PageLayout>
+          </form>
+        </motion.div>
+      </PageLayout>
+    </>
   );
 }

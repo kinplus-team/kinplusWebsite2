@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Pricing from "./components/Pricing.jsx";
 import programsDetails from "../../repository/program-details.js";
 import HeroProgramDetails from "./components/HeroProgramDetails.jsx";
+import DefaultHelmet from "../../components/DefaultHelmet"; // Importing DefaultHelmet
 
 export default function ProgramDetails() {
   const { training } = useParams();
@@ -19,21 +20,37 @@ export default function ProgramDetails() {
       .join(" ");
 
     const filterThroughPrograms = programsDetails.filter((course) => {
-      if (course.title == splitTitleURL) {
+      if (course.title === splitTitleURL) {
         return course;
       }
     });
 
     setProgramDetails(filterThroughPrograms[0]);
-  }, []);
+  }, [training]);
 
   return (
-    <div id="target-section">
-      <HeroProgramDetails
-        title={programDetails?.title}
-        description={programDetails?.description}
+    <>
+      {/* Default Helmet for SEO */}
+      <DefaultHelmet
+        title={`${programDetails?.title} | Kinplus Technologies`}
+        description={
+          programDetails?.description ||
+          "Discover our training programs and get the skills you need to succeed in the tech industry."
+        }
+        url={`https://www.kinplusgroup.com/trainings/courses/${training}`}
+        image={
+          programDetails?.image ||
+          "https://www.kinplusgroup.com/kinplus-opengraph-image.png"
+        }
       />
-      <Pricing pricingCardDetails={programDetails?.pricingCardInfo} />
-    </div>
+
+      <div id="target-section">
+        <HeroProgramDetails
+          title={programDetails?.title}
+          description={programDetails?.description}
+        />
+        <Pricing pricingCardDetails={programDetails?.pricingCardInfo} />
+      </div>
+    </>
   );
 }
