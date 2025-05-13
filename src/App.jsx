@@ -31,6 +31,7 @@ const Workshop = lazy(() => import("./pages/workshop/Workshop.jsx"));
 const Blog = lazy(() => import("./pages/blog/BlogIndex.jsx"));
 const BlogPost = lazy(() => import("./pages/blog/BlogPost/BlogPostIndex.jsx"));
 const Events = lazy(() => import("./pages/events/EventsIndex.jsx"));
+const TermsAndConditions = lazy(() => import("./pages/terms-and-conditions/TermsAndCondition.jsx"));
 const WorkshopDetails = lazy(() =>
   import("./pages/workshop-details/WorkshopDetails.jsx")
 );
@@ -270,6 +271,14 @@ function App() {
                 <MainLayout>
                   <SponsorUs />
                 </MainLayout>
+              }
+            />
+
+            <Route
+              key="/t&c"
+              path="/t&c"
+              element={
+                <TermsAndConditions />
               }
             />
 
