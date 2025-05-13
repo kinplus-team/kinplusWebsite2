@@ -279,7 +279,8 @@ export default function Footer() {
             variants={itemVariants}
             className="text-center text-[#F1F1F1F1] lg:text-lg lg:text-center"
           >
-            Copyright © 2024 Kinplus Technologies. All rights reserved.
+            Copyright © {new Date().getFullYear()} Kinplus Technologies. All
+            rights reserved.
           </motion.p>
         </motion.div>
       </div>
