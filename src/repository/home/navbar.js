@@ -2,7 +2,7 @@ const NavbarLinks = [
   { title: "About Us", to: "/about-us" },
   { title: "Our Services", to: "/our-services" },
   { title: "Trainings", to: "/trainings" },
-  // { title: "Blogs", to: "/blog" },
+  { title: "Blogs", to: "https://blog.kinplusgroup.com" },
   { title: "Careers", to: "/careers" },
   { title: "Contact Us", to: "/contact-us" },
 ];

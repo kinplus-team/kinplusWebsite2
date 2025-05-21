@@ -63,7 +63,6 @@ export default function ContactUsServices() {
       reset(); // Reset form after submission
       setFormKey((prevKey) => prevKey + 1); // Reset the form key
     } catch (error) {
-      console.log("error submitting: ", error);
       toast.error("Something went wrong!");
     } finally {
       setIsLoading(false);

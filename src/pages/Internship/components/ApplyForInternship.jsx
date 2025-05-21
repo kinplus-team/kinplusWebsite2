@@ -106,7 +106,6 @@ export default function ApplyForInternship() {
       reset(); // Clear the form
       setFormKey((prevKey) => prevKey + 1); // Reset form key to clear inputs
     } catch (error) {
-      console.log("error: ", error);
       toast.error("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);

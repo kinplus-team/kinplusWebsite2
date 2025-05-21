@@ -26,6 +26,7 @@ export default function ContactUsServices() {
   const [partnershipType, setPartnershipType] = useState("");
 
   const [comment, setComment] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   const {
     register,
@@ -56,7 +57,6 @@ export default function ContactUsServices() {
         setFormKey(formKey + 1);
       })
       .catch((error) => {
-        console.log(error);
         toast.error("Something went wrong!");
         setIsLoading(false);
       });

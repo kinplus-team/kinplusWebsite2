@@ -6,7 +6,7 @@ import { getPost } from "../../../services/blogServices";
 
 function getBlogPost(slug) {
   getPost(slug).then((response) => {
-    console.log(response);
+    //use the response data as needed
   });
 }
 
