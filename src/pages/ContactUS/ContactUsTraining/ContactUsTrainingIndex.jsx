@@ -76,6 +76,7 @@ export default function ContactUsTraining() {
       toast.success("Form submitted successfully");
       reset();
     } catch (error) {
+      console.log("From client:", error);
       toast.error("Something went wrong!");
     } finally {
       setIsLoading(false);
@@ -83,18 +84,17 @@ export default function ContactUsTraining() {
   };
 
   const trackOptions = [
-    { title: "Web development", value: "Web development" },
+    { title: "Web Development", value: "Web Development" },
     { title: "Cybersecurity", value: "Cybersecurity" },
     { title: "Product Design", value: "Product Design" },
-    { title: "Graphics Design", value: "Graphics Design" },
+    { title: "Graphic Design", value: "Graphic Design" },
     { title: "Data Analysis", value: "Data Analysis" },
+    {title: "Digital Marketing", value: "Digital Marketing"},
   ];
 
   const packageOptions = [
-    { title: "Standard (3 months ₦150k)", value: "Standard (3 months ₦150k)" },
-    { title: "Standard (5 months ₦250k)", value: "Standard (5 months ₦250k)" },
-    { title: "Premium (3 months ₦250k)", value: "Premium (3 months ₦250k)" },
-    { title: "Premium (5 months ₦400k)", value: "Premium (5 months ₦400k)" },
+    { title: "Medium (3 months)", value: "Medium (3 months)" },
+    { title: "Pro (5 months)", value: "Pro (5 months)" },
   ];
 
   const genderInput = [

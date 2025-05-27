@@ -50,17 +50,17 @@ export default function DesktopViewCatalogue({
       >
         {title && (
           <motion.h3
-            className="text-[#082B5B] lg:text-[40px] text-[25px] font-[700] lg:leading-[50px] leading-10 capitalized lg:max-w-2xl pb-[17px]"
+            className="text-[#082B5B] lg:text-[40px] text-[25px] font-[700] lg:leading-[50px] leading-10 capitalized lg:max-w-2xl pb-[17px] "
             variants={itemVariants}
           >
             {title}
           </motion.h3>
         )}
 
-        <div className="grid grid-cols-[5px_500px] gap-8 pl-3">
+        <div className="grid grid-cols-[5px_500px] gap-8 pl-3 ">
           {/* Line and Index Display */}
           <div>
-            <div className="bg-[#DFDFDF] w-[5px] h-[231.489px]">
+            <div className="bg-[#DFDFDF] w-[5px] h-[231.489px] ">
               <motion.div
                 style={{ transform: `translateY(${equalHeight}px)` }}
                 className="bg-[#1877F9] w-[5px] h-[58px]"
@@ -70,7 +70,7 @@ export default function DesktopViewCatalogue({
               />
             </div>
 
-            <div className="rotate-[-90deg] translate-y-16">
+            <div className="rotate-[-90deg] translate-y-16 ">
               <span className="text-[#1877F9] text-lg font-medium">
                 {formatNumber(index + 1)}
               </span>

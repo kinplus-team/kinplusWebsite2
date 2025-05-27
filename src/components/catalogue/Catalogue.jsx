@@ -9,7 +9,7 @@ export default function Catalogue({
 }) {
   return (
     <div className="relative z-50">
-      <div className="hidden lg:block">
+      <div className="hidden lg:block ">
         <DesktopViewCatalogue
           title={title}
           catalogues={catalouges}

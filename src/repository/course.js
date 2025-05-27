@@ -44,12 +44,12 @@ const courses = [
     image: trainingImage5,
     link: "cyber-security",
   },
-  // {
-  //   title: "Videography",
-  //   icon: icon6,
-  //   image: trainingImage1,
-  //   link: "videography",
-  // },
+  {
+    title: "Digital Marketing",
+    icon: icon6,
+    image: trainingImage1,
+    link: "digital-marketing",
+  },
 ];
 
 export default courses;

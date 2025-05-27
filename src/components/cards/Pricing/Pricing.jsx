@@ -17,7 +17,7 @@ export default function Pricing({
   switch (type) {
     case "Medium":
       return (
-        <div className=" grid gap-4 grid-rows-[auto_auto_1fr] bg-white shadow-lg rounded-2xl  px-10 py-12">
+        <div className=" grid gap-4 grid-rows-[auto_auto_1fr] bg-white shadow-lg rounded-2xl px-10 py-12 h-auto lg:h-[90vh]">
           {/* type */}
           <div className="grid items-center gap-5 grid-cols-[auto_1fr]">
             <div
@@ -77,7 +77,7 @@ export default function Pricing({
 
     case "Pro":
       return (
-        <div className=" grid gap-4 grid-rows-[auto_auto_1fr] bg-[#082B5B] text-white shadow-lg rounded-2xl px-10 py-12 ">
+        <div className=" grid gap-4 grid-rows-[auto_auto_1fr] bg-[#082B5B] text-white shadow-lg rounded-2xl px-10 py-12 h-auto lg:h-[90vh]">
           {/* type */}
           <div className="grid items-center gap-5 grid-cols-[auto_1fr] relative">
             <div

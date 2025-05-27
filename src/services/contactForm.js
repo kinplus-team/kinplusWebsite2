@@ -64,6 +64,7 @@ export const contactUsForTraining = async (
     paymentPackage,
     availability,
   });
+  console.log("From server:",response)
 
   return response;
 };

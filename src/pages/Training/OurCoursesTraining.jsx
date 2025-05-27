@@ -34,6 +34,7 @@ async function getCourses() {
 
   let allListedCourses = [];
   const responses = await courses();
+  
   responses.map((response, index) => {
     allListedCourses.push({
       title: response.title,
@@ -44,8 +45,9 @@ async function getCourses() {
   });
 
   return allListedCourses;
-}
 
+}
+ 
 export default function OurCoursesTraining() {
   const [listedCourses, setListedCourses] = useState(null);
 
@@ -54,6 +56,8 @@ export default function OurCoursesTraining() {
       setListedCourses(response);
     });
   }, []);
+
+  console.log("Listed courses:", listedCourses)
 
   return (
     <PageLayout>

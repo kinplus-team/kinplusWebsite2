@@ -8,11 +8,11 @@ const courseDetails = [
         courseDuration: "3 Month plan",
         courseDescription:
           "Secure an intensive training on coding, without prior experience.",
-        price: 100000,
+        price: 180000,
         whatsIncluded: [
-          "fundamental of programming",
-          "Creative styling",
+          "Fundamentals of Programming",
           "HTML and CSS",
+          "JavaScript",
           "One real life project ",
         ],
       },
@@ -20,12 +20,12 @@ const courseDetails = [
         courseDuration: "5 Month plan",
         courseDescription:
           "Gain hands-on experience in programming software products.",
-        price: 150000,
+        price: 250000,
         whatsIncluded: [
           "All on the 3 months plan",
           "One additional real life project",
-          "Javascript",
-          "One framework",
+          "One CSS framework",
+          "One JavaScript framework",
         ],
       },
     },
@@ -39,24 +39,27 @@ const courseDetails = [
         courseDuration: "3 Month plan",
         courseDescription:
           "Foundations to Fluency: Master the Basics in with Expert Guidance",
-        price: 100000,
+        price: 180000,
         whatsIncluded: [
-          "Foundational Curriculum",
-          "Guided Learning",
-          "Hands-On Practice",
-          "Resources to be Advanced",
+          "User Research & Flows",
+          "Figma Interface (Beginner to Advanced)",
+          "Visual Design Principles",
+          "Wireframes to High-Fidelity",
+          "Auto-layout, Styles & Variables",
+          "Design Prototyping & Micro Interactions",
         ],
       },
       pro: {
         courseDuration: "5 Month plan",
         courseDescription:
           "From Basics to Brilliance: Master Every Aspect with Immersive Learning",
-        price: 150000,
+        price: 250000,
         whatsIncluded: [
-          "Comprehensive Curriculum",
-          "Expert-Led Workshops",
-          "Advanced Projects",
-          "Specialized Training",
+          "Everything in 3 months",
+          "Advanced UI Design",
+          "Design Systems",
+          "Web Accessibility",
+          "Developer Hands-off",
         ],
       },
     },
@@ -69,24 +72,24 @@ const courseDetails = [
       medium: {
         courseDuration: "3 Month plan",
         courseDescription: "Understand socioeconomic issues in data format.",
-        price: 130000,
+        price: 180000,
         whatsIncluded: [
-          "Data with Microsoft tools",
-          "Data processing formats",
-          "Data cleaning and SQL",
-          "Power Query and Power BI",
+          "Spreadsheet (Excel)",
+          "SQL",
+          "Power BI and Power Query",
         ],
       },
       pro: {
         courseDuration: "5 Month plan",
         courseDescription:
           "Get in tune with how data speaks. Apply data to the spheres of life.",
-        price: 180000,
+        price: 250000,
         whatsIncluded: [
           "All on the 3 months plan",
-          "Real life data projects; and lots more",
+          "Real life data projects; and lots more",
+          "Python with Pandas and numpy",
           "Advanced analytics techniques",
-          "Exploration, Dashboards, and Advanced Tableau ",
+          " Mentorship",
         ],
       },
     },
@@ -100,8 +103,9 @@ const courseDetails = [
         courseDuration: "3 Month plan",
         courseDescription:
           "Get introduced to the elements that create striking visuals.",
-        price: 100000,
+        price: 120000,
         whatsIncluded: [
+          "Fundamental principles of design",
           "Basic design software and tools",
           "Creativity in flyer designs",
           "Graphics and design thinking",
@@ -112,7 +116,7 @@ const courseDetails = [
         courseDuration: "5 Month plan",
         courseDescription:
           "Become a professional designer with advanced creative skills",
-        price: 150000,
+        price: 180000,
         whatsIncluded: [
           
           "All on the three month plan",
@@ -131,7 +135,7 @@ const courseDetails = [
       medium: {
         courseDuration: "3 Month plan",
         courseDescription: "Learn the foundations of Cybersecurity.",
-        price: 150000,
+        price: 180000,
         whatsIncluded: [
           "Footprinting and Reconnaissance",
           "Scanning Networks",
@@ -142,7 +146,7 @@ const courseDetails = [
       pro: {
         courseDuration: "5 Month plan",
         courseDescription:
-          "Get in tune with how data speaks. Apply data to the spheres of life.",
+          "Become a guardian of the digital world. Use cutting-edge skills to protect systems and secure information.",
         price: 250000,
         whatsIncluded: [
           "All on the three month plan",
@@ -153,37 +157,38 @@ const courseDetails = [
       },
     },
   },
-  // {
-  //   title: "Videography",
-  //   description:
-  //     "Videography is the art of capturing, editing, and producing video content. With a camera and editing software, you can tell a story, capture a moment, or communicate a message through the power of video..",
-  //   pricingCardInfo: {
-  //     medium: {
-  //       courseDuration: "3 Month plan",
-  //       courseDescription:
-  //         "Lorem ipsum dolor sit amet doloroli sitiol conse ctetur adipiscing elit. ",
-  //       price: 100000,
-  //       whatsIncluded: [
-  //         "All analytics features",
-  //         "Up to 500,000 tracked visits",
-  //         "Dedicated support",
-  //         "Up to 50 team members",
-  //       ],
-  //     },
-  //     pro: {
-  //       courseDuration: "5 Month plan",
-  //       courseDescription:
-  //         "Lorem ipsum dolor sit amet doloroli sitiol conse ctetur adipiscing elit. .",
-  //       price: 120000,
-  //       whatsIncluded: [
-  //         "All analytics features",
-  //         "Up to 1,000,000 tracked visits",
-  //         "Premium support",
-  //         "Up to 100 team members",
-  //       ],
-  //     },
-  //   },
-  // },
+  {
+    title: "Digital Marketing",
+    description:
+      "Digital marketing is the art of promoting products or services using online platforms like social media, search engines, websites, and email. It helps businesses reach the right audience with the right message at the right time—all measurable and cost-effective. Learn digital marketing today and gain the skills to grow brands, boost sales, and build a career in one of the most in-demand fields worldwide!",
+    pricingCardInfo: {
+      medium: {
+        courseDuration: "3 Month plan",
+        courseDescription:
+          "Get introduced to the core strategies that drive powerful online engagement and business growth.",
+        price: 200000,
+        whatsIncluded: [
+          "Digital marketing strategy",
+          "Branding and Marketing",
+          "Basics of website creation and SEO",
+          "Social media marketing",
+          "Email marketing",
+        ],
+      },
+      pro: {
+        courseDuration: "5 Month plan",
+        courseDescription:
+          "Master the art of online influence. Use digital tools to build brands and transform engagement into impact.",
+        price: 300000,
+        whatsIncluded: [
+          "All on the 3 months plan",
+          "Google advertising ",
+          "Digital marketing job",
+          "Mentorship",
+        ],
+      },
+    },
+  },
 ];
 
 export default courseDetails;
