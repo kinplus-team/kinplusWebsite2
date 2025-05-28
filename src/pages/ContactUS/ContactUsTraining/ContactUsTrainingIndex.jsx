@@ -93,8 +93,8 @@ export default function ContactUsTraining() {
   ];
 
   const packageOptions = [
-    { title: "3 Months Standard", value: "3 Months Standard" },
-      { title: "5 Months Premium", value: "5 Months Premium" },
+    { title: "Standard (3 Months: 180,000)", value: "Standard (3 Months: 180,000)" },
+    { title: "Premium (5 Months: 250,000)", value: "Premium (5 Months: 250,000)" },
   ];
 
   const genderInput = [
