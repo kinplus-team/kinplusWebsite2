@@ -102,8 +102,8 @@ export default function Training() {
     ];
   
     const packageOptions = [
-      { title: "Medium (3 months)", value: "Medium (3 months)" },
-      { title: "Pro (5 months)", value: "Pro (5 months)" },
+      { title: "3 Months Standard", value: "3 Months Standard" },
+      { title: "5 Months Premium", value: "5 Months Premium" },
     ];
   
     const genderInput = [

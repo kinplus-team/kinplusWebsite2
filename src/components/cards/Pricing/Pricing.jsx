@@ -32,7 +32,7 @@ export default function Pricing({
 
             <div className="grid">
               <p className="text-[18px] font-[500] leading-[111.111%] text-[#8697B0]">
-                Medium
+                Standard
               </p>
               <p className="text-[24px] text-[#170F49] font-bold leading-[145.833%]">
                 {duration}
@@ -98,7 +98,7 @@ export default function Pricing({
                 Popular
               </div>
               <p className="text-[18px] font-[500] leading-[111.111%] text-[#EFF0F6]">
-                Pro
+                Premium
               </p>
               <p className="text-[24px] text-[#fff] font-bold leading-[145.833%]">
                 {duration}
