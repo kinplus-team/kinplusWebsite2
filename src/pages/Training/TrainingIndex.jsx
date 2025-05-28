@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import DefaultHelmet from "../../components/DefaultHelmet";
 import HeroTraining from "./HeroTraining.jsx";
-import Statistics from "./Statistics.jsx";
+// import Statistics from "./Statistics.jsx";
 import Dedication from "./Dedication.jsx";
 import OurCoursesTraining from "./OurCoursesTraining.jsx";
 import NextCohortTraining from "./NextCohortTraining.jsx";
@@ -18,7 +18,7 @@ import Input from "../../components/Inputs";
 import { contactUsForTraining } from "../../services/contactForm";
 import useDelay from "../../hooks/useDelay";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 // validation schema
 const contactUsTrainingSchema = z.object({
@@ -126,11 +126,11 @@ export default function Training() {
       transition: { duration: 0.8 },
     };
 
-    const formRef = useRef(null);
+    // const formRef = useRef(null);
 
-    const scrollToForm = () => {
-      formRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
+    // const scrollToForm = () => {
+    //   formRef.current?.scrollIntoView({ behavior: "smooth" });
+    // };
 
   return (
     <>
@@ -145,8 +145,13 @@ export default function Training() {
       <div className="overflow-hidden">
         <HeroTraining />
 
-        <div ref={formRef} className="max-w-[90vw] mt-[8vh] lg:mt-[20vh] mx-auto">
-          {/* Right side form */}
+        {/* <Statistics /> */}
+        <Dedication />
+        <OurCoursesTraining />
+        <NextCohortTraining />
+
+        {/* Form */}
+        <div className="max-w-[90vw] mt-[8vh] lg:mt-[20vh] mx-auto">
           <motion.div
             {...slideInRight}
             className="w-full mt-8 bg-blue-950 rounded-[0.9375rem] text-white mx-auto p-10"
@@ -156,59 +161,68 @@ export default function Training() {
                 Register With Us For Training
               </h3>
               <div className="grid sm:grid-flow-row gap-2">
-                <div>
-                  <Input
-                    type="text"
-                    name="Full Name"
-                    placeholder="Enter your Full Name"
-                    isRequired={true}
-                    {...register("fullName")}
-                  />
-                  {errors.fullName && (
-                    <p className="text-red-500">{errors.fullName.message}</p>
-                  )}
+                {/* Group 1 */}
+                <div className="grid gap-3 sm:grid-cols-2 items-center">
+                  <div>
+                    <Input
+                      type="text"
+                      name="Full Name"
+                      placeholder="Enter your Full Name"
+                      isRequired={true}
+                      {...register("fullName")}
+                    />
+                    {errors.fullName && (
+                      <p className="text-red-500">{errors.fullName.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Input
+                      type="email"
+                      name="Email"
+                      placeholder="Enter your E-Mail"
+                      isRequired={true}
+                      {...register("email")}
+                    />
+                    {errors.email && (
+                      <p className="text-red-500">{errors.email.message}</p>
+                    )}
+                  </div>
                 </div>
 
-                <div>
-                  <Input
-                    type="email"
-                    name="Email"
-                    placeholder="Enter your E-Mail"
-                    isRequired={true}
-                    {...register("email")}
-                  />
-                  {errors.email && (
-                    <p className="text-red-500">{errors.email.message}</p>
-                  )}
+                {/* Group 2 */}
+                <div className="grid gap-3 sm:grid-cols-2 items-center">
+                  <div>
+                    <Input
+                      type="text"
+                      name="Phone Number"
+                      placeholder="Enter your Phone Number"
+                      isRequired={true}
+                      maxLength={11}
+                      {...register("phoneNumber")}
+                    />
+                    {errors.phoneNumber && (
+                      <p className="text-red-500">
+                        {errors.phoneNumber.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Input
+                      type="text"
+                      name="Religion"
+                      placeholder="Enter your Religion"
+                      isRequired={true}
+                      {...register("religion")}
+                    />
+                    {errors.religion && (
+                      <p className="text-red-500">{errors.religion.message}</p>
+                    )}
+                  </div>
                 </div>
 
-                <div>
-                  <Input
-                    type="text"
-                    name="Phone Number"
-                    placeholder="Enter your Phone Number"
-                    isRequired={true}
-                    maxLength={11}
-                    {...register("phoneNumber")}
-                  />
-                  {errors.phoneNumber && (
-                    <p className="text-red-500">{errors.phoneNumber.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <Input
-                    type="text"
-                    name="Religion"
-                    placeholder="Enter your Religion"
-                    isRequired={true}
-                    {...register("religion")}
-                  />
-                  {errors.religion && (
-                    <p className="text-red-500">{errors.religion.message}</p>
-                  )}
-                </div>
-
+                {/* Group 3 */}
                 <div className="grid gap-3 sm:grid-cols-2 items-center">
                   <div className="relative">
                     <Input
@@ -246,47 +260,52 @@ export default function Training() {
                   </div>
                 </div>
 
-                <div>
-                  <Input
-                    type="text"
-                    name="Address"
-                    placeholder="Enter your Address"
-                    isRequired={true}
-                    {...register("address")}
-                  />
-                  {errors.address && (
-                    <p className="text-red-500">{errors.address.message}</p>
-                  )}
+                {/* Group 4 */}
+                <div className="grid gap-3 sm:grid-cols-2 items-center">
+                  <div>
+                    <Input
+                      type="text"
+                      name="Address"
+                      placeholder="Enter your Address"
+                      isRequired={true}
+                      {...register("address")}
+                    />
+                    {errors.address && (
+                      <p className="text-red-500">{errors.address.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <Input
+                      type="select"
+                      name="track"
+                      placeholder="Select Learning Track"
+                      options={trackOptions}
+                      isSelect={activeDropdown === "track"}
+                      setIsSelect={() => handleDropdownToggle("track")}
+                      error={errors.track?.message}
+                      selected={watch("track")}
+                      setSelected={(value) => setValue("track", value)}
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <Input
-                    type="select"
-                    name="track"
-                    placeholder="Select Learning Track"
-                    options={trackOptions}
-                    isSelect={activeDropdown === "track"}
-                    setIsSelect={() => handleDropdownToggle("track")}
-                    error={errors.track?.message}
-                    selected={watch("track")}
-                    setSelected={(value) => setValue("track", value)}
-                  />
+                {/* Group 5 */}
+                <div className="grid gap-3 sm:grid-cols-2 items-center">
+                  <div>
+                    <Input
+                      type="select"
+                      name="trackPackage"
+                      placeholder="Select payment package"
+                      options={packageOptions}
+                      isSelect={activeDropdown === "trackPackage"}
+                      setIsSelect={() => handleDropdownToggle("trackPackage")}
+                      error={errors.trackPackage?.message}
+                      selected={watch("trackPackage")}
+                      setSelected={(value) => setValue("trackPackage", value)}
+                    />
+                  </div>
                 </div>
-
-                <div>
-                  <Input
-                    type="select"
-                    name="trackPackage"
-                    placeholder="Select payment package"
-                    options={packageOptions}
-                    isSelect={activeDropdown === "trackPackage"}
-                    setIsSelect={() => handleDropdownToggle("trackPackage")}
-                    error={errors.trackPackage?.message}
-                    selected={watch("trackPackage")}
-                    setSelected={(value) => setValue("trackPackage", value)}
-                  />
-                </div>
-
                 <div className="py-3">
                   <p className="text-xl text-white">
                     How will you be available for the training?
@@ -329,15 +348,10 @@ export default function Training() {
           </motion.div>
         </div>
 
-        {/* <Statistics /> */}
-        <Dedication />
-        <OurCoursesTraining />
-        <NextCohortTraining />
-
         {/* Call to Action Button */}
-          <Link className="lg:w-40 mx-auto flex items-center justify-center mt-[10%] lg:mt-[5%]">
+        {/* <Link className="lg:w-40 mx-auto flex items-center justify-center mt-[10%] lg:mt-[5%]">
             <Button onClick={scrollToForm} type="customizedBlue" text="Register now" />
-          </Link>
+          </Link> */}
 
         <WhyLearnFromUs />
         <GalleryTraining />
