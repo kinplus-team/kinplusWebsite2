@@ -13,7 +13,7 @@ const courseDetails = [
           "Fundamentals of Programming",
           "HTML and CSS",
           "JavaScript",
-          "One real life project ",
+          "Real life project ",
         ],
       },
       pro: {
@@ -23,9 +23,8 @@ const courseDetails = [
         price: 250000,
         whatsIncluded: [
           "All on the 3 months plan",
-          "One additional real life project",
-          "One CSS framework",
-          "One JavaScript framework",
+          "Real life project",
+          "Framework",
         ],
       },
     },
