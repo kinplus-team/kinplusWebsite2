@@ -97,10 +97,32 @@ export default function ContactUsTraining() {
     { title: "Premium (5 Months: 250,000)", value: "Premium (5 Months: 250,000)" },
   ];
 
+  const marketingOptions = [
+    { title: "Standard (3 Months: 200,000)", value: "Standard (3 Months: 200,000)" },
+    { title: "Premium (5 Months: 300,000)", value: "Premium (5 Months: 300,000)" },
+
+  ]
+
+  const graphicOptions = [
+    { title: "Standard (3 Months: 120,000)", value: "Standard (3 Months: 120,000)" },
+    { title: "Premium (5 Months: 180,000)", value: "Premium (5 Months: 180,000)" },
+
+  ]
+
   const genderInput = [
     { title: "Male", value: "Male" },
     { title: "Female", value: "Female" },
   ];
+
+  const selectedTrack = watch("track");
+
+  let dynamicPackageOptions = packageOptions;
+
+  if (selectedTrack === "Digital Marketing") {
+    dynamicPackageOptions = marketingOptions;
+  } else if (selectedTrack === "Graphic Design"){
+    dynamicPackageOptions = graphicOptions;
+  }
 
   // animation variants
   const slideInLeft = {
@@ -287,7 +309,7 @@ export default function ContactUsTraining() {
                   type="select"
                   name="trackPackage"
                   placeholder="Select payment package"
-                  options={packageOptions}
+                  options={dynamicPackageOptions}
                   isSelect={activeDropdown === "trackPackage"}
                   setIsSelect={() => handleDropdownToggle("trackPackage")}
                   error={errors.trackPackage?.message}
