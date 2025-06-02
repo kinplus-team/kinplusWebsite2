@@ -103,11 +103,11 @@ export default function ContactUsTraining() {
 
   ]
 
-  const graphicOptions = [
-    { title: "Standard (3 Months: 120,000)", value: "Standard (3 Months: 120,000)" },
-    { title: "Premium (5 Months: 180,000)", value: "Premium (5 Months: 180,000)" },
+  // const graphicOptions = [
+  //   { title: "Standard (3 Months: 120,000)", value: "Standard (3 Months: 120,000)" },
+  //   { title: "Premium (5 Months: 180,000)", value: "Premium (5 Months: 180,000)" },
 
-  ]
+  // ]
 
   const genderInput = [
     { title: "Male", value: "Male" },
@@ -120,8 +120,6 @@ export default function ContactUsTraining() {
 
   if (selectedTrack === "Digital Marketing") {
     dynamicPackageOptions = marketingOptions;
-  } else if (selectedTrack === "Graphic Design"){
-    dynamicPackageOptions = graphicOptions;
   }
 
   // animation variants

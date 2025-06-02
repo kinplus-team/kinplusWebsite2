@@ -23,7 +23,7 @@ const courseDetails = [
         price: 250000,
         whatsIncluded: [
           "All on the 3 months plan",
-          "Real life project",
+          "Real life projects",
           "Framework",
         ],
       },
@@ -102,7 +102,7 @@ const courseDetails = [
         courseDuration: "3 Month plan",
         courseDescription:
           "Get introduced to the elements that create striking visuals.",
-        price: 120000,
+        price: 180000,
         whatsIncluded: [
           "Fundamental principles of design",
           "Basic design software and tools",
@@ -115,7 +115,7 @@ const courseDetails = [
         courseDuration: "5 Month plan",
         courseDescription:
           "Become a professional designer with advanced creative skills",
-        price: 180000,
+        price: 250000,
         whatsIncluded: [
           
           "All on the three month plan",
