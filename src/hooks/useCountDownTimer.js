@@ -10,6 +10,7 @@ export const useCountDownTimer = (
     seconds: 0,
   });
 
+
   useEffect(() => {
     const target = new Date(targetDate);
 

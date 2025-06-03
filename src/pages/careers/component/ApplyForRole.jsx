@@ -8,6 +8,8 @@ import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
+import FormModal from "../../../components/FormModal";
+
 
 // validation schema
 const applyForRoleSchema = z.object({
@@ -22,7 +24,9 @@ const applyForRoleSchema = z.object({
   jobRole: z.string().min(1, "Job role is required"),
   portfolioLink: z
     .string()
-    .url("Please enter a valid URL starting with https://")
+    .refine((val) => !val || val.startsWith("https://"), {
+      message: "Please enter a valid URL starting with https://",
+    })
     .optional(),
   cv: z.instanceof(File).refine((file) => file?.type === "application/pdf", {
     message: "Please upload a PDF file",
@@ -83,6 +87,8 @@ export default function ApplyForRole() {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
   };
 
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
@@ -98,6 +104,9 @@ export default function ApplyForRole() {
       setIsLoading(false);
       toast.success("Thank you for submitting your resume!");
       reset();
+
+      setIsFormModalOpen(true); // Open modal
+
     } catch (error) {
       console.error("Error submitting application:", error);
       toast.error(
@@ -250,6 +259,11 @@ export default function ApplyForRole() {
           </form>
         </div>
       </motion.div>
+      <FormModal
+        isOpen={isFormModalOpen}
+        onClose={() => setIsFormModalOpen(false)}
+        message="Thank you for your interest in joining our team. You will be contacted if your application is considered and you will be invited through your email for further discussions with our team"
+      />
     </div>
   );
 }

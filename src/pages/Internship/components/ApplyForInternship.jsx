@@ -12,6 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import useDelay from "../../../hooks/useDelay";
 import { motion } from "framer-motion";
+import FormModal from "../../../components/FormModal";
 
 // Validation schema for SIWES form
 const siwesSchema = z.object({
@@ -80,6 +81,8 @@ export default function ApplyForInternship() {
   ];
   const healthChallenge = watch("anyHealthChallenges");
 
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+
   const onSubmit = async (data) => {
     setIsLoading(true);
     await delay(2000);
@@ -105,6 +108,9 @@ export default function ApplyForInternship() {
       toast.success("Thank you for applying!");
       reset(); // Clear the form
       setFormKey((prevKey) => prevKey + 1); // Reset form key to clear inputs
+
+      setIsFormModalOpen(true); // Open modal
+
     } catch (error) {
       toast.error("An error occurred. Please try again.");
     } finally {
@@ -159,15 +165,15 @@ export default function ApplyForInternship() {
         </div>
 
         {/* Right side form */}
-        <motion.div {...slideInRight} className="bg-[#082B5B] lg:p-14 p-6 rounded-lg lg:mt-4">
+        <motion.div
+          {...slideInRight}
+          className="bg-[#082B5B] lg:p-14 p-6 rounded-lg lg:mt-4"
+        >
           <h3 className="lg:text-[44px] text-[35px] font-[700] text-[#F1F1F1] lg:leading-[54px] leading-[40px] max-w-md">
             Apply for our SIWES/IT program
           </h3>
 
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="grid gap-4 mt-6"
-          >
+          <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 mt-6">
             {/* Full Name */}
             <div>
               <Input
@@ -394,6 +400,12 @@ export default function ApplyForInternship() {
             </div>
           </form>
         </motion.div>
+
+        <FormModal
+          isOpen={isFormModalOpen}
+          onClose={() => setIsFormModalOpen(false)}
+          message="Thank you for your interest in our organization. Please proceed to our office with the letter from your institution for a session with our team. Please note that this application does not guarantee the approval of your IT/SIWES program with the company. Thank you."
+        />
       </Element>
     </PageLayout>
   );
