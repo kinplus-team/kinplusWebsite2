@@ -1,5 +1,5 @@
 import { useState, useEffect, memo, lazy, Suspense } from "react";
-import { motion} from "framer-motion";
+import { motion } from "framer-motion";
 import { NavLink, useLocation } from "react-router-dom";
 import throttle from "lodash/throttle";
 import staticData from "../../repository/home/navbar";
@@ -53,9 +53,7 @@ export default function Header() {
     };
   }, []);
 
-  const isDynamicColorPath = ["/careers", "/trainings/workshop", "/"].includes(
-    pathname
-  );
+  const isDynamicColorPath = ["/careers", "/trainings/workshop", "/"].includes(pathname);
   const textColorClass = isDynamicColorPath
     ? navbarColor
       ? "text-neutral-900"
@@ -70,8 +68,7 @@ export default function Header() {
     >
       <motion.div>
         <NavLink to="/">
-          {(pathname === "/careers" || pathname === "/workshop") &&
-          !navbarColor ? (
+          {(pathname === "/careers" || pathname === "/workshop") && !navbarColor ? (
             <KinplusLogoWhite />
           ) : (
             <KinplusLogoBlue />
@@ -100,6 +97,16 @@ export default function Header() {
                 setIsDropDownOpen={setIsDropDownOpen}
               />
             </div>
+          ) : link.to === 'https://blog.kinplusgroup.com' ? (
+            <a
+              key={link.to}
+              href={link.to}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-sm lg:text-lg font-medium transition-colors duration-200 border-b-[3px] hover:border-blue-600 border-transparent ${textColorClass}`}
+            >
+              {link.title}
+            </a>
           ) : (
             <NavItem
               key={link.to}

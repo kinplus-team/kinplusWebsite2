@@ -139,7 +139,6 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
                 {staticData.NavbarLinks.map((navLink, i) => (
                   <div key={i}>
                     {navLink.title === "Trainings" ? (
-                      // Use a button for the "Trainings" item instead of NavLink
                       <button
                         className={`text-2xl font-medium leading-9 flex gap-3 items-center w-fit transition-colors duration-200 hover:text-primary`}
                         onClick={() => setIsDropDownOpen(!isDropDownOpen)}
@@ -151,8 +150,17 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
                           <IoIosArrowDown className="w-4 h-4" />
                         )}
                       </button>
+                    ) : navLink.to.startsWith("http") ||
+                      navLink.to === "/blog" ? (
+                      <a
+                        href={navLink.to}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-2xl font-medium leading-9 flex gap-3 items-center hover:text-primary transition-colors duration-200 w-fit"
+                      >
+                        <span>{navLink.title}</span>
+                      </a>
                     ) : (
-                      // Regular NavLink for other items
                       <NavLink
                         to={navLink.to}
                         className={({ isActive }) =>
@@ -184,8 +192,8 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
                               key={i}
                               to={list.to}
                               className="px-3 py-1 mt-4 grid grid-flow-col gap-2 items-center 
-                            justify-start hover:text-primary hover:font-semibold
-                            transition-all duration-200"
+                              justify-start hover:text-primary hover:font-semibold
+                              transition-all duration-200"
                               onClick={() => {
                                 setIsMobileNav(false);
                                 setIsDropDownOpen(false);
@@ -204,8 +212,7 @@ const MobileMenu = ({ isDropDownOpen, setIsDropDownOpen, navbarColor }) => {
               {/* Footer */}
               <footer className="border-t border-gray-100 pt-4 pb-2 mt-auto">
                 <p className="text-center text-xs font-medium">
-                  &copy; {currentYear} Kinplus Technologies. All rights
-                  reserved.
+                  &copy; {currentYear} Kinplus Technologies. All rights reserved.
                 </p>
                 <Suspense fallback={<div className="h-9" />}>
                   <SocialLinks />

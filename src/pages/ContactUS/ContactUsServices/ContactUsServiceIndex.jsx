@@ -11,6 +11,8 @@ import useDelay from "../../../hooks/useDelay";
 import { motion } from "framer-motion";
 import PageLayout from "../../../components/Layout/PageLayout";
 import DefaultHelmet from "../../../components/DefaultHelmet";
+import FormModal from "../../../components/FormModal";
+
 
 // Define the Zod schema for form validation
 const schema = z.object({
@@ -46,6 +48,8 @@ export default function ContactUsServices() {
     mode: "onChange", // Validate on every change
   });
 
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+
   const delay = useDelay();
 
   const onSubmit = async (data) => {
@@ -62,6 +66,8 @@ export default function ContactUsServices() {
       toast.success("Form submitted successfully");
       reset(); // Reset form after submission
       setFormKey((prevKey) => prevKey + 1); // Reset the form key
+      setIsFormModalOpen(true); // Open modal
+
     } catch (error) {
       toast.error("Something went wrong!");
     } finally {
@@ -99,10 +105,7 @@ export default function ContactUsServices() {
       >
         {/* Description */}
         <div className="grid lg:grid-rows-[350px_80px_auto] grid-rows-[250px_50px_1fr] gap-6 w-full p-2">
-          <motion.div
-            {...slideInLeft}
-            className=""
-          >
+          <motion.div {...slideInLeft} className="">
             <Text
               type="heading"
               className="text-[#082B5B] text-[35px] lg:text-[52px] leading-[110.286%]  max-w-5 capitalize"
@@ -138,10 +141,7 @@ export default function ContactUsServices() {
             onSubmit={handleSubmit(onSubmit)}
             className="mx-auto  w-[90%]"
           >
-            <Text
-              type="heading"
-              className="capitalize py-4 text-2xl"
-            >
+            <Text type="heading" className="capitalize py-4 text-2xl">
               Tell us about your project
             </Text>
 
@@ -229,6 +229,11 @@ export default function ContactUsServices() {
             </div>
           </form>
         </motion.div>
+        <FormModal
+          isOpen={isFormModalOpen}
+          onClose={() => setIsFormModalOpen(false)}
+          message="We are glad that you are entrusting your project to us. Our team will review your entries and reach out to you through your email or phone. You may want to reach out to us more directly. You can contact us through call or WhatsApp on our official line +234 811 640 0858.  We look forward to providing you the best service."
+        />
       </PageLayout>
     </>
   );
