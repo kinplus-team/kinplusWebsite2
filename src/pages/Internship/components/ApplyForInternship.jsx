@@ -79,6 +79,13 @@ export default function ApplyForInternship() {
     { title: "Male", value: "Male" },
     { title: "Female", value: "Female" },
   ];
+
+  const religionInput = [
+    { title: "Christianity", value: "Christianity" },
+    { title: "Islam", value: "Islam" },
+    { title: "Traditional", value: "Traditional" },
+  ];
+
   const healthChallenge = watch("anyHealthChallenges");
 
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
@@ -106,11 +113,9 @@ export default function ApplyForInternship() {
       );
 
       toast.success("Thank you for applying!");
-      reset(); // Clear the form
-      setFormKey((prevKey) => prevKey + 1); // Reset form key to clear inputs
-
-      setIsFormModalOpen(true); // Open modal
-
+      reset();
+      setFormKey((prevKey) => prevKey + 1);
+      setIsFormModalOpen(true);
     } catch (error) {
       toast.error("An error occurred. Please try again.");
     } finally {
@@ -118,7 +123,6 @@ export default function ApplyForInternship() {
     }
   };
 
-  // animation variants
   const slideInLeft = {
     initial: { x: -100, opacity: 0 },
     whileInView: { x: 0, opacity: 1 },
@@ -140,7 +144,6 @@ export default function ApplyForInternship() {
         className="grid lg:grid-cols-2 gap-8 lg:py-[55px] py-[30px]"
         style={{ borderTop: "1px solid rgba(0, 0, 0, 0.42) " }}
       >
-        {/* Left side */}
         <div className="grid lg:grid-rows-[240px_160px_25px_150px] gap-6 place-items-start mt-4 md:mt-8 lg:mt-16">
           <motion.div
             {...slideInLeft}
@@ -164,7 +167,6 @@ export default function ApplyForInternship() {
           </motion.dev>
         </div>
 
-        {/* Right side form */}
         <motion.div
           {...slideInRight}
           className="bg-[#082B5B] lg:p-14 p-6 rounded-lg lg:mt-4"
@@ -174,7 +176,6 @@ export default function ApplyForInternship() {
           </h3>
 
           <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 mt-6">
-            {/* Full Name */}
             <div>
               <Input
                 type="text"
@@ -188,7 +189,6 @@ export default function ApplyForInternship() {
               )}
             </div>
 
-            {/* Email */}
             <div>
               <Input
                 type="email"
@@ -201,7 +201,7 @@ export default function ApplyForInternship() {
                 <p className="text-red-500 ">{errors.email.message}</p>
               )}
             </div>
-            {/* Phone Number */}
+
             <div>
               <Input
                 type="text"
@@ -216,22 +216,26 @@ export default function ApplyForInternship() {
               )}
             </div>
 
-            {/* Religion */}
-            <div>
-              {" "}
+            {/* Religion as dropdown */}
+            <div className="relative flex flex-col">
               <Input
-                type="text"
+                type="select"
                 name="Religion"
-                placeholder="Enter your Religion"
-                isRequired={true}
-                {...register("religion")}
+                placeholder="Religion"
+                options={religionInput}
+                isSelect={activeDropdown === "religion"}
+                setIsSelect={() => handleDropdownToggle("religion")}
+                error={errors.religion?.message}
+                selected={watch("religion")}
+                setSelected={(value) => setValue("religion", value)}
               />
-              {errors.religion && (
-                <p className="text-red-500">{errors.religion.message}</p>
-              )}
+              {/*  {errors.religion && (
+                <p className="text-red-500 absolute -bottom-5">
+                  {errors.religion.message}
+                </p>
+              )} */}
             </div>
 
-            {/* Date of Birth & Gender */}
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="relative flex flex-col">
                 <Input
@@ -268,7 +272,6 @@ export default function ApplyForInternship() {
               </div>
             </div>
 
-            {/* Address */}
             <div>
               <Input
                 type="text"
@@ -282,7 +285,6 @@ export default function ApplyForInternship() {
               )}
             </div>
 
-            {/* Institution Name */}
             <div>
               <Input
                 type="text"
@@ -298,9 +300,7 @@ export default function ApplyForInternship() {
               )}
             </div>
 
-            {/* Course of Study */}
             <div>
-              {" "}
               <Input
                 type="text"
                 name="Course of Study"
@@ -313,7 +313,6 @@ export default function ApplyForInternship() {
               )}
             </div>
 
-            {/* Duration */}
             <div>
               <Input
                 type="text"
@@ -328,14 +327,13 @@ export default function ApplyForInternship() {
               )}
             </div>
 
-            {/* Start Date & End Date */}
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="relative">
                 <Input
                   type="date"
                   name="Start Date"
                   placeholder="When are you starting?"
-                  min={new Date().toISOString().split("T")[0]} // Ensure future date
+                  min={new Date().toISOString().split("T")[0]}
                   {...register("startDate")}
                 />
                 {errors.startDate && (
@@ -350,7 +348,7 @@ export default function ApplyForInternship() {
                   type="date"
                   name="End Date"
                   placeholder="When are you likely to finish?"
-                  min={new Date().toISOString().split("T")[0]} // Ensure future date
+                  min={new Date().toISOString().split("T")[0]}
                   {...register("endDate")}
                 />
                 {errors.endDate && (
@@ -361,7 +359,6 @@ export default function ApplyForInternship() {
               </div>
             </div>
 
-            {/* Health Challenges */}
             <div className="py-3">
               <p className="text-xl text-white">
                 Do you have any health challenges?
@@ -380,7 +377,6 @@ export default function ApplyForInternship() {
               />
             </div>
 
-            {/* Health Challenges Description (Conditional) */}
             {healthChallenge === "Yes" && (
               <Input
                 type="textarea"
@@ -390,7 +386,6 @@ export default function ApplyForInternship() {
               />
             )}
 
-            {/* Submit Button */}
             <div className="w-40 mx-auto">
               <Button
                 type="customizedWhite"

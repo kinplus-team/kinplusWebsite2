@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+// Inside ContactUsTraining component, full code (with just the religion input changed to a dropdown)
+
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
@@ -46,11 +48,16 @@ export default function ContactUsTraining() {
     setValue,
     watch,
     reset,
+    trigger,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(contactUsTrainingSchema),
     mode: "onChange",
   });
+
+  useEffect(() => {
+    register("religion", { required: "Religion is required" });
+  }, [register]);
 
   const handleDropdownToggle = (dropdownName) => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
@@ -89,7 +96,7 @@ export default function ContactUsTraining() {
     { title: "Product Design", value: "Product Design" },
     { title: "Graphic Design", value: "Graphic Design" },
     { title: "Data Analysis", value: "Data Analysis" },
-    {title: "Digital Marketing", value: "Digital Marketing"},
+    { title: "Digital Marketing", value: "Digital Marketing" },
   ];
 
   const packageOptions = [
@@ -100,24 +107,22 @@ export default function ContactUsTraining() {
   const marketingOptions = [
     { title: "Standard (3 Months: 200,000)", value: "Standard (3 Months: 200,000)" },
     { title: "Premium (5 Months: 300,000)", value: "Premium (5 Months: 300,000)" },
-
-  ]
-
-  // const graphicOptions = [
-  //   { title: "Standard (3 Months: 120,000)", value: "Standard (3 Months: 120,000)" },
-  //   { title: "Premium (5 Months: 180,000)", value: "Premium (5 Months: 180,000)" },
-
-  // ]
+  ];
 
   const genderInput = [
     { title: "Male", value: "Male" },
     { title: "Female", value: "Female" },
   ];
 
+  const religionOptions = [
+    { title: "Christianity", value: "Christianity" },
+    { title: "Islam", value: "Islam" },
+    { title: "Traditional", value: "Traditional" },
+  ];
+
   const selectedTrack = watch("track");
 
   let dynamicPackageOptions = packageOptions;
-
   if (selectedTrack === "Digital Marketing") {
     dynamicPackageOptions = marketingOptions;
   }
@@ -139,7 +144,6 @@ export default function ContactUsTraining() {
 
   return (
     <>
-      {/* Default Helmet for SEO */}
       <DefaultHelmet
         title="Register for Tech Training | Kinplus Technologies"
         description="Join Kinplus Technologies' training programs to kickstart your career in tech. Learn Web Development, Cybersecurity, Product Design, Data Analysis, and more. Flexible packages and expert instructors available."
@@ -172,15 +176,12 @@ export default function ContactUsTraining() {
             to get in touch.
           </p>
         </div>
-        {/* Right side form */}
+
         <motion.div
           {...slideInRight}
           className="w-full mt-8 bg-blue-950 rounded-[0.9375rem] text-white mx-auto p-10"
         >
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="mx-auto "
-          >
+          <form onSubmit={handleSubmit(onSubmit)} className="mx-auto">
             <h3 className="text-[2.75rem] leading-[3.375rem] capitalize font-[700] md:w-[10.625em]">
               Register With Us For Training
             </h3>
@@ -227,15 +228,22 @@ export default function ContactUsTraining() {
 
               <div>
                 <Input
-                  type="text"
+                  type="select"
                   name="Religion"
-                  placeholder="Enter your Religion"
-                  isRequired={true}
-                  {...register("religion")}
+                  placeholder="Select your Religion"
+                  options={religionOptions}
+                  isSelect={activeDropdown === "religion"}
+                  setIsSelect={() => handleDropdownToggle("religion")}
+                  error={errors.religion?.message}
+                  selected={watch("religion")}
+                  setSelected={(value) => {
+                    setValue("religion", value, { shouldValidate: true });
+                    trigger("religion");
+                  }}
                 />
-                {errors.religion && (
+                {/* {errors.religion && (
                   <p className="text-red-500">{errors.religion.message}</p>
-                )}
+                )} */}
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2 items-center">

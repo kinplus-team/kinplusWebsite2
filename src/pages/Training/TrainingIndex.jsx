@@ -46,84 +46,83 @@ const contactUsTrainingSchema = z.object({
 
 export default function Training() {
   const delay = useDelay();
-    const [isLoading, setIsLoading] = useState(false);
-    const [activeDropdown, setActiveDropdown] = useState(null);
-  
-    const {
-      register,
-      handleSubmit,
-      setValue,
-      watch,
-      reset,
-      formState: { errors },
-    } = useForm({
-      resolver: zodResolver(contactUsTrainingSchema),
-      mode: "onChange",
-    });
-  
-    const handleDropdownToggle = (dropdownName) => {
-      setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
-    };
-  
-    const onSubmit = async (data) => {
-      setIsLoading(true);
-      await delay(2000);
-  
-      try {
-        await contactUsForTraining(
-          data.fullName,
-          data.email,
-          data.phoneNumber,
-          data.religion,
-          data.dateOfBirth,
-          data.gender,
-          data.address,
-          data.track,
-          data.trackPackage,
-          data.availability
-        );
-        toast.success("Form submitted successfully");
-        reset();
-      } catch (error) {
-        console.log("From client:", error);
-        toast.error("Something went wrong!");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-  
-    const trackOptions = [
-      { title: "Web Development", value: "Web Development" },
-      { title: "Cybersecurity", value: "Cybersecurity" },
-      { title: "Product Design", value: "Product Design" },
-      { title: "Graphic Design", value: "Graphic Design" },
-      { title: "Data Analysis", value: "Data Analysis" },
-      {title: "Digital Marketing", value: "Digital Marketing"},
-    ];
-  
-    const packageOptions = [
-      { title: "Standard (3 Months: 180,000)", value: "Standard (3 Months: 180,000)" },
-      { title: "Premium (5 Months: 250,000)", value: "Premium (5 Months: 250,000)" },
-    ];
+  const [isLoading, setIsLoading] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
-    const marketingOptions = [
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(contactUsTrainingSchema),
+    mode: "onChange",
+  });
+
+  const handleDropdownToggle = (dropdownName) => {
+    setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
+  };
+
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+    await delay(2000);
+
+    try {
+      await contactUsForTraining(
+        data.fullName,
+        data.email,
+        data.phoneNumber,
+        data.religion,
+        data.dateOfBirth,
+        data.gender,
+        data.address,
+        data.track,
+        data.trackPackage,
+        data.availability
+      );
+      toast.success("Form submitted successfully");
+      reset();
+    } catch (error) {
+      console.log("From client:", error);
+      toast.error("Something went wrong!");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const trackOptions = [
+    { title: "Web Development", value: "Web Development" },
+    { title: "Cybersecurity", value: "Cybersecurity" },
+    { title: "Product Design", value: "Product Design" },
+    { title: "Graphic Design", value: "Graphic Design" },
+    { title: "Data Analysis", value: "Data Analysis" },
+    { title: "Digital Marketing", value: "Digital Marketing" },
+  ];
+
+  const packageOptions = [
+    { title: "Standard (3 Months: 180,000)", value: "Standard (3 Months: 180,000)" },
+    { title: "Premium (5 Months: 250,000)", value: "Premium (5 Months: 250,000)" },
+  ];
+
+  const marketingOptions = [
     { title: "Standard (3 Months: 200,000)", value: "Standard (3 Months: 200,000)" },
     { title: "Premium (5 Months: 300,000)", value: "Premium (5 Months: 300,000)" },
+  ];
 
-  ]
+  const genderInput = [
+    { title: "Male", value: "Male" },
+    { title: "Female", value: "Female" },
+  ];
 
-  // const graphicOptions = [
-  //   { title: "Standard (3 Months: 120,000)", value: "Standard (3 Months: 120,000)" },
-  //   { title: "Premium (5 Months: 180,000)", value: "Premium (5 Months: 180,000)" },
+  const religionOptions = [
+    { title: "Christianity", value: "Christianity" },
+    { title: "Islam", value: "Islam" },
+    { title: "Traditional", value: "Traditional" },
+  ];
 
-  // ]
-  
-    const genderInput = [
-      { title: "Male", value: "Male" },
-      { title: "Female", value: "Female" },
-    ];
-  
-    const selectedTrack = watch("track");
+  const selectedTrack = watch("track");
 
   let dynamicPackageOptions = packageOptions;
 
@@ -131,36 +130,20 @@ export default function Training() {
     dynamicPackageOptions = marketingOptions;
   }
 
-
-    // animation variants
-    // const slideInLeft = {
-    //   initial: { x: -100, opacity: 0 },
-    //   whileInView: { x: 0, opacity: 1 },
-    //   viewport: { once: true },
-    //   transition: { duration: 0.8 },
-    // };
-  
-    const slideInRight = {
-      initial: { x: 100, opacity: 0 },
-      whileInView: { x: 0, opacity: 1 },
-      viewport: { once: true },
-      transition: { duration: 0.8 },
-    };
-
-    // const formRef = useRef(null);
-
-    // const scrollToForm = () => {
-    //   formRef.current?.scrollIntoView({ behavior: "smooth" });
-    // };
+  const slideInRight = {
+    initial: { x: 100, opacity: 0 },
+    whileInView: { x: 0, opacity: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.8 },
+  };
 
   return (
     <>
-      {/* Default Helmet for SEO */}
       <DefaultHelmet
         title="Training Opportunities | Kinplus Technologies"
         description="Explore our diverse training programs and discover how Kinplus Technologies is empowering the next generation of tech experts."
         url="https://www.kinplusgroup.com/training"
-        image="https://www.kinplusgroup.com/kinplus-opengraph-image.png" // OG Image
+        image="https://www.kinplusgroup.com/kinplus-opengraph-image.png"
       />
 
       <div className="overflow-hidden">
@@ -229,17 +212,23 @@ export default function Training() {
                     )}
                   </div>
 
-                  <div>
+                  <div className="relative">
                     <Input
-                      type="text"
-                      name="Religion"
-                      placeholder="Enter your Religion"
-                      isRequired={true}
-                      {...register("religion")}
+                      type="select"
+                      name="religion"
+                      placeholder="Select your Religion"
+                      options={religionOptions}
+                      isSelect={activeDropdown === "religion"}
+                      setIsSelect={() => handleDropdownToggle("religion")}
+                      error={errors.religion?.message}
+                      selected={watch("religion")}
+                      setSelected={(value) => setValue("religion", value)}
                     />
-                    {errors.religion && (
-                      <p className="text-red-500">{errors.religion.message}</p>
-                    )}
+                    {/* {errors.religion && (
+                      <p className="text-red-500 absolute -bottom-5">
+                        {errors.religion.message}
+                      </p>
+                    )} */}
                   </div>
                 </div>
 
@@ -368,11 +357,6 @@ export default function Training() {
             </form>
           </motion.div>
         </div>
-
-        {/* Call to Action Button */}
-        {/* <Link className="lg:w-40 mx-auto flex items-center justify-center mt-[10%] lg:mt-[5%]">
-            <Button onClick={scrollToForm} type="customizedBlue" text="Register now" />
-          </Link> */}
 
         <WhyLearnFromUs />
         <GalleryTraining />

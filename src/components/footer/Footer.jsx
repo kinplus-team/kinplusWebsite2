@@ -27,7 +27,7 @@ export default function Footer() {
     { name: "About us", url: "/about-us" },
     { name: "Service", url: "/our-services" },
     { name: "Training", url: "/trainings" },
-    { name: "Blog", url: "/blogs" },
+    { name: "Blog", url: "https://blog.kinplusgroup.com/" },
   ];
 
   const resources = [
@@ -94,10 +94,7 @@ export default function Footer() {
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
       >
-        <motion.div
-          className="grid lg:gap-10 gap-6"
-          variants={itemVariants}
-        >
+        <motion.div className="grid lg:gap-10 gap-6" variants={itemVariants}>
           <div className="lg:text-7xl text-4xl font-bold lg:leading-[80px] lg:text-left text-center lg:max-w-4xl">
             {pathname !== "/trainings" ? (
               <p>
@@ -131,10 +128,7 @@ export default function Footer() {
             }
             className="w-40"
           >
-            <Button
-              type="customizedWhite"
-              text="Talk to us"
-            />
+            <Button type="customizedWhite" text="Talk to us" />
           </Link>
         </motion.div>
       </motion.div>
@@ -157,10 +151,7 @@ export default function Footer() {
         >
           <div className="grid lg:grid-cols-[auto_1fr_1fr] text-white lg:gap-5 gap-8 lg:pb-16">
             {/* contact */}
-            <motion.div
-              variants={itemVariants}
-              className=""
-            >
+            <motion.div variants={itemVariants} className="">
               <Link to={"/"}>
                 <img
                   src={kinplusLogoBlue}
@@ -171,10 +162,7 @@ export default function Footer() {
 
               <div className="lg:mr-[5em] 2xl:mr-[10em]">
                 {contactDetails.map((contactDetail, i) => (
-                  <div
-                    key={i}
-                    className="lg:text-lg"
-                  >
+                  <div key={i} className="lg:text-lg">
                     {i === 0 ? (
                       <div className="flex gap-1">
                         {contactDetail.type}:{" "}
@@ -208,22 +196,30 @@ export default function Footer() {
             </motion.div>
 
             {/* quick links*/}
-            <motion.div
-              variants={itemVariants}
-              className="grid grid-cols-2"
-            >
+            <motion.div variants={itemVariants} className="grid grid-cols-2">
               <div>
                 <p className="text-[#1877F9] mb-5 lg:text-lg font-bold">
                   Quick links
                 </p>
                 {quickLinks.map((quickLink, i) => (
                   <div key={i}>
-                    <Link
-                      to={quickLink.url}
-                      className="navLinkHover text-[#F1F1F1] inline-flex lg:text-lg my-[5px]"
-                    >
-                      {quickLink.name}
-                    </Link>
+                    {quickLink.url.startsWith("https") ? (
+                      <a
+                        href={quickLink.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="navLinkHover text-[#F1F1F1] inline-flex lg:text-lg my-[5px]"
+                      >
+                        {quickLink.name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={quickLink.url}
+                        className="navLinkHover text-[#F1F1F1] inline-flex lg:text-lg my-[5px]"
+                      >
+                        {quickLink.name}
+                      </Link>
+                    )}
                   </div>
                 ))}
               </div>
@@ -256,10 +252,7 @@ export default function Footer() {
 
               <div className="flex gap-6 my-3 pt-3">
                 {socialMediaIcons.map((socialMediaIcon, i) => (
-                  <Link
-                    to={socialMediaIcon.link}
-                    key={i}
-                  >
+                  <Link to={socialMediaIcon.link} key={i}>
                     <img
                       src={socialMediaIcon.icon}
                       alt="social media icon"
