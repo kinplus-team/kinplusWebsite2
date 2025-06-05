@@ -1,5 +1,3 @@
-// Inside ContactUsTraining component, full code (with just the religion input changed to a dropdown)
-
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +10,8 @@ import { contactUsForTraining } from "../../../services/contactForm";
 import useDelay from "../../../hooks/useDelay";
 import { motion } from "framer-motion";
 import DefaultHelmet from "../../../components/DefaultHelmet";
+import FormModal from "../../../components/FormModal";
+
 
 // validation schema
 const contactUsTrainingSchema = z.object({
@@ -59,6 +59,9 @@ export default function ContactUsTraining() {
     register("religion", { required: "Religion is required" });
   }, [register]);
 
+    const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+
+
   const handleDropdownToggle = (dropdownName) => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
   };
@@ -82,6 +85,8 @@ export default function ContactUsTraining() {
       );
       toast.success("Form submitted successfully");
       reset();
+      setIsFormModalOpen(true); // Open modal
+
     } catch (error) {
       console.log("From client:", error);
       toast.error("Something went wrong!");
@@ -364,6 +369,11 @@ export default function ContactUsTraining() {
             </div>
           </form>
         </motion.div>
+        <FormModal
+          isOpen={isFormModalOpen}
+          onClose={() => setIsFormModalOpen(false)}
+          message="Your registration has been successfully submitted. We’ve received your details and will be in touch soon with all the information you need."
+        />
       </PageLayout>
     </>
   );

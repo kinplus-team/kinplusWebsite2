@@ -18,7 +18,9 @@ import Input from "../../components/Inputs";
 import { contactUsForTraining } from "../../services/contactForm";
 import useDelay from "../../hooks/useDelay";
 import { motion } from "framer-motion";
+import FormModal from "../../components/FormModal.jsx";
 // import { Link } from "react-router-dom";
+
 
 // validation schema
 const contactUsTrainingSchema = z.object({
@@ -60,6 +62,8 @@ export default function Training() {
     resolver: zodResolver(contactUsTrainingSchema),
     mode: "onChange",
   });
+    const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+
 
   const handleDropdownToggle = (dropdownName) => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
@@ -84,6 +88,8 @@ export default function Training() {
       );
       toast.success("Form submitted successfully");
       reset();
+      setIsFormModalOpen(true); // Open modal
+
     } catch (error) {
       console.log("From client:", error);
       toast.error("Something went wrong!");
@@ -356,6 +362,11 @@ export default function Training() {
               </div>
             </form>
           </motion.div>
+          <FormModal
+          isOpen={isFormModalOpen}
+          onClose={() => setIsFormModalOpen(false)}
+          message="Your registration has been successfully submitted. We’ve received your details and will be in touch soon with all the information you need."
+        />
         </div>
 
         <WhyLearnFromUs />
