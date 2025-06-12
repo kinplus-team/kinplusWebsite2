@@ -18,7 +18,13 @@ import Input from "../../components/Inputs";
 import { contactUsForTraining } from "../../services/contactForm";
 import useDelay from "../../hooks/useDelay";
 import { motion } from "framer-motion";
-import FormModal from "../../components/FormModal.jsx";
+import FormModal from "../../components/modals/FormModal.jsx";
+import { loadPaystackScript } from "../../utilities/loadPaystackScript";
+import PaymentChoiceModal from "../../components/modals/PaymentChoiceModal.jsx";
+import jsPDF from "jspdf";
+import KinplusLogoPDF from "../../assets/logoBase64.js";
+import PaymentAmountModal from "../../components/modals/PaymentAmountModal.jsx";
+import PaymentSuccessModal from "../../components/modals/PaymentSuccessModal.jsx";
 // import { Link } from "react-router-dom";
 
 
@@ -62,12 +68,118 @@ export default function Training() {
     resolver: zodResolver(contactUsTrainingSchema),
     mode: "onChange",
   });
-    const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
 
 
   const handleDropdownToggle = (dropdownName) => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
   };
+
+  // Paystack Integration functionality
+  const handlePaystackPayment = async ({ email, amount, fullName, track }) => {
+    const scriptLoaded = await loadPaystackScript();
+
+    if (!scriptLoaded) {
+      alert(
+        "Failed to load Paystack. Please check your internet and try again."
+      );
+      return;
+    }
+
+    const paystack = window.PaystackPop.setup({
+      key: "pk_test_afd9bb9d64abc7638f5d453e0ebdfcd29319c5d2", // replace with real key
+      email,
+      amount: amount * 100, // amount in kobo
+      currency: "NGN",
+      callback: () => {
+          setShowSuccessModal(true);
+      },
+      onClose: () => {
+          alert("Payment window closed.");
+      },
+    });
+
+    paystack.openIframe();
+  };
+
+
+  // Helper function to generate PDF receipt for users that paid online
+  const generatePDFReceipt = ({ fullName, email, track, amount }) => {
+    const doc = new jsPDF();
+
+    const logoBase64 = KinplusLogoPDF; // base64 logo here
+
+    // Add the image at the top
+    doc.addImage(logoBase64, "PNG", 20, 10, 40, 20); // (image, format, x, y, width, height)
+
+    doc.setFontSize(16);
+    doc.text("Kinplus Technologies", 70, 20); // Will align title  beside logo
+    doc.setFontSize(12);
+    doc.text("Training Payment Receipt", 70, 30);
+
+    doc.setFontSize(12);
+    doc.text(`Name: ${fullName}`, 20, 60);
+    doc.text(`Email: ${email}`, 20, 70);
+    doc.text(`Track: ${track}`, 20, 80);
+    doc.text(`Amount Paid: ₦${amount.toLocaleString()}`, 20, 90);
+
+    const date = new Date();
+    doc.text(
+      `Date: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`,
+      20,
+      100
+    );
+
+    doc.save("training_payment_receipt.pdf");
+  };
+
+  // Helper function to generate image receipt for users that paid online
+  const generateImageReceipt = ({ fullName, email, track, amount }) => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 500;
+    canvas.height = 300;
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const logo = new Image();
+    logo.src = KinplusLogoPDF;
+
+    logo.onload = () => {
+      ctx.drawImage(logo, 20, 20, 60, 30);
+      ctx.fillStyle = "#000";
+      ctx.font = "16px Arial";
+      ctx.fillText("Kinplus Technologies", 100, 40);
+      ctx.fillText("Training Payment Receipt", 100, 65);
+
+      ctx.font = "14px Arial";
+      ctx.fillText(`Name: ${fullName}`, 20, 110);
+      ctx.fillText(`Email: ${email}`, 20, 130);
+      ctx.fillText(`Track: ${track}`, 20, 150);
+      ctx.fillText(`Amount Paid: ₦${amount.toLocaleString()}`, 20, 170);
+      ctx.fillText(`Date: ${new Date().toLocaleString()}`, 20, 190);
+
+      const link = document.createElement("a");
+      link.download = "training_payment_receipt.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    };
+  };
+
+
+
+  // Hook to handle user's email, track and payment package for Paystack.
+  const [userEmail, setUserEmail] = useState("");
+  const [paymentAmount, setPaymentAmount] = useState(0);
+  const [showChoiceModal, setShowChoiceModal] = useState(false);
+  const [userName, setUserName] = useState(""); 
+  const [userTrack, setUserTrack] = useState("");
+
+  // Hook to pop up amount and payment success modals
+  const [showAmountModal, setShowAmountModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const onSubmit = async (data) => {
     setIsLoading(true);
@@ -88,8 +200,22 @@ export default function Training() {
       );
       toast.success("Form submitted successfully");
       reset();
-      setIsFormModalOpen(true); // Open modal
+      setUserEmail(data.email);
+      setUserName(data.fullName);
+      setUserTrack(data.track);
 
+      // Setting amount based on selected track
+      const amount = data.trackPackage.includes("180,000")
+        ? 180000
+        : data.trackPackage.includes("250,000")
+        ? 250000
+        : data.trackPackage.includes("200,000")
+        ? 200000
+        : 300000;
+
+      setPaymentAmount(amount);
+      setShowChoiceModal(true); // open choice modal
+      // setIsFormModalOpen(true); // Open modal
     } catch (error) {
       console.log("From client:", error);
       toast.error("Something went wrong!");
@@ -142,6 +268,7 @@ export default function Training() {
     viewport: { once: true },
     transition: { duration: 0.8 },
   };
+
 
   return (
     <>
@@ -362,11 +489,63 @@ export default function Training() {
               </div>
             </form>
           </motion.div>
+          <PaymentChoiceModal
+            isOpen={showChoiceModal}
+            onPayNow={() => {
+              setShowChoiceModal(false);
+              setShowAmountModal(true);
+            }}
+            onPayOnsite={() => {
+              setShowChoiceModal(false);
+              setIsFormModalOpen(true);
+            }}
+            onClose={() => setShowChoiceModal(false)}
+          />
+
+          <PaymentAmountModal
+            isOpen={showAmountModal}
+            amount={paymentAmount}
+            onClose={() => setShowAmountModal(false)}
+            onPay={(type) => {
+              setShowAmountModal(false);
+              const finalAmount =
+                type === "60" ? Math.floor(paymentAmount * 0.6) : paymentAmount;
+
+              handlePaystackPayment({
+                email: userEmail,
+                amount: finalAmount,
+                fullName: userName,
+                track: userTrack,
+              });
+            }}
+          />
+
+          <PaymentSuccessModal
+            isOpen={showSuccessModal}
+            onDownloadPDF={() =>
+              generatePDFReceipt({
+                fullName: userName,
+                email: userEmail,
+                track: userTrack,
+                amount: paymentAmount,
+              })
+            }
+            onDownloadImage={() =>
+              generateImageReceipt({
+                fullName: userName,
+                email: userEmail,
+                track: userTrack,
+                amount: paymentAmount,
+              })
+            }
+            onClose={() => setShowSuccessModal(false)}
+          />
+
           <FormModal
-          isOpen={isFormModalOpen}
-          onClose={() => setIsFormModalOpen(false)}
-          message="Your registration has been successfully submitted. We’ve received your details and will be in touch soon with all the information you need."
-        />
+            isOpen={isFormModalOpen}
+            onClose={() => setIsFormModalOpen(false)}
+            message="Thank you for registering! You have chosen to pay onsite. Please complete your payment at our office: Kinplus Technologies, 2nd Floor, Christore Building, Opp. Crunchies Restaurant, Similoluwa, Ado Ekiti, Ekiti State, Nigeria. We are open from Monday - Friday, 9AM - 5PM. We look forward to seeing you!"
+          />
         </div>
 
         <WhyLearnFromUs />
