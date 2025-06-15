@@ -23,7 +23,7 @@ import { loadPaystackScript } from "../../utilities/loadPaystackScript";
 import PaymentChoiceModal from "../../components/modals/PaymentChoiceModal.jsx";
 import jsPDF from "jspdf";
 import KinplusLogoPDF from "../../assets/logoBase64.js";
-import PaymentAmountModal from "../../components/modals/PaymentAmountModal.jsx";
+// import PaymentAmountModal from "../../components/modals/PaymentAmountModal.jsx";
 import PaymentSuccessModal from "../../components/modals/PaymentSuccessModal.jsx";
 // import { Link } from "react-router-dom";
 
@@ -105,81 +105,211 @@ export default function Training() {
 
 
   // Helper function to generate PDF receipt for users that paid online
-  const generatePDFReceipt = ({ fullName, email, track, amount }) => {
+  const generatePDFReceipt = ({
+    fullName,
+    email,
+    track,
+    amount,
+    trackPackage,
+  }) => {
     const doc = new jsPDF();
+    const logoBase64 = KinplusLogoPDF;
+    const primaryColor = "#3A85FF";
+    const borderColor = "#cccccc";
+    const pageWidth = doc.internal.pageSize.getWidth();
 
-    const logoBase64 = KinplusLogoPDF; // base64 logo here
+    const packageName = trackPackage.split(" ")[0]; // Extract "Premium" from "Premium (₦250,000)"
 
-    // Add the image at the top
-    doc.addImage(logoBase64, "PNG", 20, 10, 40, 20); // (image, format, x, y, width, height)
+    // Background
+    doc.setFillColor(245, 245, 245);
+    doc.rect(10, 10, 190, 130, "F");
 
-    doc.setFontSize(16);
-    doc.text("Kinplus Technologies", 70, 20); // Will align title  beside logo
-    doc.setFontSize(12);
-    doc.text("Training Payment Receipt", 70, 30);
+    // Header Logo (slightly lowered)
+    doc.addImage(logoBase64, "PNG", 160, 18, 20, 10); // y: 18 positions it better
 
-    doc.setFontSize(12);
-    doc.text(`Name: ${fullName}`, 20, 60);
-    doc.text(`Email: ${email}`, 20, 70);
-    doc.text(`Track: ${track}`, 20, 80);
-    doc.text(`Amount Paid: ₦${amount.toLocaleString()}`, 20, 90);
+    // Company Name (vertically centered with logo)
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(24);
+    doc.setTextColor(primaryColor);
+    doc.text("Kinplus Technologies Limited", 15, 26); // y: 26 aligns well with logo
 
-    const date = new Date();
-    doc.text(
-      `Date: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`,
-      20,
-      100
-    );
+    // Title - Centered with better spacing below
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.setTextColor(0, 0, 0);
+    doc.text("Training Payment Receipt", pageWidth / 2, 45, {
+      align: "center",
+    });
 
-    doc.save("training_payment_receipt.pdf");
+    // New Y-start for next block with more space below title
+    let yStart = 65;
+
+    // Address block (left-aligned)
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    doc.text("Kinplus Technologies", 15, yStart);
+    doc.text("2nd Floor, Christore Building", 15, yStart + 6);
+    doc.text("Opp. Crunchies Restaurant", 15, yStart + 12);
+    doc.text("Similoluwa, Ado-Ekiti", 15, yStart + 18);
+
+    // Payer Details (aligned horizontally with address block)
+    const rightStartY = yStart;
+    const now = new Date();
+    doc.text(`Payment Date: ${now.toLocaleDateString()}`, 115, rightStartY);
+    doc.text(`Payer: ${fullName}`, 115, rightStartY + 6);
+    doc.text(`Email: ${email}`, 115, rightStartY + 12);
+
+    // Table Header
+    doc.setDrawColor(borderColor);
+    doc.setFillColor(220, 220, 220);
+    doc.setFont("helvetica", "bold");
+    doc.rect(15, 100, 180, 10, "FD");
+    doc.text("Training Track", 20, 107);
+    doc.text("Package", 100, 107);
+    doc.text("Amount (NGN)", 160, 107);
+
+    // Table Content
+    doc.setFont("helvetica", "normal");
+    doc.setFillColor(255, 255, 255);
+    doc.rect(15, 110, 180, 10, "FD");
+    doc.text(track, 20, 117);
+    doc.text(packageName, 100, 117);
+    doc.text(`${amount.toLocaleString()}`, 160, 117);
+
+    // Save
+    setTimeout(() => {
+      doc.save("kinplus_training_payment_receipt.pdf");
+    }, 0);
   };
 
+
   // Helper function to generate image receipt for users that paid online
-  const generateImageReceipt = ({ fullName, email, track, amount }) => {
+  const generateImageReceipt = ({
+    fullName,
+    email,
+    track,
+    amount,
+    trackPackage,
+  }) => {
     const canvas = document.createElement("canvas");
-    canvas.width = 500;
-    canvas.height = 300;
+    canvas.width = 700; // Reduced the width here to match a typical A4 ratio
+    canvas.height = 550; // Increased the height here slightly for more vertical space
     const ctx = canvas.getContext("2d");
 
-    ctx.fillStyle = "#ffffff";
+    // Background
+    ctx.fillStyle = "#f5f5f5";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const logo = new Image();
+    logo.crossOrigin = "anonymous";
     logo.src = KinplusLogoPDF;
 
+    const safePackageName = (trackPackage || "").split(" ")[0];
+
+    // Trying to debug if the trackPackage gets to the generateImageReceipt function
+    console.log("Image Receipt Data:", {
+      fullName,
+      email,
+      track,
+      amount,
+      trackPackage,
+    });
+
     logo.onload = () => {
-      ctx.drawImage(logo, 20, 20, 60, 30);
+      // Header: Company name and logo
+      const logoWidth = 60;
+      const logoHeight = 30;
+      const logoX = canvas.width - logoWidth - 30;
+      const logoY = 30;
+      ctx.drawImage(logo, logoX, logoY, logoWidth, logoHeight);
+
+      ctx.fillStyle = "#3A85FF";
+      ctx.font = "bold 24px Helvetica";
+      ctx.textAlign = "left";
+      ctx.fillText(
+        "Kinplus Technologies Limited",
+        30,
+        logoY + logoHeight / 2 + 8
+      );
+
+      // Title
       ctx.fillStyle = "#000";
-      ctx.font = "16px Arial";
-      ctx.fillText("Kinplus Technologies", 100, 40);
-      ctx.fillText("Training Payment Receipt", 100, 65);
+      ctx.font = "bold 20px Helvetica";
+      ctx.textAlign = "center";
+      ctx.fillText("Training Payment Receipt", canvas.width / 2, 110);
 
+      ctx.textAlign = "left"; // Reset alignment for body
+
+      // Address block (left)
+      let yStart = 150;
       ctx.font = "14px Arial";
-      ctx.fillText(`Name: ${fullName}`, 20, 110);
-      ctx.fillText(`Email: ${email}`, 20, 130);
-      ctx.fillText(`Track: ${track}`, 20, 150);
-      ctx.fillText(`Amount Paid: ₦${amount.toLocaleString()}`, 20, 170);
-      ctx.fillText(`Date: ${new Date().toLocaleString()}`, 20, 190);
+      ctx.fillText("Kinplus Technologies", 30, yStart);
+      ctx.fillText("2nd Floor, Christore Building", 30, yStart + 20);
+      ctx.fillText("Opp. Crunchies Restaurant", 30, yStart + 40);
+      ctx.fillText("Similoluwa, Ado-Ekiti", 30, yStart + 60);
 
-      const link = document.createElement("a");
-      link.download = "training_payment_receipt.png";
-      link.href = canvas.toDataURL();
-      link.click();
+      // Payer details (right)
+      const rightX = 420;
+      const now = new Date();
+      ctx.fillText(`Payment Date: ${now.toLocaleDateString()}`, rightX, yStart);
+      ctx.fillText(`Payer: ${fullName}`, rightX, yStart + 20);
+      ctx.fillText(`Email: ${email}`, rightX, yStart + 40);
+
+      // Table Header
+      let tableY = yStart + 100;
+      ctx.fillStyle = "#dcdcdc";
+      ctx.fillRect(30, tableY, 640, 30); // match new width
+
+      ctx.fillStyle = "#000";
+      ctx.font = "bold 14px Arial";
+      ctx.fillText("Training Track", 40, tableY + 20);
+      ctx.fillText("Package", 300, tableY + 20);
+      ctx.fillText("Amount (NGN)", 540, tableY + 20);
+
+      // Table Content
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(30, tableY + 30, 640, 30);
+
+      ctx.fillStyle = "#000";
+      ctx.font = "14px Arial";
+      ctx.fillText(track, 40, tableY + 50);
+      ctx.fillText(safePackageName, 300, tableY + 50);
+      ctx.fillText(`${amount.toLocaleString()}`, 540, tableY + 50);
+
+      // Export to PNG
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "kinplus_training_payment_receipt.png";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, "image/png");
+    };
+
+    logo.onerror = () => {
+      alert("Failed to load the logo. Please try again.");
     };
   };
 
 
-
-  // Hook to handle user's email, track and payment package for Paystack.
+  // Hook to handle user's email, track and payment package, and also trackpackage for Paystack.
   const [userEmail, setUserEmail] = useState("");
   const [paymentAmount, setPaymentAmount] = useState(0);
   const [showChoiceModal, setShowChoiceModal] = useState(false);
   const [userName, setUserName] = useState(""); 
   const [userTrack, setUserTrack] = useState("");
+  const [userTrackPackage, setUserTrackPackage] = useState("");
+
 
   // Hook to pop up amount and payment success modals
-  const [showAmountModal, setShowAmountModal] = useState(false);
+  // const [showAmountModal, setShowAmountModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const [amountPaid, setAmountPaid] = useState(0); // State to store the amount the user picked in the amount options
+
 
   const onSubmit = async (data) => {
     setIsLoading(true);
@@ -203,6 +333,7 @@ export default function Training() {
       setUserEmail(data.email);
       setUserName(data.fullName);
       setUserTrack(data.track);
+      setUserTrackPackage(data.trackPackage);
 
       // Setting amount based on selected track
       const amount = data.trackPackage.includes("180,000")
@@ -489,7 +620,30 @@ export default function Training() {
               </div>
             </form>
           </motion.div>
+          {/* Modal for the user to pick if they want to pay now or later*/}
           <PaymentChoiceModal
+            isOpen={showChoiceModal}
+            onPayNow={() => {
+              setShowChoiceModal(false);
+
+              // Start Paystack payment directly with full amount
+              setAmountPaid(paymentAmount); // Save full amount for receipt
+              handlePaystackPayment({
+                email: userEmail,
+                amount: paymentAmount,
+                fullName: userName,
+                track: userTrack,
+              });
+            }}
+            onPayOnsite={() => {
+              setShowChoiceModal(false);
+              setIsFormModalOpen(true);
+            }}
+            onClose={() => setShowChoiceModal(false)}
+          />
+
+          {/* Old Modal logic */}
+          {/* <PaymentChoiceModal
             isOpen={showChoiceModal}
             onPayNow={() => {
               setShowChoiceModal(false);
@@ -500,9 +654,11 @@ export default function Training() {
               setIsFormModalOpen(true);
             }}
             onClose={() => setShowChoiceModal(false)}
-          />
+          /> */}
 
-          <PaymentAmountModal
+          {/* Modal for the user to pick if they want to pay in full or in instalments*/}
+          {/* Unused for now */}
+          {/* <PaymentAmountModal
             isOpen={showAmountModal}
             amount={paymentAmount}
             onClose={() => setShowAmountModal(false)}
@@ -510,6 +666,7 @@ export default function Training() {
               setShowAmountModal(false);
               const finalAmount =
                 type === "60" ? Math.floor(paymentAmount * 0.6) : paymentAmount;
+               setAmountPaid(finalAmount);
 
               handlePaystackPayment({
                 email: userEmail,
@@ -518,7 +675,7 @@ export default function Training() {
                 track: userTrack,
               });
             }}
-          />
+          /> */}
 
           <PaymentSuccessModal
             isOpen={showSuccessModal}
@@ -528,6 +685,7 @@ export default function Training() {
                 email: userEmail,
                 track: userTrack,
                 amount: paymentAmount,
+                trackPackage: userTrackPackage,
               })
             }
             onDownloadImage={() =>
@@ -536,6 +694,7 @@ export default function Training() {
                 email: userEmail,
                 track: userTrack,
                 amount: paymentAmount,
+                trackPackage: userTrackPackage,
               })
             }
             onClose={() => setShowSuccessModal(false)}
