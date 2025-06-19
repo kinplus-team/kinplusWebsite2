@@ -141,7 +141,7 @@ export default function HeroTraining() {
                   src={image}
                   alt={`Logo ${i + 1}`}
                   loading="lazy"
-                  className="flex place-items-center h-10"
+                  className="flex place-items-center h-10 object-contain"
                   variants={scaleIn}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}

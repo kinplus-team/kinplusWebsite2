@@ -8,7 +8,7 @@ const courseDetails = [
         courseDuration: "3 Month plan",
         courseDescription:
           "Secure an intensive training on coding, without prior experience.",
-        price: 180000,
+        price: 200000,
         whatsIncluded: [
           "Fundamentals of Programming",
           "HTML and CSS",
@@ -20,7 +20,7 @@ const courseDetails = [
         courseDuration: "5 Month plan",
         courseDescription:
           "Gain hands-on experience in programming software products.",
-        price: 250000,
+        price: 300000,
         whatsIncluded: [
           "All on the 3 months plan",
           "Real life projects",
@@ -38,7 +38,7 @@ const courseDetails = [
         courseDuration: "3 Month plan",
         courseDescription:
           "Foundations to Fluency: Master the Basics in with Expert Guidance",
-        price: 180000,
+        price: 200000,
         whatsIncluded: [
           "User Research & Flows",
           "Figma Interface (Beginner to Advanced)",
@@ -52,7 +52,7 @@ const courseDetails = [
         courseDuration: "5 Month plan",
         courseDescription:
           "From Basics to Brilliance: Master Every Aspect with Immersive Learning",
-        price: 250000,
+        price: 300000,
         whatsIncluded: [
           "Everything in 3 months",
           "Advanced UI Design",
@@ -71,7 +71,7 @@ const courseDetails = [
       medium: {
         courseDuration: "3 Month plan",
         courseDescription: "Understand socioeconomic issues in data format.",
-        price: 180000,
+        price: 200000,
         whatsIncluded: [
           "Spreadsheet (Excel)",
           "SQL",
@@ -82,7 +82,7 @@ const courseDetails = [
         courseDuration: "5 Month plan",
         courseDescription:
           "Get in tune with how data speaks. Apply data to the spheres of life.",
-        price: 250000,
+        price: 300000,
         whatsIncluded: [
           "All on the 3 months plan",
           "Real life data projects; and lots more",
@@ -134,7 +134,7 @@ const courseDetails = [
       medium: {
         courseDuration: "3 Month plan",
         courseDescription: "Learn the foundations of Cybersecurity.",
-        price: 180000,
+        price: 200000,
         whatsIncluded: [
           "Footprinting and Reconnaissance",
           "Scanning Networks",
@@ -146,7 +146,7 @@ const courseDetails = [
         courseDuration: "5 Month plan",
         courseDescription:
           "Become a guardian of the digital world. Use cutting-edge skills to protect systems and secure information.",
-        price: 250000,
+        price: 300000,
         whatsIncluded: [
           "All on the three month plan",
           "Network security & Threat analysis",
@@ -184,6 +184,38 @@ const courseDetails = [
           "Google advertising ",
           "Digital marketing job",
           "Mentorship",
+        ],
+      },
+    },
+  },
+
+  {
+    title: "Basic Digital Literacy",
+    description:
+      "Basic digital literacy is the ability to use digital devices, applications, and the internet to access, manage, and share information. It covers essential skills like using a computer or smartphone, navigating websites, sending emails, creating documents, and staying safe online. Digital literacy empowers you to learn, work, and communicate in today’s tech-driven world. Start your journey today and open doors to endless opportunities in education, business, and daily life!",
+    pricingCardInfo: {
+      medium: {
+        courseDuration: "1 Month plan",
+        courseDescription:
+          "Get introduced to the essential skills that enable you to confidently navigate the digital world",
+        price: 70000,
+        whatsIncluded: [
+          "Introduction to basic computer operation",
+          "Introduction to Ms. Word, PowerPoint and Excel",
+          "Google Workspace",
+          "Real life project",
+        ],
+      },
+      pro: {
+        courseDuration: "2 Month plan",
+        courseDescription:
+          "Master the use of essential tech skills to connect, create, and thrive in everyday life.",
+        price: 100000,
+        whatsIncluded: [
+          "All on the 1 months plan",
+          "Presentation with AI",
+          "How to use,setup and navigate video conferencing app (Google meet, zoom, teams)",
+          "Real life projects",
         ],
       },
     },

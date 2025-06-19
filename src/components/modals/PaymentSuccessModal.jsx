@@ -14,9 +14,27 @@ export default function PaymentSuccessModal({
         <h2 className="text-xl font-semibold mb-4 text-green-700">
           Payment Complete!
         </h2>
-        <p className="mb-4">
-          Your payment receipt is ready. Choose how you'd like to download it. Please ensure this receipt is readily available and presented upon request.
-        </p>
+        <p className="mb-4"><strong>Download your receipt and keep it safe.</strong></p>
+
+        <ul className="mb-4 list-disc list-inside flex flex-col gap-2 justify-center text-start pl-4">
+          <li>
+            Share your receipt with us on <a href="https://wa.me/2348116400858" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-600 pl-1">WhatsApp</a> or call: 
+            <a
+              href="https://wa.me/2348116400858"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline text-blue-600 pl-1"
+            >
+              +2348116400858.
+            </a>
+          </li>
+
+
+          <li>
+            Did you choose to have the training "Onsite/Physical"? Proceed to the office to complete your onboarding.
+          </li>
+        </ul>
+
         <div className="flex justify-around mb-6 gap-6">
           <button
             onClick={onDownloadPDF}

@@ -10,6 +10,8 @@ import icon3 from "../../assets/components/courses/course-list/SVG/figma.svg";
 import icon4 from "../../assets/components/courses/course-list/SVG/adobe-photoshop.svg";
 import icon5 from "../../assets/components/courses/course-list/SVG/simple-icons_metasploit.svg";
 import icon6 from "../../assets/components/courses/course-list/SVG/logos_adobe-premiere.svg";
+import icon7 from "../../assets/components/courses/course-list/SVG/office-word.svg";
+
 
 // images
 import trainingImage1 from "../../assets/components/courses/course-list/images/training-1.webp";
@@ -21,7 +23,7 @@ import trainingImage5 from "../../assets/components/courses/course-list/images/t
 import courses from "../../services/courseServices.js";
 
 async function getCourses() {
-  const courseIconArray = [icon1, icon2, icon3, icon4, icon5, icon6];
+  const courseIconArray = [icon1, icon2, icon3, icon4, icon5, icon6, icon7];
 
   const trainingImageArray = [
     trainingImage1,
@@ -30,6 +32,7 @@ async function getCourses() {
     trainingImage4,
     trainingImage5,
     trainingImage1,
+    trainingImage3,
   ];
 
   let allListedCourses = [];

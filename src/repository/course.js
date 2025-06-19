@@ -5,6 +5,8 @@ import icon3 from "../assets/components/courses/course-list/SVG/figma.svg";
 import icon4 from "../assets/components/courses/course-list/SVG/adobe-photoshop.svg";
 import icon5 from "../assets/components/courses/course-list/SVG/simple-icons_metasploit.svg";
 import icon6 from "../assets/components/courses/course-list/SVG/logos_adobe-premiere.svg";
+import icon7 from "../assets/components/courses/course-list/SVG/office-word.svg";
+
 
 // images
 import trainingImage1 from "../assets/components/courses/course-list/images/training-1.webp";
@@ -50,6 +52,13 @@ const courses = [
     image: trainingImage1,
     link: "digital-marketing",
   },
+
+  {
+    title: "Basic Digital Literacy",
+    icon: icon7,
+    image: trainingImage3,
+    link: "basic-digital-literacy",
+  }
 ];
 
 export default courses;

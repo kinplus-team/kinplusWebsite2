@@ -88,7 +88,8 @@ export default function Training() {
     }
 
     const paystack = window.PaystackPop.setup({
-      key: "pk_test_afd9bb9d64abc7638f5d453e0ebdfcd29319c5d2", // replace with real key
+      key: import.meta.env.VITE_REACT_APP_PAYSTACK_PUBLIC_LIVE_KEY_PROD, // Company's actual public key 
+      // key: "pk_test_afd9bb9d64abc7638f5d453e0ebdfcd29319c5d2", // test public key
       email,
       amount: amount * 100, // amount in kobo
       currency: "NGN",
@@ -108,6 +109,8 @@ export default function Training() {
   const generatePDFReceipt = ({
     fullName,
     email,
+    phoneNumber,
+    availability,
     track,
     amount,
     trackPackage,
@@ -151,6 +154,7 @@ export default function Training() {
     doc.text("2nd Floor, Christore Building", 15, yStart + 6);
     doc.text("Opp. Crunchies Restaurant", 15, yStart + 12);
     doc.text("Similoluwa, Ado-Ekiti", 15, yStart + 18);
+    doc.text("08116400858, 07075199782", 15, yStart + 24);
 
     // Payer Details (aligned horizontally with address block)
     const rightStartY = yStart;
@@ -158,6 +162,8 @@ export default function Training() {
     doc.text(`Payment Date: ${now.toLocaleDateString()}`, 115, rightStartY);
     doc.text(`Payer: ${fullName}`, 115, rightStartY + 6);
     doc.text(`Email: ${email}`, 115, rightStartY + 12);
+    doc.text(`Phone: ${phoneNumber}`, 115, rightStartY + 18);
+    doc.text(`Training Type: ${availability}`, 115, rightStartY + 24);
 
     // Table Header
     doc.setDrawColor(borderColor);
@@ -187,6 +193,8 @@ export default function Training() {
   const generateImageReceipt = ({
     fullName,
     email,
+    phoneNumber,
+    availability,
     track,
     amount,
     trackPackage,
@@ -210,6 +218,8 @@ export default function Training() {
     console.log("Image Receipt Data:", {
       fullName,
       email,
+      phoneNumber,
+      availability,
       track,
       amount,
       trackPackage,
@@ -247,6 +257,7 @@ export default function Training() {
       ctx.fillText("2nd Floor, Christore Building", 30, yStart + 20);
       ctx.fillText("Opp. Crunchies Restaurant", 30, yStart + 40);
       ctx.fillText("Similoluwa, Ado-Ekiti", 30, yStart + 60);
+      ctx.fillText("08116400858, 07075199782", 30, yStart + 80);
 
       // Payer details (right)
       const rightX = 420;
@@ -254,6 +265,9 @@ export default function Training() {
       ctx.fillText(`Payment Date: ${now.toLocaleDateString()}`, rightX, yStart);
       ctx.fillText(`Payer: ${fullName}`, rightX, yStart + 20);
       ctx.fillText(`Email: ${email}`, rightX, yStart + 40);
+      ctx.fillText(`Phone: ${phoneNumber}`, rightX, yStart + 60);
+      ctx.fillText(`Training Type: ${availability}`, rightX, yStart + 80);
+
 
       // Table Header
       let tableY = yStart + 100;
@@ -302,6 +316,8 @@ export default function Training() {
   const [userName, setUserName] = useState(""); 
   const [userTrack, setUserTrack] = useState("");
   const [userTrackPackage, setUserTrackPackage] = useState("");
+  const [userPhoneNumber, setUserPhoneNumber] = useState("");
+  const [userAvailabity, setUserAvailabity] = useState("");
 
 
   // Hook to pop up amount and payment success modals
@@ -334,14 +350,20 @@ export default function Training() {
       setUserName(data.fullName);
       setUserTrack(data.track);
       setUserTrackPackage(data.trackPackage);
+      setUserPhoneNumber(data.phoneNumber);
+      setUserAvailabity(data.availability);
 
       // Setting amount based on selected track
-      const amount = data.trackPackage.includes("180,000")
+      const amount = data.trackPackage.includes("70,000")
+        ? 70000
+        : data.trackPackage.includes("100,000")
+        ? 100000
+        : data.trackPackage.includes("180,000")
         ? 180000
-        : data.trackPackage.includes("250,000")
-        ? 250000
         : data.trackPackage.includes("200,000")
         ? 200000
+        : data.trackPackage.includes("250,000")
+        ? 250000
         : 300000;
 
       setPaymentAmount(amount);
@@ -362,16 +384,23 @@ export default function Training() {
     { title: "Graphic Design", value: "Graphic Design" },
     { title: "Data Analysis", value: "Data Analysis" },
     { title: "Digital Marketing", value: "Digital Marketing" },
+    { title: "Basic Digital Literacy", value: "Basic Digital Literacy" },
+
   ];
 
   const packageOptions = [
+    { title: "Standard (3 Months: 200,000)", value: "Standard (3 Months: 200,000)" },
+    { title: "Premium (5 Months: 300,000)", value: "Premium (5 Months: 300,000)" },
+  ];
+
+  const graphicDesignOptions = [
     { title: "Standard (3 Months: 180,000)", value: "Standard (3 Months: 180,000)" },
     { title: "Premium (5 Months: 250,000)", value: "Premium (5 Months: 250,000)" },
   ];
 
-  const marketingOptions = [
-    { title: "Standard (3 Months: 200,000)", value: "Standard (3 Months: 200,000)" },
-    { title: "Premium (5 Months: 300,000)", value: "Premium (5 Months: 300,000)" },
+  const digitalLiteracyOptions = [
+    { title: "Standard (1 Month: 70,000)", value: "Standard (1 Month: 70,000)" },
+    { title: "Premium (2 Months: 100,000)", value: "Premium (2 Months: 100,000)" },
   ];
 
   const genderInput = [
@@ -389,8 +418,10 @@ export default function Training() {
 
   let dynamicPackageOptions = packageOptions;
 
-  if (selectedTrack === "Digital Marketing") {
-    dynamicPackageOptions = marketingOptions;
+  if (selectedTrack === "Basic Digital Literacy") {
+    dynamicPackageOptions = digitalLiteracyOptions;
+  } else if (selectedTrack === "Graphic Design") {
+    dynamicPackageOptions = graphicDesignOptions;
   }
 
   const slideInRight = {
@@ -683,6 +714,8 @@ export default function Training() {
               generatePDFReceipt({
                 fullName: userName,
                 email: userEmail,
+                phoneNumber: userPhoneNumber,
+                availability: userAvailabity,
                 track: userTrack,
                 amount: paymentAmount,
                 trackPackage: userTrackPackage,
@@ -692,6 +725,8 @@ export default function Training() {
               generateImageReceipt({
                 fullName: userName,
                 email: userEmail,
+                phoneNumber: userPhoneNumber,
+                availability: userAvailabity,
                 track: userTrack,
                 amount: paymentAmount,
                 trackPackage: userTrackPackage,

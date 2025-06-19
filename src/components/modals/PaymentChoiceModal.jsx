@@ -8,7 +8,7 @@ export default function PaymentChoiceModal({ isOpen, onPayNow, onPayOnsite }) {
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
         <h2 className="text-xl font-semibold mb-4">Registration Submitted</h2>
         <p className="mb-6">
-          Your registration was successful. Note that the next cohort starts 07 July, 2025. Would you like to pay now or pay onsite?
+          Your registration was successful. Would you like to pay now or pay onsite?
         </p>
         <div className="flex justify-around">
           <button
