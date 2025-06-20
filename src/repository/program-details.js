@@ -190,9 +190,9 @@ const courseDetails = [
   },
 
   {
-    title: "Basic Digital Literacy",
+    title: "Basic Computer Operation",
     description:
-      "Basic digital literacy is the ability to use digital devices, applications, and the internet to access, manage, and share information. It covers essential skills like using a computer or smartphone, navigating websites, sending emails, creating documents, and staying safe online. Digital literacy empowers you to learn, work, and communicate in today’s tech-driven world. Start your journey today and open doors to endless opportunities in education, business, and daily life!",
+      "Basic computer operation is the ability to use digital devices, applications, and the internet to access, manage, and share information. It covers essential skills like using a computer or smartphone, navigating websites, sending emails, creating documents, and staying safe online. Digital literacy empowers you to learn, work, and communicate in today’s tech-driven world. Start your journey today and open doors to endless opportunities in education, business, and daily life!",
     pricingCardInfo: {
       medium: {
         courseDuration: "1 Month plan",

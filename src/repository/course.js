@@ -54,10 +54,10 @@ const courses = [
   },
 
   {
-    title: "Basic Digital Literacy",
+    title: "Basic Computer Operation",
     icon: icon7,
     image: trainingImage3,
-    link: "basic-digital-literacy",
+    link: "basic-computer-operation",
   }
 ];
 

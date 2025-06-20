@@ -384,7 +384,7 @@ export default function Training() {
     { title: "Graphic Design", value: "Graphic Design" },
     { title: "Data Analysis", value: "Data Analysis" },
     { title: "Digital Marketing", value: "Digital Marketing" },
-    { title: "Basic Digital Literacy", value: "Basic Digital Literacy" },
+    { title: "Basic Computer Operation", value: "Basic Computer Operation" },
 
   ];
 
@@ -398,7 +398,7 @@ export default function Training() {
     { title: "Premium (5 Months: 250,000)", value: "Premium (5 Months: 250,000)" },
   ];
 
-  const digitalLiteracyOptions = [
+  const computerOperationOptions = [
     { title: "Standard (1 Month: 70,000)", value: "Standard (1 Month: 70,000)" },
     { title: "Premium (2 Months: 100,000)", value: "Premium (2 Months: 100,000)" },
   ];
@@ -418,8 +418,8 @@ export default function Training() {
 
   let dynamicPackageOptions = packageOptions;
 
-  if (selectedTrack === "Basic Digital Literacy") {
-    dynamicPackageOptions = digitalLiteracyOptions;
+  if (selectedTrack === "Basic Computer Operation") {
+    dynamicPackageOptions = computerOperationOptions;
   } else if (selectedTrack === "Graphic Design") {
     dynamicPackageOptions = graphicDesignOptions;
   }
