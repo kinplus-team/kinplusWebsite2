@@ -82,10 +82,12 @@ export default function OurCoursesHome() {
       </motion.div>
 
       {/* Course Catalogue */}
-      <Catalogue
-        title="Our Courses"
-        catalouges={courses}
-      />
+      <div className="lg:mb-20">
+        <Catalogue
+          title="Our Courses"
+          catalouges={courses}
+        />
+      </div>
     </PageLayout>
   );
 }

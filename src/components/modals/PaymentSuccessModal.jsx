@@ -18,14 +18,14 @@ export default function PaymentSuccessModal({
 
         <ul className="mb-4 list-disc list-inside flex flex-col gap-2 justify-center text-start pl-4">
           <li>
-            Share your receipt with us on <a href="https://wa.me/2348116400858" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-600 pl-1">WhatsApp</a> or call: 
+            Share your receipt with us on <a href="https://wa.me/2347075199782" target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-600 ">WhatsApp</a> or call: 
             <a
-              href="https://wa.me/2348116400858"
+              href="https://wa.me/2347075199782"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline text-blue-600 pl-1"
             >
-              +2348116400858.
+              +2347075199782.
             </a>
           </li>
 

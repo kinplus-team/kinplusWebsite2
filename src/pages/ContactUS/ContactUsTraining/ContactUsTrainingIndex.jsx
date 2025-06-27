@@ -149,7 +149,7 @@ export default function ContactUsTraining() {
     doc.text("2nd Floor, Christore Building", 15, yStart + 6);
     doc.text("Opp. Crunchies Restaurant", 15, yStart + 12);
     doc.text("Similoluwa, Ado-Ekiti", 15, yStart + 18);
-    doc.text("08116400858, 07075199782", 15, yStart + 24);
+    doc.text("07075199782, 08116400858", 15, yStart + 24);
 
 
     // Payer Details (aligned horizontally with address block)
@@ -252,7 +252,7 @@ export default function ContactUsTraining() {
       ctx.fillText("2nd Floor, Christore Building", 30, yStart + 20);
       ctx.fillText("Opp. Crunchies Restaurant", 30, yStart + 40);
       ctx.fillText("Similoluwa, Ado-Ekiti", 30, yStart + 60);
-      ctx.fillText("08116400858, 07075199782", 30, yStart + 80);
+      ctx.fillText("07075199782, 08116400858", 30, yStart + 80);
 
 
       // Payer details (right)
