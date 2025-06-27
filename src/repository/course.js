@@ -4,7 +4,7 @@ import icon2 from "../assets/components/courses/course-list/SVG/excel.svg";
 import icon3 from "../assets/components/courses/course-list/SVG/figma.svg";
 import icon4 from "../assets/components/courses/course-list/SVG/adobe-photoshop.svg";
 import icon5 from "../assets/components/courses/course-list/SVG/simple-icons_metasploit.svg";
-import icon6 from "../assets/components/courses/course-list/SVG/logos_adobe-premiere.svg";
+import icon6 from "../assets/components/courses/course-list/SVG/google-analytics.svg";
 import icon7 from "../assets/components/courses/course-list/SVG/office-word.svg";
 
 
