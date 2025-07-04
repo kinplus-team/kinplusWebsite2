@@ -784,6 +784,11 @@ export default function ContactUsTraining() {
         <BankTransferModal
           isOpen={showBankModal}
           onClose={() => setShowBankModal(false)}
+          onBack={() => {
+            console.log("Going back to Payment Preference Modal");
+            setShowBankModal(false);
+            setShowPaymentPrefModal(true); // This will bring back PaymentPreferenceModal
+          }}
         />
 
         <PaymentSuccessModal

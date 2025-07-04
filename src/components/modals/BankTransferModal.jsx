@@ -1,12 +1,22 @@
 import React from "react";
 
-export default function BankTransferModal({ isOpen, onClose }) {
+export default function BankTransferModal({ isOpen, onClose, onBack }) {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
-        <h2 className="text-xl font-semibold mb-4 text-green-700">
+      <div className="relative bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
+        {/* Go Back Button */}
+        <button
+          onClick={onBack}
+          className="absolute top-4 left-4 p-2 text-gray-700 hover:text-blue-700 text-3xl hover:left-3"
+          aria-label="Go back"
+        >
+          ←
+        </button>
+
+        {/* Modal Content */}
+        <h2 className="text-xl font-semibold mb-4 text-green-700 mt-6">
           Bank Transfer Info
         </h2>
         <p className="mb-4">
@@ -47,7 +57,8 @@ export default function BankTransferModal({ isOpen, onClose }) {
           </li>
 
           <li>
-            Did you choose to have the training "Onsite/Physical"? Proceed to the office to complete your onboarding.
+            Did you choose to have the training "Onsite/Physical"? Proceed to
+            the office to complete your onboarding.
           </li>
         </ul>
 

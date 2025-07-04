@@ -13,17 +13,20 @@ export default function PaymentPreferenceModal({ isOpen, onPaystack, onBankTrans
 
         <div className="flex flex-col gap-4 lg:gap-6 mb-6">
           <button
-            onClick={onPaystack}
-            className="bg-blue-600 text-white px-4 py-3 lg:py-4 rounded-lg hover:bg-blue-700"
-          >
-            Pay via Paystack
-          </button>
-          <button
             onClick={onBankTransfer}
-            className="bg-gray-600 text-white px-4 py-3 lg:py-4 rounded-lg hover:bg-gray-700"
+            className="bg-blue-600 text-white px-4 py-3 lg:py-4 rounded-lg hover:bg-blue-700"
+
           >
             Pay via Bank Transfer
           </button>
+          <button
+            onClick={onPaystack}
+            className="bg-gray-600 text-white px-4 py-3 lg:py-4 rounded-lg hover:bg-gray-700"
+
+          >
+            Pay via Paystack
+          </button>
+          
         </div>
 
         {/* <button
