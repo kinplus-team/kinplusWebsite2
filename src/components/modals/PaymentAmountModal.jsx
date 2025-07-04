@@ -17,13 +17,13 @@ export default function PaymentAmountModal({ isOpen, amount, onPay, onClose }) {
         <div className="flex justify-around mb-4">
           <button
             onClick={() => onPay("60")}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700"
           >
             Pay 60%
           </button>
           <button
             onClick={() => onPay("full")}
-            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+            className="bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700"
           >
             Pay Full
           </button>

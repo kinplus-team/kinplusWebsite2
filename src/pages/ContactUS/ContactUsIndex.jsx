@@ -18,7 +18,7 @@ export default function MyForm() {
       label: "Our Training",
       title: "Contact Us for training Opportunities",
       text: "If you're interested in exploring our training offerings, please don't hesitate to get in touch. You can reach us at any of the contact points below, and we'll be happy to discuss your learning goals and how we can tailor our training programs to meet your needs. We look forward to hearing from you",
-      link: "Learn Here",
+      link: "Learn here",
       to: "/contact-us/training",
     },
   ];

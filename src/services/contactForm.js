@@ -12,7 +12,8 @@ export const contactUsForTraining = async (
   address,
   learningTrack,
   paymentPackage,
-  availability
+  availability,
+  chooseYourCohort,
 ) => {
   const graphQLClient = new GraphQLClient(graphqlAPI, {
     headers: {
@@ -32,6 +33,7 @@ export const contactUsForTraining = async (
       $learningTrack: String!
       $paymentPackage: String!
       $availability: String!
+      $chooseYourCohort: String!
     ) {
       createTrainingContact(
         data: {
@@ -45,6 +47,7 @@ export const contactUsForTraining = async (
           learningTrack: $learningTrack
           paymentPackage: $paymentPackage
           availability: $availability
+          chooseYourCohort: $chooseYourCohort
         }
       ) {
         id
@@ -63,6 +66,7 @@ export const contactUsForTraining = async (
     learningTrack,
     paymentPackage,
     availability,
+    chooseYourCohort,
   });
   console.log("From server:",response)
 

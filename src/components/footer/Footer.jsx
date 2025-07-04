@@ -39,7 +39,7 @@ export default function Footer() {
   const socialMediaIcons = [
     {
       icon: facebook,
-      link: "https://web.facebook.com/kinplustechnologies/?_rdc=1&_rdr",
+      link: "https://www.facebook.com/share/16sh7FXrok/",
     },
     {
       icon: linkedIn,
@@ -47,7 +47,7 @@ export default function Footer() {
     },
     {
       icon: instagram,
-      link: "https://www.instagram.com/kinplustechnologies/",
+      link: "https://www.instagram.com/kinplustech?igsh=OTRmbHVxZDYyYmZi",
     },
     {
       icon: x,
@@ -252,13 +252,13 @@ export default function Footer() {
 
               <div className="flex gap-6 my-3 pt-3">
                 {socialMediaIcons.map((socialMediaIcon, i) => (
-                  <Link to={socialMediaIcon.link} key={i}>
+                  <a href={socialMediaIcon.link} key={i} rel="noopener noreferrer" target="_blank">
                     <img
                       src={socialMediaIcon.icon}
                       alt="social media icon"
                       className="w-9 h-9"
                     />
-                  </Link>
+                  </a>
                 ))}
               </div>
             </motion.div>

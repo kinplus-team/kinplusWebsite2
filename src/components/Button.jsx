@@ -65,11 +65,7 @@ export default function Button({
             <div className="flex gap-5 items-center">
               {text}
               {isLinked && (
-                <img
-                  src={ArrowButton}
-                  className="w-[61px]"
-                  alt="Arrow"
-                />
+                <img src={ArrowButton} className="w-[61px]" alt="Arrow" />
               )}
             </div>
           ) : (
@@ -117,12 +113,66 @@ export default function Button({
           onClick={onClick}
           disabled={disabled}
         >
-          <img
-            src={icon}
-            className="w-6 h-6"
-            alt="Icon"
-          />
+          <img src={icon} className="w-6 h-6" alt="Icon" />
           {text}
+        </button>
+      );
+
+    case "priceBlue":
+      return (
+        <button
+          className={`${baseStyles} ${
+            isLong
+              ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left"
+              : "rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"
+          } ${
+            disabled
+              ? "opacity-50 cursor-not-allowed"
+              : "bg-blue-700 hover:bg-blue-600"
+          } text-white border border-blue-700 shadow-md`}
+          onClick={onClick}
+          disabled={disabled}
+        >
+          {isLoading ? (
+            loadingSpinner
+          ) : isLong ? (
+            <div className="flex gap-5 items-center">
+              {text}
+              {isLinked && (
+                <img src={ArrowButton} className="w-[61px]" alt="Arrow" />
+              )}
+            </div>
+          ) : (
+            <p className="lg:text-base text-sm">{text}</p>
+          )}
+        </button>
+      );
+
+    case "priceWhite":
+      return (
+        <button
+          className={`${baseStyles} bg-white w-[55%] lg:w-[70%] hover:bg-gray-100 ${
+            isLong
+              ? "lg:px-6 lg:py-5 px-3 py-4 rounded-md text-left"
+              : "rounded-xl text-center lg:px-4 lg:py-4 px-2 py-4"
+          } ${
+            disabled ? "opacity-50 cursor-not-allowed" : "border-white"
+          } text-blue-700 border shadow-md`}
+          disabled={disabled}
+          onClick={onClick}
+        >
+          {isLoading ? (
+            loadingSpinner
+          ) : isLong ? (
+            <div className="flex gap-5 items-center">
+              {text}
+              {isLinked && (
+                <img src={ArrowButton} className="w-[61px]" alt="Arrow" />
+              )}
+            </div>
+          ) : (
+            <p className="lg:text-base text-sm">{text}</p>
+          )}
         </button>
       );
 

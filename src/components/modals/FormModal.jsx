@@ -9,7 +9,7 @@ export default function FormModal({ isOpen, onClose, message }) {
           <h2 className="text-lg font-semibold mb-4 text-gray-800">Notice</h2>
           <p className="text-gray-700 mb-6">{message}</p>
           <button
-            className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition"
+            className="bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-700 transition"
             onClick={onClose}
           >
             Okay

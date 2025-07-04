@@ -25,7 +25,10 @@ import jsPDF from "jspdf";
 import KinplusLogoPDF from "../../assets/logoBase64.js";
 // import PaymentAmountModal from "../../components/modals/PaymentAmountModal.jsx";
 import PaymentSuccessModal from "../../components/modals/PaymentSuccessModal.jsx";
+import PaymentPreferenceModal from "../../components/modals/PaymentPreference.jsx";
+import BankTransferModal from "../../components/modals/BankTransferModal.jsx";
 // import { Link } from "react-router-dom";
+
 
 
 // validation schema
@@ -50,6 +53,7 @@ const contactUsTrainingSchema = z.object({
   track: z.string().min(1, "Track is required"),
   trackPackage: z.string().min(1, "Track Package is required"),
   availability: z.string().min(1, "Availability is required"),
+  chooseYourCohort: z.string().min(1, "You have to choose the cohort you want to join"),
 });
 
 export default function Training() {
@@ -320,9 +324,12 @@ export default function Training() {
   const [userAvailabity, setUserAvailabity] = useState("");
 
 
-  // Hook to pop up amount and payment success modals
+  // Hook to pop up amount payment success, payment preference, and bank transfer modals  
   // const [showAmountModal, setShowAmountModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showPaymentPrefModal, setShowPaymentPrefModal] = useState(false);
+  const [showBankModal, setShowBankModal] = useState(false);
+  
 
   const [amountPaid, setAmountPaid] = useState(0); // State to store the amount the user picked in the amount options
 
@@ -342,7 +349,8 @@ export default function Training() {
         data.address,
         data.track,
         data.trackPackage,
-        data.availability
+        data.availability,
+        data.chooseYourCohort,
       );
       toast.success("Form submitted successfully");
       reset();
@@ -423,6 +431,26 @@ export default function Training() {
   } else if (selectedTrack === "Graphic Design") {
     dynamicPackageOptions = graphicDesignOptions;
   }
+
+  // Month Options
+  const allMonths = [
+    {title: "January", value: "January"},
+    {title: "February", value: "February"},
+    {title: "March", value: "March"},
+    {title: "April", value: "April"},
+    {title: "May", value: "May"},
+    {title: "June", value: "June"},
+    {title: "July", value: "July"},
+    {title: "August", value: "August"},
+    {title: "September", value: "September"},
+    {title: "October", value: "October"},
+    {title: "November", value: "November"},
+    {title: "December", value: "December"},
+  ]
+
+  const currentMonthIndex = new Date().getMonth();
+
+  const cohortOptions = allMonths.slice(currentMonthIndex);
 
   const slideInRight = {
     initial: { x: 100, opacity: 0 },
@@ -610,7 +638,26 @@ export default function Training() {
                       setSelected={(value) => setValue("trackPackage", value)}
                     />
                   </div>
+
+                  <div>
+                    <Input
+                      type="select"
+                      name="chooseYourCohort"
+                      placeholder="Select your preferred cohort month"
+                      options={cohortOptions}
+                      isSelect={activeDropdown === "chooseYourCohort"}
+                      setIsSelect={() =>
+                        handleDropdownToggle("chooseYourCohort")
+                      }
+                      error={errors.chooseYourCohort?.message}
+                      selected={watch("chooseYourCohort")}
+                      setSelected={(value) =>
+                        setValue("chooseYourCohort", value)
+                      }
+                    />
+                  </div>
                 </div>
+
                 <div className="py-3">
                   <p className="text-xl text-white">
                     How will you be available for the training?
@@ -654,18 +701,25 @@ export default function Training() {
           {/* Modal for the user to pick if they want to pay now or later*/}
           <PaymentChoiceModal
             isOpen={showChoiceModal}
+            // New logic that opens a payment preference modal where the user can choose to pay via Paystack or bank transfer
             onPayNow={() => {
               setShowChoiceModal(false);
-
-              // Start Paystack payment directly with full amount
-              setAmountPaid(paymentAmount); // Save full amount for receipt
-              handlePaystackPayment({
-                email: userEmail,
-                amount: paymentAmount,
-                fullName: userName,
-                track: userTrack,
-              });
+              setShowPaymentPrefModal(true);
             }}
+            // Old logic that immediately goes to Paystack
+
+            // onPayNow={() => {
+            //   setShowChoiceModal(false);
+
+            //   // Start Paystack payment directly with full amount
+            //   setAmountPaid(paymentAmount); // Save full amount for receipt
+            //   handlePaystackPayment({
+            //     email: userEmail,
+            //     amount: paymentAmount,
+            //     fullName: userName,
+            //     track: userTrack,
+            //   });
+            // }}
             onPayOnsite={() => {
               setShowChoiceModal(false);
               setIsFormModalOpen(true);
@@ -707,6 +761,30 @@ export default function Training() {
               });
             }}
           /> */}
+
+          <PaymentPreferenceModal
+            isOpen={showPaymentPrefModal}
+            onPaystack={() => {
+              setShowPaymentPrefModal(false);
+              setAmountPaid(paymentAmount);
+              handlePaystackPayment({
+                email: userEmail,
+                amount: paymentAmount,
+                fullName: userName,
+                track: userTrack,
+              });
+            }}
+            onBankTransfer={() => {
+              setShowPaymentPrefModal(false);
+              setShowBankModal(true);
+            }}
+            onClose={() => setShowPaymentPrefModal(false)}
+          />
+
+          <BankTransferModal
+            isOpen={showBankModal}
+            onClose={() => setShowBankModal(false)}
+          />
 
           <PaymentSuccessModal
             isOpen={showSuccessModal}

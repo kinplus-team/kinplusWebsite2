@@ -9,7 +9,7 @@ export default function SocialLinks() {
   const bottomIcons = [
     {
       icon: facebookIcon,
-      link: "https://web.facebook.com/kinplustechnologies/?_rdc=1&_rdr",
+      link: "https://www.facebook.com/share/16sh7FXrok/",
     },
     {
       icon: linkedInIcon,
@@ -17,7 +17,7 @@ export default function SocialLinks() {
     },
     {
       icon: instagramIcon,
-      link: "https://www.instagram.com/kinplustechnologies/",
+      link: "https://www.instagram.com/kinplustech?igsh=OTRmbHVxZDYyYmZi",
     },
     { icon: twitterIcon, link: "https://twitter.com/kinplustech" },
   ];

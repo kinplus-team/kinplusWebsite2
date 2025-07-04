@@ -68,7 +68,7 @@ export default function Pricing({
 
             <Link to="/contact-us/training">
               <div className="w-40 mx-auto">
-                <Button type="customizedBlue" text="Apply Now" />
+                <Button type="priceBlue" text="Apply Now" />
               </div>
             </Link>
           </div>
@@ -131,7 +131,7 @@ export default function Pricing({
 
             <Link to="/contact-us/training">
               <div className="w-40 mx-auto">
-                <Button type="customizedWhite" text="Apply Now" />
+                <Button type="priceWhite" text="Apply Now" />
               </div>
             </Link>
           </div>
