@@ -11,6 +11,7 @@ import icon4 from "../../assets/components/courses/course-list/SVG/adobe-photosh
 import icon5 from "../../assets/components/courses/course-list/SVG/simple-icons_metasploit.svg";
 import icon6 from "../../assets/components/courses/course-list/SVG/google-analytics.svg";
 import icon7 from "../../assets/components/courses/course-list/SVG/office-word.svg";
+import icon8 from "../../assets/components/courses/course-list/SVG/anaconda.svg";
 
 
 // images
@@ -23,7 +24,7 @@ import trainingImage5 from "../../assets/components/courses/course-list/images/t
 import courses from "../../services/courseServices.js";
 
 async function getCourses() {
-  const courseIconArray = [icon1, icon2, icon3, icon4, icon5, icon6, icon7];
+  const courseIconArray = [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8];
 
   const trainingImageArray = [
     trainingImage1,
@@ -33,6 +34,7 @@ async function getCourses() {
     trainingImage5,
     trainingImage1,
     trainingImage3,
+    trainingImage2,
   ];
 
   let allListedCourses = [];

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import DefaultHelmet from "../../components/DefaultHelmet";
 import HeroTraining from "./HeroTraining.jsx";
 // import Statistics from "./Statistics.jsx";
@@ -54,6 +54,8 @@ const contactUsTrainingSchema = z.object({
   trackPackage: z.string().min(1, "Track Package is required"),
   availability: z.string().min(1, "Availability is required"),
   chooseYourCohort: z.string().min(1, "You have to choose the cohort you want to join"),
+  promoCode: z.string().optional().or(z.literal("")),
+
 });
 
 export default function Training() {
@@ -72,9 +74,11 @@ export default function Training() {
     resolver: zodResolver(contactUsTrainingSchema),
     mode: "onChange",
   });
-  
-  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
 
+  const promoCodeValue = watch("promoCode");
+
+
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
 
   const handleDropdownToggle = (dropdownName) => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
@@ -92,22 +96,21 @@ export default function Training() {
     }
 
     const paystack = window.PaystackPop.setup({
-      key: import.meta.env.VITE_REACT_APP_PAYSTACK_PUBLIC_LIVE_KEY_PROD, // Company's actual public key 
+      key: import.meta.env.VITE_REACT_APP_PAYSTACK_PUBLIC_LIVE_KEY_PROD, // Company's actual public key
       // key: "pk_test_afd9bb9d64abc7638f5d453e0ebdfcd29319c5d2", // test public key
       email,
       amount: amount * 100, // amount in kobo
       currency: "NGN",
       callback: () => {
-          setShowSuccessModal(true);
+        setShowSuccessModal(true);
       },
       onClose: () => {
-          alert("Payment window closed.");
+        alert("Payment window closed.");
       },
     });
 
     paystack.openIframe();
   };
-
 
   // Helper function to generate PDF receipt for users that paid online
   const generatePDFReceipt = ({
@@ -192,7 +195,6 @@ export default function Training() {
     }, 0);
   };
 
-
   // Helper function to generate image receipt for users that paid online
   const generateImageReceipt = ({
     fullName,
@@ -272,7 +274,6 @@ export default function Training() {
       ctx.fillText(`Phone: ${phoneNumber}`, rightX, yStart + 60);
       ctx.fillText(`Training Type: ${availability}`, rightX, yStart + 80);
 
-
       // Table Header
       let tableY = yStart + 100;
       ctx.fillStyle = "#dcdcdc";
@@ -312,27 +313,81 @@ export default function Training() {
     };
   };
 
-
   // Hook to handle user's email, track and payment package, and also trackpackage for Paystack.
   const [userEmail, setUserEmail] = useState("");
   const [paymentAmount, setPaymentAmount] = useState(0);
   const [showChoiceModal, setShowChoiceModal] = useState(false);
-  const [userName, setUserName] = useState(""); 
+  const [userName, setUserName] = useState("");
   const [userTrack, setUserTrack] = useState("");
   const [userTrackPackage, setUserTrackPackage] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
   const [userAvailabity, setUserAvailabity] = useState("");
 
-
-  // Hook to pop up amount payment success, payment preference, and bank transfer modals  
+  // Hook to pop up amount payment success, payment preference, and bank transfer modals
   // const [showAmountModal, setShowAmountModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showPaymentPrefModal, setShowPaymentPrefModal] = useState(false);
   const [showBankModal, setShowBankModal] = useState(false);
-  
 
   const [amountPaid, setAmountPaid] = useState(0); // State to store the amount the user picked in the amount options
 
+  // Hook to handle if the promo code is valid or not and to also check the discount based on the day of input.
+  // const [promoCode, setPromoCode] = useState("");
+  const [promoStatus, setPromoStatus] = useState(null); // null | "valid" | "invalid" | "expired"
+  const [discountRate, setDiscountRate] = useState(0);
+  const [fullAmount, setFullAmount] = useState(0);
+  const [discountedAmount, setDiscountedAmount] = useState(0);
+
+  // useRef
+  const promoStatusRef = useRef(promoStatus);
+  const fullAmountRef = useRef(fullAmount);
+  const discountedAmountRef = useRef(discountedAmount);
+
+
+  // Frontend promo code logic
+  const PROMO_DETAILS = {
+    code: "KPL2289@", // The code the user must enter
+    startDate: new Date("2025-07-10"), // When the code became valid
+    discount: 0.05, // 5% discount
+    durationDays: 7, // Valid for 7 days
+  };
+
+  // useEffect hook for real-time promo code validation
+    useEffect(() => {
+      const timeout = setTimeout(() => {
+        const code = promoCodeValue?.trim()?.toUpperCase();
+        const now = new Date();
+  
+        if (!code || code.length < 3) {
+          setPromoStatus(null);
+          setDiscountRate(0);
+          return;
+        }
+  
+        const promoStart = PROMO_DETAILS.startDate;
+        const promoEnd = new Date(promoStart);
+        promoEnd.setDate(promoStart.getDate() + PROMO_DETAILS.durationDays);
+  
+        if (code === PROMO_DETAILS.code.toUpperCase()) {
+          if (now >= promoStart && now <= promoEnd) {
+            setPromoStatus("valid");
+            setDiscountRate(PROMO_DETAILS.discount);
+          } else if (now > promoEnd) {
+            setPromoStatus("expired");
+            setDiscountRate(0);
+          } else {
+            setPromoStatus("invalid");
+            setDiscountRate(0);
+          }
+        } else {
+          setPromoStatus("invalid");
+          setDiscountRate(0);
+        }
+      }, 600); // debounce
+  
+      return () => clearTimeout(timeout);
+    }, [promoCodeValue]);
+  
 
   const onSubmit = async (data) => {
     setIsLoading(true);
@@ -351,6 +406,8 @@ export default function Training() {
         data.trackPackage,
         data.availability,
         data.chooseYourCohort,
+        // data.promoCode,
+        promoStatus ?? "null",
       );
       toast.success("Form submitted successfully");
       reset();
@@ -374,15 +431,63 @@ export default function Training() {
         ? 250000
         : 300000;
 
-      setPaymentAmount(amount);
-      setShowChoiceModal(true); // open choice modal
-      // setIsFormModalOpen(true); // Open modal
+      // logic to successfully pass the discount to the bank transfer modal
+      const enteredPromo = data.promoCode?.trim()?.toUpperCase();
+      const promoStart = PROMO_DETAILS.startDate;
+      const promoEnd = new Date(promoStart);
+      promoEnd.setDate(promoStart.getDate() + PROMO_DETAILS.durationDays);
+      const now = new Date();
+
+      let isPromoValid = false;
+      let promoDiscount = 0;
+
+      if (
+        enteredPromo === PROMO_DETAILS.code.toUpperCase() &&
+        now >= promoStart &&
+        now <= promoEnd
+      ) {
+        isPromoValid = true;
+        promoDiscount = PROMO_DETAILS.discount;
+      }
+
+      const finalAmount = isPromoValid
+        ? Math.floor(amount * (1 - promoDiscount))
+        : amount;
+
+      setPromoStatus(isPromoValid ? "valid" : "invalid");
+      console.log("isPromoValid", isPromoValid);
+      console.log("Promo Status:", isPromoValid ? "valid" : "invalid");
+      setPromoStatus(isPromoValid ? "valid" : "invalid");
+      promoStatusRef.current = isPromoValid ? "valid" : "invalid";
+
+      setDiscountRate(promoDiscount);
+      setFullAmount(amount);
+      setFullAmount(amount);
+      fullAmountRef.current = amount;
+
+      setDiscountedAmount(finalAmount);
+      setDiscountedAmount(finalAmount);
+      discountedAmountRef.current = finalAmount;
+
+      setPaymentAmount(finalAmount); // This will trigger correct amount for Paystack
+      setTimeout(() => {
+        setShowChoiceModal(true);
+      }, 50); // A little delay so the state can pass to the BankTransfer modal  
+
+      
     } catch (error) {
       console.log("From client:", error);
       toast.error("Something went wrong!");
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+    setPromoStatus(null);
+    setDiscountedAmount(0);
+    setFullAmount(0);
   };
 
   const trackOptions = [
@@ -393,22 +498,40 @@ export default function Training() {
     { title: "Data Analysis", value: "Data Analysis" },
     { title: "Digital Marketing", value: "Digital Marketing" },
     { title: "Basic Computer Operation", value: "Basic Computer Operation" },
-
+    { title: "AI/Machine Learning", value: "AI/Machine Learning" },
   ];
 
   const packageOptions = [
-    { title: "Standard (3 Months: 200,000)", value: "Standard (3 Months: 200,000)" },
-    { title: "Premium (5 Months: 300,000)", value: "Premium (5 Months: 300,000)" },
+    {
+      title: "Standard (3 Months: 200,000)",
+      value: "Standard (3 Months: 200,000)",
+    },
+    {
+      title: "Premium (5 Months: 300,000)",
+      value: "Premium (5 Months: 300,000)",
+    },
   ];
 
   const graphicDesignOptions = [
-    { title: "Standard (3 Months: 180,000)", value: "Standard (3 Months: 180,000)" },
-    { title: "Premium (5 Months: 250,000)", value: "Premium (5 Months: 250,000)" },
+    {
+      title: "Standard (3 Months: 180,000)",
+      value: "Standard (3 Months: 180,000)",
+    },
+    {
+      title: "Premium (5 Months: 250,000)",
+      value: "Premium (5 Months: 250,000)",
+    },
   ];
 
   const computerOperationOptions = [
-    { title: "Standard (1 Month: 70,000)", value: "Standard (1 Month: 70,000)" },
-    { title: "Premium (2 Months: 100,000)", value: "Premium (2 Months: 100,000)" },
+    {
+      title: "Standard (1 Month: 70,000)",
+      value: "Standard (1 Month: 70,000)",
+    },
+    {
+      title: "Premium (2 Months: 100,000)",
+      value: "Premium (2 Months: 100,000)",
+    },
   ];
 
   const genderInput = [
@@ -434,19 +557,19 @@ export default function Training() {
 
   // Month Options
   const allMonths = [
-    {title: "January", value: "January"},
-    {title: "February", value: "February"},
-    {title: "March", value: "March"},
-    {title: "April", value: "April"},
-    {title: "May", value: "May"},
-    {title: "June", value: "June"},
-    {title: "July", value: "July"},
-    {title: "August", value: "August"},
-    {title: "September", value: "September"},
-    {title: "October", value: "October"},
-    {title: "November", value: "November"},
-    {title: "December", value: "December"},
-  ]
+    { title: "January", value: "January" },
+    { title: "February", value: "February" },
+    { title: "March", value: "March" },
+    { title: "April", value: "April" },
+    { title: "May", value: "May" },
+    { title: "June", value: "June" },
+    { title: "July", value: "July" },
+    { title: "August", value: "August" },
+    { title: "September", value: "September" },
+    { title: "October", value: "October" },
+    { title: "November", value: "November" },
+    { title: "December", value: "December" },
+  ];
 
   const currentMonthIndex = new Date().getMonth();
 
@@ -458,7 +581,6 @@ export default function Training() {
     viewport: { once: true },
     transition: { duration: 0.8 },
   };
-
 
   return (
     <>
@@ -658,34 +780,64 @@ export default function Training() {
                   </div>
                 </div>
 
-                <div className="py-3">
-                  <p className="text-xl text-white">
-                    How will you be available for the training?
-                  </p>
-                  <Input
-                    type="checkbox"
-                    name="availability"
-                    radioText="Online/Virtual"
-                    isChecked={watch("availability") === "Online/Virtual"}
-                    onCheck={() => setValue("availability", "Online/Virtual")}
-                    error={errors.availability?.message}
-                  />
-                  <Input
-                    type="checkbox"
-                    name="availability"
-                    radioText="Onsite/Physical"
-                    isChecked={watch("availability") === "Onsite/Physical"}
-                    onCheck={() => setValue("availability", "Onsite/Physical")}
-                    error={errors.availability?.message}
-                  />
-                  <Input
-                    type="checkbox"
-                    name="availability"
-                    radioText="Hybrid"
-                    isChecked={watch("availability") === "Hybrid"}
-                    onCheck={() => setValue("availability", "Hybrid")}
-                    error={errors.availability?.message}
-                  />
+                {/* Group 6 */}
+                <div className="grid gap-3 sm:grid-cols-2 lg:items-start">
+                  <div className="py-3">
+                    <p className="text-xl text-white">
+                      How will you be available for the training?
+                    </p>
+                    <Input
+                      type="checkbox"
+                      name="availability"
+                      radioText="Online/Virtual"
+                      isChecked={watch("availability") === "Online/Virtual"}
+                      onCheck={() => setValue("availability", "Online/Virtual")}
+                      error={errors.availability?.message}
+                    />
+                    <Input
+                      type="checkbox"
+                      name="availability"
+                      radioText="Onsite/Physical"
+                      isChecked={watch("availability") === "Onsite/Physical"}
+                      onCheck={() =>
+                        setValue("availability", "Onsite/Physical")
+                      }
+                      error={errors.availability?.message}
+                    />
+                    <Input
+                      type="checkbox"
+                      name="availability"
+                      radioText="Hybrid"
+                      isChecked={watch("availability") === "Hybrid"}
+                      onCheck={() => setValue("availability", "Hybrid")}
+                      error={errors.availability?.message}
+                    />
+                  </div>
+
+                  {/* Promo code */}
+                  <div>
+                    <Input
+                      type="text"
+                      name="Promo Code"
+                      placeholder="Enter Promo Code (if any)"
+                      {...register("promoCode")}
+                    />
+                    {promoStatus === "valid" && (
+                      <p className="text-green-500 mt-1">
+                        ✅ {discountRate * 100}% discount applied!
+                      </p>
+                    )}
+                    {promoStatus === "invalid" && (
+                      <p className="text-red-500 mt-1">
+                        ❌ Invalid promo code.
+                      </p>
+                    )}
+                    {promoStatus === "expired" && (
+                      <p className="text-yellow-500 mt-1">
+                        ⚠️ Promo code has expired.
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -706,61 +858,12 @@ export default function Training() {
               setShowChoiceModal(false);
               setShowPaymentPrefModal(true);
             }}
-            // Old logic that immediately goes to Paystack
-
-            // onPayNow={() => {
-            //   setShowChoiceModal(false);
-
-            //   // Start Paystack payment directly with full amount
-            //   setAmountPaid(paymentAmount); // Save full amount for receipt
-            //   handlePaystackPayment({
-            //     email: userEmail,
-            //     amount: paymentAmount,
-            //     fullName: userName,
-            //     track: userTrack,
-            //   });
-            // }}
             onPayOnsite={() => {
               setShowChoiceModal(false);
               setIsFormModalOpen(true);
             }}
             onClose={() => setShowChoiceModal(false)}
           />
-
-          {/* Old Modal logic */}
-          {/* <PaymentChoiceModal
-            isOpen={showChoiceModal}
-            onPayNow={() => {
-              setShowChoiceModal(false);
-              setShowAmountModal(true);
-            }}
-            onPayOnsite={() => {
-              setShowChoiceModal(false);
-              setIsFormModalOpen(true);
-            }}
-            onClose={() => setShowChoiceModal(false)}
-          /> */}
-
-          {/* Modal for the user to pick if they want to pay in full or in instalments*/}
-          {/* Unused for now */}
-          {/* <PaymentAmountModal
-            isOpen={showAmountModal}
-            amount={paymentAmount}
-            onClose={() => setShowAmountModal(false)}
-            onPay={(type) => {
-              setShowAmountModal(false);
-              const finalAmount =
-                type === "60" ? Math.floor(paymentAmount * 0.6) : paymentAmount;
-               setAmountPaid(finalAmount);
-
-              handlePaystackPayment({
-                email: userEmail,
-                amount: finalAmount,
-                fullName: userName,
-                track: userTrack,
-              });
-            }}
-          /> */}
 
           <PaymentPreferenceModal
             isOpen={showPaymentPrefModal}
@@ -776,10 +879,23 @@ export default function Training() {
             }}
             onBankTransfer={() => {
               setShowPaymentPrefModal(false);
-              setShowBankModal(true);
+              setTimeout(() => {
+                console.log("Triggering BankTransferModal with:", {
+                  promoStatus: promoStatusRef.current,
+                  fullAmount: fullAmountRef.current,
+                  discountedAmount: discountedAmountRef.current,
+                });
+                setShowBankModal(true);
+              }, 100);
             }}
             onClose={() => setShowPaymentPrefModal(false)}
           />
+
+          {console.log("Passing to BankTransferModal =>", {
+            promoStatus,
+            fullAmount,
+            discountedAmount,
+          })}
 
           <BankTransferModal
             isOpen={showBankModal}
@@ -789,6 +905,9 @@ export default function Training() {
               setShowBankModal(false);
               setShowPaymentPrefModal(true); // This will bring back PaymentPreferenceModal
             }}
+            promoStatus={promoStatusRef.current}
+            fullAmount={fullAmountRef.current}
+            discountedAmount={discountedAmountRef.current}
           />
 
           <PaymentSuccessModal
@@ -815,7 +934,7 @@ export default function Training() {
                 trackPackage: userTrackPackage,
               })
             }
-            onClose={() => setShowSuccessModal(false)}
+            onClose={handleCloseSuccessModal}
           />
 
           <FormModal

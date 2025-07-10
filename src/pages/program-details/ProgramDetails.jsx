@@ -8,25 +8,34 @@ import DefaultHelmet from "../../components/DefaultHelmet"; // Importing Default
 export default function ProgramDetails() {
   const { training } = useParams();
   const [programDetails, setProgramDetails] = useState({});
+  console.log(training);
 
   // Turn the slug link to a title
   useEffect(() => {
-    const splitTitleURL = training
-      .split("-")
-      .map(
-        (programTitle) =>
-          programTitle.charAt(0).toUpperCase() + programTitle.slice(1)
-      )
-      .join(" ");
+  
+    // const splitTitleURL = training
+    //   .split("-")
+    //   .map(
+    //     (programTitle) =>
+    //       programTitle.charAt(0).toUpperCase() + programTitle.slice(1)
+    //   )
+    //   .join(" ");
 
     const filterThroughPrograms = programsDetails.filter((course) => {
-      if (course.title === splitTitleURL) {
+      if (course.id === training) {
         return course;
       }
     });
 
+    // console.log(filterThroughPrograms);
+
+    // console.log("split title url:", splitTitleURL)
+    // console.log("programs details:", programsDetails)
+
     setProgramDetails(filterThroughPrograms[0]);
   }, [training]);
+
+
 
   return (
     <>

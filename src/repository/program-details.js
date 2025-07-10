@@ -1,5 +1,6 @@
 const courseDetails = [
   {
+    id: "software-development",
     title: "Software Development",
     description:
       "Looking forward to become a developer, transit into a career in tech or simply boost your career path, we offer Software develoment Programs across the three tracks: Front-End, Back-End and FullStack",
@@ -30,6 +31,7 @@ const courseDetails = [
     },
   },
   {
+    id: "product-design",
     title: "Product Design",
     description:
       "A magnificent UI achieves the art of capturing the user’s attention, creating outstanding UX, and building the business brand. Choose a career path in ui/ux design to become a professional Product designer using our training guidelines",
@@ -64,6 +66,7 @@ const courseDetails = [
     },
   },
   {
+    id: "data-analysis",
     title: "Data Analysis",
     description:
       "Gain the techniques of extracting relevant and valuable information from extensive and diverse sets of data gathered from different sources and varying in sizes. Apply to get started",
@@ -94,6 +97,7 @@ const courseDetails = [
     },
   },
   {
+    id: "graphics-design",
     title: "Graphics Design",
     description:
       "To better understand the meaning of graphic design, it is important to be aware of the elements and principles that make up design. Elements are used in conjunction or opposition with each other to create visually striking and impactful designs.",
@@ -127,6 +131,7 @@ const courseDetails = [
     },
   },
   {
+    id: "cyber-security",
     title: "Cyber Security",
     description:
       "Our world revolves around on Digital Systems. Dive your way into learning how to identify threats, mitigate threats, secure the future, and defend organization from cyber attacks. Cybersecurity is more than important in today's global world environment because of the many cyber risks",
@@ -157,6 +162,7 @@ const courseDetails = [
     },
   },
   {
+    id: "digital-marketing",
     title: "Digital Marketing",
     description:
       "Digital marketing is the art of promoting products or services using online platforms like social media, search engines, websites, and email. It helps businesses reach the right audience with the right message at the right time—all measurable and cost-effective. Learn digital marketing today and gain the skills to grow brands, boost sales, and build a career in one of the most in-demand fields worldwide!",
@@ -190,6 +196,7 @@ const courseDetails = [
   },
 
   {
+    id: "basic-computer-operation",
     title: "Basic Computer Operation",
     description:
       "Basic computer operation is the ability to use digital devices, applications, and the internet to access, manage, and share information. It covers essential skills like using a computer or smartphone, navigating websites, sending emails, creating documents, and staying safe online. Digital literacy empowers you to learn, work, and communicate in today’s tech-driven world. Start your journey today and open doors to endless opportunities in education, business, and daily life!",
@@ -220,6 +227,42 @@ const courseDetails = [
       },
     },
   },
+
+  {
+    id: "artificial-intelligence",
+    title: "AI/Machine Learning",
+    description:
+      "Artificial Intelligence and Machine Learning are transforming industries by enabling systems to learn, adapt, and make decisions with minimal human input. From powering smart assistants to optimizing business operations, AI/ML unlocks innovation and efficiency at scale. Learn AI/ML today to build intelligent solutions, drive data-driven impact, and thrive in one of the fastest-growing tech fields globally.",
+    pricingCardInfo: {
+      medium: {
+        courseDuration: "3 Month plan",
+        courseDescription:
+          "Kickstart your journey into Artificial Intelligence and Machine Learning — no prior experience needed.",
+        price: 200000,
+        whatsIncluded: [
+          "Introduction to Python for AI",
+          "Fundamentals of Machine Learning",
+          "Data Collection & Cleaning",
+          "Real-life Project",
+        ],
+      },
+      pro: {
+        courseDuration: "5 Month plan",
+        courseDescription:
+          "Build advanced AI solutions and gain real-world experience applying ML tools and techniques.",
+        price: 300000,
+        whatsIncluded: [
+          "All on the 3-Month Plan",
+          "Deep Learning (Neural Networks, CNNs)",
+          "Natural Language Processing (NLP)",
+          "Industry-Standard ML Frameworks",
+          "Real-life PRojects",
+        ],
+      },
+    },
+  },
+
+  
 ];
 
 export default courseDetails;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
@@ -45,6 +45,8 @@ const contactUsTrainingSchema = z.object({
   trackPackage: z.string().min(1, "Track Package is required"),
   availability: z.string().min(1, "Availability is required"),
   chooseYourCohort: z.string().min(1, "You have to choose the cohort you want to join"),
+  promoCode: z.string().optional().or(z.literal("")),
+
 });
 
 export default function ContactUsTraining() {
@@ -64,6 +66,8 @@ export default function ContactUsTraining() {
     resolver: zodResolver(contactUsTrainingSchema),
     mode: "onChange",
   });
+
+  const promoCodeValue = watch("promoCode");
 
   useEffect(() => {
     register("religion", { required: "Religion is required" });
@@ -153,7 +157,6 @@ export default function ContactUsTraining() {
     doc.text("Opp. Crunchies Restaurant", 15, yStart + 12);
     doc.text("Similoluwa, Ado-Ekiti", 15, yStart + 18);
     doc.text("07075199782, 08116400858", 15, yStart + 24);
-
 
     // Payer Details (aligned horizontally with address block)
     const rightStartY = yStart;
@@ -257,7 +260,6 @@ export default function ContactUsTraining() {
       ctx.fillText("Similoluwa, Ado-Ekiti", 30, yStart + 60);
       ctx.fillText("07075199782, 08116400858", 30, yStart + 80);
 
-
       // Payer details (right)
       const rightX = 420;
       const now = new Date();
@@ -266,7 +268,6 @@ export default function ContactUsTraining() {
       ctx.fillText(`Email: ${email}`, rightX, yStart + 40);
       ctx.fillText(`Phone: ${phoneNumber}`, rightX, yStart + 60);
       ctx.fillText(`Training Type: ${availability}`, rightX, yStart + 80);
-
 
       // Table Header
       let tableY = yStart + 100;
@@ -307,6 +308,7 @@ export default function ContactUsTraining() {
     };
   };
 
+
   // Hook to handle user's email, track and payment package, and also trackpackage for Paystack.
   const [userEmail, setUserEmail] = useState("");
   const [paymentAmount, setPaymentAmount] = useState(0);
@@ -317,7 +319,6 @@ export default function ContactUsTraining() {
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
   const [userAvailabity, setUserAvailabity] = useState("");
 
-
   // Hook to pop up amount payment success, payment preference, and bank transfer modals
   // const [showAmountModal, setShowAmountModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -325,6 +326,64 @@ export default function ContactUsTraining() {
   const [showBankModal, setShowBankModal] = useState(false);
 
   const [amountPaid, setAmountPaid] = useState(0); // State to store the amount the user picked in the amount options
+
+  // Hook to handle if the promo code is valid or not and to also check the discount based on the day of input.
+  // const [promoCode, setPromoCode] = useState("");
+  const [promoStatus, setPromoStatus] = useState(null); // null | "valid" | "invalid" | "expired"
+  const [discountRate, setDiscountRate] = useState(0);
+  const [fullAmount, setFullAmount] = useState(0);
+  const [discountedAmount, setDiscountedAmount] = useState(0);
+
+
+  // useRef
+  const promoStatusRef = useRef(promoStatus);
+  const fullAmountRef = useRef(fullAmount);
+  const discountedAmountRef = useRef(discountedAmount);
+
+
+  // Frontend promo code logic
+  const PROMO_DETAILS = {
+    code: "KPL2289@", // The code the user must enter
+    startDate: new Date("2025-07-10"), // When the code became valid
+    discount: 0.05, // 5% discount
+    durationDays: 7, // Valid for 7 days
+  };
+
+  // useEffect hook for real-time promo code validation
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const code = promoCodeValue?.trim()?.toUpperCase();
+      const now = new Date();
+
+      if (!code || code.length < 3) {
+        setPromoStatus(null);
+        setDiscountRate(0);
+        return;
+      }
+
+      const promoStart = PROMO_DETAILS.startDate;
+      const promoEnd = new Date(promoStart);
+      promoEnd.setDate(promoStart.getDate() + PROMO_DETAILS.durationDays);
+
+      if (code === PROMO_DETAILS.code.toUpperCase()) {
+        if (now >= promoStart && now <= promoEnd) {
+          setPromoStatus("valid");
+          setDiscountRate(PROMO_DETAILS.discount);
+        } else if (now > promoEnd) {
+          setPromoStatus("expired");
+          setDiscountRate(0);
+        } else {
+          setPromoStatus("invalid");
+          setDiscountRate(0);
+        }
+      } else {
+        setPromoStatus("invalid");
+        setDiscountRate(0);
+      }
+    }, 600); // debounce
+
+    return () => clearTimeout(timeout);
+  }, [promoCodeValue]);
 
 
   const onSubmit = async (data) => {
@@ -344,6 +403,8 @@ export default function ContactUsTraining() {
         data.trackPackage,
         data.availability,
         data.chooseYourCohort,
+        // data.promoCode,
+        promoStatus ?? "null",
       );
       toast.success("Form submitted successfully");
       reset();
@@ -353,7 +414,6 @@ export default function ContactUsTraining() {
       setUserTrackPackage(data.trackPackage);
       setUserPhoneNumber(data.phoneNumber);
       setUserAvailabity(data.availability);
-
 
       // Setting amount based on selected track
       const amount = data.trackPackage.includes("70,000")
@@ -368,9 +428,48 @@ export default function ContactUsTraining() {
         ? 250000
         : 300000;
 
-      setPaymentAmount(amount);
-      setShowChoiceModal(true); // open choice modal
-      // setIsFormModalOpen(true); // Open modal
+      // logic to successfully pass the discount to the bank transfer modal
+      const enteredPromo = data.promoCode?.trim()?.toUpperCase();
+      const promoStart = PROMO_DETAILS.startDate;
+      const promoEnd = new Date(promoStart);
+      promoEnd.setDate(promoStart.getDate() + PROMO_DETAILS.durationDays);
+      const now = new Date();
+
+      let isPromoValid = false;
+      let promoDiscount = 0;
+
+      if (
+        enteredPromo === PROMO_DETAILS.code.toUpperCase() &&
+        now >= promoStart &&
+        now <= promoEnd
+      ) {
+        isPromoValid = true;
+        promoDiscount = PROMO_DETAILS.discount;
+      }
+
+      const finalAmount = isPromoValid
+        ? Math.floor(amount * (1 - promoDiscount))
+        : amount;
+
+      setPromoStatus(isPromoValid ? "valid" : "invalid");
+      console.log("isPromoValid", isPromoValid);
+      console.log("Promo Status:", isPromoValid ? "valid" : "invalid");
+      setPromoStatus(isPromoValid ? "valid" : "invalid");
+      promoStatusRef.current = isPromoValid ? "valid" : "invalid";
+
+      setDiscountRate(promoDiscount);
+      setFullAmount(amount);
+      setFullAmount(amount);
+      fullAmountRef.current = amount;
+
+      setDiscountedAmount(finalAmount);
+      setDiscountedAmount(finalAmount);
+      discountedAmountRef.current = finalAmount;
+
+      setPaymentAmount(finalAmount); // This will trigger correct amount for Paystack
+      setTimeout(() => {
+        setShowChoiceModal(true);
+      }, 50); // A little delay so the state can pass to the BankTransfer modal
     } catch (error) {
       console.log("From client:", error);
       toast.error("Something went wrong!");
@@ -378,6 +477,14 @@ export default function ContactUsTraining() {
       setIsLoading(false);
     }
   };
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+    setPromoStatus(null);
+    setDiscountedAmount(0);
+    setFullAmount(0);
+  };
+
 
   const trackOptions = [
     { title: "Web Development", value: "Web Development" },
@@ -387,22 +494,40 @@ export default function ContactUsTraining() {
     { title: "Data Analysis", value: "Data Analysis" },
     { title: "Digital Marketing", value: "Digital Marketing" },
     { title: "Basic Computer Operation", value: "Basic Computer Operation" },
-
+    { title: "AI/Machine Learning", value: "AI/Machine Learning" },
   ];
 
   const packageOptions = [
-    { title: "Standard (3 Months: 200,000)", value: "Standard (3 Months: 200,000)" },
-    { title: "Premium (5 Months: 300,000)", value: "Premium (5 Months: 300,000)" },
+    {
+      title: "Standard (3 Months: 200,000)",
+      value: "Standard (3 Months: 200,000)",
+    },
+    {
+      title: "Premium (5 Months: 300,000)",
+      value: "Premium (5 Months: 300,000)",
+    },
   ];
 
   const graphicDesignOptions = [
-    { title: "Standard (3 Months: 180,000)", value: "Standard (3 Months: 180,000)" },
-    { title: "Premium (5 Months: 250,000)", value: "Premium (5 Months: 250,000)" },
+    {
+      title: "Standard (3 Months: 180,000)",
+      value: "Standard (3 Months: 180,000)",
+    },
+    {
+      title: "Premium (5 Months: 250,000)",
+      value: "Premium (5 Months: 250,000)",
+    },
   ];
 
   const computerOperationOptions = [
-    { title: "Standard (1 Month: 70,000)", value: "Standard (1 Month: 70,000)" },
-    { title: "Premium (2 Months: 100,000)", value: "Premium (2 Months: 100,000)" },
+    {
+      title: "Standard (1 Month: 70,000)",
+      value: "Standard (1 Month: 70,000)",
+    },
+    {
+      title: "Premium (2 Months: 100,000)",
+      value: "Premium (2 Months: 100,000)",
+    },
   ];
 
   const genderInput = [
@@ -428,24 +553,23 @@ export default function ContactUsTraining() {
 
   // Month Options
   const allMonths = [
-    {title: "January", value: "January"},
-    {title: "February", value: "February"},
-    {title: "March", value: "March"},
-    {title: "April", value: "April"},
-    {title: "May", value: "May"},
-    {title: "June", value: "June"},
-    {title: "July", value: "July"},
-    {title: "August", value: "August"},
-    {title: "September", value: "September"},
-    {title: "October", value: "October"},
-    {title: "November", value: "November"},
-    {title: "December", value: "December"},
-  ]
+    { title: "January", value: "January" },
+    { title: "February", value: "February" },
+    { title: "March", value: "March" },
+    { title: "April", value: "April" },
+    { title: "May", value: "May" },
+    { title: "June", value: "June" },
+    { title: "July", value: "July" },
+    { title: "August", value: "August" },
+    { title: "September", value: "September" },
+    { title: "October", value: "October" },
+    { title: "November", value: "November" },
+    { title: "December", value: "December" },
+  ];
 
-   const currentMonthIndex = new Date().getMonth();
+  const currentMonthIndex = new Date().getMonth();
 
   const cohortOptions = allMonths.slice(currentMonthIndex);
-
 
   // animation variants
   const slideInLeft = {
@@ -561,9 +685,6 @@ export default function ContactUsTraining() {
                     trigger("religion");
                   }}
                 />
-                {/* {errors.religion && (
-                  <p className="text-red-500">{errors.religion.message}</p>
-                )} */}
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2 items-center">
@@ -658,7 +779,7 @@ export default function ContactUsTraining() {
                 />
               </div>
 
-              <div className="py-3">
+              <div className="pt-3">
                 <p className="text-xl text-white">
                   How will you be available for the training?
                 </p>
@@ -687,6 +808,28 @@ export default function ContactUsTraining() {
                   error={errors.availability?.message}
                 />
               </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="Promo Code"
+                  placeholder="Enter Promo Code (if any)"
+                  {...register("promoCode")}
+                />
+                {promoStatus === "valid" && (
+                  <p className="text-green-500 mt-1">
+                    ✅ {discountRate * 100}% discount applied!
+                  </p>
+                )}
+                {promoStatus === "invalid" && (
+                  <p className="text-red-500 mt-1">❌ Invalid promo code.</p>
+                )}
+                {promoStatus === "expired" && (
+                  <p className="text-yellow-500 mt-1">
+                    ⚠️ Promo code has expired.
+                  </p>
+                )}
+              </div>
             </div>
 
             <div className="text-center mt-[10px] py-9 w-40 mx-auto">
@@ -706,61 +849,12 @@ export default function ContactUsTraining() {
             setShowChoiceModal(false);
             setShowPaymentPrefModal(true);
           }}
-          // Old logic that immediately goes to Paystack
-
-          // onPayNow={() => {
-          //   setShowChoiceModal(false);
-
-          //   // Start Paystack payment directly with full amount
-          //   setAmountPaid(paymentAmount); // Save full amount for receipt
-          //   handlePaystackPayment({
-          //     email: userEmail,
-          //     amount: paymentAmount,
-          //     fullName: userName,
-          //     track: userTrack,
-          //   });
-          // }}
           onPayOnsite={() => {
             setShowChoiceModal(false);
             setIsFormModalOpen(true);
           }}
           onClose={() => setShowChoiceModal(false)}
         />
-
-        {/* Old Modal logic */}
-        {/* <PaymentChoiceModal
-            isOpen={showChoiceModal}
-            onPayNow={() => {
-              setShowChoiceModal(false);
-              setShowAmountModal(true);
-            }}
-            onPayOnsite={() => {
-              setShowChoiceModal(false);
-              setIsFormModalOpen(true);
-            }}
-            onClose={() => setShowChoiceModal(false)}
-          /> */}
-
-        {/* Modal for the user to pick if they want to pay in full or in instalments*/}
-        {/* Unused for now */}
-        {/* <PaymentAmountModal
-            isOpen={showAmountModal}
-            amount={paymentAmount}
-            onClose={() => setShowAmountModal(false)}
-            onPay={(type) => {
-              setShowAmountModal(false);
-              const finalAmount =
-                type === "60" ? Math.floor(paymentAmount * 0.6) : paymentAmount;
-               setAmountPaid(finalAmount);
-        
-              handlePaystackPayment({
-                email: userEmail,
-                amount: finalAmount,
-                fullName: userName,
-                track: userTrack,
-              });
-            }}
-          /> */}
 
         <PaymentPreferenceModal
           isOpen={showPaymentPrefModal}
@@ -776,19 +870,34 @@ export default function ContactUsTraining() {
           }}
           onBankTransfer={() => {
             setShowPaymentPrefModal(false);
-            setShowBankModal(true);
+            setTimeout(() => {
+              console.log("Triggering BankTransferModal with:", {
+                promoStatus: promoStatusRef.current,
+                fullAmount: fullAmountRef.current,
+                discountedAmount: discountedAmountRef.current,
+              });
+              setShowBankModal(true);
+            }, 100);
           }}
           onClose={() => setShowPaymentPrefModal(false)}
         />
+
+        {console.log("Passing to BankTransferModal =>", {
+          promoStatus,
+          fullAmount,
+          discountedAmount,
+        })}
 
         <BankTransferModal
           isOpen={showBankModal}
           onClose={() => setShowBankModal(false)}
           onBack={() => {
-            console.log("Going back to Payment Preference Modal");
             setShowBankModal(false);
-            setShowPaymentPrefModal(true); // This will bring back PaymentPreferenceModal
+            setShowPaymentPrefModal(true);
           }}
+          promoStatus={promoStatusRef.current}
+          fullAmount={fullAmountRef.current}
+          discountedAmount={discountedAmountRef.current}
         />
 
         <PaymentSuccessModal
@@ -815,7 +924,7 @@ export default function ContactUsTraining() {
               trackPackage: userTrackPackage,
             })
           }
-          onClose={() => setShowSuccessModal(false)}
+          onClose={handleCloseSuccessModal}
         />
 
         <FormModal

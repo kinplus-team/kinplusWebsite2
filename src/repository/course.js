@@ -6,6 +6,8 @@ import icon4 from "../assets/components/courses/course-list/SVG/adobe-photoshop.
 import icon5 from "../assets/components/courses/course-list/SVG/simple-icons_metasploit.svg";
 import icon6 from "../assets/components/courses/course-list/SVG/google-analytics.svg";
 import icon7 from "../assets/components/courses/course-list/SVG/office-word.svg";
+import icon8 from "../assets/components/courses/course-list/SVG/anaconda.svg";
+
 
 
 // images
@@ -58,7 +60,14 @@ const courses = [
     icon: icon7,
     image: trainingImage3,
     link: "basic-computer-operation",
-  }
+  },
+
+  {
+    title: "AI/Machine Learning",
+    icon: icon8,
+    image: trainingImage2,
+    link: "artificial-intelligence",
+  },  
 ];
 
 export default courses;
