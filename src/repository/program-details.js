@@ -155,8 +155,8 @@ const courseDetails = [
         whatsIncluded: [
           "All on the three month plan",
           "Network security & Threat analysis",
-          "Incident response",
-          "Compliance and regulations",
+          "Incident response, compliance and regulations",
+          "Mentorship",
         ],
       },
     },
