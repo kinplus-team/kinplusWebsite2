@@ -11,14 +11,14 @@ import useDelay from "../../../hooks/useDelay";
 import { motion } from "framer-motion";
 import DefaultHelmet from "../../../components/DefaultHelmet";
 import FormModal from "../../../components/FormModal";
-import { loadPaystackScript } from "../../../utilities/loadPaystackScript";
+import { handlePaystackPayment } from "../../../services/handlePaystackPayment.js";
 import PaymentChoiceModal from "../../../components/modals/PaymentChoiceModal.jsx";
-import jsPDF from "jspdf";
-import KinplusLogoPDF from "../../../assets/logoBase64.js";
 // import PaymentAmountModal from "../../../components/modals/PaymentAmountModal.jsx";
 import PaymentSuccessModal from "../../../components/modals/PaymentSuccessModal.jsx";
 import BankTransferModal from "../../../components/modals/BankTransferModal.jsx";
 import PaymentPreferenceModal from "../../../components/modals/PaymentPreference.jsx";
+import { generatePDFReceipt, generateImageReceipt } from "../../../repository/receipt.js";
+import { trackOptions, packageOptions, graphicDesignOptions, computerOperationOptions, genderInput, religionOptions, allMonths, PROMO_DETAILS,} from "../../../repository/training-options.js";
 
 
 
@@ -79,236 +79,6 @@ export default function ContactUsTraining() {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
   };
 
-  // Paystack Integration functionality
-  const handlePaystackPayment = async ({ email, amount, fullName, track }) => {
-    const scriptLoaded = await loadPaystackScript();
-
-    if (!scriptLoaded) {
-      alert(
-        "Failed to load Paystack. Please check your internet and try again."
-      );
-      return;
-    }
-
-    const paystack = window.PaystackPop.setup({
-      key: import.meta.env.VITE_REACT_APP_PAYSTACK_PUBLIC_LIVE_KEY_PROD, // Company's actual public key
-      // key: "pk_test_afd9bb9d64abc7638f5d453e0ebdfcd29319c5d2", // test public key
-      email,
-      amount: amount * 100, // amount in kobo
-      currency: "NGN",
-      callback: () => {
-        setShowSuccessModal(true);
-      },
-      onClose: () => {
-        alert("Payment window closed.");
-      },
-    });
-
-    paystack.openIframe();
-  };
-
-  // Helper function to generate PDF receipt for users that paid online
-  const generatePDFReceipt = ({
-    fullName,
-    email,
-    phoneNumber,
-    availability,
-    track,
-    amount,
-    trackPackage,
-  }) => {
-    const doc = new jsPDF();
-    const logoBase64 = KinplusLogoPDF;
-    const primaryColor = "#3A85FF";
-    const borderColor = "#cccccc";
-    const pageWidth = doc.internal.pageSize.getWidth();
-
-    const packageName = trackPackage.split(" ")[0]; // Extract "Premium" from "Premium (₦250,000)"
-
-    // Background
-    doc.setFillColor(245, 245, 245);
-    doc.rect(10, 10, 190, 130, "F");
-
-    // Header Logo (slightly lowered)
-    doc.addImage(logoBase64, "PNG", 160, 18, 20, 10); // y: 18 positions it better
-
-    // Company Name (vertically centered with logo)
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(24);
-    doc.setTextColor(primaryColor);
-    doc.text("Kinplus Technologies Limited", 15, 26); // y: 26 aligns well with logo
-
-    // Title - Centered with better spacing below
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(18);
-    doc.setTextColor(0, 0, 0);
-    doc.text("Training Payment Receipt", pageWidth / 2, 45, {
-      align: "center",
-    });
-
-    // New Y-start for next block with more space below title
-    let yStart = 65;
-
-    // Address block (left-aligned)
-    doc.setFontSize(11);
-    doc.setFont("helvetica", "normal");
-    doc.text("Kinplus Technologies", 15, yStart);
-    doc.text("2nd Floor, Christore Building", 15, yStart + 6);
-    doc.text("Opp. Crunchies Restaurant", 15, yStart + 12);
-    doc.text("Similoluwa, Ado-Ekiti", 15, yStart + 18);
-    doc.text("07075199782, 08116400858", 15, yStart + 24);
-
-    // Payer Details (aligned horizontally with address block)
-    const rightStartY = yStart;
-    const now = new Date();
-    doc.text(`Payment Date: ${now.toLocaleDateString()}`, 115, rightStartY);
-    doc.text(`Payer: ${fullName}`, 115, rightStartY + 6);
-    doc.text(`Email: ${email}`, 115, rightStartY + 12);
-    doc.text(`Phone: ${phoneNumber}`, 115, rightStartY + 18);
-    doc.text(`Training Type: ${availability}`, 115, rightStartY + 24);
-
-    // Table Header
-    doc.setDrawColor(borderColor);
-    doc.setFillColor(220, 220, 220);
-    doc.setFont("helvetica", "bold");
-    doc.rect(15, 100, 180, 10, "FD");
-    doc.text("Training Track", 20, 107);
-    doc.text("Package", 100, 107);
-    doc.text("Amount (NGN)", 160, 107);
-
-    // Table Content
-    doc.setFont("helvetica", "normal");
-    doc.setFillColor(255, 255, 255);
-    doc.rect(15, 110, 180, 10, "FD");
-    doc.text(track, 20, 117);
-    doc.text(packageName, 100, 117);
-    doc.text(`${amount.toLocaleString()}`, 160, 117);
-
-    // Save
-    setTimeout(() => {
-      doc.save("kinplus_training_payment_receipt.pdf");
-    }, 0);
-  };
-
-  // Helper function to generate image receipt for users that paid online
-  const generateImageReceipt = ({
-    fullName,
-    email,
-    phoneNumber,
-    availability,
-    track,
-    amount,
-    trackPackage,
-  }) => {
-    const canvas = document.createElement("canvas");
-    canvas.width = 700; // Reduced the width here to match a typical A4 ratio
-    canvas.height = 550; // Increased the height here slightly for more vertical space
-    const ctx = canvas.getContext("2d");
-
-    // Background
-    ctx.fillStyle = "#f5f5f5";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    const logo = new Image();
-    logo.crossOrigin = "anonymous";
-    logo.src = KinplusLogoPDF;
-
-    const safePackageName = (trackPackage || "").split(" ")[0];
-
-    // Trying to debug if the trackPackage gets to the generateImageReceipt function
-    console.log("Image Receipt Data:", {
-      fullName,
-      email,
-      phoneNumber,
-      availability,
-      track,
-      amount,
-      trackPackage,
-    });
-
-    logo.onload = () => {
-      // Header: Company name and logo
-      const logoWidth = 60;
-      const logoHeight = 30;
-      const logoX = canvas.width - logoWidth - 30;
-      const logoY = 30;
-      ctx.drawImage(logo, logoX, logoY, logoWidth, logoHeight);
-
-      ctx.fillStyle = "#3A85FF";
-      ctx.font = "bold 24px Helvetica";
-      ctx.textAlign = "left";
-      ctx.fillText(
-        "Kinplus Technologies Limited",
-        30,
-        logoY + logoHeight / 2 + 8
-      );
-
-      // Title
-      ctx.fillStyle = "#000";
-      ctx.font = "bold 20px Helvetica";
-      ctx.textAlign = "center";
-      ctx.fillText("Training Payment Receipt", canvas.width / 2, 110);
-
-      ctx.textAlign = "left"; // Reset alignment for body
-
-      // Address block (left)
-      let yStart = 150;
-      ctx.font = "14px Arial";
-      ctx.fillText("Kinplus Technologies", 30, yStart);
-      ctx.fillText("2nd Floor, Christore Building", 30, yStart + 20);
-      ctx.fillText("Opp. Crunchies Restaurant", 30, yStart + 40);
-      ctx.fillText("Similoluwa, Ado-Ekiti", 30, yStart + 60);
-      ctx.fillText("07075199782, 08116400858", 30, yStart + 80);
-
-      // Payer details (right)
-      const rightX = 420;
-      const now = new Date();
-      ctx.fillText(`Payment Date: ${now.toLocaleDateString()}`, rightX, yStart);
-      ctx.fillText(`Payer: ${fullName}`, rightX, yStart + 20);
-      ctx.fillText(`Email: ${email}`, rightX, yStart + 40);
-      ctx.fillText(`Phone: ${phoneNumber}`, rightX, yStart + 60);
-      ctx.fillText(`Training Type: ${availability}`, rightX, yStart + 80);
-
-      // Table Header
-      let tableY = yStart + 100;
-      ctx.fillStyle = "#dcdcdc";
-      ctx.fillRect(30, tableY, 640, 30); // match new width
-
-      ctx.fillStyle = "#000";
-      ctx.font = "bold 14px Arial";
-      ctx.fillText("Training Track", 40, tableY + 20);
-      ctx.fillText("Package", 300, tableY + 20);
-      ctx.fillText("Amount (NGN)", 540, tableY + 20);
-
-      // Table Content
-      ctx.fillStyle = "#fff";
-      ctx.fillRect(30, tableY + 30, 640, 30);
-
-      ctx.fillStyle = "#000";
-      ctx.font = "14px Arial";
-      ctx.fillText(track, 40, tableY + 50);
-      ctx.fillText(safePackageName, 300, tableY + 50);
-      ctx.fillText(`${amount.toLocaleString()}`, 540, tableY + 50);
-
-      // Export to PNG
-      canvas.toBlob((blob) => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "kinplus_training_payment_receipt.png";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }, "image/png");
-    };
-
-    logo.onerror = () => {
-      alert("Failed to load the logo. Please try again.");
-    };
-  };
-
-
   // Hook to handle user's email, track and payment package, and also trackpackage for Paystack.
   const [userEmail, setUserEmail] = useState("");
   const [paymentAmount, setPaymentAmount] = useState(0);
@@ -340,14 +110,6 @@ export default function ContactUsTraining() {
   const fullAmountRef = useRef(fullAmount);
   const discountedAmountRef = useRef(discountedAmount);
 
-
-  // Frontend promo code logic
-  const PROMO_DETAILS = {
-    code: "KPL2289@", // The code the user must enter
-    startDate: new Date("2025-07-10"), // When the code became valid
-    discount: 0.05, // 5% discount
-    durationDays: 7, // Valid for 7 days
-  };
 
   // useEffect hook for real-time promo code validation
   useEffect(() => {
@@ -485,62 +247,6 @@ export default function ContactUsTraining() {
     setFullAmount(0);
   };
 
-
-  const trackOptions = [
-    { title: "Web Development", value: "Web Development" },
-    { title: "Cybersecurity", value: "Cybersecurity" },
-    { title: "Product Design", value: "Product Design" },
-    { title: "Graphic Design", value: "Graphic Design" },
-    { title: "Data Analysis", value: "Data Analysis" },
-    { title: "Digital Marketing", value: "Digital Marketing" },
-    { title: "Basic Computer Operation", value: "Basic Computer Operation" },
-    { title: "AI/Machine Learning", value: "AI/Machine Learning" },
-  ];
-
-  const packageOptions = [
-    {
-      title: "Standard (3 Months: 200,000)",
-      value: "Standard (3 Months: 200,000)",
-    },
-    {
-      title: "Premium (5 Months: 300,000)",
-      value: "Premium (5 Months: 300,000)",
-    },
-  ];
-
-  const graphicDesignOptions = [
-    {
-      title: "Standard (3 Months: 180,000)",
-      value: "Standard (3 Months: 180,000)",
-    },
-    {
-      title: "Premium (5 Months: 250,000)",
-      value: "Premium (5 Months: 250,000)",
-    },
-  ];
-
-  const computerOperationOptions = [
-    {
-      title: "Standard (1 Month: 70,000)",
-      value: "Standard (1 Month: 70,000)",
-    },
-    {
-      title: "Premium (2 Months: 100,000)",
-      value: "Premium (2 Months: 100,000)",
-    },
-  ];
-
-  const genderInput = [
-    { title: "Male", value: "Male" },
-    { title: "Female", value: "Female" },
-  ];
-
-  const religionOptions = [
-    { title: "Christianity", value: "Christianity" },
-    { title: "Islam", value: "Islam" },
-    { title: "Traditional", value: "Traditional" },
-  ];
-
   const selectedTrack = watch("track");
 
   let dynamicPackageOptions = packageOptions;
@@ -550,22 +256,6 @@ export default function ContactUsTraining() {
   } else if (selectedTrack === "Graphic Design") {
     dynamicPackageOptions = graphicDesignOptions;
   }
-
-  // Month Options
-  const allMonths = [
-    { title: "January", value: "January" },
-    { title: "February", value: "February" },
-    { title: "March", value: "March" },
-    { title: "April", value: "April" },
-    { title: "May", value: "May" },
-    { title: "June", value: "June" },
-    { title: "July", value: "July" },
-    { title: "August", value: "August" },
-    { title: "September", value: "September" },
-    { title: "October", value: "October" },
-    { title: "November", value: "November" },
-    { title: "December", value: "December" },
-  ];
 
   const currentMonthIndex = new Date().getMonth();
 
@@ -809,7 +499,8 @@ export default function ContactUsTraining() {
                 />
               </div>
 
-              <div>
+              {/* Promo code */}
+              {/*<div>
                 <Input
                   type="text"
                   name="Promo Code"
@@ -829,7 +520,7 @@ export default function ContactUsTraining() {
                     ⚠️ Promo code has expired.
                   </p>
                 )}
-              </div>
+              </div> */}
             </div>
 
             <div className="text-center mt-[10px] py-9 w-40 mx-auto">
@@ -866,6 +557,8 @@ export default function ContactUsTraining() {
               amount: paymentAmount,
               fullName: userName,
               track: userTrack,
+              onSuccess: () => setShowSuccessModal(true),
+              onClose: () => alert("Payment window closed."),
             });
           }}
           onBankTransfer={() => {

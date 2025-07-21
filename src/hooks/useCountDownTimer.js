@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export const useCountDownTimer = (
-  targetDate = "2025-07-15T23:59:59"
+  targetDate = "2025-07-22T23:59:59"
 ) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,

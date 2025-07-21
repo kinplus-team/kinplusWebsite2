@@ -90,3 +90,31 @@ self.addEventListener("message", (event) => {
     self.skipWaiting();
   }
 });
+
+// Logic to auto refresh every 3 days by updating static cache ---
+const REFRESH_INTERVAL = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
+const LAST_REFRESH_KEY = "last-refresh";
+
+// Check if it's time to update the static cache
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open("meta-cache");
+      const stored = await cache.match(LAST_REFRESH_KEY);
+      const now = Date.now();
+
+      let lastRefresh = 0;
+      if (stored) {
+        const text = await stored.text();
+        lastRefresh = parseInt(text, 10) || 0;
+      }
+
+      if (!stored || now - lastRefresh > REFRESH_INTERVAL) {
+        // Trigger static cache refresh
+        const staticCache = await caches.open(STATIC_CACHE);
+        await staticCache.addAll(ASSETS);
+        await cache.put(LAST_REFRESH_KEY, new Response(now.toString()));
+      }
+    })()
+  );
+});
