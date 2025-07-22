@@ -232,7 +232,7 @@ export default function ContactUsServices() {
         <FormModal
           isOpen={isFormModalOpen}
           onClose={() => setIsFormModalOpen(false)}
-          message="We are glad that you are entrusting your project to us. Our team will review your entries and reach out to you through your email or phone. You may want to reach out to us more directly. You can contact us through call or WhatsApp on our official line +234 811 640 0858.  We look forward to providing you the best service."
+          message="We are glad that you are entrusting your project to us. Our team will review your entries and reach out to you through your email or phone. You may want to reach out to us more directly. You can contact us through call or WhatsApp on our official line +234 707 519 9782.  We look forward to providing you the best service."
         />
       </PageLayout>
     </>
