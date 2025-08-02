@@ -1,0 +1,14 @@
+const mongoose = require("mongoose");
+
+const ServicesContactSchema = new mongoose.Schema(
+  {
+    fullName: { type: String, required: true },
+    email: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
+    companyName: { type: String, required: true },
+    description: { type: String, required: true },
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model("ServicesContact", ServicesContactSchema);
