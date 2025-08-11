@@ -6,7 +6,7 @@ const ResumeSubmissionSchema = new mongoose.Schema(
     email: { type: String, required: true },
     phoneNumber: { type: String, required: true },
     jobRole: { type: String, required: true },
-    resumeUrl: { type: String, required: true },
+    resumeUrl: { type: String },
     portfolioLink: { type: String },
   },
   { timestamps: true }

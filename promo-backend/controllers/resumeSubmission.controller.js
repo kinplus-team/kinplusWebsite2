@@ -5,6 +5,7 @@ const submitResume = async (req, res) => {
   try {
     const { fullName, email, phoneNumber, jobRole, resumeUrl, portfolioLink } = req.body;
 
+    console.log("this is my resume data", req.body);
     const submission = await ResumeSubmission.create({
       fullName,
       email,

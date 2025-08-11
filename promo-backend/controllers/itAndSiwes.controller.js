@@ -14,6 +14,8 @@ const submitStudentApplication = async (req, res) => {
       healthChallengesDescription,
     } = req.body;
 
+    console.log("this is the it and siwes", req.body);
+
     const application = await ItAndSiwes.create(req.body);
 
     // Email to user
