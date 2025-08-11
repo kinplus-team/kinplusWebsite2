@@ -1,10 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home/HomeIndex.jsx";
 import ContactUs from "./pages/ContactUS/ContactUsIndex.jsx";
 import ContactUsServices from "./pages/ContactUS/ContactUsServices/ContactUsServiceIndex.jsx";
@@ -18,13 +13,13 @@ import PageNotFound from "./pages/PageNotFound.jsx";
 import { FaSpinner } from "react-icons/fa6";
 
 // Lazy load components
+
+// lazy
 const AboutUs = lazy(() => import("./pages/about-us/AboutUsIndex.jsx"));
 const Training = lazy(() => import("./pages/Training/TrainingIndex.jsx"));
 const Footer = lazy(() => import("./components/footer/Footer.jsx"));
 const Services = lazy(() => import("./pages/Services/ServicesIndex.jsx"));
-const ProgramDetails = lazy(() =>
-  import("./pages/program-details/ProgramDetails")
-);
+const ProgramDetails = lazy(() => import("./pages/program-details/ProgramDetails"));
 const Internship = lazy(() => import("./pages/Internship/Internship"));
 const Career = lazy(() => import("./pages/careers/Career.jsx"));
 const Workshop = lazy(() => import("./pages/workshop/Workshop.jsx"));
@@ -32,15 +27,9 @@ const Blog = lazy(() => import("./pages/blog/BlogIndex.jsx"));
 const BlogPost = lazy(() => import("./pages/blog/BlogPost/BlogPostIndex.jsx"));
 const Events = lazy(() => import("./pages/events/EventsIndex.jsx"));
 const TermsAndConditions = lazy(() => import("./pages/terms-and-conditions/TermsAndCondition.jsx"));
-const WorkshopDetails = lazy(() =>
-  import("./pages/workshop-details/WorkshopDetails.jsx")
-);
-const CareerDetails = lazy(() =>
-  import("./pages/careers-details/CareersDetails.jsx")
-);
-const CookieConsent = lazy(() =>
-  import("./components/cookies/CookiesConsent.jsx")
-);
+const WorkshopDetails = lazy(() => import("./pages/workshop-details/WorkshopDetails.jsx"));
+const CareerDetails = lazy(() => import("./pages/careers-details/CareersDetails.jsx"));
+const CookieConsent = lazy(() => import("./components/cookies/CookiesConsent.jsx"));
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -274,65 +263,16 @@ function App() {
               }
             />
 
-            <Route
-              key="/t&c"
-              path="/t&c"
-              element={
-                <TermsAndConditions />
-              }
-            />
+            <Route key="/t&c" path="/t&c" element={<TermsAndConditions />} />
 
             {/* Redirect paths */}
-            <Route
-              path="/about"
-              element={
-                <Navigate
-                  to="/about-us"
-                  replace
-                />
-              }
-            />
-            <Route
-              path="/training"
-              element={
-                <Navigate
-                  to="/trainings"
-                  replace
-                />
-              }
-            />
-            <Route
-              path="/siwes"
-              element={
-                <Navigate
-                  to="/trainings/siwes"
-                  replace
-                />
-              }
-            />
-            <Route
-              path="/contact"
-              element={
-                <Navigate
-                  to="/contact-us"
-                  replace
-                />
-              }
-            />
+            <Route path="/about" element={<Navigate to="/about-us" replace />} />
+            <Route path="/training" element={<Navigate to="/trainings" replace />} />
+            <Route path="/siwes" element={<Navigate to="/trainings/siwes" replace />} />
+            <Route path="/contact" element={<Navigate to="/contact-us" replace />} />
 
-            <Route
-              path="/kinplus"
-              element={
-                <Navigate
-                  to="/"
-                  replace
-                />
-              }
-            />
-            <Route
-              path="/*"
-              element={<PageNotFound />}
-            />
+            <Route path="/kinplus" element={<Navigate to="/" replace />} />
+            <Route path="/*" element={<PageNotFound />} />
           </Routes>
         </AnimatePresence>
 
