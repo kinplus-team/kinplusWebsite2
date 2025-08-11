@@ -19,7 +19,7 @@ export const contactUsForTraining = async (
 ) => {
   // CALL THE BACKEND API
 
-  const response = await fetch("http://localhost:5000/api/training/enquiry", {
+  const response = await fetch("https://kinpluswebsite2.onrender.com/api/training/enquiry", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -49,7 +49,7 @@ export const contactUsForServices = async (
   companyName,
   description
 ) => {
-  const response = await fetch("http://localhost:5000/api/services/contact", {
+  const response = await fetch("https://kinpluswebsite2.onrender.com/api/services/contact", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

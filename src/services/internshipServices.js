@@ -15,7 +15,7 @@ export const ApplyForSIWES = async (
   healthChallengesDescription
 ) => {
   try {
-    const response = await fetch("http://localhost:5000/api/it-and-siwes/apply", {
+    const response = await fetch("https://kinpluswebsite2.onrender.com/api/it-and-siwes/apply", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
