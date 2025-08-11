@@ -13,7 +13,6 @@ import PageLayout from "../../../components/Layout/PageLayout";
 import DefaultHelmet from "../../../components/DefaultHelmet";
 import FormModal from "../../../components/FormModal";
 
-
 // Define the Zod schema for form validation
 const schema = z.object({
   fullName: z
@@ -21,16 +20,13 @@ const schema = z.object({
     .min(1, "Full name is required")
     .regex(/^[a-zA-Z\s]+$/, "Full Name must contain only alphabets"),
   email: z.string().email("Invalid email address"),
-  phoneNumber: z
-    .string()
-    .regex(/^\d{11}$/, "Phone number must contain exactly 11 digits"),
+  phoneNumber: z.string().regex(/^\d{11}$/, "Phone number must contain exactly 11 digits"),
   companyName: z.string().optional(),
   description: z
     .string()
     .min(20, "Description must be at least 20 characters")
     .refine((desc) => desc.trim().length >= 20, {
-      message:
-        "Description must have at least 20 characters (excluding leading/trailing spaces)",
+      message: "Description must have at least 20 characters (excluding leading/trailing spaces)",
     }),
 });
 
@@ -67,7 +63,6 @@ export default function ContactUsServices() {
       reset(); // Reset form after submission
       setFormKey((prevKey) => prevKey + 1); // Reset the form key
       setIsFormModalOpen(true); // Open modal
-
     } catch (error) {
       toast.error("Something went wrong!");
     } finally {
@@ -123,24 +118,16 @@ export default function ContactUsServices() {
           <hr className="h-[4px] bg-white my-12 mr-5" />
           <motion.div {...slideInLeft}>
             <p className="text-[#101010] lg:text-xl leading-8">
-              Looking to partner with us? We'd love to hear from you. Contact us
-              using the details below to explore how we can work together. We're
-              committed to providing the best possible service, so don't
-              hesitate to get in touch.
+              Looking to partner with us? We'd love to hear from you. Contact us using the details
+              below to explore how we can work together. We're committed to providing the best
+              possible service, so don't hesitate to get in touch.
             </p>
           </motion.div>
         </div>
 
         {/* Services Form */}
-        <motion.div
-          {...slideInRight}
-          className="w-full mt-8 bg-blue-950 rounded-lg text-white"
-        >
-          <form
-            key={formKey}
-            onSubmit={handleSubmit(onSubmit)}
-            className="mx-auto  w-[90%]"
-          >
+        <motion.div {...slideInRight} className="w-full mt-8 bg-blue-950 rounded-lg text-white">
+          <form key={formKey} onSubmit={handleSubmit(onSubmit)} className="mx-auto  w-[90%]">
             <Text type="heading" className="capitalize py-4 text-2xl">
               Tell us about your project
             </Text>
@@ -153,9 +140,7 @@ export default function ContactUsServices() {
                 isRequired={true}
                 {...register("fullName")}
               />
-              {errors.fullName && (
-                <p className="text-red-500">{errors.fullName.message}</p>
-              )}
+              {errors.fullName && <p className="text-red-500">{errors.fullName.message}</p>}
             </div>
 
             <div>
@@ -166,9 +151,7 @@ export default function ContactUsServices() {
                 isRequired={true}
                 {...register("email")}
               />
-              {errors.email && (
-                <p className="text-red-500">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="text-red-500">{errors.email.message}</p>}
             </div>
 
             <div>
@@ -180,9 +163,7 @@ export default function ContactUsServices() {
                 maxLength={11}
                 {...register("phoneNumber")}
               />
-              {errors.phoneNumber && (
-                <p className="text-red-500">{errors.phoneNumber.message}</p>
-              )}
+              {errors.phoneNumber && <p className="text-red-500">{errors.phoneNumber.message}</p>}
             </div>
 
             <div>
@@ -193,9 +174,7 @@ export default function ContactUsServices() {
                 isRequired={false}
                 {...register("companyName")}
               />
-              {errors.companyName && (
-                <p className="text-red-500">{errors.companyName.message}</p>
-              )}
+              {errors.companyName && <p className="text-red-500">{errors.companyName.message}</p>}
             </div>
 
             <div>
@@ -215,9 +194,7 @@ export default function ContactUsServices() {
                   />
                 )}
               />
-              {errors.description && (
-                <p className="text-red-500">{errors.description.message}</p>
-              )}
+              {errors.description && <p className="text-red-500">{errors.description.message}</p>}
             </div>
 
             <div className="text-center mt-4 py-6 w-40 mx-auto">

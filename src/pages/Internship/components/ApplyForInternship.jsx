@@ -21,24 +21,17 @@ const siwesSchema = z.object({
     .min(1, "Full name is required")
     .regex(/^[a-zA-Z\s]+$/, "Full Name must contain only alphabets"),
   email: z.string().email("Invalid email address"),
-  phoneNumber: z
-    .string()
-    .regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
+  phoneNumber: z.string().regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
   religion: z.string().min(1, "Religion is required"),
   dateOfBirth: z.preprocess(
     (val) => (val ? new Date(val) : null),
-    z
-      .date()
-      .max(new Date("2010-12-31"), "Date of birth must be before 2010-12-31")
+    z.date().max(new Date("2010-12-31"), "Date of birth must be before 2010-12-31")
   ),
   gender: z.string().min(1, "Gender is required"),
   address: z.string().min(5, "Address must be at least 5 characters"),
   nameOfInstitution: z.string().min(1, "Institution name is required"),
   courseOfStudy: z.string().min(1, "Course of study is required"),
-  duration: z
-    .string()
-    .min(1, "Duration is required")
-    .regex(/^\d+$/, "Duration should be a number"),
+  duration: z.string().min(1, "Duration is required").regex(/^\d+$/, "Duration should be a number"),
   startDate: z.preprocess(
     (val) => (val ? new Date(val) : null),
     z.date().min(new Date(), "Start date must be in the future")
@@ -157,20 +150,15 @@ export default function ApplyForInternship() {
               type="paragraph"
               className="text-[#101010] sm:mt-4 md:mt-6 lg:mt-0 lg:w-[90%] lg:pb-6"
             >
-              We're thrilled to welcome you to our team! We're looking forward
-              to getting to know you, learning about your unique perspective,
-              and sharing our expertise with you. You have the potential to make
-              a positive impact in the tech industry, and we're excited to be
-              part of your journey. Get ready to learn, grow, and have fun with
-              us.
+              We're thrilled to welcome you to our team! We're looking forward to getting to know
+              you, learning about your unique perspective, and sharing our expertise with you. You
+              have the potential to make a positive impact in the tech industry, and we're excited
+              to be part of your journey. Get ready to learn, grow, and have fun with us.
             </Text>
           </motion.dev>
         </div>
 
-        <motion.div
-          {...slideInRight}
-          className="bg-[#082B5B] lg:p-14 p-6 rounded-lg lg:mt-4"
-        >
+        <motion.div {...slideInRight} className="bg-[#082B5B] lg:p-14 p-6 rounded-lg lg:mt-4">
           <h3 className="lg:text-[44px] text-[35px] font-[700] text-[#F1F1F1] lg:leading-[54px] leading-[40px] max-w-md">
             Apply for our SIWES/IT program
           </h3>
@@ -184,9 +172,7 @@ export default function ApplyForInternship() {
                 isRequired={true}
                 {...register("fullName")}
               />
-              {errors.fullName && (
-                <p className="text-red-500 ">{errors.fullName.message}</p>
-              )}
+              {errors.fullName && <p className="text-red-500 ">{errors.fullName.message}</p>}
             </div>
 
             <div>
@@ -197,9 +183,7 @@ export default function ApplyForInternship() {
                 isRequired={true}
                 {...register("email")}
               />
-              {errors.email && (
-                <p className="text-red-500 ">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="text-red-500 ">{errors.email.message}</p>}
             </div>
 
             <div>
@@ -211,9 +195,7 @@ export default function ApplyForInternship() {
                 maxLength={11}
                 {...register("phoneNumber")}
               />
-              {errors.phoneNumber && (
-                <p className="text-red-500 ">{errors.phoneNumber.message}</p>
-              )}
+              {errors.phoneNumber && <p className="text-red-500 ">{errors.phoneNumber.message}</p>}
             </div>
 
             {/* Religion as dropdown */}
@@ -246,9 +228,7 @@ export default function ApplyForInternship() {
                   {...register("dateOfBirth")}
                 />
                 {errors.dateOfBirth && (
-                  <p className="text-red-500 absolute -bottom-5">
-                    {errors.dateOfBirth.message}
-                  </p>
+                  <p className="text-red-500 absolute -bottom-5">{errors.dateOfBirth.message}</p>
                 )}
               </div>
 
@@ -265,9 +245,7 @@ export default function ApplyForInternship() {
                   setSelected={(value) => setValue("gender", value)}
                 />
                 {errors.gender && (
-                  <p className="text-red-500 absolute -bottom-5">
-                    {errors.gender.message}
-                  </p>
+                  <p className="text-red-500 absolute -bottom-5">{errors.gender.message}</p>
                 )}
               </div>
             </div>
@@ -280,9 +258,7 @@ export default function ApplyForInternship() {
                 isRequired={true}
                 {...register("address")}
               />
-              {errors.address && (
-                <p className="text-red-500 ">{errors.address.message}</p>
-              )}
+              {errors.address && <p className="text-red-500 ">{errors.address.message}</p>}
             </div>
 
             <div>
@@ -294,9 +270,7 @@ export default function ApplyForInternship() {
                 {...register("nameOfInstitution")}
               />
               {errors.nameOfInstitution && (
-                <p className="text-red-500 ">
-                  {errors.nameOfInstitution.message}
-                </p>
+                <p className="text-red-500 ">{errors.nameOfInstitution.message}</p>
               )}
             </div>
 
@@ -322,9 +296,7 @@ export default function ApplyForInternship() {
                 spanText={"( in months )"}
                 {...register("duration")}
               />
-              {errors.duration && (
-                <p className="text-red-500 ">{errors.duration.message}</p>
-              )}
+              {errors.duration && <p className="text-red-500 ">{errors.duration.message}</p>}
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
@@ -337,9 +309,7 @@ export default function ApplyForInternship() {
                   {...register("startDate")}
                 />
                 {errors.startDate && (
-                  <p className="text-red-500 absolute -bottom-5">
-                    {errors.startDate.message}
-                  </p>
+                  <p className="text-red-500 absolute -bottom-5">{errors.startDate.message}</p>
                 )}
               </div>
 
@@ -352,17 +322,13 @@ export default function ApplyForInternship() {
                   {...register("endDate")}
                 />
                 {errors.endDate && (
-                  <p className="text-red-500 absolute -bottom-5">
-                    {errors.endDate.message}
-                  </p>
+                  <p className="text-red-500 absolute -bottom-5">{errors.endDate.message}</p>
                 )}
               </div>
             </div>
 
             <div className="py-3">
-              <p className="text-xl text-white">
-                Do you have any health challenges?
-              </p>
+              <p className="text-xl text-white">Do you have any health challenges?</p>
               <Input
                 type="checkbox"
                 radioText="Yes"
@@ -387,11 +353,7 @@ export default function ApplyForInternship() {
             )}
 
             <div className="w-40 mx-auto">
-              <Button
-                type="customizedWhite"
-                text="Submit"
-                isLoading={isLoading}
-              />
+              <Button type="customizedWhite" text="Submit" isLoading={isLoading} />
             </div>
           </form>
         </motion.div>

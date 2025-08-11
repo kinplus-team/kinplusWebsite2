@@ -15,65 +15,28 @@ export const contactUsForTraining = async (
   availability,
   chooseYourCohort,
   // promoCode,
-  promoStatus,
+  promoStatus
 ) => {
-  const graphQLClient = new GraphQLClient(graphqlAPI, {
-    headers: {
-      authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
-    },
-  });
+  // CALL THE BACKEND API
 
-  const query = gql`
-    mutation CreateTrainingContact(
-      $fullName: String!
-      $email: String!
-      $phoneNumber: String!
-      $religion: String!
-      $dateOfBirth: String!
-      $gender: String!
-      $address: String!
-      $learningTrack: String!
-      $paymentPackage: String!
-      $availability: String!
-      $chooseYourCohort: String!
-      $promoStatus: String!
-    ) {
-      createTrainingContact(
-        data: {
-          fullName: $fullName
-          email: $email
-          phoneNumber: $phoneNumber
-          religion: $religion
-          dateOfBirth: $dateOfBirth
-          gender: $gender
-          address: $address
-          learningTrack: $learningTrack
-          paymentPackage: $paymentPackage
-          availability: $availability
-          chooseYourCohort: $chooseYourCohort
-          promoCode: $promoStatus
-        }
-      ) {
-        id
-      }
-    }
-  `;
-
-  const response = await graphQLClient.request(query, {
-    fullName,
-    email,
-    phoneNumber,
-    religion,
-    dateOfBirth,
-    gender,
-    address,
-    learningTrack,
-    paymentPackage,
-    availability,
-    chooseYourCohort,
-    promoStatus,
+  const response = await fetch("http://localhost:5000/api/training/enquiry", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      fullName,
+      email,
+      phoneNumber,
+      religion,
+      dateOfBirth,
+      gender,
+      address,
+      learningTrack,
+      paymentPackage,
+      availability,
+      chooseYourCohort,
+      promoStatus,
+    }),
   });
-  console.log("From server:",response)
 
   return response;
 };
@@ -86,40 +49,16 @@ export const contactUsForServices = async (
   companyName,
   description
 ) => {
-  const graphQLClient = new GraphQLClient(graphqlAPI, {
-    headers: {
-      authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
-    },
-  });
-
-  const query = gql`
-    mutation CreatePartnersContact(
-      $fullName: String!
-      $email: String!
-      $phoneNumber: String!
-      $companyName: String!
-      $description: String!
-    ) {
-      createPartnersContact(
-        data: {
-          fullName: $fullName
-          email: $email
-          phoneNumber: $phoneNumber
-          companyName: $companyName
-          description: $description
-        }
-      ) {
-        id
-      }
-    }
-  `;
-
-  const response = await graphQLClient.request(query, {
-    fullName,
-    email,
-    phoneNumber,
-    companyName,
-    description,
+  const response = await fetch("http://localhost:5000/api/services/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      fullName,
+      email,
+      phoneNumber,
+      companyName,
+      description,
+    }),
   });
 
   return response;

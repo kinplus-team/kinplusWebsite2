@@ -15,55 +15,21 @@ export const PartnerOrSponsorUs = async (
   partnershipType,
   comment
 ) => {
-  const graphQLClient = new GraphQLClient(graphqlAPI, {
-    headers: {
-      authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
-    },
-  });
-
-  const query = gql`
-    mutation CreatePartnerWithUs(
-      $fullName: String!
-      $email: String!
-      $amount: String!
-      $phoneNumber: String!
-      $currentAddress: String!
-      $organizationName: String!
-      $organizationAddress: String!
-      $organizationWebsite: String!
-      $partnershipType: String!
-      $comment: String!
-    ) {
-      createPartnerWithUs(
-        data: {
-          fullName: $fullName
-          email: $email
-          amount: $amount
-          phoneNumber: $phoneNumber
-          currentAddress: $currentAddress
-          organizationName: $organizationName
-          organizationAddress: $organizationAddress
-          organizationWebsite: $organizationWebsite
-          partnershipType: $partnershipType
-          comment: $comment
-        }
-      ) {
-        id
-      }
-    }
-  `;
-
-  const response = await graphQLClient.request(query, {
-    fullName,
-    email,
-    amount,
-    phoneNumber,
-    currentAddress,
-    organizationName,
-    organizationAddress,
-    organizationWebsite,
-    partnershipType,
-    comment,
+  const response = await fetch("http://localhost:5000/api/partnership", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      fullName,
+      email,
+      amount,
+      phoneNumber,
+      currentAddress,
+      organizationName,
+      organizationAddress,
+      organizationWebsite,
+      partnershipType,
+      comment,
+    }),
   });
 
   return response;

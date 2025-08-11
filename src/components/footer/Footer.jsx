@@ -98,13 +98,11 @@ export default function Footer() {
           <div className="lg:text-7xl text-4xl font-bold lg:leading-[80px] lg:text-left text-center lg:max-w-4xl">
             {pathname !== "/trainings" ? (
               <p>
-                Ready to <span className="text-[#1877F9]">work</span> on your
-                next project.
+                Ready to <span className="text-[#1877F9]">work</span> on your next project.
               </p>
             ) : (
               <p>
-                Join our <span className="text-[#1877F9]">leading</span>{" "}
-                learning programs today
+                Join our <span className="text-[#1877F9]">leading</span> learning programs today
               </p>
             )}{" "}
           </div>
@@ -118,16 +116,9 @@ export default function Footer() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={itemVariants}
-          className="place-self-center"
+          className="place-self-center w-32"
         >
-          <Link
-            to={
-              pathname !== "/trainings"
-                ? "/contact-us/services"
-                : "/contact-us/training"
-            }
-            className="w-40"
-          >
+          <Link to={pathname !== "/trainings" ? "/contact-us/services" : "/contact-us/training"}>
             <Button type="customizedWhite" text="Talk to us" />
           </Link>
         </motion.div>
@@ -166,26 +157,17 @@ export default function Footer() {
                     {i === 0 ? (
                       <div className="flex gap-1">
                         {contactDetail.type}:{" "}
-                        <Link
-                          className="underline"
-                          to={`mailto:${contactDetail.value}`}
-                        >
+                        <Link className="underline" to={`mailto:${contactDetail.value}`}>
                           {contactDetail.value}
                         </Link>
                       </div>
                     ) : (
                       <div className="flex flex-col md:flex-row gap-1 text-[15px] lg:text-base">
                         {contactDetail.type}:
-                        <Link
-                          className="underline"
-                          to="https://wa.me/+2347075199782"
-                        >
+                        <Link className="underline" to="https://wa.me/+2347075199782">
                           {contactDetail.value}
                         </Link>
-                        <Link
-                          className="underline"
-                          to="https://wa.me/+2348116400858"
-                        >
+                        <Link className="underline" to="https://wa.me/+2348116400858">
                           {contactDetail.valueOne}
                         </Link>
                       </div>
@@ -198,9 +180,7 @@ export default function Footer() {
             {/* quick links*/}
             <motion.div variants={itemVariants} className="grid grid-cols-2">
               <div>
-                <p className="text-[#1877F9] mb-5 lg:text-lg font-bold">
-                  Quick links
-                </p>
+                <p className="text-[#1877F9] mb-5 lg:text-lg font-bold">Quick links</p>
                 {quickLinks.map((quickLink, i) => (
                   <div key={i}>
                     {quickLink.url.startsWith("https") ? (
@@ -226,9 +206,7 @@ export default function Footer() {
 
               {/* resources */}
               <div>
-                <p className="text-[#1877F9] mb-5 lg:text-lg font-bold">
-                  Resources
-                </p>
+                <p className="text-[#1877F9] mb-5 lg:text-lg font-bold">Resources</p>
                 {resources.map((resource, i) => (
                   <div key={i}>
                     <Link
@@ -253,11 +231,7 @@ export default function Footer() {
               <div className="flex gap-6 my-3 pt-3">
                 {socialMediaIcons.map((socialMediaIcon, i) => (
                   <a href={socialMediaIcon.link} key={i} rel="noopener noreferrer" target="_blank">
-                    <img
-                      src={socialMediaIcon.icon}
-                      alt="social media icon"
-                      className="w-9 h-9"
-                    />
+                    <img src={socialMediaIcon.icon} alt="social media icon" className="w-9 h-9" />
                   </a>
                 ))}
               </div>
@@ -272,8 +246,7 @@ export default function Footer() {
             variants={itemVariants}
             className="text-center text-[#F1F1F1F1] lg:text-lg lg:text-center"
           >
-            Copyright © {new Date().getFullYear()} Kinplus Technologies. All
-            rights reserved.
+            Copyright © {new Date().getFullYear()} Kinplus Technologies. All rights reserved.
           </motion.p>
         </motion.div>
       </div>

@@ -10,43 +10,17 @@ export const submitResume = async (
   resumeUrl,
   portfolioLink
 ) => {
-  const graphQLClient = new GraphQLClient(graphqlAPI, {
-    headers: {
-      authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
-    },
-  });
-
-  const query = gql`
-    mutation CreateJobApplication(
-      $fullName: String!
-      $email: String!
-      $phoneNumber: String!
-      $jobRole: String!
-      $resumeUrl: String!
-      $portfolioLink: String!
-    ) {
-      createJobApplication(
-        data: {
-          fullName: $fullName
-          email: $email
-          phoneNumber: $phoneNumber
-          jobRole: $jobRole
-          resumeUrl: $resumeUrl
-          portfolioLink: $portfolioLink
-        }
-      ) {
-        id
-      }
-    }
-  `;
-
-  const response = await graphQLClient.request(query, {
-    fullName,
-    email,
-    phoneNumber,
-    jobRole,
-    resumeUrl,
-    portfolioLink,
+  const response = await fetch("http://localhost:5000/api/resume/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      fullName,
+      email,
+      phoneNumber,
+      jobRole,
+      resumeUrl,
+      portfolioLink,
+    }),
   });
 
   return response;

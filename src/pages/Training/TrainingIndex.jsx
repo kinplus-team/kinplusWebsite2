@@ -26,11 +26,18 @@ import PaymentSuccessModal from "../../components/modals/PaymentSuccessModal.jsx
 import PaymentPreferenceModal from "../../components/modals/PaymentPreference.jsx";
 import BankTransferModal from "../../components/modals/BankTransferModal.jsx";
 import { generatePDFReceipt, generateImageReceipt } from "../../repository/receipt.js";
-import { trackOptions, packageOptions, graphicDesignOptions, computerOperationOptions, genderInput, religionOptions, allMonths, PROMO_DETAILS } from './../../repository/training-options';
+import {
+  trackOptions,
+  packageOptions,
+  graphicDesignOptions,
+  computerOperationOptions,
+  genderInput,
+  religionOptions,
+  allMonths,
+  PROMO_DETAILS,
+} from "./../../repository/training-options";
 
 // import { Link } from "react-router-dom";
-
-
 
 // validation schema
 const contactUsTrainingSchema = z.object({
@@ -39,15 +46,11 @@ const contactUsTrainingSchema = z.object({
     .min(1, "Full name is required")
     .regex(/^[a-zA-Z\s]+$/, "Full Name must contain only alphabets"),
   email: z.string().email("Invalid email address"),
-  phoneNumber: z
-    .string()
-    .regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
+  phoneNumber: z.string().regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
   religion: z.string().min(1, "Religion is required"),
   dateOfBirth: z.preprocess(
     (val) => (val ? new Date(val) : null),
-    z
-      .date()
-      .max(new Date("2010-12-31"), "Date of birth must be before 2010-12-31")
+    z.date().max(new Date("2010-12-31"), "Date of birth must be before 2010-12-31")
   ),
   gender: z.string().min(1, "Gender is required"),
   address: z.string().min(5, "Address must be at least 5 characters"),
@@ -56,7 +59,6 @@ const contactUsTrainingSchema = z.object({
   availability: z.string().min(1, "Availability is required"),
   chooseYourCohort: z.string().min(1, "You have to choose the cohort you want to join"),
   promoCode: z.string().optional().or(z.literal("")),
-
 });
 
 export default function Training() {
@@ -114,8 +116,6 @@ export default function Training() {
   const fullAmountRef = useRef(fullAmount);
   const discountedAmountRef = useRef(discountedAmount);
 
- 
-
   // useEffect hook for real-time promo code validation
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -172,6 +172,7 @@ export default function Training() {
         // data.promoCode,
         promoStatus ?? "null"
       );
+
       toast.success("Form submitted successfully");
       reset();
       setUserEmail(data.email);
@@ -213,9 +214,7 @@ export default function Training() {
         promoDiscount = PROMO_DETAILS.discount;
       }
 
-      const finalAmount = isPromoValid
-        ? Math.floor(amount * (1 - promoDiscount))
-        : amount;
+      const finalAmount = isPromoValid ? Math.floor(amount * (1 - promoDiscount)) : amount;
 
       setPromoStatus(isPromoValid ? "valid" : "invalid");
       console.log("isPromoValid", isPromoValid);
@@ -310,9 +309,7 @@ export default function Training() {
                       isRequired={true}
                       {...register("fullName")}
                     />
-                    {errors.fullName && (
-                      <p className="text-red-500">{errors.fullName.message}</p>
-                    )}
+                    {errors.fullName && <p className="text-red-500">{errors.fullName.message}</p>}
                   </div>
 
                   <div>
@@ -323,9 +320,7 @@ export default function Training() {
                       isRequired={true}
                       {...register("email")}
                     />
-                    {errors.email && (
-                      <p className="text-red-500">{errors.email.message}</p>
-                    )}
+                    {errors.email && <p className="text-red-500">{errors.email.message}</p>}
                   </div>
                 </div>
 
@@ -341,9 +336,7 @@ export default function Training() {
                       {...register("phoneNumber")}
                     />
                     {errors.phoneNumber && (
-                      <p className="text-red-500">
-                        {errors.phoneNumber.message}
-                      </p>
+                      <p className="text-red-500">{errors.phoneNumber.message}</p>
                     )}
                   </div>
 
@@ -398,9 +391,7 @@ export default function Training() {
                       setSelected={(value) => setValue("gender", value)}
                     />
                     {errors.gender && (
-                      <p className="text-red-500 absolute -bottom-5">
-                        {errors.gender.message}
-                      </p>
+                      <p className="text-red-500 absolute -bottom-5">{errors.gender.message}</p>
                     )}
                   </div>
                 </div>
@@ -415,9 +406,7 @@ export default function Training() {
                       isRequired={true}
                       {...register("address")}
                     />
-                    {errors.address && (
-                      <p className="text-red-500">{errors.address.message}</p>
-                    )}
+                    {errors.address && <p className="text-red-500">{errors.address.message}</p>}
                   </div>
 
                   <div>
@@ -458,14 +447,10 @@ export default function Training() {
                       placeholder="Select your preferred cohort month"
                       options={cohortOptions}
                       isSelect={activeDropdown === "chooseYourCohort"}
-                      setIsSelect={() =>
-                        handleDropdownToggle("chooseYourCohort")
-                      }
+                      setIsSelect={() => handleDropdownToggle("chooseYourCohort")}
                       error={errors.chooseYourCohort?.message}
                       selected={watch("chooseYourCohort")}
-                      setSelected={(value) =>
-                        setValue("chooseYourCohort", value)
-                      }
+                      setSelected={(value) => setValue("chooseYourCohort", value)}
                     />
                   </div>
                 </div>
@@ -489,9 +474,7 @@ export default function Training() {
                       name="availability"
                       radioText="Onsite/Physical"
                       isChecked={watch("availability") === "Onsite/Physical"}
-                      onCheck={() =>
-                        setValue("availability", "Onsite/Physical")
-                      }
+                      onCheck={() => setValue("availability", "Onsite/Physical")}
                       error={errors.availability?.message}
                     />
                     <Input
@@ -505,7 +488,7 @@ export default function Training() {
                   </div>
 
                   {/* Promo code */}
-                  
+
                   {/*<div>
                     <Input
                       type="text"
@@ -533,11 +516,7 @@ export default function Training() {
               </div>
 
               <div className="text-center mt-[10px] py-9 w-40 mx-auto">
-                <Button
-                  text="Submit"
-                  isLoading={isLoading}
-                  type="customizedWhite"
-                />
+                <Button text="Submit" isLoading={isLoading} type="customizedWhite" />
               </div>
             </form>
           </motion.div>

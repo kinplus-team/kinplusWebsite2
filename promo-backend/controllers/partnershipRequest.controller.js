@@ -16,7 +16,6 @@ const submitPartnershipRequest = async (req, res) => {
       comment,
     } = req.body;
 
-    console.log(req.body);
     const request = await PartnershipRequest.create({
       fullName,
       email,

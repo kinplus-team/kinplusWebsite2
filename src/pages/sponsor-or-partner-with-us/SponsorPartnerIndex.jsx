@@ -12,7 +12,10 @@ export default function ContactUsServices() {
   const [isLoading, setIsLoading] = useState(false);
 
   const partnershipOptions = [
-    { title: "Placement (Sponsor the training and internship program of a number of beneficiaries)", value: "Placement" },
+    {
+      title: "Placement (Sponsor the training and internship program of a number of beneficiaries)",
+      value: "Placement",
+    },
     { title: "Monetary (Donate an amount to support a training program)", value: "Monetary" },
   ];
 
@@ -92,9 +95,7 @@ export default function ContactUsServices() {
                 placeholder="Enter your Full Name"
                 {...register("fullName", { required: "Full Name is required" })}
               />
-              {errors.fullName && (
-                <p className="text-red-500">{errors.fullName.message}</p>
-              )}
+              {errors.fullName && <p className="text-red-500">{errors.fullName.message}</p>}
             </div>
 
             <div>
@@ -104,9 +105,7 @@ export default function ContactUsServices() {
                 placeholder="Enter your E-Mail"
                 {...register("email", { required: "Email is required" })}
               />
-              {errors.email && (
-                <p className="text-red-500">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="text-red-500">{errors.email.message}</p>}
             </div>
 
             <div>
@@ -118,9 +117,7 @@ export default function ContactUsServices() {
                   required: "Amount is required",
                 })}
               />
-              {errors.amount && (
-                <p className="text-red-500">{errors.amount.message}</p>
-              )}
+              {errors.amount && <p className="text-red-500">{errors.amount.message}</p>}
             </div>
 
             <div>
@@ -132,9 +129,7 @@ export default function ContactUsServices() {
                   required: "Phone number is required",
                 })}
               />
-              {errors.phoneNumber && (
-                <p className="text-red-500">{errors.phoneNumber.message}</p>
-              )}
+              {errors.phoneNumber && <p className="text-red-500">{errors.phoneNumber.message}</p>}
             </div>
 
             <div>
@@ -208,11 +203,7 @@ export default function ContactUsServices() {
             </div>
 
             <div className="text-center mt-[10px] py-9 w-40 mx-auto">
-              <Button
-                text="Submit"
-                type="customizedWhite"
-                isLoading={isLoading}
-              />
+              <Button text="Submit" type="customizedWhite" isLoading={isLoading} />
             </div>
           </form>
         </div>

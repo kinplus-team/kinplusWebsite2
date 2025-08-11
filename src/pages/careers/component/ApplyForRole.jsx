@@ -10,7 +10,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import FormModal from "../../../components/FormModal";
 
-
 // validation schema
 const applyForRoleSchema = z.object({
   fullName: z
@@ -18,9 +17,7 @@ const applyForRoleSchema = z.object({
     .min(1, "Full name is required")
     .regex(/^[a-zA-Z\s]+$/, "Full Name must contain only alphabets"),
   email: z.string().email("Invalid email address"),
-  phoneNumber: z
-    .string()
-    .regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
+  phoneNumber: z.string().regex(/^\d{11}$/, "Phone number must be exactly 11 digits"),
   jobRole: z.string().min(1, "Job role is required"),
   portfolioLink: z
     .string()
@@ -106,12 +103,9 @@ export default function ApplyForRole() {
       reset();
 
       setIsFormModalOpen(true); // Open modal
-
     } catch (error) {
       console.error("Error submitting application:", error);
-      toast.error(
-        error.message || "Something went wrong with your application."
-      );
+      toast.error(error.message || "Something went wrong with your application.");
       setIsLoading(false);
     }
   };
@@ -129,8 +123,8 @@ export default function ApplyForRole() {
           Apply for Job
         </h3>
         <p className="text-[#fff] text-lg lg:leading-[30px] leading-[26px] max-w-2xl">
-          You are just a single step away from joining the best team to work
-          with. Apply now to become a part of the Kinplus family.
+          You are just a single step away from joining the best team to work with. Apply now to
+          become a part of the Kinplus family.
         </p>
         <div className="grid gap-6">
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -143,9 +137,7 @@ export default function ApplyForRole() {
                   isRequired={true}
                   {...register("fullName")}
                 />
-                {errors.fullName && (
-                  <p className="text-red-500 ">{errors.fullName.message}</p>
-                )}
+                {errors.fullName && <p className="text-red-500 ">{errors.fullName.message}</p>}
               </div>
 
               <div>
@@ -156,9 +148,7 @@ export default function ApplyForRole() {
                   isRequired={true}
                   {...register("email")}
                 />
-                {errors.email && (
-                  <p className="text-red-500">{errors.email.message}</p>
-                )}
+                {errors.email && <p className="text-red-500">{errors.email.message}</p>}
               </div>
 
               <div>
@@ -170,9 +160,7 @@ export default function ApplyForRole() {
                   maxLength={11}
                   {...register("phoneNumber")}
                 />
-                {errors.phoneNumber && (
-                  <p className="text-red-500">{errors.phoneNumber.message}</p>
-                )}
+                {errors.phoneNumber && <p className="text-red-500">{errors.phoneNumber.message}</p>}
               </div>
 
               {/* Dropdown for Job Role */}
@@ -188,9 +176,7 @@ export default function ApplyForRole() {
                   selected={watch("jobRole")}
                   setSelected={(value) => setValue("jobRole", value)}
                 />
-                {errors.jobRole && (
-                  <p className="text-red-500">{errors.jobRole.message}</p>
-                )}
+                {errors.jobRole && <p className="text-red-500">{errors.jobRole.message}</p>}
               </div>
 
               <div>
@@ -219,12 +205,9 @@ export default function ApplyForRole() {
                       ) : (
                         <>
                           <p className="text-lg font-medium">
-                            Upload Your CV/Resume{" "}
-                            <span className="text-red-500">*</span>
+                            Upload Your CV/Resume <span className="text-red-500">*</span>
                           </p>
-                          <p className="text-lg font-light">
-                            Supported Format: PDF
-                          </p>
+                          <p className="text-lg font-light">Supported Format: PDF</p>
                         </>
                       )}
                       <input
@@ -240,20 +223,14 @@ export default function ApplyForRole() {
                       />
                     </div>
                   </label>
-                  {errors.cv && (
-                    <p className="text-red-500 mt-1">{errors.cv.message}</p>
-                  )}
+                  {errors.cv && <p className="text-red-500 mt-1">{errors.cv.message}</p>}
                 </div>
               )}
             />
 
             <div className="flex lg:justify-end justify-center mt-5">
               <div className="w-40">
-                <Button
-                  type="customizedWhite"
-                  text="Apply Now"
-                  isLoading={isLoading}
-                />
+                <Button type="customizedWhite" text="Apply Now" isLoading={isLoading} />
               </div>
             </div>
           </form>
