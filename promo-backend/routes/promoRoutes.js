@@ -8,6 +8,7 @@ router.get("/test", (req, res) => {
   res.send("Promo route is working");
 });
 
+// console
 // Validate promo code
 router.post("/validate", validatePromoCode);
 
