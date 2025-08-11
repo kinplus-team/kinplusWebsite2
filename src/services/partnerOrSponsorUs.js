@@ -15,7 +15,7 @@ export const PartnerOrSponsorUs = async (
   partnershipType,
   comment
 ) => {
-  const response = await fetch("https://kinpluswebsite2.onrender.com/api/partnership", {
+  const response = await fetch("https://kinpluswebsite2backend.onrender.com/api/partnership", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

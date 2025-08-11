@@ -10,7 +10,7 @@ export const submitResume = async (
   resumeUrl,
   portfolioLink
 ) => {
-  const response = await fetch("https://kinpluswebsite2.onrender.com/api/resume/submit", {
+  const response = await fetch("https://kinpluswebsite2backend.onrender.com/api/resume/submit", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

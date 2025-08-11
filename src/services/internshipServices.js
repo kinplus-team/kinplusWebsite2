@@ -15,26 +15,29 @@ export const ApplyForSIWES = async (
   healthChallengesDescription
 ) => {
   try {
-    const response = await fetch("https://kinpluswebsite2.onrender.com/api/it-and-siwes/apply", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        fullName,
-        email,
-        phoneNumber,
-        religion,
-        dateOfBirth,
-        gender,
-        address,
-        institutionName,
-        courseOfStudy,
-        duration,
-        startDate,
-        endDate,
-        anyHealthChallenges,
-        healthChallengesDescription,
-      }),
-    });
+    const response = await fetch(
+      "https://kinpluswebsite2backend.onrender.com/api/it-and-siwes/apply",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName,
+          email,
+          phoneNumber,
+          religion,
+          dateOfBirth,
+          gender,
+          address,
+          institutionName,
+          courseOfStudy,
+          duration,
+          startDate,
+          endDate,
+          anyHealthChallenges,
+          healthChallengesDescription,
+        }),
+      }
+    );
 
     return response;
   } catch (error) {
