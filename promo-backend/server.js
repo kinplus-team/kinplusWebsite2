@@ -13,12 +13,13 @@ const servicesContact = require("./routes/servicesContact.routes");
 dotenv.config();
 
 const app = express();
+
 const allowedOrigins = ["http://localhost:3000", "https://kinpluswebsite2-cezi.onrender.com"];
 
-// ✅ Must be here before routes
 app.use(
   cors({
     origin: (origin, callback) => {
+      console.log(origin);
       if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
@@ -29,7 +30,7 @@ app.use(
 );
 
 // ✅ Handle preflight
-app.options("*", cors());
+// app.options("*", cors());
 
 app.use(express.json());
 
