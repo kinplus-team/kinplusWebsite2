@@ -12,25 +12,24 @@ const servicesContact = require("./routes/servicesContact.routes");
 
 dotenv.config();
 
+const app = express();
 const allowedOrigins = ["http://localhost:3000", "https://kinpluswebsite2-cezi.onrender.com"];
 
-const app = express();
-
+// ✅ Must be here before routes
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps or curl)
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true); // ✅ Allowed
-      } else {
-        callback(new Error("Not allowed by CORS")); // ❌ Blocked
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
       }
+      return callback(new Error("Not allowed by CORS"));
     },
-    credentials: true, // if cookies/auth headers are needed
+    credentials: true,
   })
 );
+
+// ✅ Handle preflight
+app.options("*", cors());
 
 app.use(express.json());
 

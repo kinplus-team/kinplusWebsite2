@@ -1,7 +1,3 @@
-import { GraphQLClient, request, gql } from "graphql-request";
-
-const graphqlAPI = import.meta.env.VITE_GRAPHCMS_ENDPOINT;
-
 export const contactUsForTraining = async (
   fullName,
   email,
