@@ -12,7 +12,7 @@ const servicesContact = require("./routes/servicesContact.routes");
 
 dotenv.config();
 
-const allowedOrigins = ["http://localhost:3000", "https://kinpluswebsite2-cezi.onrender.com/"];
+const allowedOrigins = ["http://localhost:3000", "https://kinpluswebsite2-cezi.onrender.com"];
 
 const app = express();
 
