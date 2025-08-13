@@ -12,8 +12,26 @@ const servicesContact = require("./routes/servicesContact.routes");
 
 dotenv.config();
 
+const allowedOrigins = ["http://localhost:3000", "https://kinpluswebsite2-cezi.onrender.com/"];
+
 const app = express();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true); // ✅ Allowed
+      } else {
+        callback(new Error("Not allowed by CORS")); // ❌ Blocked
+      }
+    },
+    credentials: true, // if cookies/auth headers are needed
+  })
+);
+
 app.use(express.json());
 
 // Connect to MongoDB
